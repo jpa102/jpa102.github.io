@@ -2,6 +2,11 @@
   style.css for youkoso.html
 */
 
+@font-face {
+  font-family: "Google Sans";
+  src: url("youkoso_rsrc/google-sans_regular.ttf");
+}
+
 #h1-title {
   font-family: google sans;
 }
