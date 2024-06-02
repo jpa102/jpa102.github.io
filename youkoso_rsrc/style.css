@@ -7,6 +7,14 @@
   src: url("https://jpa102.github.io/youkoso_rsrc/google-sans_regular.ttf");
 }
 
+:root {
+  --main-body-color: #36c8ff;
+}
+
+body {
+  background: var(--main-body-color);
+}
+
 #h1-title {
   font-family: google sans;
 }
