@@ -1,0 +1,158 @@
+/*
+	default values present in the original HTML
+*/
+
+/* Average rating: */
+#resultTitle {
+	display: none;
+}
+
+/* Rounded average = */
+#roundp {
+	display: none;
+}
+
+
+
+/*
+	Main HTML design
+*/
+
+@font-face {
+	font-family: "Google Sans";
+	src: url("google-sans_regular.ttf");
+}
+
+#body-container {
+	margin: 32px;
+}
+
+#header-text {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#inputs-from-user {
+	margin-left: 32px;
+}
+
+button {
+	padding: 8px 12px;
+	margin: 0px 8px;
+}
+
+form {
+	margin: 16px 0px;
+}
+
+input {
+	padding: 6px 12px;
+	font-family: consolas !important;
+}
+
+#ldv-container {
+	display: none;
+}
+
+#like-count {
+	display: none;
+	margin: unset;
+}
+
+#dislike-count {
+	display: none;
+	margin: unset;
+}
+
+#view-count {
+	display: none;
+	margin: unset;
+}
+
+#precise-percentage {
+	display: none;
+	margin: unset;
+}
+
+#precise-rating {
+	display: none;
+	margin: unset;
+}
+
+/*
+	==============================================
+			fonts
+	==============================================
+*/
+
+* {
+	font-family: Google Sans;
+}
+
+
+
+/*
+	this is the main container for the ratio bar
+*/
+#ratio-bar-renderer-container {
+	display: none;
+	margin-top: 16px;
+}
+
+/*
+	taken from internal YouTube's HTML
+	so funny that it's still there sitting unused, being set to hidden
+	come on, bring it back natively mfs
+	
+	NOTE: This has been stripped off of its most YouTube references in the HTML
+*/
+#sentiment.like-dislike-info-renderer {
+	display: block;
+	width: 240px;
+	position: relative;
+	left: 0;
+	top: -8px;
+	padding-top: 6px;
+	/* padding-bottom: 28px; */
+	transition: .3s ease-in-out;
+}
+
+#container.like-dislike-info-renderer {
+	height: 4px;
+	background-color: #ccc;
+}
+
+#like-bar.like-dislike-info-renderer {
+	width: 100%;
+	background: #167ac6;
+	height: 4px;
+	transition: width 0.3s;
+}
+
+#tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+#tooltip .tooltiptext {
+	visibility: hidden;
+	top: 8px;
+	width: 222px;
+	background-color: #616161;
+	font-family: "Google Sans";
+	-webkit-font-smoothing: antialiased;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	opacity: 86%;
+	padding: 8px;
+	
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+}
+
+#sentiment.like-dislike-info-renderer:hover .tooltiptext {
+	visibility: visible;
+}
