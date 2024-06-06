@@ -16,14 +16,30 @@ function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
 }
 
+function gotoHomePage() {
+	if (document.querySelector("#main-home-page").hidden == false) {
+		console.log("You are already in the home page.");
+		closeNav();
+	} else {
+		document.querySelector("#main-home-page").hidden = false;
+		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
+		document.querySelector("#combined-apis-page").hidden = true;
+		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#about-screen-page").hidden = true;
+		closeNav();
+	}
+}
+
 function gotoMainFrontend() {
 	if (document.querySelector("#return-youtube-dislike-api-page").hidden == false) {
 		console.log("You are already in the main frontend page.");
 		closeNav();
 	} else {
-		document.querySelector("#about-screen-page").hidden = true;
+		document.querySelector("#main-home-page").hidden = true;
 		document.querySelector("#return-youtube-dislike-api-page").hidden = false;
 		document.querySelector("#combined-apis-page").hidden = true;
+		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#about-screen-page").hidden = true;
 		closeNav();
 	}
 }
@@ -33,8 +49,24 @@ function gotoAlternateFrontend() {
 		console.log("You are already in the alternate frontend page.");
 		closeNav();
 	} else {
-		document.querySelector("#combined-apis-page").hidden = false;
+		document.querySelector("#main-home-page").hidden = true;
 		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
+		document.querySelector("#combined-apis-page").hidden = false;
+		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#about-screen-page").hidden = true;
+		closeNav();
+	}
+}
+
+function gotoTutorialPage() {
+	if (document.querySelector("#ryd-tutorial-page").hidden == false) {
+		console.log("You are already in the tutorial page.");
+		closeNav();
+	} else {
+		document.querySelector("#main-home-page").hidden = true;
+		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
+		document.querySelector("#combined-apis-page").hidden = true;
+		document.querySelector("#ryd-tutorial-page").hidden = false;
 		document.querySelector("#about-screen-page").hidden = true;
 		closeNav();
 	}
@@ -45,8 +77,10 @@ function gotoAboutPage() {
 		console.log("You are already in the about page.");
 		closeNav();
 	} else {
-		document.querySelector("#combined-apis-page").hidden = true;
+		document.querySelector("#main-home-page").hidden = true;
 		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
+		document.querySelector("#combined-apis-page").hidden = true;
+		document.querySelector("#ryd-tutorial-page").hidden = true;
 		document.querySelector("#about-screen-page").hidden = false;
 		closeNav();
 	}
