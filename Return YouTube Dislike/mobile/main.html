@@ -18,6 +18,7 @@
 				<a href="javascript:void(0)" onclick="gotoMainFrontend()">Main page</a>
 				<a href="javascript:void(0)" onclick="gotoAlternateFrontend()">Alternate page</a>
 				<a href="javascript:void(0)" onclick="gotoTutorialPage()">Tutorial / Guide</a>
+				<a href="javascript:void(0)" onclick="gotoChangelogPage()">Changelog</a>
 				<a href="javascript:void(0)" onclick="gotoAboutPage()">About this webapp</a>
 			</div>
 			<div id="topbar">
@@ -107,9 +108,9 @@
 					</span>
 				</div>
 				<div id="display-youtube-embed" class="container" style="margin-top: 20px;" hidden="">
-					<div style="padding: 10px 0px;">
+					<div style="padding-bottom: 20px;">
 						<div id="embed-window-title-and-action-buttons">
-							<h2 style="margin-bottom: 8px;">YouTube video embed</h2>
+							<h2 style="margin-bottom: 8px; font-size: 22px;">YouTube video embed</h2>
 							<div id="embed-action-buttons">
 								<button id="embed-minimize-button" class="action-buttons" title="Minimize this window" onclick="minimizeEmbedWindow()" aria-pressed="false">
 
@@ -260,6 +261,13 @@
 				</div>
 			</div>
 		</div>
+		<div id="ryd-changelog-page" class="page" hidden="">
+			<div id="body-container" class="info">
+				<div id="ryd-changelog-page-container" class="container" style="width: 100%; margin-top: 0px;">
+					
+				</div>
+			</div>
+		</div>
 		<div id="about-screen-page" class="page" hidden="">
 			<div id="body-container" class="info">
 				<div id="about-container" class="container" style="width: 100%; margin-top: 0px;">
@@ -267,7 +275,7 @@
 						Version:
 					</h2>
 					<p>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.19 (beta)
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.19.01 (beta)
 					</p>
 					<br>
 					<h2>
