@@ -23,6 +23,7 @@ function gotoMainFrontend() {
 	} else {
 		document.querySelector("#about-screen-page").hidden = true;
 		document.querySelector("#return-youtube-dislike-api-page").hidden = false;
+		document.querySelector("#combined-apis-page").hidden = true;
 		closeNav();
 	}
 }
@@ -34,6 +35,7 @@ function gotoAlternateFrontend() {
 	} else {
 		document.querySelector("#combined-apis-page").hidden = false;
 		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
+		document.querySelector("#about-screen-page").hidden = true;
 		closeNav();
 	}
 }
