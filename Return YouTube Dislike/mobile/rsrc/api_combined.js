@@ -8,7 +8,7 @@
 	to make this work and possible
 */
 
-let googleapisYouTubeKey = "AIzaSyCFtkXH-CdFXB2jO1hCFpWSsPERzRD9LO0"; // i can revoke this key anytime i want to
+let googleapisYouTubeKey = ""; // (update: i decided to leave it blank, meaning you're gonna have to place your own api key :D) i can revoke this key anytime i want to
 
 function getCombinedVotes() {
 	if (noVideoId == true) {
