@@ -138,6 +138,13 @@ iframe {
 button {
 	padding: 8px 12px;
 	margin: 0px 8px;
+	border-radius: 20px;
+	border: unset;
+	background: var(--background-dark-color);
+}
+
+button:active {
+	background: var(--background-slightly-darker-color);
 }
 
 form {
