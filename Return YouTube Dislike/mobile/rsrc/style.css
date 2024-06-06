@@ -20,8 +20,9 @@
 
 :root {
 	--alternate-topbar-background-color: rgb(0 0 0 / 8%);
-	--topbar-background-color: rgb(235, 235, 235);
-	--sidebar-background-color: white;
+	--topbar-background-color: rgb(0 178 245);
+	--sidebar-background-color: rgb(126 220 255);
+	--main-body-background-color: rgb(54 200 255);
 	--background-dark-color: rgba(0,0,0,0.08);
 	--background-slightly-darker-color: rgba(0,0,0,0.12);
 	--buttons-pressed-color: rgba(0,0,0,0.16);
@@ -33,7 +34,7 @@
 }
 
 body {
-	background-color: #36c8ff;
+	background-color: var(--main-body-background-color);
 	margin: unset;
 }
 
@@ -135,7 +136,7 @@ iframe {
 	margin-top: 20px;
 }
 
-button {
+.action-buttons {
 	padding: 8px 12px;
 	margin: 0px 8px;
 	border-radius: 20px;
@@ -144,9 +145,26 @@ button {
 	transition: ease-in-out .3s;
 }
 
-button:active {
-	background: var(--background-slightly-darker-color);
+.action-buttons:hover {
+	cursor: pointer;
+}
+
+.action-buttons:active {
+	background: var(--background-slightly-darker-color) !important;
 	transition: ease-in-out .3s;
+}
+
+#embed-minimize-button {
+	background: unset;
+}
+
+#embed-close-button {
+	background: unset;
+}
+
+#embed-window-title-and-action-buttons {
+	display: flex;
+	justify-content: space-between;
 }
 
 form {
@@ -154,11 +172,15 @@ form {
 }
 
 input {
-	padding: 6px 12px;
+	padding: 10px 20px;
 	border: unset;
 	border-radius: 20px;
 	background: var(--background-slightly-darker-color);
 	font-family: consolas !important;
+}
+
+input:-internal-autofill-selected {
+	background: var(--background-slightly-darker-color);
 }
 
 #display-results {
@@ -223,7 +245,15 @@ input {
 }
 
 .sidenav a:hover {
-	color: #f1f1f1;
+	color: black;
+	text-decoration: underline;
+	background: var(--background-slightly-darker-color);
+	transition: 0.3s;
+}
+
+.sidenav a:active {
+	color: white;
+	transition: 0.3s;
 }
 
 .sidenav .closebtn {
