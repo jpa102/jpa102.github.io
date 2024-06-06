@@ -141,10 +141,12 @@ button {
 	border-radius: 20px;
 	border: unset;
 	background: var(--background-dark-color);
+	transition: ease-in-out .3s;
 }
 
 button:active {
 	background: var(--background-slightly-darker-color);
+	transition: ease-in-out .3s;
 }
 
 form {
@@ -153,6 +155,9 @@ form {
 
 input {
 	padding: 6px 12px;
+	border: unset;
+	border-radius: 20px;
+	background: var(--background-slightly-darker-color);
 	font-family: consolas !important;
 }
 
