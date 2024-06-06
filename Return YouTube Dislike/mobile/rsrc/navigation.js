@@ -25,6 +25,7 @@ function gotoHomePage() {
 		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
 		document.querySelector("#combined-apis-page").hidden = true;
 		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#ryd-changelog-page").hidden = true;
 		document.querySelector("#about-screen-page").hidden = true;
 		closeNav();
 	}
@@ -39,6 +40,7 @@ function gotoMainFrontend() {
 		document.querySelector("#return-youtube-dislike-api-page").hidden = false;
 		document.querySelector("#combined-apis-page").hidden = true;
 		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#ryd-changelog-page").hidden = true;
 		document.querySelector("#about-screen-page").hidden = true;
 		closeNav();
 	}
@@ -53,6 +55,7 @@ function gotoAlternateFrontend() {
 		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
 		document.querySelector("#combined-apis-page").hidden = false;
 		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#ryd-changelog-page").hidden = true;
 		document.querySelector("#about-screen-page").hidden = true;
 		closeNav();
 	}
@@ -67,6 +70,22 @@ function gotoTutorialPage() {
 		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
 		document.querySelector("#combined-apis-page").hidden = true;
 		document.querySelector("#ryd-tutorial-page").hidden = false;
+		document.querySelector("#ryd-changelog-page").hidden = true;
+		document.querySelector("#about-screen-page").hidden = true;
+		closeNav();
+	}
+}
+
+function gotoChangelogPage() {
+	if (document.querySelector("#ryd-changelog-page").hidden == false) {
+		console.log("You are already in the changelog page.");
+		closeNav();
+	} else {
+		document.querySelector("#main-home-page").hidden = true;
+		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
+		document.querySelector("#combined-apis-page").hidden = true;
+		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#ryd-changelog-page").hidden = false;
 		document.querySelector("#about-screen-page").hidden = true;
 		closeNav();
 	}
@@ -81,6 +100,7 @@ function gotoAboutPage() {
 		document.querySelector("#return-youtube-dislike-api-page").hidden = true;
 		document.querySelector("#combined-apis-page").hidden = true;
 		document.querySelector("#ryd-tutorial-page").hidden = true;
+		document.querySelector("#ryd-changelog-page").hidden = true;
 		document.querySelector("#about-screen-page").hidden = false;
 		closeNav();
 	}
