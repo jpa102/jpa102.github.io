@@ -20,19 +20,19 @@ function getSomeMetadataFromVideoId() {
 					document.querySelector("#channel-url").innerText = "YT Channel: " + author_url;
 					document.querySelector("#channel-url").href = author_url;
 					
-					if (document.querySelector("iframe") == null) {
+					if (document.querySelector("iframe#ryd-api-embedded-video") == null) {
 						document.querySelector("#display-youtube-embed").insertAdjacentHTML(
 							"beforeend",
 							`
-							<iframe src="https://youtube.com/embed/${ytId}"></iframe>
+							<iframe id="ryd-api-embedded-video" src="https://youtube.com/embed/${ytId}"></iframe>
 							`
 						);
 					} else {
-						document.querySelector("iframe").remove();
+						document.querySelector("iframe#ryd-api-embedded-video").remove();
 						document.querySelector("#display-youtube-embed").insertAdjacentHTML(
 							"beforeend",
 							`
-							<iframe src="https://youtube.com/embed/${ytId}"></iframe>
+							<iframe id="ryd-api-embedded-video" src="https://youtube.com/embed/${ytId}"></iframe>
 							`
 						);
 					}
@@ -71,4 +71,43 @@ function Clear(){
 	document.querySelector("#ldv-container").style = "display: none;";
 	
 	document.querySelector("#display-youtube-embed").hidden = true;
+}
+
+
+function minimizeEmbedWindow() {
+	if (document.querySelector("#embed-minimize-button").ariaPressed == "false") {
+		setTimeout(function() {
+			document.querySelector("#title-text-container").hidden = true;
+			document.querySelector("#uploaded-by").hidden = true;
+			document.querySelector("#channel-url").hidden = true;
+			document.querySelector("iframe#ryd-api-embedded-video").hidden = true;
+			
+			document.querySelector("#embed-minimize-button").ariaPressed = "true";
+			document.querySelector("#embed-minimize-button").title = "Maximize this window";
+		}, waitTimeMs);
+	}
+	
+	if (document.querySelector("#embed-minimize-button").ariaPressed == "true") {
+		setTimeout(function() {
+			document.querySelector("#title-text-container").hidden = false;
+			document.querySelector("#uploaded-by").hidden = false;
+			document.querySelector("#channel-url").hidden = false;
+			document.querySelector("iframe#ryd-api-embedded-video").hidden = false;
+			
+			document.querySelector("#embed-minimize-button").ariaPressed = "false";
+			document.querySelector("#embed-minimize-button").title = "Minimize this window";
+		}, waitTimeMs);
+	}
+}
+
+function closeEmbedWindow() {
+	document.querySelector("#display-youtube-embed").hidden = true;
+	document.querySelector("iframe#ryd-api-embedded-video").remove();
+	
+	document.querySelector("#title-text-container").innerText = "";
+	document.querySelector("#uploaded-by").innerText = "";
+	document.querySelector("#channel-url").innerText = "";
+	document.querySelector("#channel-url").href = "";
+	
+	document.querySelector("#show-yt-embed-video-with-some-metadata").hidden = false;
 }
