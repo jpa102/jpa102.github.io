@@ -6,4 +6,5 @@
 Disallow:
 User-agent: *
 
+Disallow: /youkoso.html
 Disallow: /Return%20YouTube%20Dislike/mobile/main.html
