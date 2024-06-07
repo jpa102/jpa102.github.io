@@ -111,6 +111,7 @@ iframe {
 
 #body-container {
 	margin: 32px;
+	padding: 8px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -186,6 +187,10 @@ input {
 
 input:-internal-autofill-selected {
 	background: var(--background-slightly-darker-color);
+}
+
+.top-margin-windows {
+	margin-top: 20px;
 }
 
 #display-results {
