@@ -27,6 +27,11 @@ fetch(
 				DislikesFromRYD = dislikeCount.toLocaleString();
 				formattedlikes = numberFormat(likeCount);
 				formatteddislikes = numberFormat(dislikeCount);
+				
+				setTimeout(function() {
+					document.querySelector("#like-button").ariaLabel="Like this video along with " + LikesFromRYD + " other people";
+					document.querySelector("#dislike-button").ariaLabel="Dislike this video along with " + DislikesFromRYD + " other people";
+				}, 1000);
 			}
 		})
 	}
