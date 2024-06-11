@@ -12,7 +12,7 @@ const faketube = {
 			display_dislike_pressed_popup: false,
 			web_old_channel_info: false,
 			web_old_description: false,
-			web_old_menu_buttons: false
+			web_old_menu_buttons: true
 		}
 	}
 }
