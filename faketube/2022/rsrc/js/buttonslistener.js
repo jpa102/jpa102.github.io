@@ -33,7 +33,18 @@ function shareButton() {
 }
 
 function downloadButton() {
+	setTimeout(function() {
+		if (faketube.config_.EXPERIMENT_FLAGS.web_old_menu_buttons == true) {
+			document.querySelector("#download").style = "display: none !important"; // if the experimental flag for 2021 buttons is set to true
+		} else {
+			document.querySelector("#download-button").style = "display: none !important"; // default menu buttons
+		}
+	}, 200);
+	setTimeout(function() {
+		alert("Download unavailable");
+	}, 900);
 	console.log("sorry, no video download available.\nin fact, there's not even a single line of code here that provides download functionality.  [ln:36 buttonlistener.js]");
+
 }
 
 function saveButton() {
