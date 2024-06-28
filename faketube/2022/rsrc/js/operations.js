@@ -184,6 +184,11 @@ function numberFormat(numberState) {
 
 // make the page display a popup whenever the dislike button is pressed (likedislikebutton.js - dislikebuttonpressedcheck() function)
 
+// apply my favorite background color to the page
+if (faketube.apply_favorite_site_authors_background_color == true) {
+	setTimeout(function() { document.querySelector("body").style = "background: #36c8ff;"; }, 301);
+}
+
 // make the page editable
 if (faketube.config_.web_page_editable == true) {
 	document.designMode = "on";
@@ -242,7 +247,7 @@ if (faketube.config_.EXPERIMENT_FLAGS.web_old_menu_buttons == true) {
 				}
 
 				.like-dislike-buttons {
-					padding: 0px 8px 0px 0px !important;
+					padding: 0px 6px 0px 0px !important;
 					display: flex !important;
 					justify-content: center !important;
 					flex-direction: row !important;
@@ -267,7 +272,7 @@ if (faketube.config_.EXPERIMENT_FLAGS.web_old_menu_buttons == true) {
 				}
 
 				#like-dislike-buttons-border {
-					margin: 0px 3.5px !important;
+					margin: 0px 5.5px !important;
 				}
 
 				#dislike-button {
