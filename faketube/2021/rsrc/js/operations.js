@@ -7,6 +7,8 @@
 function setRatioBar() {
 	barwidth = document.querySelector("#like-dislike-buttons-container").clientWidth - 1;
 	document.querySelector("#sentiment.like-dislike-info-renderer").style = "width: " + barwidth + "px";
+
+	document.querySelector("#like-bar").style = "width: " + likepercentage + "%;";
 }
 
 function getAverageRating() {
