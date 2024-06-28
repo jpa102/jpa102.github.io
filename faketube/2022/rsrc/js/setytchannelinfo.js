@@ -12,9 +12,7 @@ setTimeout(function(){
 		"beforeend",
 		`
 		<div id="yt-channel">
-			<div id="yt-channel-image">
-				<img id="yt-channel-profile-picture" src="${ytOnlineProfilePicture}">
-			</div>
+			<img id="yt-channel-profile-picture" src="${ytOnlineProfilePicture}">
 			<div id="yt-channel-name-renderer">
 				<p id="yt-channel-name">
 					<a id="yt-channel-link" href="${ytChannelIdLink}">${ytChannelName}</a>
