@@ -141,7 +141,7 @@ function AllInOneVideoReplacementOperations(inputvideoid) {
 function appendVideoIdToUrl() {
 	if (window.confirm("Are you sure you want to append the Video ID to the URL?") == true) {
 		console.log("Video ID \(" + ytVideoId + "\) has been appended to the URL, please remove it afterwards if you're going to refresh the page.");
-		window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2021/" + v);
+		window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2022/" + v);
 	} else {
 		return;
 	}
