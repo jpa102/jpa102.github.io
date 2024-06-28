@@ -5,6 +5,7 @@
 */
 
 const faketube = {
+	apply_favorite_site_authors_background_color: false,
 	config_: {
 		web_page_editable: false,
 		EXPERIMENT_FLAGS: {
