@@ -267,7 +267,7 @@ iframe {
 }
 
 .like-dislike-buttons {
-	padding: 0px 8px 0px 0px;
+	padding: 0px 6px 0px 0px;
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
@@ -292,7 +292,7 @@ iframe {
 }
 
 #like-dislike-buttons-border {
-	margin: 0px 3.5px;
+	margin: 0px 5.5px;
 }
 
 #dislike-button {
