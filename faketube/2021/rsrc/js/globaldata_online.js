@@ -33,6 +33,8 @@ while (v.length > 11) {
 	getVideoIdFromUser();
 }
 
+window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2021/" + v);
+
 let statsSet = false;
 
 fetch(
