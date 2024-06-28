@@ -1,7 +1,18 @@
-﻿/*
+/*
 	debug.js
 	
 */
+
+function UrlExists(url) {
+	var http = new XMLHttpRequest();
+	http.open('HEAD', url, false);
+	http.send();
+	if (http.status != 404) {
+		urldoesexists = true;
+	} else {
+		urldoesexists = false;
+	}
+}
 
 function ReplaceTextInHtmlTitleTag(inputtext) {
 	TitleTagLastTextContent = document.querySelector("title").innerText; // stores the last text content just in case
@@ -36,18 +47,23 @@ function RefreshRydDataWithVideoId(id) {
 					dislikeCount = dislikes;
 					viewCount = viewCount;
 					
+					getAverageRating(); // using native function from operations.js
+					getPercentage(); // using native function from operations.js
+					
 					totalviews = viewCount.toLocaleString();
 					formattedlikes = numberFormat(likeCount);
 					formatteddislikes = numberFormat(dislikeCount);
 					document.querySelector("#video-metadata").innerText = totalviews + " views • " + uploaddate;
 					document.querySelector("#like-count-renderer").innerText = formattedlikes;
 					document.querySelector("#dislike-count-renderer").innerText = formatteddislikes;
+					
+					document.querySelector(".tooltiptext").innerText = "Data provided by Return YouTube Dislike API";
 				}
 			})
 		}
 	);
 	
-	setTimeout(setRatioBar, 1250); // using native function
+	setTimeout(setRatioBar, 1250); // using native function from operations.js
 }
 
 function RefreshSomeYtdataInPage(id) {
@@ -64,7 +80,6 @@ function RefreshSomeYtdataInPage(id) {
 					ytVideoTitle = title;
 					ytChannelName = author_name;
 					ytHandle = author_url;
-					
 					ytVideoId = id;
 					
 					document.querySelector("#video.title").innerText = title;
@@ -75,8 +90,6 @@ function RefreshSomeYtdataInPage(id) {
 					
 					likes = likeCount.toLocaleString();
 					dislikes = dislikeCount.toLocaleString();
-					getPercentage(); // call the function from operations.js
-					getAverageRating(); // call the function from operations.js
 					
 					document.querySelector("#like-counts").innerText = likes;
 					document.querySelector("#dislike-counts").innerText = dislikes;
@@ -100,59 +113,7 @@ function RenderDebugLines() {
 						--debug-line-color: green;
 					}
 
-					#main-body-page {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#watch-page-and-recommendations-container {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#watch-page {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#video-container {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#video-metadata-info-container {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#video-title-and-date-published {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#video {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#menu {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#all-buttons-container {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#like-dislike-buttons-container {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#share {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#save {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#more-button {
-						border: 1px solid var(--debug-line-color);
-					}
-
-					#video-metadata-and-yt-channel {
+					* {
 						border: 1px solid var(--debug-line-color);
 					}
 				</style>
@@ -171,6 +132,95 @@ function AllInOneVideoReplacementOperations(inputvideoid) {
 	ReplaceVideoWithVideoId(inputvideoid);
 	RefreshRydDataWithVideoId(inputvideoid);
 	RefreshSomeYtdataInPage(inputvideoid);
+	
+	setTimeout(function() {
+		ReplaceTextInHtmlTitleTag(ytVideoTitle + appendFakeTubeString);
+	}, 800);
+}
+
+function appendVideoIdToUrl() {
+	if (window.confirm("Are you sure you want to append the Video ID to the URL?") == true) {
+		console.log("Video ID \(" + ytVideoId + "\) has been appended to the URL, please remove it afterwards if you're going to refresh the page.");
+		window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2021/" + v);
+	} else {
+		return;
+	}
+}
+
+function FetchAdditionalVideoMetadata() {
+	metadataurl = "https://raw.githubusercontent.com/jpa102/jpa102.github.io/main/faketube/metadata/" + ytVideoId + ".json";
+	nullmetadataurl = "https://raw.githubusercontent.com/jpa102/jpa102.github.io/main/faketube/metadata/null.json";
+	UrlExists(metadataurl);
+	
+	if (urldoesexists == true) {
+		fetch(
+			metadataurl
+			).then((response) => {
+				response.json().then((json) => {
+					if (json) {
+						let { shortdesc, fulldesc, uploaddate, uploadtime, subcountintguess, commentCount, profilepicturelink } = json;
+						console.log("Data provided by jpa102 from GitHub\nLink to the repository: https://www.github.com/jpa102/jpa102.github.io/");
+						
+						ReceivedVideoMetadata = {
+							collapseddescription: shortdesc,
+							uncollapseddescription: fulldesc,
+							dateuploaded: uploaddate,
+							timeuploaded: uploadtime,
+							subcountint: subcountintguess,
+							commentCount: commentCount,
+							ytOnlineProfilePicture: profilepicturelink
+						}
+						console.log(ReceivedVideoMetadata);
+						
+						// apply the data to the page
+						collapseddescription = shortdesc; // add data to collapsed description
+						uncollapseddescription = fulldesc; // add data to expanded description
+						
+						document.querySelector(".video-metadata-renderer").innerText = totalviews + " views • " + uploaddate; // views and date
+						document.querySelector("a.yt-channel-sub-count").innerText = numberFormat(subcountintguess) + " subscribers"; // subscriber counts
+						document.querySelector("#yt-channel-profile-picture").src = profilepicturelink; // profile picture
+						document.querySelector("#description-text").innerText = shortdesc;
+						document.querySelector("#comment-count-renderer").innerText = commentCount.toLocaleString();
+					}
+				})
+			}
+		);
+	}
+	
+	if (urldoesexists == false) {
+		fetch(
+			nullmetadataurl
+			).then((response) => {
+				response.json().then((json) => {
+					if (json) {
+						let { shortdesc, fulldesc, uploaddate, uploadtime, subcountintguess, commentCount, profilepicturelink } = json;
+						console.log("Data provided by jpa102 from GitHub\nLink to the repository: https://www.github.com/jpa102/jpa102.github.io/");
+						
+						ReceivedVideoMetadata = {
+							collapseddescription: shortdesc,
+							uncollapseddescription: fulldesc,
+							dateuploaded: uploaddate,
+							timeuploaded: uploadtime,
+							subcountint: subcountintguess,
+							commentCount: commentCount,
+							ytOnlineProfilePicture: profilepicturelink
+						}
+						console.log(ReceivedVideoMetadata);
+						
+						// apply the data to the page
+						collapseddescription = shortdesc; // add data to collapsed description
+						uncollapseddescription = fulldesc; // add data to expanded description
+						
+						document.querySelector(".video-metadata-renderer").innerText = totalviews + " views • " + uploaddate; // views and date
+						document.querySelector("a.yt-channel-sub-count").innerText = numberFormat(subcountintguess) + " subscribers"; // subscriber counts
+						document.querySelector("#yt-channel-profile-picture").src = profilepicturelink; // profile picture
+						document.querySelector("#description-text").innerText = shortdesc;
+						document.querySelector("#comment-count-renderer").innerText = commentCount.toLocaleString();
+					}
+				})
+			}
+		);
+	}
 }
 
 function printAverageRating() {
