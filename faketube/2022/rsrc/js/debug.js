@@ -1,6 +1,8 @@
 /*
 	debug.js
 	
+	this file contains hidden functions that can be executed
+	"native" console hotkeys: ctrl + shift + j
 */
 
 function UrlExists(url) {
@@ -91,10 +93,12 @@ function RefreshSomeYtdataInPage(id) {
 					likes = likeCount.toLocaleString();
 					dislikes = dislikeCount.toLocaleString();
 					
-					document.querySelector("#like-counts").innerText = likes;
-					document.querySelector("#dislike-counts").innerText = dislikes;
-					document.querySelector("#averageratings").innerText = roundedRating;
-					document.querySelector("#rounded-percentage").innerText = "(" + roundedlikepercent + "%)";
+					setTimeout(function() {
+						document.querySelector("#like-counts").innerText = likes;
+						document.querySelector("#dislike-counts").innerText = dislikes;
+						document.querySelector("#averageratings").innerText = roundedRating;
+						document.querySelector("#rounded-percentage").innerText = "(" + roundedlikepercent + "%)";
+					}, 1234); // wait time to apply
 				}
 			})
 		}
@@ -141,7 +145,7 @@ function AllInOneVideoReplacementOperations(inputvideoid) {
 function appendVideoIdToUrl() {
 	if (window.confirm("Are you sure you want to append the Video ID to the URL?") == true) {
 		console.log("Video ID \(" + ytVideoId + "\) has been appended to the URL, please remove it afterwards if you're going to refresh the page.");
-		window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2022/" + v);
+		window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2021/" + v);
 	} else {
 		return;
 	}
@@ -158,12 +162,13 @@ function FetchAdditionalVideoMetadata() {
 			).then((response) => {
 				response.json().then((json) => {
 					if (json) {
-						let { shortdesc, fulldesc, uploaddate, uploadtime, subcountintguess, commentCount, profilepicturelink } = json;
+						let { shortdesc, fulldesc, uploaddateandtime, uploaddate, uploadtime, subcountintguess, commentCount, profilepicturelink } = json;
 						console.log("Data provided by jpa102 from GitHub\nLink to the repository: https://www.github.com/jpa102/jpa102.github.io/");
 						
 						ReceivedVideoMetadata = {
 							collapseddescription: shortdesc,
 							uncollapseddescription: fulldesc,
+							dateandtimeuploaded: uploaddateandtime,
 							dateuploaded: uploaddate,
 							timeuploaded: uploadtime,
 							subcountint: subcountintguess,
@@ -193,12 +198,13 @@ function FetchAdditionalVideoMetadata() {
 			).then((response) => {
 				response.json().then((json) => {
 					if (json) {
-						let { shortdesc, fulldesc, uploaddate, uploadtime, subcountintguess, commentCount, profilepicturelink } = json;
+						let { shortdesc, fulldesc, uploaddateandtime, uploaddate, uploadtime, subcountintguess, commentCount, profilepicturelink } = json;
 						console.log("Data provided by jpa102 from GitHub\nLink to the repository: https://www.github.com/jpa102/jpa102.github.io/");
 						
 						ReceivedVideoMetadata = {
 							collapseddescription: shortdesc,
 							uncollapseddescription: fulldesc,
+							dateandtimeuploaded: uploaddateandtime,
 							dateuploaded: uploaddate,
 							timeuploaded: uploadtime,
 							subcountint: subcountintguess,
@@ -272,30 +278,99 @@ class jsConsole {
 	static ReplaceTextInHtmlTitleTag(inputtext) {
 		var TitleTagLastTextContent = document.querySelector("title").innerText; // stores the last text content just in case
 		document.querySelector("title").innerText = inputtext;
-		log("New title: " + inputtext);
 	}
 	
 	static ReplaceChannelProfilePicture(replacementpfplink) {
-		
+		ytOnlineProfilePicture = replacementpfplink;
+		document.querySelector("#yt-channel-profile-picture").src = ytOnlineProfilePicture;
 	}
 	
 	static ReplaceSubscriberCount(subcount) {
-		
+		ytSubscriberCount = subcount;
+		document.querySelector("a.yt-channel-sub-count").innerText = ytSubscriberCount + " subscribers";
 	}
 	
 	static ReplaceVideoWithVideoId(id) {
-		
+		replacementembedvideo = "https://www.youtube.com/embed/" + id;
+		document.querySelector("iframe").src = replacementembedvideo;
 	}
 	
 	static RefreshRydDataWithVideoId(id) {
+		fetch(
+			`https://returnyoutubedislikeapi.com/votes?videoId=${id}`
+			).then((response) => {
+				response.json().then((json) => {
+					if (json && !("traceId" in response) && !statsSet) {
+						let { dislikes, likes, viewCount, rating, id } = json;
+						console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: " + id + "\nViews: " + viewCount + "\nLike count: " + likes + "\nDislike count: " + dislikes + "\nAverage rating: " + rating);
+						
+						likeCount = likes;
+						dislikeCount = dislikes;
+						viewCount = viewCount;
+						
+						getAverageRating(); // using native function from operations.js
+						getPercentage(); // using native function from operations.js
+						
+						totalviews = viewCount.toLocaleString();
+						formattedlikes = numberFormat(likeCount);
+						formatteddislikes = numberFormat(dislikeCount);
+						document.querySelector("#video-metadata").innerText = totalviews + " views • " + uploaddate;
+						document.querySelector("#like-count-renderer").innerText = formattedlikes;
+						document.querySelector("#dislike-count-renderer").innerText = formatteddislikes;
+						
+						document.querySelector(".tooltiptext").innerText = "Data provided by Return YouTube Dislike API";
+					}
+				})
+			}
+		);
 		
+		setTimeout(setRatioBar, 1250); // using native function from operations.js
 	}
 	
 	static RefreshSomeYtdataInPage(id) {
-		
+		fetch(
+			`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${id}`
+			).then((response) => {
+				response.json().then((json) => {
+					if (json && !("traceId" in response) && !statsSet) {
+						let { title, author_name, author_url } = json;
+						console.log("YouTube video title: " + title);
+						console.log("Uploaded by: " + author_name);
+						console.log("Channel url: " + author_url);
+						
+						ytVideoTitle = title;
+						ytChannelName = author_name;
+						ytHandle = author_url;
+						ytVideoId = id;
+						
+						document.querySelector("#video.title").innerText = title;
+						document.querySelector("#yt-channel-link").innerText = author_name;
+						document.querySelector("#yt-channel-link").href = author_url; // can't get the raw channel id, so the url with modern handle will be used instead
+						document.querySelector("a.yt-channel-sub-count").href = author_url + "?sub_confirmation=1";
+						document.querySelector("a.yt-channel-sub-count").title = "Subscribe to " + author_name + " (YouTube)";
+						
+						likes = likeCount.toLocaleString();
+						dislikes = dislikeCount.toLocaleString();
+						
+						setTimeout(function() {
+							document.querySelector("#like-counts").innerText = likes;
+							document.querySelector("#dislike-counts").innerText = dislikes;
+							document.querySelector("#averageratings").innerText = roundedRating;
+							document.querySelector("#rounded-percentage").innerText = "(" + roundedlikepercent + "%)";
+						}, 1234); // wait time to apply
+					}
+				})
+			}
+		);
 	}
 	
 	static AllInOneVideoReplacementOperations(inputvideoid) {
+		ReplaceVideoWithVideoId(inputvideoid);
+		RefreshRydDataWithVideoId(inputvideoid);
+		RefreshSomeYtdataInPage(inputvideoid);
 		
+		setTimeout(function() {
+			ReplaceTextInHtmlTitleTag(ytVideoTitle + appendFakeTubeString);
+		}, 800);
 	}
 }
