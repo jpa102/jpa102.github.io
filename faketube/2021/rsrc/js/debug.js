@@ -188,6 +188,8 @@ function FetchAdditionalVideoMetadata() {
 						if (docuemnt.querySelector("#expand-description-button").aria-pressed == true) {
 							descriptionButton(); // make the text inside the button show up as "Show more"
 							document.querySelector("#description-text").innerText = shortdesc;
+						} else {
+							document.querySelector("#description-text").innerText = shortdesc;
 						}
 						
 						document.querySelector("#comment-count-renderer").innerText = commentCount.toLocaleString();
@@ -225,7 +227,14 @@ function FetchAdditionalVideoMetadata() {
 						document.querySelector(".video-metadata-renderer").innerText = totalviews + " views • " + uploaddate; // views and date
 						document.querySelector("a.yt-channel-sub-count").innerText = numberFormat(subcountintguess) + " subscribers"; // subscriber counts
 						document.querySelector("#yt-channel-profile-picture").src = profilepicturelink; // profile picture
-						document.querySelector("#description-text").innerText = shortdesc;
+						
+						if (docuemnt.querySelector("#expand-description-button").aria-pressed == true) {
+							descriptionButton(); // make the text inside the button show up as "Show more"
+							document.querySelector("#description-text").innerText = shortdesc;
+						} else {
+							document.querySelector("#description-text").innerText = shortdesc;
+						}
+						
 						document.querySelector("#comment-count-renderer").innerText = commentCount.toLocaleString();
 					}
 				})
