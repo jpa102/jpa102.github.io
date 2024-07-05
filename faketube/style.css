@@ -1,4 +1,4 @@
-﻿/*
+/*
 	style.css for youkoso.html
 */
 
@@ -30,6 +30,11 @@ body {
 }
 
 #p-title {
+	font-family: google sans;
+}
+
+#p-text {
+	margin: 10px 0px;
 	font-family: google sans;
 }
 
