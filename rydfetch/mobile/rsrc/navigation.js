@@ -9,14 +9,17 @@
 */
 function openNav() {
 	document.getElementById("mySidenav").style.width = "286px";
+	vibrate();
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
 function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
+	vibrate();
 }
 
 function gotoHomePage() {
+	vibrate();
 	if (document.querySelector("#main-home-page").hidden == false) {
 		console.log("You are already in the home page.");
 		closeNav();
@@ -32,6 +35,7 @@ function gotoHomePage() {
 }
 
 function gotoMainFrontend() {
+	vibrate();
 	if (document.querySelector("#return-youtube-dislike-api-page").hidden == false) {
 		console.log("You are already in the main frontend page.");
 		closeNav();
@@ -47,6 +51,7 @@ function gotoMainFrontend() {
 }
 
 function gotoAlternateFrontend() {
+	vibrate();
 	if (document.querySelector("#combined-apis-page").hidden == false) {
 		console.log("You are already in the alternate frontend page.");
 		closeNav();
@@ -62,6 +67,7 @@ function gotoAlternateFrontend() {
 }
 
 function gotoTutorialPage() {
+	vibrate();
 	if (document.querySelector("#ryd-tutorial-page").hidden == false) {
 		console.log("You are already in the tutorial page.");
 		closeNav();
@@ -77,6 +83,7 @@ function gotoTutorialPage() {
 }
 
 function gotoChangelogPage() {
+	vibrate();
 	if (document.querySelector("#ryd-changelog-page").hidden == false) {
 		console.log("You are already in the changelog page.");
 		closeNav();
@@ -92,6 +99,7 @@ function gotoChangelogPage() {
 }
 
 function gotoAboutPage() {
+	vibrate();
 	if (document.querySelector("#about-screen-page").hidden == false) {
 		console.log("You are already in the about page.");
 		closeNav();
