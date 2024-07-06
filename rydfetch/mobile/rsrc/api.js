@@ -1,4 +1,5 @@
 function getVotes(){
+	vibrate();
 
 	if (noVideoId == true) {
 		return;
