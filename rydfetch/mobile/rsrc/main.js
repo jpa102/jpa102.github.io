@@ -4,7 +4,7 @@
 let waitTimeMs = 529; // in milliseconds, 1000 is 1 second
 let ytId = ""; // blank value for placeholder
 let lastVideoId = ""; // blank value for placeholder
-let vibratems = 300; // time to vibrate
+let vibratems = 100; // time to vibrate
 
 // ==============================================================================
 
@@ -15,6 +15,8 @@ let last_author_name;
 let last_author_url;
 
 function getSomeMetadataFromVideoId() {
+	vibrate();
+	
 	fetch(
 		`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${ytId}`
 		).then((response) => {
@@ -55,6 +57,8 @@ function getSomeMetadataFromVideoId() {
 }
 
 function Clear(){
+	vibrate();
+	
 	document.getElementById('display-results').style.display = 'none';
 	document.querySelector("input").value = "";
 	document.getElementById('avg').innerHTML = "";
@@ -84,6 +88,7 @@ function Clear(){
 
 
 function minimizeEmbedWindow() {
+	vibrate();
 	if (document.querySelector("#embed-minimize-button").ariaPressed == "false") {
 		setTimeout(function() {
 			document.querySelector("#title-text-container").hidden = true;
@@ -110,6 +115,7 @@ function minimizeEmbedWindow() {
 }
 
 function closeEmbedWindow() {
+	vibrate();
 	document.querySelector("#display-youtube-embed").hidden = true;
 	document.querySelector("iframe#ryd-api-embedded-video").remove();
 	
