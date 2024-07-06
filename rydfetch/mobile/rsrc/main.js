@@ -4,6 +4,7 @@
 let waitTimeMs = 529; // in milliseconds, 1000 is 1 second
 let ytId = ""; // blank value for placeholder
 let lastVideoId = ""; // blank value for placeholder
+let vibratems = 300; // time to vibrate
 
 // ==============================================================================
 
@@ -118,4 +119,8 @@ function closeEmbedWindow() {
 	document.querySelector("#channel-url").href = "";
 	
 	document.querySelector("#show-yt-embed-video-with-some-metadata").hidden = false;
+}
+
+function vibrate() {
+	navigator.vibrate(vibratems);
 }
