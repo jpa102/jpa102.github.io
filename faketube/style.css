@@ -38,7 +38,7 @@ body {
 	font-family: google sans;
 }
 
-#links-container {
+.links-container {
 	display: flex;
 	flex-direction: column;
 }
@@ -46,3 +46,14 @@ body {
 #links-content-separator {
 	margin: 6px 0px;
 }
+
+#links-content-separator-two {
+	margin: 12px 0px;
+}
+
+.button-styled-container {
+	padding: 8px 16px;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 20px;
+}
+
