@@ -18,7 +18,7 @@ function UrlExists(url) {
 
 function ReplaceTextInHtmlTitleTag(inputtext) {
 	TitleTagLastTextContent = document.querySelector("title").innerText; // stores the last text content just in case
-	setTimeout(function() { document.querySelector("title").innerText = inputtext; }, 500);
+	setTimeout(function() { document.querySelector("title").innerText = inputtext; }, 750);
 } 
 
 function ReplaceChannelProfilePicture(replacementpfplink) {
@@ -143,6 +143,11 @@ function appendVideoIdToUrl() {
 	} else {
 		return;
 	}
+}
+
+function unappendVideoIdToUrl() {
+	console.log("Video ID \(" + ytVideoId + "\) has been removed from the URL.");
+	window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2017/");
 }
 
 function FetchAdditionalVideoMetadata() {
