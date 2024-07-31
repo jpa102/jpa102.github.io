@@ -1,4 +1,4 @@
-﻿/*
+/*
 	debug.js
 	
 	this file contains hidden functions that can be executed
@@ -18,7 +18,7 @@ function UrlExists(url) {
 
 function ReplaceTextInHtmlTitleTag(inputtext) {
 	TitleTagLastTextContent = document.querySelector("title").innerText; // stores the last text content just in case
-	document.querySelector("title").innerText = inputtext;
+	setTimeout(function() { document.querySelector("title").innerText = inputtext; }, 500);
 } 
 
 function ReplaceChannelProfilePicture(replacementpfplink) {
@@ -55,11 +55,9 @@ function RefreshRydDataWithVideoId(id) {
 					totalviews = viewCount.toLocaleString();
 					formattedlikes = numberFormat(likeCount);
 					formatteddislikes = numberFormat(dislikeCount);
-					document.querySelector("#video-metadata").innerText = totalviews + " views • " + uploaddate;
-					document.querySelector("#like-count-renderer").innerText = formattedlikes;
-					document.querySelector("#dislike-count-renderer").innerText = formatteddislikes;
-					
-					document.querySelector(".tooltiptext").innerText = "Data provided by Return YouTube Dislike API";
+					document.querySelector("#video-metadata").innerText = totalviews + " views";
+					document.querySelector("#like-count-renderer").innerText = likeCount.toLocaleString();
+					document.querySelector("#dislike-count-renderer").innerText = dislikeCount.toLocaleString();
 				}
 			})
 		}
@@ -92,13 +90,6 @@ function RefreshSomeYtdataInPage(id) {
 					
 					likes = likeCount.toLocaleString();
 					dislikes = dislikeCount.toLocaleString();
-					
-					setTimeout(function() {
-						document.querySelector("#like-counts").innerText = likes;
-						document.querySelector("#dislike-counts").innerText = dislikes;
-						document.querySelector("#averageratings").innerText = roundedRating;
-						document.querySelector("#rounded-percentage").innerText = "(" + roundedlikepercent + "%)";
-					}, 1234); // wait time to apply
 				}
 			})
 		}
@@ -148,7 +139,7 @@ function AllInOneVideoReplacementOperations(inputvideoid) {
 function appendVideoIdToUrl() {
 	if (window.confirm("Are you sure you want to append the Video ID to the URL?") == true) {
 		console.log("Video ID \(" + ytVideoId + "\) has been appended to the URL, please remove it afterwards if you're going to refresh the page.");
-		window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2022/" + v);
+		window.history.replaceState(null, '', "https://jpa102.github.io/faketube/2017/" + v);
 	} else {
 		return;
 	}
@@ -257,37 +248,6 @@ function printLikePercentage() {
 	console.log("Average rating: " + averageRating);
 }
 
-function removeBackgroundInButtons() {
-	let buttonsStyle = `
-	<style id="removing-background-in-buttons">
-		#like-button {
-			background-color: transparent;
-			border: 1px solid transparent;
-		}
-		
-		#dislike-button {
-			background-color: transparent;
-			border: 1px solid transparent;
-		}
-		
-		.menu-buttons {
-			background-color: transparent;
-			border: 1px solid transparent;
-		}
-		
-		#more-button {
-			border: 1px solid transparent;
-		}
-	</style>
-	`
-	
-	document.head.insertAdjacentHTML("beforeend", buttonsStyle);
-}
-
-function readdBackgroundInButtons() {
-	document.querySelector("#removing-background-in-buttons").remove();
-}
-
 function randomYtVideoId() {
 	StackOverflowSourceLink = "https://stackoverflow.com/questions/73276694/youtube-video-id-algorithm";
 	
@@ -339,11 +299,9 @@ class jsConsole {
 						totalviews = viewCount.toLocaleString();
 						formattedlikes = numberFormat(likeCount);
 						formatteddislikes = numberFormat(dislikeCount);
-						document.querySelector("#video-metadata").innerText = totalviews + " views • " + uploaddate;
-						document.querySelector("#like-count-renderer").innerText = formattedlikes;
-						document.querySelector("#dislike-count-renderer").innerText = formatteddislikes;
-						
-						document.querySelector(".tooltiptext").innerText = "Data provided by Return YouTube Dislike API";
+						document.querySelector("#video-metadata").innerText = totalviews + " views";
+						document.querySelector("#like-count-renderer").innerText = likeCount.toLocaleString();
+						document.querySelector("#dislike-count-renderer").innerText = dislikeCount.toLocaleString();
 					}
 				})
 			}
@@ -376,13 +334,6 @@ class jsConsole {
 						
 						likes = likeCount.toLocaleString();
 						dislikes = dislikeCount.toLocaleString();
-						
-						setTimeout(function() {
-							document.querySelector("#like-counts").innerText = likes;
-							document.querySelector("#dislike-counts").innerText = dislikes;
-							document.querySelector("#averageratings").innerText = roundedRating;
-							document.querySelector("#rounded-percentage").innerText = "(" + roundedlikepercent + "%)";
-						}, 1234); // wait time to apply
 					}
 				})
 			}
