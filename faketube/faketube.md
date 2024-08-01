@@ -35,11 +35,11 @@ i designed it that way, they are either inspired or i try to make a near-accurat
 
 ## why do you use the html embed for youtube videos?
 
-it's convenient for me to use that way, i don't know how get the actual youtube player and the video without relying on embedding yet...
+it's convenient for me to use that way, i don't even know how get the actual youtube player and the video without relying on embedding yet...
 
 ## why do you use json files for the description, comment counts, etc... ? isn't it more time-consuming and impractical?
 
-again, i don't know yet how to get them without relying on the view-source ang grabbing all the necessary data from there. i did manage to get the video titles and channel names from [noembed.com](https://www.noembed.com) though which is what i currently use
+again, i don't know yet how to get them without relying on the view-source and grabbing all the necessary data from there. i did manage to get the video titles and channel names from [noembed.com](https://www.noembed.com) though which is what i currently use
 
 i think this can be useful for archiving purposes such as when a video gets taken down for example and all you have is the youtube video link for it
 
@@ -50,3 +50,5 @@ https://returnyoutubedislikeapi.com - for the api and the code responsible for r
 https://www.w3schools.com - sidebar *(shouldn't have included this but this is where i got it)*
 
 unofficial credit to https://www.youtube.com for the icons
+
+https://web.archive.org - for archived youtube video pages with the relevant layout
