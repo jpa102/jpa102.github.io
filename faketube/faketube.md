@@ -27,6 +27,22 @@ metadata files can be either created by me or other users who request / create m
 
 they can be found here: https://github.com/jpa102/jpa102.github.io/tree/main/faketube/metadata
 
+# comments
+
+## why does it resemble the layouts from youtube?
+
+i designed it that way, they are either inspired or i try to make a near-accurate layout for fun. i get the designs from wayback machine
+
+## why do you use the html embed for youtube videos?
+
+it's convenient for me to use that way, i don't know how get the actual youtube player and the video without relying on embedding yet...
+
+## why do you use json files for the description, comment counts, etc... ? isn't it more time-consuming and impractical?
+
+again, i don't know yet how to get them without relying on the view-source ang grabbing all the necessary data from there. i did manage to get the video titles and channel names from [noembed.com](https://www.noembed.com) though which is what i currently use
+
+i think this can be useful for archiving purposes such as when a video gets taken down for example and all you have is the youtube video link for it
+
 ## credit
 
 https://returnyoutubedislikeapi.com - for the api and the code responsible for rounding down int values
