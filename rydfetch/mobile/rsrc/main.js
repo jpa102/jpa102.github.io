@@ -32,20 +32,20 @@ function getSomeMetadataFromVideoId() {
 					document.querySelector("#channel-url").href = author_url;
 					
 					if (document.querySelector("iframe#ryd-api-embedded-video") == null) {
-						document.querySelector("#display-youtube-embed").insertAdjacentHTML(
+					setTimeout(function() {	document.querySelector("#display-youtube-embed").insertAdjacentHTML(
 							"beforeend",
 							`
 							<iframe id="ryd-api-embedded-video" src="https://youtube.com/embed/${ytId}"></iframe>
 							`
-						);
+						); }, 1450);
 					} else {
-						document.querySelector("iframe#ryd-api-embedded-video").remove();
+					setTimeout(function() {	document.querySelector("iframe#ryd-api-embedded-video").remove();
 						document.querySelector("#display-youtube-embed").insertAdjacentHTML(
 							"beforeend",
 							`
 							<iframe id="ryd-api-embedded-video" src="https://youtube.com/embed/${ytId}"></iframe>
 							`
-						);
+						); }, 1450);
 					}
 					
 					document.querySelector("#display-youtube-embed").hidden = false;
