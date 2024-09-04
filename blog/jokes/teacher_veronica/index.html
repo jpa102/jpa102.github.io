@@ -8,7 +8,7 @@
 		<script src="rsrc/navigation.js"></script>
 		<meta name="robots" content="noindex,nofollow,noarchive">
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
-		<script id="get-desktop=version-parameter-attempt-javascript">
+		<script id="get-desktop-version-parameter-attempt-javascript">
 			setTimeout(function() {
 				const queryString = window.location.search;
 				const urlParams = new URLSearchParams(queryString);
@@ -18,6 +18,60 @@
 					document.querySelector("#mobile-webpage").hidden = true;
 					document.querySelector("#desktop-webpage").hidden = false;
 				}
+			}, 64);
+		</script>
+		<script id="get-h1-color-parameter-desktop-version-javascript">
+			setTimeout(function() {
+				const queryString = window.location.search;
+				const urlParams = new URLSearchParams(queryString);
+				const hone_text_color_value = urlParams.get('hone_text_color');
+				
+				document.querySelector("head").insertAdjacentHTML(
+					"beforeend",
+					`
+						<style id="hone-text-color-css">
+							#hone-desktop-text {
+								color: ${hone_text_color_value};
+							}
+						</style>
+					`
+				);
+			}, 64);
+		</script>
+		<script id="get-p-color-parameter-desktop-version-javascript">
+			setTimeout(function() {
+				const queryString = window.location.search;
+				const urlParams = new URLSearchParams(queryString);
+				const p_text_color_value = urlParams.get('p_text_color');
+				
+				document.querySelector("head").insertAdjacentHTML(
+					"beforeend",
+					`
+						<style id="p-text-color-css">
+							#p-desktop-text {
+								color: ${p_text_color_value};
+							}
+						</style>
+					`
+				);
+			}, 64);
+		</script>
+		<script id="get-body-color-parameter-desktop-version-javascript">
+			setTimeout(function() {
+				const queryString = window.location.search;
+				const urlParams = new URLSearchParams(queryString);
+				const body_background_color_value = urlParams.get('body_background_color');
+				
+				document.querySelector("head").insertAdjacentHTML(
+					"beforeend",
+					`
+						<style id="p-text-color-css">
+							body {
+								background: ${body_background_color_value};
+							}
+						</style>
+					`
+				);
 			}, 64);
 		</script>
 	</head>
@@ -67,10 +121,10 @@
 		<div id="desktop-webpage" hidden>
 			<div class="page">
 				<div id="body-container" style="align-items: center;">
-					<h1 style="font-size: 5.2em;">
+					<h1 id="hone-desktop-text" style="font-size: 5.2em;">
 						PAKYU KA VERONICA ! ! !
 					</h1>
-					<p style="font-size: 2.4em;">
+					<p id="p-desktop-text" style="font-size: 2.4em;">
 						nakakainis na po kayo sa totoo lang.
 					</p>
 				</div>
