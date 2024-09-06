@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 	<head>
 		<title>Post</title>
@@ -63,7 +63,11 @@
 				const heading_text_input_value = urlParams.get('heading_text_input');
 				
 				// inject the custom heading text
-				document.querySelector("#hone-desktop-text").innerText = heading_text_input_value;
+				if (heading_text_input_value === null) {
+					return; // don't make it blank if there's no query and value inside it
+				} else {
+					document.querySelector("#hone-desktop-text").innerText = heading_text_input_value;
+				}
 			}, 64);
 		</script>
 		<script id="get-p-text-input-parameter-desktop-version-javascript">
@@ -73,7 +77,11 @@
 				const paragraph_text_input_value = urlParams.get('paragraph_text_input');
 				
 				// inject the custom paragraph text
-				document.querySelector("#p-desktop-text").innerText = paragraph_text_input_value;
+				if (paragraph_text_input_value === null) {
+					return; // don't make it blank if there's no query and value inside it
+				} else {
+					document.querySelector("#p-desktop-text").innerText = paragraph_text_input_value;
+				}
 			}, 64);
 		</script>
 		<script id="get-body-color-parameter-desktop-version-javascript">
