@@ -25,7 +25,7 @@ const faketube = {
 			return_youtube_dislike_api: {
 				enable_real_time_data: false,
 				real_time_data_timer: 60000
-			}
+			},
 			third_party_downloader_test: false,
 			video_player_non_rounded: false,
 			web_old_channel_info: false,
