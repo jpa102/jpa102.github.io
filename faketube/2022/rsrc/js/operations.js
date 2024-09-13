@@ -429,7 +429,7 @@ if (faketube.config_.EXPERIMENT_FLAGS.video_player_non_rounded == true) {
 	}, 20);
 }
 
-// simply some action buttons below the video player
+// make some action buttons below the video player look compact
 if (faketube.config_.EXPERIMENT_FLAGS.web_simplified_action_buttons
  == true) {
 	setTimeout(function() {
@@ -453,7 +453,7 @@ if (faketube.config_.EXPERIMENT_FLAGS.web_simplified_action_buttons
 // disable the dislike counts and prevent it from showing up
 if (faketube.config_.EXPERIMENT_FLAGS.disable_dislike_counts == true) {
 	setTimeout(function() {
-		document.querySelector("#dislike-button > #dislikebutton-icon").style = "margin: unset;";
+		document.querySelector("#dislike-button > #dislikebutton-icon").style = "margin-right: -2px;";
 		document.querySelector("#dislike-count-renderer").style = "display: none;";
 		document.querySelector("#dislike-button").insertAdjacentHTML(
 			"beforeend",
@@ -468,9 +468,14 @@ if (faketube.config_.EXPERIMENT_FLAGS.disable_dislike_counts == true) {
 
 // return youtube dislike api: real time data update
 if (faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.enable_real_time_data == true) {
-	setTimeout(function() {
-		RefreshRydDataWithVideoId(ytVideoId);
-		document.querySelector(".video-metadata-renderer").innerText = totalviews + " views • " + ReceivedVideoMetadata.dateuploaded; // views and date
+	var i = 0;
+	var ryd_i = faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.ryd_request_loop_limit;
+	
+	setInterval(function() {
+		if (i < ryd_i) {
+			i++;
+			RefreshRydDataWithVideoId(ytVideoId);
+		}
 	}, faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.real_time_data_timer);
 }
 
