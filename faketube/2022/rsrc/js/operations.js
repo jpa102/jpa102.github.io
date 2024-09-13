@@ -392,7 +392,7 @@ if (faketube.config_.web_page_editable == true) {
 }
 
 // third party website video downloader (y2mate.is)
-var DownloaderSite = "https://www.youtubepi.com/watch?v="; // redirects to y2mate.is
+var DownloaderSite = faketube.config_.downloader_site_urls.urls[0].url;
 function newDownloadButton() { window.open(DownloaderSite + ytVideoId); }
 
 if (faketube.config_.EXPERIMENT_FLAGS.third_party_downloader_test == true) {
@@ -411,6 +411,59 @@ if (faketube.config_.EXPERIMENT_FLAGS.third_party_downloader_test == true) {
 			document.querySelector("#download-button").addEventListener("click", downloadButton);
 		}
 	}, 2900);
+}
+
+// make the video player frame look non-rounded
+if (faketube.config_.EXPERIMENT_FLAGS.video_player_non_rounded == true) {
+	setTimeout(function() {
+		document.querySelector("head").insertAdjacentHTML(
+			"beforeend",
+			`
+				<style id="non-rounded-iframe-container-experimental-flag">
+					iframe {
+						border-radius: unset;
+					}
+				</style>
+			`
+		);
+	}, 20);
+}
+
+// simply some action buttons below the video player
+if (faketube.config_.EXPERIMENT_FLAGS.web_simplified_action_buttons
+ == true) {
+	setTimeout(function() {
+		// share
+		document.querySelector("#share-button").style = "padding: 6px 6px;";
+		document.querySelector("#share-button > #sharebutton-icon").style = "margin: unset;";
+		document.querySelector("#share-text-renderer").innerText = "";
+		
+		// download
+		document.querySelector("#download-button").style = "padding: 6px 6px;";
+		document.querySelector("#download-button > #downloadbutton-icon").style = "margin: unset;";
+		document.querySelector("#download-text-renderer").innerText = "";
+		
+		// save
+		document.querySelector("#save-button").style = "padding: 6px 6px;";
+		document.querySelector("#save-button > #savebutton-icon").style = "margin: unset;";
+		document.querySelector("#save-text-renderer").innerText = "";
+	}, 20);
+}
+
+// disable the dislike counts and prevent it from showing up
+if (faketube.config_.EXPERIMENT_FLAGS.disable_dislike_counts == true) {
+	setTimeout(function() {
+		document.querySelector("#dislike-button > #dislikebutton-icon").style = "margin: unset;";
+		document.querySelector("#dislike-count-renderer").style = "display: none;";
+		document.querySelector("#dislike-button").insertAdjacentHTML(
+			"beforeend",
+			`
+				<span id="no-dislike-count-renderer" class="menu-buttons-text"></span>
+			`
+		);
+		document.querySelector("#no-dislike-count-renderer").innerText = "\u205f";
+		document.querySelector("ratio-bar-renderer").hidden = true;
+	}, 1150);
 }
 
 //	revert the buttons to version 7
