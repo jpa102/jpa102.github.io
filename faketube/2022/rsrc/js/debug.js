@@ -1,4 +1,4 @@
-﻿/*
+/*
 	debug.js
 	
 	this file contains hidden functions that can be executed
@@ -55,11 +55,16 @@ function RefreshRydDataWithVideoId(id) {
 					totalviews = viewCount.toLocaleString();
 					formattedlikes = numberFormat(likeCount);
 					formatteddislikes = numberFormat(dislikeCount);
-					document.querySelector("#video-metadata").innerText = totalviews + " views • " + uploaddate;
+					document.querySelector("#video-metadata").innerText = totalviews + " views • " + ReceivedVideoMetadata.dateuploaded;
 					document.querySelector("#like-count-renderer").innerText = formattedlikes;
 					document.querySelector("#dislike-count-renderer").innerText = formatteddislikes;
+					document.querySelector("#like-counts").innerText = likeCount.toLocaleString();
+					document.querySelector("#dislike-counts").innerText = dislikeCount.toLocaleString();
+					document.querySelector("#averageratings").innerText = roundedRating;
+					document.querySelector("#rounded-percentage").innerText = "(" + roundedlikepercentage + "%)";
 					
 					document.querySelector(".tooltiptext").innerText = "Data provided by Return YouTube Dislike API";
+					document.querySelector("ratio-bar-renderer").title = likepercentage + " / " + averageRating;
 				}
 			})
 		}
