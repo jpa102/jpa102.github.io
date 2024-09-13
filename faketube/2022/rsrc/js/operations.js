@@ -382,7 +382,7 @@ if (faketube.config_.EXPERIMENT_FLAGS.apply_debug_metadata_immediately == true) 
 }
 
 // apply my favorite background color to the page
-if (faketube.apply_favorite_site_authors_background_color == true) {
+if (faketube.config_.apply_favorite_site_authors_background_color == true) {
 	setTimeout(function() { document.querySelector("body").style = "background: #36c8ff;"; }, 301);
 }
 
