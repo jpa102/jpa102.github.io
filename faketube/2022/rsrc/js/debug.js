@@ -42,12 +42,14 @@ function RefreshRydDataWithVideoId(id) {
 		).then((response) => {
 			response.json().then((json) => {
 				if (json && !("traceId" in response) && !statsSet) {
-					let { dislikes, likes, viewCount, rating, id } = json;
-					console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: " + id + "\nViews: " + viewCount + "\nLike count: " + likes + "\nDislike count: " + dislikes + "\nAverage rating: " + rating);
+					let { dislikes, likes, rawLikes, rawDislikes, viewCount, rating, id } = json;
+					console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: " + id + "\nViews: " + viewCount + "\nLike count: " + likes + "\nDislike count: " + dislikes + "\nAverage rating: " + rating + "\nRaw like count: " + rawLikes + "\nRaw dislike count: " + rawDislikes);
 					
 					likeCount = likes;
 					dislikeCount = dislikes;
 					viewCount = viewCount;
+					ryd_likeCount = rawLikes;
+					ryd_dislikeCount = rawDislikes;
 					
 					getAverageRating(); // using native function from operations.js
 					getPercentage(); // using native function from operations.js
