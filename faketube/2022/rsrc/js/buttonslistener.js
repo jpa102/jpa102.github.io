@@ -11,17 +11,15 @@ function dislikeButton() {
 	dislikebuttonpressedcheck();
 }
 
-//	get the width of like and dislike buttons for the ratio bar
-
 
 
 /*
 	==========================================================
-						Other buttons
+				Other buttons
 	==========================================================
 */
 function shareButton() {
-	console.log("function not implemented. [ln:32 buttonlistener.js]");
+	console.log("function not implemented. [ln:22 buttonlistener.js]");
 }
 
 function downloadButton() {
@@ -35,7 +33,7 @@ function downloadButton() {
 	setTimeout(function() {
 		alert("Download unavailable");
 	}, 900);
-	console.log("sorry, no video download available.\n\nin fact, there's not even a single line of code here that provides download functionality. \(just kidding, set third_party_downloader_test variable to true\) [ln:38 buttonlistener.js]");
+	console.log("sorry, no video download available.\n\nin fact, there's not even a single line of code here that provides download functionality. \(just kidding, set \"third_party_downloader_test\" variable to true\) [ln:36 buttonlistener.js]");
 
 }
 
