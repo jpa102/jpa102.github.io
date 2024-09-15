@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Return YouTube Dislike - for YouTube</title>
+		<title>Return YouTube Dislike - Frontend (YouTube)</title>
 		<link rel="stylesheet" href="rsrc/style.css">
 		<script src="rsrc/api.js"></script>
 		<script src="rsrc/exception.js"></script>
@@ -51,26 +51,45 @@
 				</div>
 				<span id="ldv-container">
 					<h2>Statistics:</h2>
-					<p id="like-count">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Likes:
-						<span id="likeCount"></span>
-					</p>
-					<p id="dislike-count">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dislikes:
-						<span id="dislikeCount"></span>
-					</p>
-					<p id="view-count">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views:
-						<span id="viewCount"></span>
-					</p>
-					<p id="precise-percentage">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; likePercentage:
-						<span id="likePercentage"></span>
-					</p>
-					<p id="precise-rating">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; averageRating:
-						<span id="averageRating"></span>
-					</p>
+					<div style="margin-top: 12px;">
+						<p id="like-count">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Likes:
+							<span id="likeCount"></span>
+						</p>
+						<p id="dislike-count">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dislikes:
+							<span id="dislikeCount"></span>
+						</p>
+						<p id="view-count">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views:
+							<span id="viewCount"></span>
+						</p>
+						<p id="precise-percentage">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; likePercentage:
+							<span id="likePercentage"></span>
+						</p>
+						<p id="precise-rating">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; averageRating:
+							<span id="averageRating"></span>
+						</p>
+						<hr style="border: 1px solid var(--background-dark-color);">
+						<p id="raw-like-count" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raw like counts:
+							<span id="rawLikeCount"></span>
+						</p>
+						<p id="raw-dislike-count" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raw dislike counts:
+							<span id="rawDislikeCount"></span>
+						</p>
+						<p id="raw-precise-percentage" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; likePercentage:
+							<span id="rawLikePercentage"></span>
+						</p>
+						<p id="raw-precise-rating" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; averageRating:
+							<span id="rawAverageRating"></span>
+						</p>
+					</div>
 				</span>
 			</div>
 		</div>
