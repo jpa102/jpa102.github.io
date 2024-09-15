@@ -20,10 +20,6 @@ function checkFormContainer() {
 	lastVideoId = ytId;
 }
 
-setTimeout(function(){
-	fetchbutton = document.querySelector("#fetch").addEventListener("click", checkFormContainer);
-}, 150);
-
 
 
 //	Check if the Video ID is the same as the one from lastVideoId variable (to prevent errors)
@@ -35,5 +31,16 @@ function checkVideoIdInput() {
 
 	if (lastVideoId == ytId) {
 		alert("You are attempting to request data from the same Video ID, please check and try again.");
+	}
+}
+
+
+
+//	Check the url http status code
+
+function checkHttpStatusCode() {
+	if (urlbadgetaway == true) {
+		setTimeout(function() { alert("hmm, the RYD server seems to be down at the moment..."); }, 600);
+		return;
 	}
 }
