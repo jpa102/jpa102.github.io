@@ -1,0 +1,20 @@
+﻿{
+	"credentials": [
+		{
+			"user": [
+				{
+					"name": "admin",
+					"password": "admin"
+				}
+			]
+		},
+		{
+			"user": [
+				{
+					"name": "John Patrick Adem",
+					"password": "tanginasal"
+				}
+			]
+		}
+	]
+}
