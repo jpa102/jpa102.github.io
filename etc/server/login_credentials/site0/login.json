@@ -1,9 +1,10 @@
-﻿{
+{
 	"credentials": [
 		{
 			"user": [
 				{
 					"name": "admin",
+					"email": "admin@gmail.com",
 					"password": "admin"
 				}
 			]
@@ -12,6 +13,7 @@
 			"user": [
 				{
 					"name": "John Patrick Adem",
+					"email": "johnpatrick@gmail.com",
 					"password": "tanginasal"
 				}
 			]
