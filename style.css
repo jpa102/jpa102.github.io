@@ -1,0 +1,61 @@
+﻿/*
+	style.css for youkoso.html
+*/
+
+@font-face {
+	font-family: "Google Sans";
+	src: url("https://jpa102.github.io/youkoso_rsrc/google-sans_regular.ttf");
+}
+
+:root {
+	--main-body-color: #36c8ff;
+}
+
+#topbar::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	background: var(--main-body-color);
+	padding: 30px;
+}
+
+#topbar {
+	border-radius: 100px;
+	flex-direction: unset;
+	overflow-x: scroll;
+}
+
+.topbar-link-renderer {
+	padding: 6px 12px;
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.2);
+	margin-right: 8px;
+	white-space: nowrap;
+}
+
+.topbar-link-renderer-content {
+	font-family: google sans;
+	text-decoration: unset;
+}
+
+.hey-where-did-you-get-that-body-from {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	border-radius: 20px;
+	background: rgba(0,0,0,0.08);
+}
+
+#h1-title {
+	font-family: google sans;
+}
+
+.p-title {
+	font-family: google sans;
+}
+
+.center-text-content {
+	text-align: center;
+}
