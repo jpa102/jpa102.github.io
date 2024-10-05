@@ -77,7 +77,7 @@ body {
 }
 
 #body-container {
-	margin: 20px;
+	margin: 12px;
 	padding: 8px;
 	display: flex;
 	flex-direction: column;
