@@ -1,0 +1,48 @@
+﻿<!doctype html>
+<html lang="ja-JP">
+	<head>
+		<title>05 LMS Activity 1 - ADEM</title>
+		<meta charset="UTF-8">
+		<style id="google-sans-font-online" type="text/css">
+			@font-face {
+				font-family: "Google Sans";
+				src: url("https://jpa102.github.io/youkoso_rsrc/google-sans_regular.ttf");
+			}
+			body { background: #36c8ff; }
+			* { font-family: "Google Sans"; }
+			p { font-size: 20px; }
+		</style>
+		<script id="display-current-date-and-time">
+			var setdate = setInterval(function() { datetext = Date(); }, 1000);
+			
+			var displaydate = setInterval(function() { 
+				document.querySelector("#current-date-and-time").innerText = datetext;
+			}, 1000);
+			
+			setTimeout(function() {
+				document.querySelector("#birth-date").innerText = new Date(2005, 10, 2);
+				document.querySelector("#list-one").innerText = new Date(1863, 10, 30);
+				document.querySelector("#list-two").innerText = new Date(1978, 5, 12);
+				document.querySelector("#list-three").innerText = new Date(1898, 11, 30);
+			}, 1000);
+		</script>
+	</head>
+	<body>
+		<p id="heading-one">
+			<span>Current date and time: </span>
+			<span id="current-date-and-time"></span>
+		</p>
+		<p id="heading-two">
+			<span>My birthday: </span>
+			<span id="birth-date"></span>
+		</p>
+		<p id="heading-three">
+			<span>Holidays: </span>
+			<ul>
+				<li>Bonifacio day: <span id="list-one"></span></li>
+				<li>Independence day: <span id="list-two"></span></li>
+				<li>Rizal day: <span id="list-three"></span></li>
+			</ul>
+		</p>
+	</body>
+</html>
