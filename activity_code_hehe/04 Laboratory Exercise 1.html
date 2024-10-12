@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html lang="ja-JP">
+	<head>
+		<title>04 Laboratory Exercise 1 - ADEM</title>
+		<meta charset="UTF-8">
+		<style id="custom-background-color" type="text/css">
+			body { background: #36c8ff; }
+		</style>
+		<script id="find-the-longest-word-input-javascript" type="text/javascript">
+			function find_longest_word(str) {
+				var array1 = str.match(/\w[a-z]{0,}/gi);
+				var result = array1[0];
+				
+				for (var x = 1; x < array1.length; x++) {
+					if (result.length < array1[x].length) {
+						result = array1[x];
+					}
+				}
+				return result;
+			}
+			
+			var stringVal = prompt("Enter a string value");
+			alert(find_longest_word(stringVal));
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
