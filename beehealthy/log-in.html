@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale =1.0">
+        <link rel="stylesheet" href="log-in-style.css">
+
+        <script src="https://kit.fontawesome.com/e7052081ab.js" crossorigin="anonymous"></script>
+
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="form-box">
+                <h1 id="title">Sign Up</h1>
+                <form>
+                    <div class="input-group">
+                        <div class="input-field" id="nameField">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="nameInput" placeholder="Name" >
+                        </div>
+
+                        <div class="input-field">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="emailInput"  placeholder="Email" >
+                        </div>
+
+                        <div class="input-field">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="passwordInput" placeholder="Password" >
+                        </div>
+
+                        <p>Forgot password? <a href="#">Click Here!</a></p>
+
+                    </div>
+
+                    <div class="btn-field">
+                        <button type="button" id="signupBtn" >Sign Up</button>
+                        <button type="button" id="signinBtn" class="disable">Log In</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <script>
+            let signupBtn = document.getElementById("signupBtn");
+            let signinBtn = document.getElementById("signinBtn");
+            let nameField = document.getElementById("nameField");
+            let title = document.getElementById("title");
+
+            function clearInputs() {
+                document.getElementById("nameInput").value = "";
+                document.getElementById("emailInput").value = "";
+                document.getElementById("passwordInput").value = "";
+            }
+
+            signinBtn.onclick = function(){
+                nameField.style.maxHeight = "0";
+                title.innerHTML = "Log In";
+                signupBtn.classList.add("disable");
+                signinBtn.classList.remove("disable");
+                
+                let email = document.getElementById("emailInput").value;
+                let password = document.getElementById("passwordInput").value;
+
+                if (email === "" && password === "") {
+                //Transition from Sign Up to Log In
+                } else if (email === "user@admin.com" && password === "user123") {
+                    window.location.href = "home.html";
+                } else {
+                    alert("Invalid Credential Entered!");
+                }
+
+                clearInputs();
+            }
+
+            signupBtn.onclick = function(){
+                nameField.style.maxHeight = "60px";
+                title.innerHTML = "Sign Up";
+                signupBtn.classList.remove("disable");
+                signinBtn.classList.add("disable");
+                clearInputs();
+            }
+
+            
+        </script>
+    </body>
+</html>

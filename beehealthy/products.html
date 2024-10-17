@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bee Healthy Lemon</title>
+  <link rel="stylesheet" href="products-style.css">
+  <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="icon" href="logo.jpg" type="image/x-icon">
+  <script src="shoppingcart.js"></script>
+		<script id="initialize-basket-counter" type="text/javascript">
+			increaseCounterWhenClicked("initialize");
+		</script>
+		<script id="add-event-listener-function-to-add-to-cart" type="text/javascript">
+			setTimeout(function() {
+				document.querySelectorAll(".add-to-cart-button")[0].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[1].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[2].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[3].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[4].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[5].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[6].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[7].addEventListener("click", increaseCounterWhenClicked);
+			}, 1500);
+		</script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="">
+      <h3>Bee Healthy Lemon</h3>
+    </div>
+    <i class='bx bx-menu' id="menu-icon"></i>
+    <ul class="navbar">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact">Contact</a></li>
+    </ul>
+    <div class="header-icon">
+      <div class="cart-icon" onclick="showCart()">
+        <i class='bx  bx-cart-alt'></i>
+        <span id="cartCount">0</span>
+    </div>
+        
+      
+      <i class='bx bx-search' id="search-icon"></i>
+    </div>
+  </header>
+  <div class="search-box">
+    <input type="search" name="" id="" placeholder="Search Here">
+  </div>
+
+  <section class="products">
+    <div class="heading">
+        <h2>Our Products</h2>
+    </div>
+    <div class="product-container">
+        <div class="product-item">
+            <img src="juice-with-cucumber.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Cucumber</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+        <div class="product-item">
+            <img src="juice-with-cugin.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Cucumber and Ginger</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+        <div class="product-item">
+            <img src="juice-with-cumint.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Cucumber and Mint</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+        <div class="product-item">
+            <img src="juice-with-germint.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Ginger and Mint</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+        <div class="product-item">
+            <img src="juice-with-ginger.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Ginger</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+        <div class="product-item">
+            <img src="juice-with-mint.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Mint</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+        <div class="product-item">
+            <img src="juice-with-oregano.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Oregano</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+        <div class="product-item">
+            <img src="juice-with-tarracum.jpg" alt="" class="product-img">
+            <h3 class="product-name">Lemon Juice with Tarracum</h3>
+            <div class="price">16oz - &#8369 70</div>
+            <button class="add-to-cart-button">Add to Cart</button>
+            <button onclick="navigateToPage()">Order Now</button>
+        </div>
+    </div>
+  </section>
+
+
+  <div id="cartPage" class="cart-page">
+    <h2>Shopping Cart</h2>
+    <div id="cartItems">
+      <!--Items added to cart will list here-->
+    </div>
+    <button onclick="closeCart()" class="closeButton">X</button>
+  </div>
+  
+
+  <footer>
+    <section class="location">
+        <h3>Food Ordering Services available at: Tanza, Cavite</h3>
+    </section>
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>Phone: (+63) 912 345 6789</p>
+        <p>Email: foodordering@gmail.com</p>
+    </section>
+    <hr>
+    <p class="copyright">&copy; Food Corp. All rights reserved. | 2024</p>
+</footer>
+
+  <script src="function.js"></script>
+</body>
+</html>
