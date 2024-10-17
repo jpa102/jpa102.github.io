@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordering Form</title>
+    <link rel="stylesheet" href="order-form-style.css">
+    <link rel="icon" href="logo.jpg" type="image/x-icon">
+</head>
+<body>
+    <div class="order-container">
+        <h1>Order Your Items</h1>
+        <form id="orderForm">
+            <div class="orderList">
+            <div class="item">
+                <div><img src="juice-with-cucumber.jpg" alt=""></div>
+                <label>Lemon Juice with Cucumber <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-cugin.jpg" alt=""></div>
+                <label>Lemon Juice with Cucumber and Ginger <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-cumint.jpg" alt=""></div>
+                <label>Lemon Juice with Cucumber and Mint <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-germint.jpg" alt=""></div>
+                <label>Lemon Juice with Ginger and Mint <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-ginger.jpg" alt=""></div>
+                <label>Lemon Juice with Ginger <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-mint.jpg" alt=""></div>
+                <label>Lemon Juice with Mint <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-oregano.jpg" alt=""></div>
+                <label>Lemon Juice with Oregano <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-tarracum.jpg" alt=""></div>
+                <label>Item 8 <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            <div class="item">
+                <div><img src="juice-with-cucumber.jpg" alt=""></div>
+                <label>Lemon Juice with Tarracum <br>16oz - ₱ 70.00</label>
+                <input type="number" min="0" value="0" class="quantity" data-price="70">
+            </div>
+            </div>
+            <div id="total">Total: ₱ 0.00</div>
+            <button type="submit">Submit Order</button>
+        </form>
+
+    <script>
+    //Calculate Total Order
+    const quantities = document.querySelectorAll('.quantity');
+
+    function calculateTotal() {
+        let total = 0;
+        quantities.forEach(quantity => {
+        const price = parseFloat(quantity.getAttribute('data-price'));
+        const qty = parseInt(quantity.value);
+        total += price * qty;
+    });
+    document.getElementById('total').innerText = `Total: ₱${total.toFixed(2)}`;
+    }
+
+    quantities.forEach(quantity => {
+        quantity.addEventListener('input', calculateTotal);
+    });
+
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Order submitted successfully!');
+
+        event.target.reset();
+        document.getElementById('total').innerText = 'Total: ₱ 0.00';
+    });
+    </script>
+</body>
+</html>
