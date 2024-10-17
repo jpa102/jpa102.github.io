@@ -8,6 +8,22 @@
   <link rel="stylesheet"
   href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <link rel="icon" href="logo.jpg" type="image/x-icon">
+  <script src="rsrc/js/shoppingcart.js"></script>
+		<script id="initialize-basket-counter" type="text/javascript">
+			increaseCounterWhenClicked("initialize");
+		</script>
+		<script id="add-event-listener-function-to-add-to-cart" type="text/javascript">
+			setTimeout(function() {
+				document.querySelectorAll(".add-to-cart-button")[0].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[1].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[2].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[3].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[4].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[5].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[6].addEventListener("click", increaseCounterWhenClicked);
+				document.querySelectorAll(".add-to-cart-button")[7].addEventListener("click", increaseCounterWhenClicked);
+			}, 1500);
+		</script>
 </head>
 <body>
   <header>
