@@ -33,6 +33,11 @@
 	src: url("google-sans_regular.ttf");
 }
 
+@font-face {
+	font-family: "Consolas";
+	src: url("consolas.ttf");
+}
+
 body {
 	background-color: var(--main-body-background-color);
 	margin: unset;
@@ -83,6 +88,15 @@ iframe {
 
 #sidebar-button:active {
 	background: var(--buttons-pressed-color);
+}
+
+.selected {
+	background: var(--background-slightly-darker-color);
+}
+
+#border-bottom {
+	border-bottom: 1px solid var(--buttons-pressed-color);
+	margin: 12px 0px;
 }
 
 .yt-icon {
