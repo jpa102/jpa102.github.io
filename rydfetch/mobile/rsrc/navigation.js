@@ -32,6 +32,13 @@ function gotoHomePage() {
 		document.querySelector("#about-screen-page").hidden = true;
 		document.querySelector("#app-title-text").innerText = "Home";
 		closeNav();
+		
+		document.querySelector("#home-page").classList.add("selected");
+		document.querySelector("#main-frontend-page").classList.remove("selected");
+		document.querySelector("#alternate-frontend-page").classList.remove("selected");
+		document.querySelector("#tutorial-page").classList.remove("selected");
+		document.querySelector("#changelog-page").classList.remove("selected");
+		document.querySelector("#about-page").classList.remove("selected");
 	}
 }
 
@@ -49,6 +56,13 @@ function gotoMainFrontend() {
 		document.querySelector("#about-screen-page").hidden = true;
 		document.querySelector("#app-title-text").innerText = "Main RYD Frontend";
 		closeNav();
+		
+		document.querySelector("#home-page").classList.remove("selected");
+		document.querySelector("#main-frontend-page").classList.add("selected");
+		document.querySelector("#alternate-frontend-page").classList.remove("selected");
+		document.querySelector("#tutorial-page").classList.remove("selected");
+		document.querySelector("#changelog-page").classList.remove("selected");
+		document.querySelector("#about-page").classList.remove("selected");
 	}
 }
 
@@ -67,6 +81,13 @@ function gotoAlternateFrontend() {
 		
 		document.querySelector("#app-title-text").innerText = "Alternate RYD Frontend";
 		closeNav();
+		
+		document.querySelector("#home-page").classList.remove("selected");
+		document.querySelector("#main-frontend-page").classList.remove("selected");
+		document.querySelector("#alternate-frontend-page").classList.add("selected");
+		document.querySelector("#tutorial-page").classList.remove("selected");
+		document.querySelector("#changelog-page").classList.remove("selected");
+		document.querySelector("#about-page").classList.remove("selected");
 	}
 }
 
@@ -84,6 +105,13 @@ function gotoTutorialPage() {
 		document.querySelector("#about-screen-page").hidden = true;
 		document.querySelector("#app-title-text").innerText = "Frontend Tutorial";
 		closeNav();
+		
+		document.querySelector("#home-page").classList.remove("selected");
+		document.querySelector("#main-frontend-page").classList.remove("selected");
+		document.querySelector("#alternate-frontend-page").classList.remove("selected");
+		document.querySelector("#tutorial-page").classList.add("selected");
+		document.querySelector("#changelog-page").classList.remove("selected");
+		document.querySelector("#about-page").classList.remove("selected");
 	}
 }
 
@@ -101,6 +129,13 @@ function gotoChangelogPage() {
 		document.querySelector("#about-screen-page").hidden = true;
 		document.querySelector("#app-title-text").innerText = "Changelog";
 		closeNav();
+		
+		document.querySelector("#home-page").classList.remove("selected");
+		document.querySelector("#main-frontend-page").classList.remove("selected");
+		document.querySelector("#alternate-frontend-page").classList.remove("selected");
+		document.querySelector("#tutorial-page").classList.remove("selected");
+		document.querySelector("#changelog-page").classList.add("selected");
+		document.querySelector("#about-page").classList.remove("selected");
 	}
 }
 
@@ -118,5 +153,12 @@ function gotoAboutPage() {
 		document.querySelector("#about-screen-page").hidden = false;
 		document.querySelector("#app-title-text").innerText = "About";
 		closeNav();
+		
+		document.querySelector("#home-page").classList.remove("selected");
+		document.querySelector("#main-frontend-page").classList.remove("selected");
+		document.querySelector("#alternate-frontend-page").classList.remove("selected");
+		document.querySelector("#tutorial-page").classList.remove("selected");
+		document.querySelector("#changelog-page").classList.remove("selected");
+		document.querySelector("#about-page").classList.add("selected");
 	}
 }
