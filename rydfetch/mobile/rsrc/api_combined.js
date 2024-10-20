@@ -3,41 +3,60 @@
 	
 	this contains a function that utilizes both apis from
 	googleapis.com and returnyoutubedislikeapi.com
-	
-	this is the first time that i'm including my own api key from googleapis
-	to make this work and possible for all
-	
-	NOTE: if you even think about getting this api key, good luck.
 */
 
-let googleapisYouTubeKey = "AIzaSyAmTDTyFvTg8jnCUxdpRuc-SvoxBhnvDTs"; // i can revoke this key anytime i want to
-
 function getCombinedVotes() {
-	if (document.querySelector("#videoIdAlt").value == "") {
+	if (document.querySelector("#video-id").value == "") {
 		noVideoId = true;
 		return;
 	}
 	
-	ytId = document.querySelector("#videoIdAlt").value;
+	if (document.querySelector("#google-api-key").value == "") {
+		alert("Please enter your Google API key first.");
+		return;
+	}
+	
+	altYtId = document.querySelector("#video-id").value;
+	altAPIkey = document.querySelector("#google-api-key").value;
+	
+	// from Google APIs (YouTube)
+	fetch(
+		`https://www.googleapis.com/youtube/v3/videos?id=${altYtId}&key=${altAPIkey}&part=statistics`
+		).then((response) => {
+			response.json().then((json) => {
+				if (json) {
+					var { items } = json; // AIzaSyDGgt_uheIW-URwm5jopdF3w2UDj0J5FT0
+					altReceivedData = items;
+					altReceivedLikes = parseInt(altReceivedData[0].statistics.likeCount);
+					altReceivedViews = parseInt(altReceivedData[0].statistics.viewCount);
+					altReceivedComments = parseInt(altReceivedData[0].statistics.commentCount);
+					altReceivedFavorites = parseInt(altReceivedData[0].statistics.favoriteCount);
+					
+					console.log("Data provided by Google APIs\nLink to the API: https://www.googleapis.com\n\nVideo ID: " + altYtId + "\nViews: " + altReceivedViews + "\nLike count: " + altReceivedLikes + "\nDislike count: null\nComment count: " + altReceivedComments + "\nFavorite count: " + altReceivedFavorites);
+				}
+			})
+		}
+	);
 	
 	// from Return YouTube Dislike API
 	fetch(
-		`https://returnyoutubedislikeapi.com/votes?videoId=${ytId}`
+		`https://returnyoutubedislikeapi.com/votes?videoId=${altYtId}`
 		).then((response) => {
 			response.json().then((json) => {
 				if (json && !("traceId" in response)) {
 					let { id, dateCreated, likes, dislikes, rating, viewCount, deleted } = json;
 					console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: " + id + "\nViews: " + viewCount + "\nLike count: " + likes + "\nDislike count: " + dislikes + "\nAverage rating: " + rating + "\n\nJSON Data last created & updated: " + dateCreated + "\nDeleted: " + deleted);
 					
-					altReceivedLikes = likes;
-					altReceivedDislikes = dislikes;
-					altReceivedViews = viewCount;
-					altReceivedAverageRating = rating;
+					altReceivedLikesFromRYD = likes;
+					altReceivedDislikesFromRYD = dislikes;
+					altReceivedViewsFromRYD = viewCount;
+					altReceivedAverageRatingFromRYD = rating;
 				}
 			})
 		}
 	);
 	
+	/*
 	setTimeout(function(){
 		likeCount = altReceivedLikes;
 		dislikeCount = altReceivedDislikes;
@@ -114,4 +133,9 @@ function getCombinedVotes() {
 		
 		document.querySelector("#show-yt-embed-video-with-some-metadata").hidden = false;
 	}, waitTimeMs);
+	*/
+}
+
+function ClearAlt() {
+	
 }
