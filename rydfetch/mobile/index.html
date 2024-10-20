@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 	<head>
 		<title>Return YouTube Dislike - Frontend (YouTube)</title>
@@ -18,12 +18,13 @@
 			<div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<a href="/">jpa102.github.io</a>
-				<a href="javascript:void(0)" onclick="gotoHomePage()">Home</a>
-				<a href="javascript:void(0)" onclick="gotoMainFrontend()">Main page</a>
-				<a href="javascript:void(0)" onclick="gotoAlternateFrontend()">Alternate page</a>
-				<a href="javascript:void(0)" onclick="gotoTutorialPage()">Tutorial / Guide</a>
-				<a href="javascript:void(0)" onclick="gotoChangelogPage()">Changelog</a>
-				<a href="javascript:void(0)" onclick="gotoAboutPage()">About this webapp</a>
+				<div id="border-bottom"></div>
+				<a id="home-page" href="javascript:void(0)" class="" onclick="gotoHomePage()">Home</a>
+				<a id="main-frontend-page" href="javascript:void(0)" class="selected" onclick="gotoMainFrontend()">Main page</a>
+				<a id="alternate-frontend-page" href="javascript:void(0)" class="" onclick="gotoAlternateFrontend()">Alternate page</a>
+				<a id="tutorial-page" href="javascript:void(0)" class="" onclick="gotoTutorialPage()">Tutorial / Guide</a>
+				<a id="changelog-page" href="javascript:void(0)" class="" onclick="gotoChangelogPage()">Changelog</a>
+				<a id="about-page" href="javascript:void(0)" class="" onclick="gotoAboutPage()">About this webapp</a>
 			</div>
 			<div id="topbar">
 				<div id="sidebar-button-and-app-name-title">
@@ -54,9 +55,9 @@
 					</div>
 				</div>
 				<div id="inputs-from-user" class="container">
-					Simply put the id of the YouTube video (it's 11 characters)
+					Simply put the id of a YouTube video (it's 11 characters)
 					<form>
-						Form: <input type="text" id="videoId" title="Example video id: kxOuG8jMIgI - Update to YouTube's dislike count">
+						YouTube Video ID: <input type="text" id="videoId" placeholder="kxOuG8jMIgI" title="Example video id: kxOuG8jMIgI - Update to YouTube's dislike count">
 					</form>
 					<button id="fetch" class="action-buttons" onclick="checkFormContainer()">
 						Fetch data
@@ -178,16 +179,19 @@
 			<div id="body-container" class="info">
 				<div id="headline-text" class="container">
 					<div id="header-text">
-						Alternate frontend
+						Alternate Frontend
 					</div>
 					<div id="dislikes-reminder-text" class="info">
 						<p style="margin-bottom: unset;">An alternate frontend that fetches <b>likes</b> from <a href="https://googleapis.com">googleapis.com</a> and <b>dislikes</b> from <a href="https://returnyoutubedislikeapi.com">returnyoutubedislikeapi.com</a> (plus other data)</p>
 					</div>
 				</div>
 				<div id="inputs-from-user" class="container">
-					Simply put the id of the YouTube video (it's 11 characters)
+					Simply put the id of a YouTube video (it's 11 characters)
 					<form>
-						Form: <input type="text" id="videoIdAlt" title="Example video id: kxOuG8jMIgI - Update to YouTube's dislike count">
+						YouTube Video ID: <input type="text" id="video-id" placeholder="kxOuG8jMIgI" title="Example video id: kxOuG8jMIgI - Update to YouTube's dislike count">
+					</form>
+					<form>
+						API key: <input type="text" id="google-api-key" placeholder="REQUIRED" title="This field is required. Otherwise, the google api will respond with an error.">
 					</form>
 					<button id="fetch" class="action-buttons" onclick="getCombinedVotes()">
 						Fetch data
@@ -196,12 +200,12 @@
 						Reset
 					</button>
 				</div>
-				<div id="alt-display-results" class="container">
-					<h2 id="alt-resultTitle">
+				<div id="display-results" class="container">
+					<h2 id="resultTitle">
 						Average rating: 
 						<span id="avg" style="font-weight:normal"></span>
 					</h2>
-					<p id="alt-roundp">
+					<p id="roundp">
 						Rounded Average = 
 						<span id="round" style="color:goldenrod;"></span>
 					</p>
@@ -238,16 +242,48 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; averageRating:
 								<span id="averageRating"></span>
 							</p>
-							<button id="show-yt-embed-video-with-some-metadata" onclick="getSomeMetadataFromVideoId()">Show video embed?</button>
+							<hr style="border: 1px solid var(--background-dark-color);">
+							<p id="raw-like-count" style="margin: unset;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raw like counts:
+								<span id="rawLikeCount"></span>
+							</p>
+							<p id="raw-dislike-count" style="margin: unset;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raw dislike counts:
+								<span id="rawDislikeCount"></span>
+							</p>
+							<p id="raw-precise-percentage" style="margin: unset;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; likePercentage:
+								<span id="rawLikePercentage"></span>
+							</p>
+							<p id="raw-precise-rating" style="margin: unset;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; averageRating:
+								<span id="rawAverageRating"></span>
+							</p>
+							<button id="show-yt-embed-video-with-some-metadata" onclick="getSomeMetadataFromVideoId()" title="Clicking this will show a window containing the youtube video embed which you can view and watch.">Show video embed?</button>
 						</div>
 					</span>
 				</div>
 				<div id="display-youtube-embed" class="container" style="margin-top: 20px;" hidden="">
-					<div style="padding: 10px 0px;">
+					<div style="padding-bottom: 20px;">
 						<div id="embed-window-title-and-action-buttons">
-							<h2>YouTube video embed</h2>
+							<h2 style="margin-bottom: 8px; font-size: 22px;">YouTube video embed</h2>
 							<div id="embed-action-buttons">
-								
+								<button id="embed-minimize-button" class="action-buttons" title="Minimize this window" onclick="minimizeEmbedWindow()" aria-pressed="false">
+
+									<svg class="yt-icon">
+
+										<path class="yt-icon" d="M3 18h18v-2H3v2zm0-5h18v"></path>
+									</svg>
+			
+					</button>
+								<button id="embed-close-button" class="action-buttons" title="Close this window" onclick="closeEmbedWindow()">
+
+									<svg class="yt-icon">
+
+										<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
+									</svg>
+			
+					</button>
 							</div>
 						</div>
 						<p id="title-text-container" style="margin: 2px 0px;"></p>
@@ -260,9 +296,7 @@
 						Credits:
 					</h2>
 					<p>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.returnyoutubedislike.com">Return YouTube Dislike</a> (for the API and its unofficial dislike counts)
-						<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://googleapis.com">Google APIs</a> (for the most up-to-date likes and view counts)
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.returnyoutubedislike.com">Return YouTube Dislike</a> (API)
 						<br>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://codepen.io/ShubhamKLogic/pen/QWGgzwQ">5-star Rating Calculation</a> (for the stars and rating)
 					</p>
@@ -287,6 +321,16 @@
 		<div id="ryd-changelog-page" class="page" hidden="">
 			<div id="body-container" class="info">
 				<div id="ryd-changelog-page-container" class="container" style="width: 100%;">
+					<h2>version 1.19.05</h2>
+					<ul>
+						<li>add consolas font file (for devices which don't have it)</li>
+						<li>made some css & js tweaks</li>
+						<li>made some corrections & tweaks to the frontends (main & alt)</li>
+						<li>NOTE: the alternate frontend is still unfinished to this day, please use the main frontend for now</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年10月18日 20:02:38 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
 					<h2>version 1.19.04</h2>
 					<ul>
 						<li>add exception handling to extension likes & dislikes if they don't have data from it yet</li>
@@ -404,7 +448,7 @@
 						Version:
 					</h2>
 					<p>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.19.04
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.19.05
 					</p>
 					<br>
 					<h2>
