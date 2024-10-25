@@ -6,6 +6,16 @@
 */
 
 function getCombinedVotes() {
+	vibrate();
+
+	if (noVideoId == true) {
+		return;
+	}
+	
+	// test the url first...
+	UrlExists("https://returnyoutubedislikeapi.com/votes?videoId=" + ytId);
+	checkHttpStatusCode();
+	
 	// from Google APIs (YouTube)
 	fetch(
 		`https://www.googleapis.com/youtube/v3/videos?id=${altYtId}&key=${altAPIkey}&part=statistics`
@@ -38,6 +48,17 @@ function getCombinedVotes() {
 				if (json && !("traceId" in response)) {
 					let { id, dateCreated, likes, dislikes, rawDislikes, rawLikes, rating, viewCount, deleted } = json;
 					console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: " + id + "\nViews: " + viewCount + "\nLike count: " + likes + "\nDislike count: " + dislikes + "\nAverage rating: " + rating + "\n\nJSON Data last created & updated: " + dateCreated + "\nDeleted: " + deleted);
+					
+					// try to handle null values, it should be set to 0 at the very least
+					if (rawLikes === null && rawDislikes === null) {
+						altReceivedRawLikesFromRYD = 0;
+						altReceivedRawDislikesFromRYD = 0;
+						extensiondata_isnull = true;
+					} else {
+						altReceivedRawLikesFromRYD = rawLikes;
+						altReceivedRawDislikesFromRYD = rawDislikes;
+						extensiondata_isnull = false;
+					}
 					
 					altReceivedRawLikesFromRYD = rawLikes;
 					altReceivedLikesFromRYD = likes;
@@ -125,13 +146,17 @@ function getCombinedVotes() {
 		document.querySelector("#alt-commentCount").innerHTML = alt_formattedComments;
 		document.querySelector("#alt-favoriteCount").innerHTML = alt_formattedFavorites;
 		
-		document.querySelector("#alt-rawLikeCount").innerHTML = alt_formattedRawLikes;
-		document.querySelector("#alt-rawDislikeCount").innerHTML = alt_formattedRawDislikes;
+		// if the raw extension likes & dislikes are null
+		if (extensiondata_isnull === true) {
+			document.querySelector("#alt-rawLikeCount").innerHTML = alt_formattedRawLikes + " (no data yet)";
+			document.querySelector("#alt-rawDislikeCount").innerHTML = alt_formattedRawDislikes + " (no data yet)";
+		} else {
+			document.querySelector("#alt-rawLikeCount").innerHTML = alt_formattedRawLikes;
+			document.querySelector("#alt-rawDislikeCount").innerHTML = alt_formattedRawDislikes;
+		}
+		
 		document.querySelector("#alt-rawLikePercentage").innerHTML = alt_e_averageRating;
 		document.querySelector("#alt-rawAverageRating").innerHTML = alt_e_percentage;
-		
-		
-		
 		document.querySelector("#alt-show-yt-embed-video-with-some-metadata").hidden = false;
 	}, waitTimeMs);
 }
