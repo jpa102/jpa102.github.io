@@ -14,6 +14,27 @@ let last_title;
 let last_author_name;
 let last_author_url;
 
+function UrlExists(url) {
+	var http = new XMLHttpRequest();
+	http.open('HEAD', url, false);
+	http.send();
+	if (http.status != 404) {
+		urldoesexists = true;
+	}
+	
+	if (http.status == 404) {
+		urldoesexists = false;
+	}
+	
+	if (http.status != 502) {
+		urlbadgetaway = false;
+	}
+	
+	if (http.status == 502) {
+		urlbadgetaway = true;
+	}
+}
+
 function getSomeMetadataFromVideoId() {
 	vibrate();
 	
@@ -174,6 +195,33 @@ function minimizeEmbedWindow() {
 	}
 }
 
+function alt_minimizeEmbedWindow() {
+	vibrate();
+	if (document.querySelectorAll("#embed-minimize-button")[1].ariaPressed == "false") {
+		setTimeout(function() {
+			document.querySelectorAll("#title-text-container")[1].hidden = true;
+			document.querySelectorAll("#uploaded-by")[1].hidden = true;
+			document.querySelectorAll("#channel-url")[1].hidden = true;
+			document.querySelectorAll("iframe#ryd-api-embedded-video")[1].hidden = true;
+			
+			document.querySelectorAll("#embed-minimize-button")[1].ariaPressed = "true";
+			document.querySelectorAll("#embed-minimize-button")[1].title = "Maximize this window";
+		}, waitTimeMs);
+	}
+	
+	if (document.querySelectorAll("#embed-minimize-button")[1].ariaPressed == "true") {
+		setTimeout(function() {
+			document.querySelectorAll("#title-text-container")[1].hidden = false;
+			document.querySelectorAll("#uploaded-by")[1].hidden = false;
+			document.querySelectorAll("#channel-url")[1].hidden = false;
+			document.querySelectorAll("iframe#ryd-api-embedded-video")[1].hidden = false;
+			
+			document.querySelectorAll("#embed-minimize-button")[1].ariaPressed = "false";
+			document.querySelectorAll("#embed-minimize-button")[1].title = "Minimize this window";
+		}, waitTimeMs);
+	}
+}
+
 function closeEmbedWindow() {
 	vibrate();
 	document.querySelector("#display-youtube-embed").hidden = true;
@@ -187,6 +235,35 @@ function closeEmbedWindow() {
 	document.querySelector("#show-yt-embed-video-with-some-metadata").hidden = false;
 }
 
+function alt_closeEmbedWindow() {
+	vibrate();
+	document.querySelector("#alt-display-youtube-embed").hidden = true;
+	document.querySelectorAll("iframe#ryd-api-embedded-video")[1].remove();
+	
+	document.querySelectorAll("#title-text-container")[1].innerText = "";
+	document.querySelectorAll("#uploaded-by")[1].innerText = "";
+	document.querySelectorAll("#channel-url")[1].innerText = "";
+	document.querySelectorAll("#channel-url")[1].href = "";
+	
+	document.querySelector("#alt-show-yt-embed-video-with-some-metadata").hidden = false;
+}
+
 function vibrate() {
 	navigator.vibrate(vibratems);
+}
+
+
+
+/*
+	initialize the selectors (tapping anywhere should automatically close the sidebar)
+*/
+if (closeSidebarTrial === true) {
+	setTimeout(function() {
+		document.querySelectorAll(".body-container")[0].addEventListener("click", closeNav);
+		document.querySelectorAll(".body-container")[1].addEventListener("click", closeNav);
+		document.querySelectorAll(".body-container")[2].addEventListener("click", closeNav);
+		document.querySelectorAll(".body-container")[3].addEventListener("click", closeNav);
+		document.querySelectorAll(".body-container")[4].addEventListener("click", closeNav);
+		document.querySelectorAll(".body-container")[5].addEventListener("click", closeNav);
+	}, 2500);
 }
