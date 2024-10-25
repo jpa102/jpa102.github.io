@@ -1,25 +1,9 @@
-// https://www.youtube.com/watch?v=U3BClXYCZjI
-
-function UrlExists(url) {
-	var http = new XMLHttpRequest();
-	http.open('HEAD', url, false);
-	http.send();
-	if (http.status != 404) {
-		urldoesexists = true;
-	}
+/*
+	api.js
 	
-	if (http.status == 404) {
-		urldoesexists = false;
-	}
-	
-	if (http.status != 502) {
-		urlbadgetaway = false;
-	}
-	
-	if (http.status == 502) {
-		urlbadgetaway = true;
-	}
-}
+	this contains a function that utilizes an
+	api from returnyoutubedislikeapi.com
+*/
 
 function getVotes(){
 	vibrate();
