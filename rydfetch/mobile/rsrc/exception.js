@@ -65,4 +65,9 @@ function checkHttpStatusCode() {
 		setTimeout(function() { alert("hmm, the RYD server seems to be down at the moment..."); }, 600);
 		return;
 	}
+	
+	if (urldoesexists == false) {
+		setTimeout(function() { alert("hmm, the RYD server cannot be reached.\n\nplease check your network connection and try again."); }, 600);
+		return;
+	}
 }
