@@ -33,6 +33,14 @@ function UrlExists(url) {
 	if (http.status == 502) {
 		urlbadgetaway = true;
 	}
+	
+	if (http.status == 0) {
+		nointernet = true;
+	}
+	
+	if (http.status != 0) {
+		nointernet = false;
+	}
 }
 
 function getSomeMetadataFromVideoId() {
