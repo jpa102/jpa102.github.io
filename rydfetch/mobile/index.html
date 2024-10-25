@@ -1,14 +1,18 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 	<head>
 		<title>Return YouTube Dislike - Frontend (YouTube)</title>
 		<link rel="stylesheet" style="text/css" title="default css file" href="rsrc/style.css">
 		<link rel="alternate stylesheet" style="text/css" title="alternate css file" href="rsrc/style.css">
+		<script id="experiment-flags-container" type="text/javascript">
+			closeSidebarTrial = false;
+		</script>
 		<script src="rsrc/main.js"></script>
 		<script src="rsrc/api.js"></script>
 		<script src="rsrc/api_combined.js"></script>
 		<script src="rsrc/exception.js"></script>
 		<script src="rsrc/navigation.js"></script>
+		<script src="rsrc/theme.js"></script>
 		<script src="rsrc/jsConsole.js"></script>
 		<meta name="robots" content="noindex,nofollow,noarchive">
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
@@ -19,24 +23,24 @@
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<div id="sidebar-links-container">
 					<a href="/">jpa102.github.io</a>
-					<div id="border-bottom"></div>
+					<div class="border-bottom-separator"></div>
 					<a id="home-page" href="javascript:void(0)" class="" onclick="gotoHomePage()">Home</a>
 					<a id="main-frontend-page" href="javascript:void(0)" class="selected" onclick="gotoMainFrontend()">Main page</a>
 					<a id="alternate-frontend-page" href="javascript:void(0)" class="" onclick="gotoAlternateFrontend()">Alternate page</a>
 					<a id="tutorial-page" href="javascript:void(0)" class="" onclick="gotoTutorialPage()">Tutorial / Guide</a>
 					<a id="changelog-page" href="javascript:void(0)" class="" onclick="gotoChangelogPage()">Changelog</a>
 					<a id="about-page" href="javascript:void(0)" class="" onclick="gotoAboutPage()">About this webapp</a>
-					<div id="border-bottom"></div>
+					<div class="border-bottom-separator"></div>
 					<a id="light-mode-option" href="javascript:void(0)" class="selected" onclick="lightModeOption()">Light mode</a>
-					<a id="black-hole-option" href="javascript:void(0)" class="" onclick="darkModeOption()">Dark mode</a>
+					<a id="dark-mode-option" href="javascript:void(0)" class="" onclick="darkModeOption()">Dark mode</a>
 					<a id="black-hole-option" href="javascript:void(0)" class="" onclick="blackHoleOption()">Black hole</a>
 				</div>
 			</div>
 			<div id="topbar">
 				<div id="sidebar-button-and-app-name-title">
 					<button id="sidebar-button" class="action-buttons" onclick="openNav()">
-						<svg class="yt-icon">
-							<path class="yt-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+						<svg class="sidebar-icon">
+							<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
 						</svg>
 					</button>
 					<span id="app-title-text">Main RYD Frontend</span>
@@ -44,14 +48,14 @@
 			</div>
 		</header>
 		<div id="main-home-page" class="page" hidden="">
-			<div id="body-container" class="info">
+			<div class="body-container info">
 				<div id="main-home-page-container" class="container" style="width: 100%; margin-top: 0px;">
 					
 				</div>
 			</div>
 		</div>
 		<div id="return-youtube-dislike-api-page" class="page">
-			<div id="body-container" class="info">
+			<div class="body-container info">
 				<div id="headline-text" class="container">
 					<div id="header-text">
 						<a href="https://returnyoutubedislike.com">Return YouTube Dislike</a> - Frontend
@@ -118,12 +122,12 @@
 							<h2 style="margin-bottom: 8px; font-size: 22px;">YouTube video embed</h2>
 							<div id="embed-action-buttons">
 								<button id="embed-minimize-button" class="action-buttons" title="Minimize this window" onclick="minimizeEmbedWindow()" aria-pressed="false">
-									<svg class="yt-icon">
-										<path class="yt-icon" d="M3 18h18v-2H3v2zm0-5h18v"></path>
+									<svg class="sidebar-icon">
+										<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v"></path>
 									</svg>
 								</button>
 								<button id="embed-close-button" class="action-buttons" title="Close this window" onclick="closeEmbedWindow()">
-									<svg class="yt-icon">
+									<svg class="sidebar-icon">
 										<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
 									</svg>
 								</button>
@@ -153,7 +157,7 @@
 			</div>
 		</div>
 		<div id="combined-apis-page" class="page" hidden="">
-			<div id="body-container" class="info">
+			<div class="body-container info">
 				<div id="headline-text" class="container">
 					<div id="header-text">
 						Alternate Frontend
@@ -226,13 +230,13 @@
 						<div id="embed-window-title-and-action-buttons">
 							<h2 style="margin-bottom: 8px; font-size: 22px;">YouTube video embed</h2>
 							<div id="embed-action-buttons">
-								<button id="embed-minimize-button" class="action-buttons" title="Minimize this window" onclick="minimizeEmbedWindow()" aria-pressed="false">
-									<svg class="yt-icon">
-										<path class="yt-icon" d="M3 18h18v-2H3v2zm0-5h18v"></path>
+								<button id="embed-minimize-button" class="action-buttons" title="Minimize this window" onclick="alt_minimizeEmbedWindow()" aria-pressed="false">
+									<svg class="sidebar-icon">
+										<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v"></path>
 									</svg>
 								</button>
-								<button id="embed-close-button" class="action-buttons" title="Close this window" onclick="closeEmbedWindow()">
-									<svg class="yt-icon">
+								<button id="embed-close-button" class="action-buttons" title="Close this window" onclick="alt_closeEmbedWindow()">
+									<svg class="sidebar-icon">
 										<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
 									</svg>
 								</button>
@@ -264,7 +268,7 @@
 			</div>
 		</div>
 		<div id="ryd-tutorial-page" class="page" hidden="">
-			<div id="body-container" class="info">
+			<div class="body-container info">
 				<div id="ryd-tutorial-page-container" class="container" style="width: 100%; margin-top: 0px;">
 					<div id="frontend-tutorial-box">
 						<h2>Frontend Tutorial</h2>
@@ -273,8 +277,17 @@
 			</div>
 		</div>
 		<div id="ryd-changelog-page" class="page" hidden="">
-			<div id="body-container" class="info">
+			<div class="body-container info">
 				<div id="ryd-changelog-page-container" class="container" style="width: 100%;">
+					<h2>version 2.01</h2>
+					<ul>
+						<li>fix a problem in the css where the ratio bar will show up unexpectedly at the topbar while scrolling</li>
+						<li>implemented themes functionality</li>
+						<li>some fixes in both frontends (mainly the js code for displaying the youtube video), now it's a little less buggy</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年10月25日 17:24:16 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
 					<h2>version 2.00</h2>
 					<ul>
 						<li>MAJOR UPDATE: The alternate frontend is now working (beta phase)</li>
@@ -416,13 +429,13 @@
 			</div>
 		</div>
 		<div id="about-screen-page" class="page" hidden="">
-			<div id="body-container" class="info">
+			<div class="body-container info">
 				<div id="about-container" class="container" style="width: 100%; margin-top: 0px;">
 					<h2>
 						Version:
 					</h2>
 					<p>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.00
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.01
 					</p>
 					<h2>
 						Creator:
