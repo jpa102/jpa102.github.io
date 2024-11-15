@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Return YouTube Dislike - Frontend (YouTube)</title>
+		<link rel="stylesheet" href="rsrc/style.css">
+		<script src="rsrc/api.js"></script>
+		<script src="rsrc/exception.js"></script>
+		<style id="my-embedded-background-color">body { background: #36c8ff; }</style>
+		<style id="embedded-hotpatch-css">
+			/* this is an experimental css patch, i don't have plans to put it in the css file yet... */
+			#fetch:hover {
+				cursor: pointer;
+			}
+			
+			#reset:hover {
+				cursor: pointer;
+			}
+			
+			ratio-bar-renderer:hover {
+				cursor: help;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="body-container" class="info">
+			<div id="headline-text" class="container">
+				<div id="header-text">
+					<a href="https://returnyoutubedislike.com">Return YouTube Dislike</a> - Frontend
+				</div>
+				<div id="dislikes-reminder-text" class="info">
+					A frontend that fetches dislike counts (and other data) from <a href="https://returnyoutubedislike.com">Return YouTube Dislike</a>'s API
+					<br>
+					<br>
+					Simply put the id of the YouTube video (it's 11 characters)
+				</div>
+			</div>
+			<div id="inputs-from-user" class="container">
+				<form>
+					Form: <input type="text" id="videoId" title="Example video id: kxOuG8jMIgI - Update to YouTube's dislike count">
+				</form>
+				<button id="fetch">
+					Fetch data
+				</button>
+				<button id="reset">
+					Reset
+				</button>
+			</div>
+			<div id="display-results" class="container">
+				<h2 id="resultTitle">
+					Average rating: 
+					<span id="avg" style="font-weight:normal"></span>
+				</h2>
+				<p id="roundp">
+					Rounded Average = 
+					<span id="round" style="color:goldenrod;"></span>
+				</p>
+				<div id="ratio-bar-renderer-container">
+					<ratio-bar-renderer id="sentiment" class="like-dislike-info-renderer">
+						<div id="container" class="like-dislike-info-renderer">
+							<div id="like-bar" class="like-dislike-info-renderer">
+							</div>
+						</div>
+						<tooltip-bar fit-to-visible-bounds="" class="like-dislike-info-renderer" role="tooltip">
+						</tooltip-bar>
+					</ratio-bar-renderer>
+				</div>
+				<span id="ldv-container">
+					<h2>Statistics:</h2>
+					<div style="margin-top: 12px;">
+						<p id="like-count">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Likes:
+							<span id="likeCount"></span>
+						</p>
+						<p id="dislike-count">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dislikes:
+							<span id="dislikeCount"></span>
+						</p>
+						<p id="view-count">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views:
+							<span id="viewCount"></span>
+						</p>
+						<p id="precise-percentage">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; likePercentage:
+							<span id="likePercentage"></span>
+						</p>
+						<p id="precise-rating">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; averageRating:
+							<span id="averageRating"></span>
+						</p>
+						<hr style="border: 1px solid var(--background-dark-color);">
+						<p id="raw-like-count" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raw like counts:
+							<span id="rawLikeCount"></span>
+						</p>
+						<p id="raw-dislike-count" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Raw dislike counts:
+							<span id="rawDislikeCount"></span>
+						</p>
+						<p id="raw-precise-percentage" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; likePercentage:
+							<span id="rawLikePercentage"></span>
+						</p>
+						<p id="raw-precise-rating" style="margin: unset;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; averageRating:
+							<span id="rawAverageRating"></span>
+						</p>
+					</div>
+				</span>
+			</div>
+		</div>
+	</body>
+</html>
