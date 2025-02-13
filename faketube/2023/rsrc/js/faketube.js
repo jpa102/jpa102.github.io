@@ -1,4 +1,4 @@
-﻿/*
+/*
 	faketube.js
 	
 	DEBUG file where you can freely configure it at devtools (breakpoint)
@@ -7,7 +7,7 @@
 
 const faketube = {
 	config_: {
-		apply_favorite_site_authors_background_color: true, // apply my favorite light theme color in the page
+		apply_favorite_site_authors_background_color: false, // apply my favorite light theme color in the page
 		downloader_site_urls: {
 			note: "you need ublock origin as most downloader sites can redirect you to unwanted site(s)",
 			"urls": [
@@ -22,8 +22,8 @@ const faketube = {
 		web_page_editable: false,
 		EXPERIMENT_FLAGS: {
 			apply_debug_metadata_immediately: true, // fetch and inject the description data (if available)
-			disable_dislike_counts: true, // don't display the dislike counts in the dislike button
-			display_dislike_pressed_popup: true, // display a popup every time you press the dislike button
+			disable_dislike_counts: false, // don't display the dislike counts in the dislike button
+			display_dislike_pressed_popup: false, // display a popup every time you press the dislike button
 			display_none_new_video_statistics: false, // hide the new video statistics inside the description
 			force_display_ratio_bar: false, // force display the ratio bar under like and dislike buttons
 			return_youtube_dislike_api: {
