@@ -1,4 +1,4 @@
-﻿/*
+/*
 	this made my head hurt trying to mimic the way YouTube handles it
 */
 
@@ -105,7 +105,12 @@ body {
 }
 
 #youtube-search-bar {
-	width: 50%;
+	width: 64%;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
 }
 
 form > input[type=yt_text] {
@@ -117,12 +122,15 @@ form > input[type=yt_text] {
 	border-bottom-right-radius: 0px;
 }
 
-form > input[type=submit] {
-	padding: 10px 12px;
-	margin-left: -6px;
+form > button[type=submit] {
+	padding: 6px 16px;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+form > button[type=submit]:hover {
+	cursor: pointer;
 }
 
 form > input[type=submit]:hover {
