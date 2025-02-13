@@ -1,0 +1,405 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>FakeTube</title>
+		<link rel="stylesheet" href="rsrc/css/player.css"/>
+		<script src="rsrc/js/globaldata_online.js"></script>
+		<script src="rsrc/js/faketube.js"></script>
+		<script src="rsrc/js/operations.js"></script>
+		<script src="rsrc/js/player.js"></script>
+		<script src="rsrc/js/theme.js"></script>
+		<script src="rsrc/js/setratingbar.js"></script>
+		<script src="rsrc/js/setvotecounts.js"></script>
+		<script src="rsrc/js/setviewsanddate.js"></script>
+		<script src="rsrc/js/setytchannelinfo.js"></script>
+		<script src="rsrc/js/navigation.js"></script>
+		<script src="rsrc/js/description.js"></script>
+		<script src="rsrc/js/buttonslistener.js"></script>
+		<script src="rsrc/js/jsConsole.js"></script>
+		<script src="rsrc/js/debug.js"></script>
+		<script src="rsrc/js/likedislikebuttons.js"></script>
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+		<style type="text/css">
+			@font-face {
+				font-family: "Google Sans";
+				src: url("rsrc/player/google-sans_regular.ttf");
+			}
+			
+			#comment-counts {
+				font-family: "Google Sans";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main-watch-page">
+			<header>
+				<div id="mySidenav" class="sidenav">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					<a href="/">jpa102.github.io</a>
+					<div id="border-bottom"></div>
+					<a href="/faketube">Home</a>
+					<a href="javascript:void(0)">Explore</a>
+					<a href="javascript:void(0)">Subscriptions</a>
+					<div id="border-bottom"></div>
+					<a href="javascript:void(0)">Library</a>
+					<a href="javascript:void(0)">History</a>
+					<div id="border-bottom"></div>
+					<a href="javascript:void(0)">Settings</a>
+					<a href="javascript:void(0)">Help</a>
+					<a href="https://github.com/jpa102/jpa102.github.io/issues">Send feedback</a>
+					<a href="https://github.com/jpa102/jpa102.github.io/blob/main/faketube/faketube.md">About FakeTube</a>
+				</div>
+				<div id="topbar">
+					<div id="sidebar-button-and-app-name-title">
+						<button id="sidebar-button" class="action-buttons" onclick="openNav()">
+							<svg class="yt-icon">
+								<path class="yt-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+							</svg>
+						</button>
+						<span id="app-title-text">FakeTube</span>
+					</div>
+					<div id="youtube-search-bar">
+						<form id="youtube-search-bar" method="GET" action="https://youtube.com/results">
+							<input type="yt_text" name="search_query" placeholder="How to create a web page" title="Search using YouTube's native search functionality" autocomplete="on">
+							<button type="submit">
+								<div style="width: 20px; height: 24px; display: block; fill: currentcolor;">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+										<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" class="style-scope yt-icon"></path>
+									</svg>
+								</div>
+							</button>
+						</form>
+					</div>
+					<div id="more-settings-and-sign-in-button">
+						<button id="create-button" class="topbar-buttons" title="Create a content">
+							<div id="createbutton-icon">
+								<div style="width: 100%; height: 100%; fill: currentcolor;">
+									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+										<path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z" class="style-scope yt-icon"></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+						<button id="faketube-apps-button" class="topbar-buttons" title="FakeTube apps">
+							<div id="faketubeappsbutton-icon">
+								<div style="width: 100%; height: 100%; fill: currentcolor;">
+									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+										<path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" class="style-scope yt-icon"></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+						<button id="more-button" class="topbar-buttons" title="Settings">
+							<div id="moresettingsbutton-icon">
+								<div style="width: 100%; height: 100%; fill: currentcolor;">
+									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+										<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" class="style-scope yt-icon"></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+						<button id="sign-in-button" class="topbar-buttons">
+							<div id="signinbutton-icon" class="button-text-style">
+								<div style="width: 100%; height: 100%; fill: currentcolor;">
+									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+										<path d="M12,0 C18.62375,0 24,5.37625 24,12 C24,18.62375 18.62375,24 12,24 C5.37625,24 0,18.62375 0,12 C0,5.37625 5.37625,0 12,0 Z M12,10.63625 C13.66,10.63625 15,9.29625 15,7.63625 C15,5.97625 13.66,4.63625 12,4.63625 C10.34,4.63625 9,5.97625 9,7.63625 C9,9.29625 10.34,10.63625 12,10.63625 Z M12,12.40875 C8.33375,12.40875 5.455,14.18125 5.455,15.8175 C6.84125,17.95 9.26875,19.3625 12,19.3625 C14.73125,19.3625 17.15875,17.95 18.545,15.8175 C18.545,14.18125 15.66625,12.40875 12,12.40875 Z" class="style-scope yt-icon"></path>
+									</svg>
+								</div>
+							</div>
+							<span id="sign-in-text-renderer" class="menu-buttons-text">Sign in</span>
+						</button>
+					</div>
+				</div>
+			</header>
+			<div id="main-body-page">
+				<div id="watch-page-and-recommendations-container">
+					<div id="watch-page" class="page-container">
+						<div id="video-container" class="video-display-container">
+							<div id="video-player">
+								
+							</div>
+						</div>
+						<div id="video-metadata-info-container">
+							<div id="video-title-and-date-published">
+								<h1 id="video-title-failed" class="video-title-failed-to-load">
+									Title
+								</h1>
+								<div id="video-views-and-date">
+								</div>
+								<div id="failed-to-load-views-and-date">
+									<p>
+										NaN views • NaN/NaN/NaN
+									</p>
+								</div>
+								<div id="menu">
+									<div id="all-buttons-container">
+										<div id="like-dislike-buttons-container">
+											<div id="like" class="like-dislike-buttons" onclick="likeButton()">
+												<button id="like-button" aria-pressed="false" title="I like this">
+													<div class="yt-spec-button-shape-next__icon" aria-hidden="true" style="width: 24px; height: 24px;">
+														<div style="width: 100%; height: 100%; fill: currentcolor;">
+															<svg viewBox="0 0 24 24" style="fill: #909090;" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+																<g class="style-scope yt-icon">
+																	<path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" class="style-scope yt-icon"></path>
+																</g>
+															</svg>
+														</div>
+													</div>
+												</button>
+												<span id="like-count-renderer" class="menu-buttons-text"></span>
+											</div>
+											<div id="like-dislike-buttons-border"></div>
+											<div id="dislike" class="like-dislike-buttons" onclick="dislikeButton()">
+												<button id="dislike-button" aria-pressed="false" title="I dislike this">
+													<div class="yt-spec-button-shape-next__icon" aria-hidden="true" style="width: 24px; height: 24px;">
+														<div style="width: 100%; height: 100%; fill: currentcolor;">
+															<svg viewBox="0 0 24 24" style="fill: #909090;" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+																<g class="style-scope yt-icon">
+																	<path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01L1 14c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z" class="style-scope yt-icon"></path>
+																</g>
+															</svg>
+														</div>
+												</button>
+												<span id="dislike-count-renderer" class="menu-buttons-text"></span>
+											</div>
+											<ratio-bar-renderer id="sentiment" class="like-dislike-info-renderer" hidden="">
+												<div id="container" class="like-dislike-info-renderer">
+													<div id="like-bar" class="like-dislike-info-renderer">
+													</div>
+												</div>
+												<tooltip-bar fit-to-visible-bounds="" class="like-dislike-info-renderer" role="tooltip">
+												</tooltip-bar>
+											</ratio-bar-renderer>
+										</div>
+										<div id="share" class="menu-buttons-actions" onclick="shareButton()">
+											<button id="share-button" class="menu-buttons menu-buttons-text" title="Share this video">
+												<div id="sharebutton-icon">
+													<yt-icon class="undefined" style="width: 24px; height: 24px;">
+														<yt-icon-shape class="style-scope yt-icon">
+															<icon-shape class="yt-spec-icon-shape">
+																<div style="width: 100%; height: 100%; fill: #909090;">
+																	<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+																		<path d="M14 9V3L22 12L14 21V15C8.44 15 4.78 17.03 2 21C3.11 15.33 6.22 10.13 14 9Z" class="style-scope yt-icon"></path>
+																	</svg>
+																</div>
+															</icon-shape>
+														</yt-icon-shape>
+													</yt-icon>
+												</div>
+											</button>
+											<span id="share-text-renderer" class="menu-buttons-text">share</span>
+										</div>
+										<div id="download" class="menu-buttons-actions">
+											<button id="download-button" class="menu-buttons menu-buttons-text" title="Download this video">
+												
+<yt-icon class="style-scope ytd-button-renderer">
+													<yt-icon-shape class="style-scope yt-icon">
+														<icon-shape class="yt-spec-icon-shape">
+															<div style="width: 100%; height: 100%; display: block; fill: currentcolor;">
+																<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: inherit; width: 100%; height: 100%;" aria-hidden="true">
+																	<path style=" stroke:none;fill-rule:nonzero;fill:#909090;fill-opacity:1;" d="M 10.761719 0.0976562 C 5.519531 0.546875 1.164062 4.429688 0.230469 9.476562 C 0.0351562 10.539062 0.0351562 12.460938 0.230469 13.519531 C 1.089844 18.183594 4.949219 21.941406 9.738281 22.773438 C 10.828125 22.964844 12.804688 22.964844 13.890625 22.773438 C 18.683594 21.941406 22.542969 18.183594 23.398438 13.519531 C 23.59375 12.460938 23.59375 10.539062 23.398438 9.476562 C 22.328125 3.675781 16.808594 -0.421875 10.761719 0.0976562 Z M 14.125 7.5 L 14.125 9.605469 L 15.535156 9.632812 L 16.9375 9.65625 L 14.445312 12.109375 L 11.953125 14.554688 L 9.414062 12.082031 L 6.875 9.613281 L 9.785156 9.613281 L 9.785156 5.390625 L 14.125 5.390625 Z M 16.984375 16.710938 L 16.984375 17.429688 L 6.921875 17.429688 L 6.921875 15.992188 L 16.984375 15.992188 Z M 16.984375 16.710938 "></path>
+
+																</svg>
+															</div>
+														</icon-shape>
+													</yt-icon-shape>
+												</yt-icon>
+											</button>
+											<span id="download-text-renderer" class="menu-buttons-text">download</span>
+										</div>
+										<div id="save" class="menu-buttons-actions" onclick="saveButton()">
+											<button id="save-button" class="menu-buttons menu-buttons-text" title="Save this video">
+												<div id="savebutton-icon">
+													<yt-icon class="undefined style-scope ytd-menu-renderer" style="width: 24px; height: 24px;">
+														<yt-icon-shape class="style-scope yt-icon">
+															<icon-shape class="yt-spec-icon-shape">
+																<div style="width: 100%; height: 100%; fill: #909090;">
+																	<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+																		<path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z" class="style-scope yt-icon"></path>
+																	</svg>
+																</div>
+															</icon-shape>
+														</yt-icon-shape>
+													</yt-icon>
+												</div>
+											</button>
+											<span id="save-text-renderer" class="menu-buttons-text">save</span>
+										</div>
+										<button id="more-button" class="menu-buttons menu-buttons-text" onclick="moreButton()" title="More actions">
+											<div id="morebutton-icon">
+												<yt-icon style="width: 24px; height: 24px;">
+													<yt-icon-shape class="style-scope yt-icon">
+														<icon-shape class="yt-spec-icon-shape">
+															<div style="width: 100%; height: 100%; fill: #909090;">
+																<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+																	<path d="M7.5 12c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm4.5-1.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm6 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"></path>
+																</svg>
+															</div>
+														</icon-shape>
+													</yt-icon-shape>
+												</yt-icon>
+											</div>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div id="border-top-metadata"></div>
+							<div id="video-metadata-and-yt-channel">
+								<div id="yt-channel-container">
+									<div id="yt-channel-failed-to-load">
+										<div id="no-yt-channel-image"></div>
+										<div id="no-yt-channel-name-renderer">
+											<p id="no-yt-channel-name">
+												Getting Channel name...
+											</p>
+											<p class="yt-channel-sub-count">
+												NaN subscribers
+											</p>
+										</div>
+									</div>
+								</div>
+								<div id="video-metadata-info">
+									<p id="statistics">
+										Video stats:
+										<br>
+									</p>
+									<div id="video-vote-counts">
+										<div id="failed-to-load-vote-counts">
+											<p class="vote-count">
+												Likes: NaN / Dislikes: NaN
+											</p>
+											<div id="video-average-rating">
+												Rating: NaN / 5 (NaN%)
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="description" class="content">
+								<div id="border-bottom-metadata"></div>
+								<p id="description-title">Description:</p>
+								<p id="description-text">
+									
+								</p>
+								<button id="expand-description-button" style="background: none; border: none; cursor: pointer; font-size: 12px; margin: 0px 0px 23px 62px; font-weight: 500;" aria-pressed="false" onclick="descriptionButton()">
+									Show more
+								</button>
+							</div>
+							<div id="border-bottom-metadata"></div>
+							<p id="comment-counts">
+								Comments: <span id="comment-count-renderer">NaN</span>
+							</p>
+							<div id="border-bottom-metadata"></div>
+							<div class="nullo"></div>
+						</div>
+					</div>
+					<div id="recommendations-page">
+						<div id="recommendations-container">
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+							<div class="loading-video-skeleton">
+								<div class="loading-video-thumbnails"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="main-settings-page" hidden="">
+			<header>
+				<div id="mySidenav" class="sidenav">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					<a href="/faketube">Home</a>
+					<a href="javascript:void(0)">Explore</a>
+					<a href="javascript:void(0)">Subscriptions</a>
+					<div id="border-bottom"></div>
+					<a href="javascript:void(0)">Library</a>
+					<a href="javascript:void(0)">History</a>
+					<div id="border-bottom"></div>
+					<a href="javascript:void(0)">Settings</a>
+					<a href="javascript:void(0)">Help</a>
+					<a href="javascript:void(0)">Send feedback</a>
+					<a href="javascript:void(0)">About FakeTube</a>
+				</div>
+				<div id="topbar">
+					<div id="sidebar-button-and-app-name-title">
+						<button id="sidebar-button" class="action-buttons" onclick="openNav()">
+							<svg class="yt-icon">
+								<path class="yt-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+							</svg>
+						</button>
+						<span id="app-title-text">Settings</span>
+					</div>
+				</div>
+			</header>
+			<div id="settings" style="background: #86caff">
+				
+			</div>
+		</div>
+	</body>
+</html>
