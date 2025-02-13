@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 	<head>
 		<title>FakeTube</title>
@@ -54,9 +54,15 @@
 					<span id="app-title-text">FakeTube</span>
 				</div>
 				<div id="youtube-search-bar">
-					<form method="GET" action="https://youtube.com/results">
+					<form id="youtube-search-bar" method="GET" action="https://youtube.com/results">
 						<input type="yt_text" name="search_query" placeholder="How to create a web page" title="Search using YouTube's native search functionality" autocomplete="on">
-						<input type="submit" value="Search">
+						<button type="submit">
+							<div style="width: 24px; height: 24px; display: block; fill: currentcolor;">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" style="pointer-events: none; display: inherit; width: 100%; height: 100%;">
+									<path clip-rule="evenodd" d="M16.296 16.996a8 8 0 11.707-.708l3.909 3.91-.707.707-3.909-3.909zM18 11a7 7 0 00-14 0 7 7 0 1014 0z" fill-rule="evenodd"></path>
+								</svg>
+							</div>
+						</button>
 					</form>
 				</div>
 				<div id="more-settings-and-sign-in-button">
@@ -313,7 +319,8 @@
 								<div class="video-title-skeleton"></div>
 								<div class="video-author-skeleton"></div>
 							</div>
-						</div><div class="loading-video-skeleton">
+						</div>
+						<div class="loading-video-skeleton">
 							<div class="loading-video-thumbnails"></div>
 							<div class="video-details-skeleton">
 								<div class="video-title-skeleton"></div>
