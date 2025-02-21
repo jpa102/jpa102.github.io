@@ -1,4 +1,4 @@
-﻿/*
+/*
 	this made my head hurt trying to mimic the way YouTube handles it
 */
 
@@ -45,9 +45,9 @@
 	padding-right: 20px;
 }
 
-#video-info-page {
-	min-width: 40%;
-	width: 45%;
+#recommendations-page {
+	min-width: 25%;
+	width: 40%;
 	margin: 20px 30px 0px 0px;
 }
 
@@ -130,6 +130,10 @@ form > button[type=submit] {
 }
 
 form > button[type=submit]:hover {
+	cursor: pointer;
+}
+
+form > input[type=submit]:hover {
 	cursor: pointer;
 }
 
@@ -226,13 +230,6 @@ iframe {
 #video.title {
 	font-size: 20px;
 	font-family: Google Sans;
-	margin: unset;
-}
-
-#video-view-counts-and-date {
-	font-family: google sans;
-	margin-top: 2px;
-	font-size: 14px;
 }
 
 #video-title-failed.video-title-failed-to-load {
@@ -258,15 +255,9 @@ iframe {
 	justify-content: space-between;
 }
 
-#yt-channel, #yt-channel-failed-to-load {
+#yt-channel {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-}
-
-#yt-channel-profile-picture-and-yt-channel-name, #yt-channel-image-and-channel-name-failed-to-load {
-	display: inherit;
-	align-items: inherit;
 }
 
 #yt-channel-link {
@@ -347,12 +338,30 @@ iframe {
 
 #all-buttons-container {
 	display: flex;
-	justify-content: flex-start;
+	justify-content: flex-end;
+}
+
+#segmented-channel-owner-and-menu {
+	
+display: flex;
+
+	flex-direction: row;
+
+	justify-content: space-between;
+
+	flex-wrap: nowrap;
+
+	align-items: center;
+
+}
+
+#yt-channel-container {
+	width: 40%;
 }
 
 #menu {
 	padding: 8px 0px 8px 0px;
-	margin: 8px 0px 16px;
+	width: 60%;
 }
 
 .menu-buttons {
@@ -533,7 +542,6 @@ p.vote-count {
 
 #description.content {
 	font-family: "Google Sans";
-	margin-bottom: 24px;
 }
 
 #expand-description-button {
