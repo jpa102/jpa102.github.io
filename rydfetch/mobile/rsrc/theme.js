@@ -29,7 +29,7 @@ function lightModeOption() {
 	}
 	
 	if (document.querySelector("#custom-theme-injected-css") !== null) {
-		document.querySelector("#dark-mode-injected-css").remove();
+		document.querySelector("#custom-theme-injected-css").remove();
 	}
 	
 	
@@ -67,6 +67,10 @@ function darkModeOption() {
 		return;
 	}
 	
+	if (document.querySelector("#custom-theme-injected-css") !== null) {
+		document.querySelector("#custom-theme-injected-css").remove();
+	}
+	
 	document.head.insertAdjacentHTML(
 		"beforeend",
 		`
@@ -89,6 +93,10 @@ function darkModeOption() {
 				
 				.container {
 					background: rgba(255, 255, 255, 0.1);
+				}
+				
+				.action-buttons:active {
+					background: rgba(255, 255, 255, 0.2) !important;
 				}
 				
 				#app-title-text {
@@ -248,6 +256,10 @@ function blackHoleOption() {
 	
 	if (document.querySelector("#black-hole-injected-css") !== null) {
 		return;
+	}
+	
+	if (document.querySelector("#custom-theme-injected-css") !== null) {
+		document.querySelector("#custom-theme-injected-css").remove();
 	}
 	
 	document.head.insertAdjacentHTML(
@@ -430,6 +442,14 @@ function e_blackHoleOption() {
 		document.querySelector("#black-hole-injected-css").remove();
 	}
 	
+	if (document.querySelector("#custom-theme-injected-css") !== null) {
+		document.querySelector("#custom-theme-injected-css").remove();
+	}
+	
+	if (document.querySelector("#extreme-black-hole-injected-css") !== null) {
+		return;
+	}
+	
 	document.head.insertAdjacentHTML(
 		"beforeend",
 		`
@@ -522,6 +542,14 @@ function e_blackHoleOption() {
 					border: 1px solid rgba(255, 255, 255, 0.1);
 				}
 				
+				#embed-minimize-button {
+					border: unset;
+				}
+				
+				#embed-close-button {
+					border: unset;
+				}
+				
 				#embed-window-title-and-action-buttons > h2 {
 					color: white;
 				}
@@ -594,7 +622,7 @@ function e_blackHoleOption() {
 		document.querySelector("#dark-mode-option").classList.remove("selected");
 	}
 	
-	if (document.querySelector("#black-hole-option").classList == "") {
+	if (document.querySelector("#black-hole-option").classList != "") {
 		document.querySelector("#black-hole-option").classList.remove("selected");
 	}
 	
@@ -636,7 +664,18 @@ function customThemeOption(colorValue, themeType) {
 				"beforeend",
 				`
 					<style id="custom-theme-injected-css" type="text/css">
+						body {
+							background-color: ${colorValue};
+						}
 						
+						#topbar {
+							background-color: ${colorValue};
+							border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+						}
+						
+						.sidenav {
+							background-color: ${colorValue};
+						}
 					</style>
 				`
 			);
@@ -645,10 +684,13 @@ function customThemeOption(colorValue, themeType) {
 				"beforeend",
 				`
 					<style id="custom-theme-injected-css" type="text/css">
-						
+						body {
+							background-color: ${colorValue};
+						}
 					</style>
 				`
 			);
 		default:
+			return;
 	}
 }
