@@ -5,6 +5,7 @@ let waitTimeMs = 529; // in milliseconds, 1000 is 1 second
 let ytId = ""; // blank value for placeholder
 let lastVideoId = ""; // blank value for placeholder
 let vibratems = 69; // time to vibrate
+let showRawJSONResponseInConsoleLog = false;
 
 // ==============================================================================
 
@@ -297,4 +298,30 @@ if (closeSidebarTrial === true) {
 		document.querySelectorAll(".body-container")[4].addEventListener("click", closeNav);
 		document.querySelectorAll(".body-container")[5].addEventListener("click", closeNav);
 	}, 2500);
+}
+
+/*
+	automatically set the theme (system light or dark mode)
+	source: https://stackoverflow.com/a/60971231
+*/
+// Check to see if Media-Queries are supported
+if (window.matchMedia) {
+	// Check if the dark-mode Media-Query matches
+	if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+		darkModeOption();
+		
+		// set the dark theme option to "selected"
+		setTimeout(function() {
+			if (document.querySelector("#light-mode-option").classList != "") {
+				document.querySelector("#light-mode-option").classList.remove("selected");
+			}
+			if (document.querySelector("#dark-mode-option").classList == "") {
+				document.querySelector("#dark-mode-option").classList.add("selected");
+			}
+		}, 1550);
+	} else {
+		// Light
+	}
+} else {
+	// Default (when Media-Queries are not supported)
 }
