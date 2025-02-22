@@ -40,14 +40,15 @@
 #watch-page.page-container {
 	min-width: var(--video-player-config);
 	width: -webkit-fill-available;
+	width: -moz-available;
 	margin-top: 20px;
 	margin-right: 10px;
 	padding-right: 20px;
 }
 
-#recommendations-page {
-	min-width: 25%;
-	width: 40%;
+#video-info-page {
+	min-width: 40%;
+	width: 45%;
 	margin: 20px 30px 0px 0px;
 }
 
@@ -99,6 +100,7 @@ body {
 	position: fixed;
 	z-index: 1;
 	width: -webkit-fill-available;
+	width: -moz-available;
 	background: linear-gradient(to right, var(--left-gradient-color) , var(--right-gradient-color));
 	padding: 6px 14px;
 	box-shadow: 0 2px 5px rgb(0 0 0 / 26%);
@@ -133,10 +135,6 @@ form > button[type=submit]:hover {
 	cursor: pointer;
 }
 
-form > input[type=submit]:hover {
-	cursor: pointer;
-}
-
 #more-settings-and-sign-in-button {
 	display: flex;
 }
@@ -145,10 +143,26 @@ form > input[type=submit]:hover {
 	background: transparent;
 }
 
+#more-settings-and-sign-in-button > #more-button:hover {
+	background: var(--buttons-hover-color);
+}
+
+#more-settings-and-sign-in-button > #more-button:active {
+	background: var(--buttons-active-color);
+}
+
 #sign-in-button {
 	color: #065fd4;
 	background: transparent;
 	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#sign-in-button:hover {
+	background: var(--buttons-hover-color);
+}
+
+#sign-in-button:active {
+	background: var(--buttons-active-color);
 }
 
 .page {
@@ -170,10 +184,11 @@ form > input[type=submit]:hover {
 
 #sidebar-button:hover {
 	cursor: pointer;
+	background: var(--buttons-hover-color);
 }
 
 #sidebar-button:active {
-	background: var(--buttons-pressed-color);
+	background: var(--buttons-active-color);
 }
 
 .yt-icon {
@@ -205,7 +220,6 @@ form > input[type=submit]:hover {
 }
 
 .action-buttons:active {
-	background: var(--background-slightly-darker-color) !important;
 	transition: ease-in-out .3s;
 }
 
@@ -217,6 +231,7 @@ form > input[type=submit]:hover {
 	min-width: var(--video-player-config);
 	aspect-ratio: 16 / 9;
 	width: -webkit-fill-available;
+	width: -moz-available;
 }
 
 iframe {
@@ -224,12 +239,20 @@ iframe {
 	min-height: var(--video-player-minimum-height);
 	aspect-ratio: 16 / 9;
 	width: -webkit-fill-available;
+	width: -moz-available;
 	border-radius: 16px;
 }
 
 #video.title {
 	font-size: 20px;
 	font-family: Google Sans;
+	margin: unset;
+}
+
+#video-view-counts-and-date {
+	font-family: google sans;
+	margin-top: 2px;
+	font-size: 14px;
 }
 
 #video-title-failed.video-title-failed-to-load {
@@ -255,9 +278,19 @@ iframe {
 	justify-content: space-between;
 }
 
-#yt-channel {
+#yt-channel-container {
+	margin: 25px 0px;
+}
+
+#yt-channel, #yt-channel-failed-to-load {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+}
+
+#yt-channel-profile-picture-and-yt-channel-name, #yt-channel-image-and-channel-name-failed-to-load {
+	display: inherit;
+	align-items: inherit;
 }
 
 #yt-channel-link {
@@ -338,30 +371,12 @@ iframe {
 
 #all-buttons-container {
 	display: flex;
-	justify-content: flex-end;
-}
-
-#segmented-channel-owner-and-menu {
-	
-display: flex;
-
-	flex-direction: row;
-
-	justify-content: space-between;
-
-	flex-wrap: nowrap;
-
-	align-items: center;
-
-}
-
-#yt-channel-container {
-	width: 40%;
+	justify-content: flex-start;
 }
 
 #menu {
 	padding: 8px 0px 8px 0px;
-	width: 60%;
+	margin-bottom: 16px;
 }
 
 .menu-buttons {
@@ -542,6 +557,7 @@ p.vote-count {
 
 #description.content {
 	font-family: "Google Sans";
+	margin-bottom: 26px;
 }
 
 #expand-description-button {
