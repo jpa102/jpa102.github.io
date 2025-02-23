@@ -1,4 +1,4 @@
-﻿/*
+/*
 	==========================================================
 			Like and Dislike buttons
 	==========================================================
@@ -58,7 +58,7 @@ function showDescriptionButton() {
 }
 
 function moreButton() {
-	console.log("function not implemented. [ln:44 buttonlistener.js]");
+	console.log("function not implemented. [ln:60 buttonlistener.js]");
 }
 
 
@@ -78,4 +78,17 @@ setTimeout(function(){
 	document.querySelector("#total-dislike-counts-renderer").innerText = dislikeCount.toLocaleString();
 	document.querySelector("#total-like-percentage-renderer").innerText = roundedlikepercent;
 	document.querySelector("#total-average-rating-renderer").innerText = roundedRating;
+	
+	document.querySelector("#total-raw-like-counts-renderer").innerText = ryd_likeCount.toLocaleString();
+	document.querySelector("#total-raw-dislike-counts-renderer").innerText = ryd_dislikeCount.toLocaleString();
+	raw_oneStar = ryd_dislikeCount * 1;
+	raw_fiveStar = ryd_likeCount * 5;
+	raw_totalVotes = (ryd_dislikeCount + ryd_likeCount);
+	raw_totalStars = (raw_oneStar + raw_fiveStar);
+	raw_averageRating = (raw_totalStars / raw_totalVotes);
+	raw_roundedRating = raw_averageRating.toPrecision(3);
+	rawlikepercentage = ryd_likeCount + ryd_dislikeCount > 0 ? (ryd_likeCount / (ryd_likeCount + ryd_dislikeCount)) * 100 : 50;
+	rawroundedlikepercent = rawlikepercentage.toFixed(1);
+	document.querySelector("#raw-like-percentage-renderer").innerText = rawroundedlikepercent;
+	document.querySelector("#raw-average-rating-renderer").innerText = raw_roundedRating;
 }, 1150);
