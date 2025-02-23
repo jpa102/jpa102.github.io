@@ -71,6 +71,10 @@ function changeThemeDisplay(colorOption) {
 						fill: var(--white-color);
 					}
 					
+					#video-view-counts-and-date {
+						color: var(--gray-color) !important;
+					}
+					
 					#video-metadata.video-metadata-renderer {
 						color: var(--gray-color) !important;
 					}
@@ -184,6 +188,10 @@ function changeThemeDisplay(colorOption) {
 						color: var(--gray-color) !important;
 					}
 					
+					#expand-description-button:active {
+						background: rgba(255, 255, 255, 0.3) !important;
+					}
+					
 					.grouped-text-renderer {
 						color: var(--white-color);
 					}
@@ -208,8 +216,12 @@ function changeThemeDisplay(colorOption) {
 						background-color: rgba(255, 255, 255, 0.1);
 					}
 					
-					#border-bottom {
+					.border-bottom {
 						border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+					}
+					
+					#video-metadata-info-container > .border-bottom {
+						border-bottom: 1px solid rgb(48, 48, 48) !important;
 					}
 					
 					#comment-counts {
@@ -222,6 +234,18 @@ function changeThemeDisplay(colorOption) {
 					
 					#more-button {
 						color: var(--white-color);
+					}
+					
+					#more-settings-and-sign-in-button > #more-button:hover {
+						background: rgba(255, 255, 255, 0.2);
+					}
+					
+					#more-settings-and-sign-in-button > #sign-in-button {
+						border: 1px solid rgba(255, 255, 255, 0.2);
+					}
+					
+					#more-settings-and-sign-in-button > #sign-in-button:hover {
+						background: rgba(255, 255, 255, 0.2);
 					}
 					
 					#description-text {
