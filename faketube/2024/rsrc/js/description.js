@@ -29,7 +29,7 @@ function descriptionButton() {
 		// make it scroll to the top
 		window.scrollTo(
 			{ 
-				top: 169,
+				top: 0,
 				behavior: 'smooth'
 			}
 		);
