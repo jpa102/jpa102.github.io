@@ -42,7 +42,7 @@
 	width: -webkit-fill-available;
 	width: -moz-available;
 	margin-top: 20px;
-	margin-right: 10px;
+	margin-right: 7px;
 	padding-right: 20px;
 }
 
@@ -107,15 +107,15 @@ body {
 }
 
 #youtube-search-bar {
-	width: 64%;
+	max-width: 532px;
+	min-width: 339px;
+	width: -webkit-fill-available;
+	width: -moz-available;
 	display: flex;
-	flex-direction: row;
-	align-content: center;
 	justify-content: center;
-	align-items: center;
 }
 
-form > input[type=yt_text] {
+form > input[type=search] {
 	padding: 10px 16px;
 	width: 75%;
 	border-radius: 20px;
@@ -279,7 +279,7 @@ iframe {
 }
 
 #yt-channel-container {
-	margin: 25px 0px;
+	margin: 25px 0px 20px;
 }
 
 #yt-channel, #yt-channel-failed-to-load {
@@ -465,7 +465,7 @@ iframe {
 	background-color: var(--buttons-active-color);
 }
 
-#more-button {
+#more-button, #voice-search-button {
 	padding: 6px 6px;
 	margin-right: unset;
 	border-radius: 20px;
@@ -530,7 +530,7 @@ p.vote-count {
 	font-family: "Google Sans";
 }
 
-#video-statistics {
+.video-statistics {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -550,7 +550,7 @@ p.vote-count {
 
 #description-text {
 	padding: 6px 12px;
-	margin: 17px 0px;
+	margin: 18px 0px 10px 0px;
 	border-left: 4px solid var(--buttons-hover-color);
 	border-right: 4px solid var(--buttons-hover-color);
 }
@@ -560,11 +560,26 @@ p.vote-count {
 	margin-bottom: 26px;
 }
 
+#description-container {
+	font-family: google sans;
+}
+
 #expand-description-button {
 	margin: unset;
 	cursor: pointer;
 	font-size: 12px;
 	font-weight: 500;
+	padding: 2px 4px !important;
+	border-radius: 4px !important;
+	background: transparent;
+}
+
+#expand-description-button:hover {
+	background: transparent;
+}
+
+#expand-description-button:active {
+	background: var(--buttons-active-color) !important;
 }
 
 #comment-counts-and-sort-button-container {
@@ -593,7 +608,7 @@ p.vote-count {
 	margin: 4px 0px 26px 0px;
 }
 
-#border-bottom {
+.border-bottom {
 	border-bottom: 1px solid var(--buttons-active-color);
 	margin: 12px 0px;
 }
