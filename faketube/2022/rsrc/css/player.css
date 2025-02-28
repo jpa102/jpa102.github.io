@@ -95,21 +95,22 @@ body {
 	position: fixed;
 	z-index: 1;
 	width: -webkit-fill-available;
+	width: -moz-available;
 	background: linear-gradient(to right, var(--left-gradient-color) , var(--right-gradient-color));
 	padding: 6px 14px;
 	box-shadow: 0 2px 5px rgb(0 0 0 / 26%);
 }
 
 #youtube-search-bar {
-	width: 64%;
+	max-width: 532px;
+	min-width: 339px;
+	width: -webkit-fill-available;
+	width: -moz-available;
 	display: flex;
-	flex-direction: row;
-	align-content: center;
 	justify-content: center;
-	align-items: center;
 }
 
-form > input[type=yt_text] {
+form > input[type=search] {
 	padding: 10px 16px;
 	width: 75%;
 	border-radius: 20px;
@@ -129,10 +130,6 @@ form > button[type=submit]:hover {
 	cursor: pointer;
 }
 
-form > input[type=submit]:hover {
-	cursor: pointer;
-}
-
 #more-settings-and-sign-in-button {
 	display: flex;
 }
@@ -141,10 +138,26 @@ form > input[type=submit]:hover {
 	background: transparent;
 }
 
+#more-settings-and-sign-in-button > #more-button:hover {
+	background: var(--buttons-hover-color);
+}
+
+#more-settings-and-sign-in-button > #more-button:active {
+	background: var(--buttons-active-color);
+}
+
 #sign-in-button {
 	color: #065fd4;
 	background: transparent;
 	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#sign-in-button:hover {
+	background: var(--buttons-hover-color);
+}
+
+#sign-in-button:active {
+	background: var(--buttons-active-color);
 }
 
 .page {
@@ -166,10 +179,11 @@ form > input[type=submit]:hover {
 
 #sidebar-button:hover {
 	cursor: pointer;
+	background: var(--buttons-hover-color);
 }
 
 #sidebar-button:active {
-	background: var(--buttons-pressed-color);
+	background: var(--buttons-active-color);
 }
 
 .yt-icon {
@@ -213,6 +227,7 @@ form > input[type=submit]:hover {
 	min-width: var(--video-player-config);
 	aspect-ratio: 16 / 9;
 	width: -webkit-fill-available;
+	width: -moz-available;
 }
 
 iframe {
@@ -220,6 +235,7 @@ iframe {
 	min-height: var(--video-player-minimum-height);
 	aspect-ratio: 16 / 9;
 	width: -webkit-fill-available;
+	width: -moz-available;
 	border-radius: 16px;
 }
 
@@ -406,7 +422,7 @@ iframe {
 	background-color: var(--buttons-active-color);
 }
 
-#more-button {
+#more-button, #voice-search-button {
 	padding: 6px 6px;
 	margin-right: unset;
 	border-radius: 20px;
