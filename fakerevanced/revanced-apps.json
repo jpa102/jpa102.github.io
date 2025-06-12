@@ -9,7 +9,7 @@
 			"latestVersionUrl": "https://dummydomain",
 			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
 			"index": 0
-		}
+		},
 		{
 			"appName": "WARNING",
 			"androidPackageName": "counterfeit.warning.one",
@@ -19,7 +19,7 @@
 			"latestVersionUrl": "https://dummydomain.com",
 			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
 			"index": 1
-		}
+		},
 		{
 			"appName": "WARNING",
 			"androidPackageName": "counterfeit.warning.two",
@@ -29,7 +29,7 @@
 			"latestVersionUrl": "https://dummydomain.org",
 			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
 			"index": 2
-		}
+		},
 		{
 			"appName": "WARNING",
 			"androidPackageName": "counterfeit.warning.three",
@@ -39,7 +39,7 @@
 			"latestVersionUrl": "https://dummydomain.net",
 			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
 			"index": 3
-		}
+		},
 		{
 			"appName": "YouTube (ReVanced)",
 			"androidPackageName": "app.revanced.android.youtube",
