@@ -1,0 +1,2091 @@
+﻿/* ==UserStyle==
+@name           my theme for translate.google.com
+@namespace      github.com/openstyles/stylus
+@version        1.62
+@description    "my theme for google.com" userstyle, now ported to translate.google.com
+@author         John Patrick Adem
+@preprocessor   stylus
+
+@var select themeOption                  "Theme option" ["murasaki:Purple「紫」", "discord_mod:Discord", "pinku:Girly pink 「ピンク」", "sky:Bright sky", "navyblue:Navy blue", "sta_dark:Standard dark", "night:Night time", "blackhole:Black hole 「暗闇」"]
+@var checkbox disablebackgroundbox       "Disable the background in the right box" 0
+==/UserStyle== */
+
+@-moz-document regexp("^https:\\/\\/translate\\.google\\.com.+") {
+    if (disablebackgroundbox) {
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--main-body-color) !important;
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--main-body-color) !important;
+            border: 1px solid var(--main-border-color) !important;
+        }
+    }
+    
+    if (themeOption=="murasaki") {
+        :root {
+            --main-body-color: rgb(134, 26, 204);
+            --main-border-color: rgb(175, 62, 249);
+            --right-box-background: rgb(153, 45, 223);
+            --box-text-color: white;
+            --text-hover-background: rgb(168, 66, 234);
+            --gray-text-color: rgb(181, 181, 181);
+            --sidebar-color: rgb(153, 45, 223);
+            --sidebar-options-hover-color: rgb(168, 66, 234);
+            --settings-box-background: rgb(168, 66, 234);
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(255,255,255,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: white !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        svg {
+            color: var(--gray-text-color);
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        .ZihNHd:not(:disabled) .VfPpkd-kBDsod {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        .tQLSFf {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+    
+    if (themeOption=="discord_mod") {
+        :root {
+            --main-body-color: rgb(64 78 237);
+            --main-border-color: rgb(111 122 255);
+            --right-box-background: rgb(87, 100, 255);
+            --box-text-color: white;
+            --text-hover-background: rgb(137 146 255);
+            --gray-text-color: rgb(200, 200, 200);
+            --sidebar-color: rgb(111 122 255);
+            --sidebar-options-hover-color: rgb(137 146 255);
+            --settings-box-background: rgb(112, 123, 255)
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(255,255,255,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: white !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        svg {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        .ZihNHd:not(:disabled) .VfPpkd-kBDsod {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        .tQLSFf {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+    
+    if (themeOption=="pinku") {
+        :root {
+            --main-body-color: rgb(255, 94, 217);
+            --main-border-color: rgb(255, 143, 228);
+            --right-box-background: rgb(255, 121, 223);
+            --box-text-color: white;
+            --text-hover-background: rgb(255, 142, 228);
+            --gray-text-color: rgb(202, 202, 202);
+            --sidebar-color: rgb(255, 121, 223);
+            --sidebar-options-hover-color: rgb(255, 142, 228);
+            --settings-box-background: rgb(255, 142, 228);
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(255,255,255,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: white !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+    
+    if (themeOption=="sky") {
+        :root {
+            --main-body-color: rgb(54, 200, 255);
+            --main-border-color: rgb(119, 168, 217);
+            --right-box-background: rgb(125, 219, 255);
+            --box-text-color: black;
+            --text-hover-background: rgb(166 230 255);
+            --gray-text-color: rgb(132, 132, 132);
+            --sidebar-color: rgb(125, 219, 255);
+            --sidebar-options-hover-color: rgb(166 230 255);
+            --settings-box-background: rgb(125, 219, 255);
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(0,0,0,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: black !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        svg {
+            color: var(--gray-text-color);
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        .ZihNHd:not(:disabled) .VfPpkd-kBDsod {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        .tQLSFf {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+    
+    if (themeOption=="navyblue") {
+        :root {
+            --main-body-color: rgb(0, 6, 81);
+            --main-border-color: rgb(0, 14, 192);
+            --right-box-background: rgb(0, 9, 128);
+            --box-text-color: white;
+            --text-hover-background: rgb(1, 16, 224);
+            --gray-text-color: rgb(181, 181, 181);
+            --sidebar-color: rgb(0, 11, 162);
+            --sidebar-options-hover-color: rgb(0, 14, 202);
+            --settings-box-background: rgb(0, 11, 162);
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(255,255,255,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: white !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        svg {
+            color: var(--gray-text-color);
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        .ZihNHd:not(:disabled) .VfPpkd-kBDsod {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        .tQLSFf {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+    
+    if (themeOption=="sta_dark") {
+        :root {
+            --main-body-color: rgb(24, 26, 27);
+            --main-border-color: rgb(42, 42, 42);
+            --right-box-background: rgb(30, 32, 33);
+            --box-text-color: white;
+            --text-hover-background: rgb(64, 64, 64);
+            --gray-text-color: rgb(156, 156, 156);
+            --sidebar-color: rgb(24, 26, 27);
+            --sidebar-options-hover-color: rgb(38, 38, 38);
+            --settings-box-background: rgb(36, 36, 36);
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(255,255,255,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: white !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+    
+    if (themeOption=="night") {
+        :root {
+            --main-body-color: rgb(15, 15, 15);
+            --main-border-color: rgb(32, 32, 32);
+            --right-box-background: rgb(24, 24, 24);
+            --box-text-color: white;
+            --text-hover-background: rgb(64, 64, 64);
+            --gray-text-color: rgb(156, 156, 156);
+            --sidebar-color: rgb(18, 18, 18);
+            --sidebar-options-hover-color: rgb(26, 26, 26);
+            --settings-box-background: rgb(32 32 32);
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(255,255,255,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: white !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+    
+    if (themeOption=="blackhole") {
+        :root {
+            --main-body-color: black;
+            --main-border-color: rgb(32, 32, 32);
+            --right-box-background: rgb(20, 20, 20);
+            --box-text-color: white;
+            --text-hover-background: rgb(64, 64, 64);
+            --gray-text-color: rgb(156, 156, 156);
+            --sidebar-color: rgb(13, 13, 13);
+            --sidebar-options-hover-color: rgb(20, 20, 20);
+            --settings-box-background: rgb(32 32 32);
+        }
+        
+        /* ===================================== [topbar] ===================================== */
+        .gb_jd.gb_cd.gb_qd.gb_pd {
+            background: var(--main-body-color);
+        }
+        
+        /* branding */
+        .gb_zc .gb_Rd {
+            content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+        }
+        
+        /* bottom "border" */
+        .pGxpHc header {
+            background-color: var(--main-border-color) !important;
+        }
+        
+        /* ===================================== [sidebar] ===================================== */
+        .gb_Tc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .gb_Xc {
+            background-color: var(--sidebar-color);
+        }
+        
+        .GR2kEe:not(:last-child) {
+            border-bottom: 1px rgba(255,255,255,.12) solid;
+        }
+        
+        .yJWPX {
+            color: var(--gray-text-color) !important;
+        }
+        
+        .gb_6c {
+            background-color: var(--sidebar-color);
+            border-bottom: 1px solid var(--main-border-color);
+        }
+        
+        a.yJWPX:hover {
+            background-color: var(--sidebar-options-hover-color);
+            color: white !important;
+        }
+        
+        /* ===================================== [body] ===================================== */
+        .zQTmif.SSPGKf.kXN2zb.BIdYQ {
+            background: var(--main-body-color);
+        }
+        
+        .X4DQ0::after {
+            background: none;
+        }
+        
+        .VfPpkd-Jh9lGc {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf:not(:disabled) {
+            border: 1px solid var(--main-border-color) !important;
+        }
+        
+        .Rj2Mlf .VfPpkd-Jh9lGc::before, .Rj2Mlf .VfPpkd-Jh9lGc::after {
+            background-color: unset !important;
+        }
+        
+        .VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc {
+            border-color: var(--main-border-color) !important;
+        }
+        
+        .U0xwnf::after {
+            background: none;
+        }
+        
+        .gb_Pa svg, .gb_Tc svg, .gb_fd .gb_od, .gb_5c .gb_od {
+            color: var(--gray-text-color);
+        }
+        
+        /* 9 dots grid */
+        .EHzcec {
+            background: black !important;
+        }
+        
+        /* loading screen */
+        .OucA2b {
+            background: var(--right-box-background);
+        }
+        
+        .hbjvwb {
+            color: var(--gray-text-color);
+        }
+        
+        .OucA2b {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        /* feedback text */
+        .qgyq3b {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== icons? ===== */
+        /* microphone */
+        .jNeWz > div > div > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* speaker */
+        .m0Qfkd > span > button {
+            color: var(--gray-text-color) !important;
+        }
+        
+        /* ===== from settings button ===== */
+        .ThbbSd {
+            background: var(--settings-box-background);
+        }
+        
+        .pWIpbc {
+            color: var(--gray-text-color);
+        }
+        
+        .Jp7KKb {
+            color: var(--gray-text-color);
+        }
+        
+        .VfPpkd-V67aGc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [translate box] ===================================== */
+        .ccvoYb {
+            background: var(--main-body-color);
+        }
+        
+        .ryNqvb:hover {
+            background: var(--text-hover-background);
+        }
+        
+        .Xcmxjb.FwR7Pc {
+            background: var(--text-hover-background);
+            color: var(--box-text-color);
+        }
+        
+        /* ===== language selection =====  */
+        .bvzp8c.Tht3fc {
+            border: 1px solid var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie {
+            background: var(--right-box-background);
+        }
+        
+        .dykxn.MeCBDd.j33Gae {
+            background: var(--right-box-background);
+        }
+        
+        .bvzp8c.Tht3fc {
+            background: var(--right-box-background);
+        }
+        
+        .fMHXgc.qkH7ie > input {
+            background: var(--settings-box-background);
+        }
+        
+        .fMHXgc.qkH7ie  {
+            background: var(--settings-box-background) !important;
+        }
+        
+        .Llmcnf {
+            color: var(--gray-text-color);
+        }
+        
+        .qSb8Pe:hover {
+            background: var(--settings-box-background);
+        }
+        
+        .qSb8Pe.KKjvXb {
+            background: var(--settings-box-background);
+        }
+        
+        /* ===== left box ====== */
+        .rm1UF.dHeVVb.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .rm1UF.UnxENd {
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .er8xn {
+            color: var(--box-text-color);
+        }
+        
+        .ZTPlmc {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===== right box ===== */
+        .QcsUad.BDJ8fb.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .QcsUad.sMVRZe.wneUed {
+            background: var(--right-box-background);
+        }
+        
+        .lRu31 {
+            color: var(--box-text-color);
+        }
+        
+        .kO6q6e {
+            color: var(--gray-text-color);
+        }
+        
+        .FqSPb {
+            color: var(--gray-text-color);
+        }
+        
+        /* failed to load */
+        .y3G1Jb {
+            color: var(--gray-text-color);
+        }
+        
+        /* ===================================== [bottom] ===================================== */
+        .TcXXXb {
+            color: var(--gray-text-color);
+        }
+        
+        .ySES5 {
+            background-color: var(--main-body-color);
+            border: 1px solid var(--main-border-color);
+        }
+        
+        .ySES5:hover {
+            background-color: var(--main-border-color);
+        }
+        
+        .TYVfy {
+            color: var(--gray-text-color);
+        }
+    }
+}
