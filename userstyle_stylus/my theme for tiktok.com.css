@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           my theme for tiktok.com
 @namespace      github.com/openstyles/stylus
-@version        4.4.8
+@version        4.4.9
 @description    "my theme for google.com" userstyle, now ported to tiktok.com
 @author         John Patrick Adem
 
@@ -50,6 +50,8 @@
 	:root {
 		--dark-mode-background-light-color-level-one: rgba(255, 255, 255, 0.1);
 		--dark-mode-background-light-color-level-two: rgba(255, 255, 255, 0.2);
+		--light-mode-background-dark-color-level-one: rgba(0, 0, 0, 0.1);
+		--light-mode-background-dark-color-level-two: rgba(0, 0, 0, 0.2);
 	}
 
 	/* "black" (vanced) theme */
@@ -807,7 +809,7 @@
 	}
 
 	[data-tux-color-scheme^="dark"] .TUXSegmentedControl-item[data-active='true'] {
-		background: rgba(255, 255, 255, 0.1);
+		background: var(--dark-mode-background-light-color-level-one);
 	}
 
 	.css-13z12do-DivContainer {
@@ -823,7 +825,7 @@
 	}
 
 	[data-tux-color-scheme^="dark"] .css-59bnpx-Button-StyledFollowButtonTux {
-		background: rgba(255, 255, 255, 0.1);
+		background: var(--dark-mode-background-light-color-level-one);
 	}
 
 	[data-tux-color-scheme^="dark"] .css-59bnpx-Button-StyledFollowButtonTux:hover {
@@ -1129,6 +1131,14 @@
 		}
 
 		.css-1uqux2o-DivItemContainerV2 {
+			border-radius: 0px !important;
+		}
+
+		.css-pth5ka-DivPlayerContainer {
+			border-radius: 0px !important;
+		}
+
+		.css-8dx572-DivContainer-StyledDivContainerV2 {
 			border-radius: 0px !important;
 		}
 
@@ -1552,7 +1562,13 @@
 			replaces the ugly 0.8 transparent white color with a 0.1 black one
 		*/
 		.css-xq3sil-DivActionBarContainer {
-			background: rgba(0, 0, 0, 0.1);
+			background: var(--light-mode-background-dark-color-level-one);
+		}
+
+		/* options popup (3 dots button) */
+		.TUXPopover-popover {
+			background: var(--main-body-color-light);
+			border: 1px solid var(--main-body-color-lighter);
 		}
 
 		/* searchbox background */
@@ -1561,10 +1577,15 @@
 		}
 
 		[data-tux-color-scheme^="light"] .css-1d3fmhu-StyledTUXSearchButton.TUXButton.TUXButton:hover {
-			background: rgba(0, 0, 0, 0.1);
+			background: var(--light-mode-background-dark-color-level-one);
 		}
 
 		.css-1b2c53y-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		/* if a user leaves the searchbox but still has text inside the preview */
+		.css-1u35a8q-StyledTUXSearchButton.TUXButton.TUXButton {
 			background: rgba(0, 0, 0, 0.05);
 		}
 
@@ -1585,6 +1606,20 @@
 			background: var(--main-body-color-light);
 		}
 
+		/* filter tabs */
+		.css-teupm2-DivTabsContainer {
+			background: var(--main-body-color);
+		}
+
+		/* get the app button (bottom right, seen on search page) */
+		.css-ytq1cb-ButtonAtBottom, .css-1xdkanj-DivCloseWrapper {
+			background: var(--light-mode-background-dark-color-level-one);
+		}
+
+		/* login popup */
+		.css-pquamt-DivPageWrapper {
+			background: var(--main-body-color);
+		}
 
 		/* ===== profile page ===== */
 		.css-1yczxwx-DivBodyContainer {
@@ -1604,6 +1639,33 @@
 		}
 
 		.css-3kukfb-DivContentContainer, .css-1f4dsax-DivNavScrollContainer {
+			background: var(--main-body-color-light);
+		}
+
+		/* ===== watch page (tiktok.com/@<username>/video/<id>) ===== */
+		/*
+			full title preview card (3 dots button)
+
+			can someone say this preview is shitty?
+			(current preview method is indeed shitty at the moment)
+
+			also, why the many gradients? so fucking funny
+		*/
+		.css-ay8lx4-DivCardScrollContainer,
+		.css-og6awc-DivCardWrapper,
+		.css-1ukohjn-DivVideoInfoCardContainer::before,
+		.css-1mb742o-DivStyledTopInfoCardMask,
+		.css-1ukohjn-DivVideoInfoCardContainer::after,
+		.css-m92vf3-DivStyledBottomInfoCardMask {
+			background: var(--main-body-color-light);
+		}
+
+		.css-6sto0k-DivInfoCardArrow {
+			border-bottom-color: var(--main-body-color-light);
+		}
+
+		/* keyboard shortcuts */
+		.css-skgaxq-DivKeyboardShortcutContainer {
 			background: var(--main-body-color-light);
 		}
 
@@ -1628,11 +1690,11 @@
 			replaces the ugly 0.8 transparent black color with a 0.1 white one
 		*/
 		[data-tux-color-scheme^="dark"] .css-bcj5ai-DivActionBarContainer {
-			background: rgba(255, 255, 255, 0.1);
+			background: var(--dark-mode-background-light-color-level-one);
 		}
 
 		.tiktok-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton {
-			background: rgba(255, 255, 255, 0.1);
+			background: var(--dark-mode-background-light-color-level-one);
 		}
 
 		.tiktok-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton:hover {
@@ -1654,7 +1716,17 @@
 
 		.css-1z50a0-DivBtn, .tiktok-1z50a0-DivBtn, .css-1pi6qhe-DivArrowIconContainer,
 		.tiktok-1pi6qhe-DivArrowIconContainer, .tiktok-1eshtii-DivCloseWrapper {
-			background: rgba(255, 255, 255, 0.1);
+			background: var(--dark-mode-background-light-color-level-one);
+		}
+
+		/* filter tabs */
+		.css-1qhga5t-DivTabsContainer {
+			background: var(--main-body-color);
+		}
+
+		/* get the app button (bottom right, seen on search page) */
+		.css-6nybh2-ButtonAtBottom, .css-1qskxth-DivCloseWrapper {
+			background: var(--dark-mode-background-light-color-level-one);
 		}
 
 		.tiktok-d9ly1j-DivShareLayoutBase-StyledShareLayoutV2-ExploreLayout {
@@ -1803,7 +1875,7 @@
 		}
 
 		.css-gwrpu3-StyledTUXSearchButton.TUXButton.TUXButton {
-			background: rgba(0, 0, 0, 0.1);
+			background: var(--light-mode-background-dark-color-level-one);
 		}
 
 		/* ===== watch page (tiktok.com/@<username>/video/<id>) ===== */
@@ -1817,6 +1889,29 @@
 
 		[data-tux-color-scheme^="dark"] .css-90v5ry-DivLoginBar {
 			background: rgba(255, 255, 255, 0.15);
+		}
+
+		/*
+			full title preview card (3 dots button)
+
+			can someone say this preview is shitty?
+			(current preview method is indeed shitty at the moment)
+
+			also, why the many gradients? so fucking funny
+		*/
+		.css-1nayj3c-DivCardScrollContainer,
+		.css-17ye3jb-DivStyledTopInfoCardMask
+		.css-99f0n5-DivStyledBottomInfoCardMask {
+			background: var(--main-body-color-light);
+		}
+
+		.css-d1vt1x-DivInfoCardArrow {
+			border-bottom-color: var(--main-body-color-light);
+		}
+
+		/* keyboard shortcuts */
+		.css-1gt7x97-DivKeyboardShortcutContainer {
+			background: var(--main-body-color-light);
 		}
 	}
 }
