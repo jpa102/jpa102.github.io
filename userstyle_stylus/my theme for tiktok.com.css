@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           my theme for tiktok.com
 @namespace      github.com/openstyles/stylus
-@version        4.4.9
+@version        4.5.0
 @description    "my theme for google.com" userstyle, now ported to tiktok.com
 @author         John Patrick Adem
 
@@ -1589,7 +1589,7 @@
 			background: rgba(0, 0, 0, 0.05);
 		}
 
-		.css-flkb7b-DivSideNavPlaceholderContainer {
+		.css-flkb7b-DivSideNavPlaceholderContainer, .css-rttqv-DivSideNavPlaceholderContainer {
 			background: var(--main-body-color);
 		}
 
@@ -1701,8 +1701,13 @@
 			background: rgba(255, 255, 255, 0.2);
 		}
 
-		[data-tux-color-scheme^="dark"] .css-a4smml-BaseCommentContainerStyles-SectionCommentSidebarContainer {
+		[data-tux-color-scheme^="dark"] .css-a4smml-BaseCommentContainerStyles-SectionCommentSidebarContainer,
+		.css-e9fs8h-BaseCommentContainerStyles-SectionCommentSidebarContainer {
 			background: var(--main-body-color-light);
+		}
+
+		.css-1ppreyt-DivShareLayoutBase-StyledShareLayoutV2 {
+			background: var(--main-body-color);
 		}
 
 		/* explore page */
@@ -1889,6 +1894,10 @@
 
 		[data-tux-color-scheme^="dark"] .css-90v5ry-DivLoginBar {
 			background: rgba(255, 255, 255, 0.15);
+		}
+
+        .css-du7vid-BaseBodyContainer, .css-1e8aoaa-BaseBodyContainer {
+			background: var(--main-body-color);
 		}
 
 		/*
