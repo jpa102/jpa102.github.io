@@ -1,12 +1,12 @@
 /* ==UserStyle==
 @name           my theme for google.com
 @namespace      github.com/openstyles/stylus
-@version        3.0.0
+@version        3.1.0
 @description    allows you to mostly change the colors of google.com pages with just few clicks
 @author         John Patrick Adem
 @preprocessor   stylus
 
-@var select colorOption                              "select theme" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme"]
+@var select colorOption                              "select theme" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme", "stu48_textcolor:_unused"]
 @var select mobileCompatibilityView                  "mobile compatibility view" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme"]
 @var checkbox hoverMenusUnderline                    "[deprecated] menu hover - underlines (2022+ layout)" 0
 @var checkbox hoverMenusUnderlineExperimental        "[optional] menu hover - underlines (2024+ layout)" 0
@@ -1302,6 +1302,57 @@
 		}
 	}
 
+	/* ----- unused ----- */
+	if (colorOption=="stu48_textcolor") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(5, 28, 134);
+			--main-border-one: 1px solid rgb(0, 14, 192);
+			--main-border-two: rgb(0, 14, 192);
+			--main-border-three: 1px solid rgb(0, 14, 192);
+			--main-border-four: rgb(0, 14, 192);
+			--main-border-title-icon: 1px solid rgb(16, 34, 255);
+			--border-in-between-button: rgb(0, 14, 192);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26, 115, 232);
+			--text-in-links: rgb(94, 163, 255);
+			--link-has-been-visited: rgb(185, 77, 255)
+			--title-text-color: white;
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164 164 164);
+			--red-text-color: #ff7165;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(8, 36, 168);
+			--main-searchbox-body-color-hover: rgb(11, 44, 202);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 9px 2px rgba(12, 21, 141, .42);
+			--secondary-searchbox-body-color: rgb(8, 36, 168);
+			--secondary-searchbox-body-color-hover: rgb(11, 44, 202);
+			--secondary-searchbox-border-color: 1px solid rgb(8, 36, 168);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(12, 21, 141, .42);
+			--searchbox-border-left-color: 1px solid rgb(77, 77, 77);
+			--searchbox-border-top-color: 1px solid rgb(77, 77, 77);
+			--stupid-overview-border-color: 1px solid rgb(8, 36, 168);
+			--stupid-overview-border-color-hover: rgb(11, 44, 202);
+			--top-bar-color: rgb(5, 28, 134);
+			--top-bar-border-bottom: 1px solid rgb(0, 10, 132);
+			--selection-color: rgb(48, 58, 200);
+			--searchbox-icons-color: rgb(164 164 164);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
 	/* ----- Navy blue ----- */
 	if (colorOption=="navyblue") {
 		/*
@@ -1675,7 +1726,7 @@
 	/* +++ ============================= [hide the AI Overview section (experimental)] ============================= */
 
 	if (hideAiOverviewSection) {
-		.q8sySb {
+		.q8sySb, #eKIzJc {
 			display: none;
 		}
 	}
@@ -1840,6 +1891,10 @@
 
 		/* i forgor what is this for, ごめん！ */
 		.zqrO0 .niO4u {
+			transition: .16s ease-in-out;
+		}
+
+		.jEYSNd {
 			transition: .16s ease-in-out;
 		}
 
@@ -2254,6 +2309,18 @@
 			color: var(--selection-color);
 		}
 
+		/* what seems like an experimental navbar - region */
+		div > a > .mXwfNd:hover {
+			.R1QWuf {
+				border-bottom: 3px solid var(--white-text-color);
+			}
+		}
+
+		.mVH5Fc:hover {
+            border-bottom: 3px solid var(--white-text-color);
+			padding-bottom: 8px;
+		}
+
 		/* fix the tool "button" */
 		.BaegVc.YmvwI {
 			padding: 0px 10px 0px 10px !important;
@@ -2385,6 +2452,10 @@
 
 	if (colorOption=="__experimental_two" && hoverMenusUnderlineExperimental) {
 		hmiue_forLightMode();
+	}
+
+	if (colorOption=="stu48_textcolor" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
 	}
 
 	/* ============== Hovering in menus (experimental 2024 layout) shows the underline ============== */
@@ -2587,19 +2658,6 @@
 	}
 
 	asib_forDarkMode() {
-		.gb_Aa.gb_kd.gb_Md.gb_le {
-			background: var(--main-searchbox-body-color);
-		}
-
-		.gb_Aa.gb_kd.gb_Md.gb_le:hover {
-			background: var(--main-searchbox-body-color-hover);
-		}
-
-		.gb_Aa.gb_kd.gb_Md.gb_le:focus {
-			background: var(--text-in-active-menu) !important;
-		}
-
-		/* experimental */
 		.gb_A {
 			background: var(--main-searchbox-body-color) !important;
 		}
@@ -2611,6 +2669,14 @@
 		.gb_A:focus {
 			background: var(--text-in-active-menu) !important;
 		}
+
+        /* for the text inside the sign-in button */
+		.gb_T {
+			color: var(--white-text-color);
+		}
+
+		/* experimental */
+		
 
 		/* for google.com page */
 		a.gb_Ta {
@@ -2744,6 +2810,10 @@
 
 	if (colorOption=="__experimental_two" && adaptSignInButtonToTheme) {
 		asib_forLightMode();
+	}
+
+	if (colorOption=="stu48_textcolor" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
 	}
 
 	/* ============== Adapt Sign In button's color to specified theme ============== */
@@ -3949,6 +4019,32 @@
 			background-color: var(--main-body-color);
 		}
 
+		/* what seems like an experimental navbar */
+		.Fgyi2e.rZj61.caNvfd {
+			background-color: var(--main-body-color);
+		}
+
+		.wZQcA .BO2cCe {
+			border-bottom: var(--main-border-one);
+		}
+
+		/* tools (popup) */
+		.vH6rvf {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.btCOFd.XYRUld {
+			background: var(--main-border-four);
+		}
+
+		.XYRUld {
+			border-top: var(--main-border-one);
+		}
+
+		.qd6zO {
+			color: var(--menu-text-color);
+		}
+
 		/* EXPERIMENTAL */
 		.CvDJxb {
 			background-color: var(--main-body-color);
@@ -4026,6 +4122,11 @@
 
 		.tw-bilingual-pos {
 			color: var(--mildlygray-text-color);
+		}
+
+		/* people also search for */
+		.FalWJb {
+			background: var(--main-body-color);
 		}
 
 		/* ai overview - bottom gradient */
@@ -4442,6 +4543,10 @@
 			box-shadow: var(--main-searchbox-box-shadow-hover);
 		}
 
+		.emcav .RNNXgb:hover, .sbfc.emcav .RNNXgb, .BgPPrc .RNNXgb:hover {
+			background-color: var(--main-searchbox-body-color);
+		}
+
 		/*
 		.RNNXgb:hover, .sbfc .RNNXgb {
 			background-color: #393939;
@@ -4524,6 +4629,46 @@
 		/* /searchbox */
 
 		/* ================================= border colors ================================= */
+
+		.Q28AE {
+			border-right: var(--main-border-one);
+		}
+
+		.umRolb {
+			border-bottom-color: var(--main-border-two);
+		}
+
+		hr {
+			border-bottom: var(--main-border-one);
+		}
+
+		.kVs2Uc {
+			border-left: var(--main-border-one);
+		}
+
+		.MmyPhf {
+			border-top: var(--main-border-one);
+		}
+
+		.CeIyHb.WY0eLb {
+			border-left: var(--main-border-one);
+		}
+
+		.jEYSNd {
+			border: var(--main-border-one);
+		}
+
+		.sHEJob {
+			border-top: var(--main-border-one);
+		}
+
+		#rhs .pCnXsf, #rhs .A6K0A .pCnXsf {
+			border-top: var(--main-border-one);
+		}
+
+		.jOAHU {
+			border-left: var(--main-border-one);
+		}
 
 		.wDYxhc > .PZPZlf.hb8SAc.IFvyDb > div[jscontroller^=GCSbhd] {
 			border-bottom: var(--main-border-one) !important;
@@ -5226,7 +5371,7 @@
 
 		.ZYHQ7e {
 			color: var(--normal-text-color);
-			background-color: var(--main-body-color);
+			background-color: var(--main-body-color-light);
 		}
 
 		.OwbDmd {
@@ -5568,6 +5713,10 @@
 		}
 
 		/* ================================= miscellaneous ================================= */
+
+		.bCwlI.T9Wh5 g-fab, .VdehBf.T9Wh5 g-fab {
+			background-color: var(--main-searchbox-body-color) !important;
+		}
 
 		.GLcBOb .qCqYBc {
 			background-color: var(--main-body-color);
@@ -6539,6 +6688,10 @@
 
 	if (colorOption=="__experimental_two") {
 		lightModeCSS();
+	}
+
+	if (colorOption=="stu48_textcolor") {
+		darkModeCSS();
 	}
 
 	/* ----- custom theme option ----- */
