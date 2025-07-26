@@ -88,6 +88,11 @@ body {
 	background: rgb(249, 249, 249);
 }
 
+#more-settings-and-sign-in-button > #more-button, #more-settings-and-sign-in-button > #faketube-apps-button {
+	padding: 6px;
+	border-radius: 20px;
+}
+
 #topbar {
 	display: flex;
 	flex-direction: row;
@@ -109,7 +114,7 @@ body {
 	align-items: center;
 	padding: 6px 14px;
 	border: 1px solid transparent;
-	background-color: var(--buttons-color);
+	background-color: transparent;
 	border-radius: 2px;
 	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 	margin-left: 10px;
@@ -117,6 +122,21 @@ body {
 
 .topbar-buttons:hover {
 	cursor: pointer;
+}
+
+.topbar-buttons:active {
+	border: 1px solid transparent;
+	background-color: rgba(0, 0, 0, 0.1);
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+#sign-in-button {
+	color: #065fd4;
+	border: 1px solid #065fd4;
+}
+
+#sign-in-text-renderer {
+	color: #065fd4;
 }
 
 .button-text-style {
@@ -158,21 +178,6 @@ form > input[type=submit]:hover {
 
 #more-settings-and-sign-in-button {
 	display: flex;
-}
-
-#more-settings-and-sign-in-button > #more-button, #more-settings-and-sign-in-button > #faketube-apps-button {
-	background: transparent;
-	padding: 6px;
-}
-
-#sign-in-button {
-	color: #065fd4;
-	background: transparent;
-	border: 1px solid #065fd4;
-}
-
-#sign-in-text-renderer {
-	color: #065fd4;
 }
 
 .page {
@@ -245,11 +250,13 @@ iframe {
 }
 
 #video.title {
+	margin-bottom: 0em;
 	font-size: 20px;
 	font-family: Google Sans;
 }
 
 #video-title-failed.video-title-failed-to-load {
+	margin-bottom: 0em;
 	font-size: 20px;
 	font-family: Google Sans;
 }
@@ -431,6 +438,7 @@ iframe {
 }
 
 #video-metadata.video-metadata-renderer {
+	margin-top: 0.4em;
 	font-family: Google Sans;
 }
 
@@ -449,6 +457,10 @@ p.vote-count {
 
 #failed-to-load-views-and-date {
 	font-family: "Google Sans";
+}
+
+#failed-to-load-views-and-date > p {
+	margin-top: 0.4em;
 }
 
 #video-vote-counts {
@@ -564,12 +576,15 @@ p.vote-count {
 	margin-top: 37px;
 	padding-top: 6px;
 	padding-bottom: 14px;
-	cursor: help;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
 #container.like-dislike-info-renderer {
 	height: 2px;
 	background-color: #909090;
+	width: 100%;
 }
 
 #like-bar.like-dislike-info-renderer {
@@ -579,29 +594,34 @@ p.vote-count {
 	transition: width 0.3s;
 }
 
+tooltip-bar {
+	width: max-content;
+	display: block;
+	margin-top: -64px;
+}
+
 #tooltip {
 	position: relative;
 	display: inline-block;
-	border-bottom: 1px dotted black;
+	/* border-bottom: 1px dotted black; */
 }
 
 #tooltip .tooltiptext {
-	visibility: hidden;
-	top: 12px;
-	left: -60px;
-	margin-left: -180px;
+	display: none;
 	background-color: #616161;
 	font-family: "Google Sans";
 	-webkit-font-smoothing: antialiased;
 	color: #fff;
-	text-align: center;
 	border-radius: 2px;
 	opacity: 86%;
-	padding: 8px;
-	
-	/* Position the tooltip */
-	position: absolute;
-	z-index: 1;
+	padding: 8px 12px;
+	font-size: 0.8em;
+}
+
+ratio-bar-renderer:hover {
+	#tooltip .tooltiptext {
+		display: block;
+	}
 }
 
 #sentiment.like-dislike-info-renderer:hover .tooltiptext {
