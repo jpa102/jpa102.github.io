@@ -1,7 +1,7 @@
-﻿/* ==UserStyle==
+/* ==UserStyle==
 @name           custom YouTube theme
 @namespace      github.com/openstyles/stylus
-@version        1.95
+@version        1.96
 @description    apply your own preferred theme color to YouTube + extra features!
 @author         John Patrick Adem
 
@@ -743,6 +743,10 @@
 		background: var(--main-body-color-lighter);
 		border-color: transparent !important;
 	}
+    
+    #results.ytcp-omnisearch {
+        background: var(--main-body-color);
+    }
 
 	#paper-list.ytcp-text-menu {
 		background: var(--main-body-color-light);
@@ -763,6 +767,22 @@
 	.all-pages.ytcp-app {
 		background: var(--main-body-color);
 	}
+    
+    #dialog.ytcp-filter-dialog {
+        background: var(--main-body-color-light);
+    }
+    
+    .header.ytcp-filter-dialog:not(:empty) {
+        border-bottom: 1px solid var(--ytcp-line-divider);
+    }
+    
+    .controls.ytcp-filter-dialog:not(:empty) {
+        border-top: 1px solid var(--ytcp-line-divider);
+    }
+    
+    #metrics-table-title-collapsable.yta-entity-snapshot {
+        background: var(--main-body-color-light);
+    }
 
 	ytcp-primary-action-bar.ytcp-content-section {
 		background: var(--main-body-color);
@@ -787,6 +807,11 @@
 	#row-container.ytcp-video-row, #row-container.ytcp-video-row .floating-column.ytcp-video-row {
 		background: var(--main-body-color);
 	}
+    
+    ytcp-paper-tooltip-placeholder[type=explanatory] #tooltip.ytcp-paper-tooltip-placeholder,
+    ytcp-paper-tooltip-placeholder[type=custom-content] #tooltip.ytcp-paper-tooltip-placeholder {
+        background: var(--main-body-color-light);
+    }
 
 	/* currently broken */
 	#row-container.ytcp-video-row:hover, #row-container.ytcp-video-row:hover .floating-column.ytcp-video-row:hover {
@@ -843,6 +868,10 @@
 	ytcp-comment {
 		background: var(--main-body-color);
 	}
+    
+    #more.ytcp-comment {
+        background: var(--main-body-color);
+    }
 
 	tp-yt-paper-icon-item.iron-selected.ytcp-navigation-drawer {
 		background: var(--main-body-color-light);
@@ -953,6 +982,26 @@
 	tp-yt-paper-item.iron-selected.yta-key-metric-card {
 		background: var(--main-body-color-lighter);
 	}
+    
+    #row-container.ytgn-video-row, #row-container.ytgn-video-row .floating-column.ytgn-video-row {
+        background: var(--main-body-color);
+    }
+    
+    #row-container.ytgn-video-row:hover, #row-container.ytgn-video-row .floating-column.ytgn-video-row:hover {
+        background: var(--main-body-color-light);
+    }
+    
+    #footer-container.ytgn-channel-translations-list {
+        background: var(--main-body-color);
+    }
+    
+    .sticky.ytcr-management-section {
+        background: var(--main-body-color);
+    }
+    
+    .tiered-prepartner-double-column.ytpp-signup-overview {
+        background: var(--main-body-color);
+    }
 
 	/*
 		================= [old layout tweaks] =================
