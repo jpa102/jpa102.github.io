@@ -1,5 +1,5 @@
 /*
-	style.css for youkoso.html
+	style.css for index.html ( /faketube directory )
 */
 
 @font-face {
@@ -9,42 +9,39 @@
 
 :root {
 	--main-body-color: #36c8ff;
+	--padding-one: 25px;
+}
+
+* {
+	font-family: google sans;
+}
+
+code {
+	font-family: monospace !important;
 }
 
 body {
 	background: var(--main-body-color);
-	padding: 25px;
+	padding: var(--padding-one);
 }
 
 #hey-where-did-you-get-that-body-from {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 25px;
+	padding: var(--padding-one);
 	border-radius: 20px;
-	background: rgba(0,0,0,0.08);
+	background: rgba(0, 0, 0, 0.08);
 }
 
-#h1-title {
-	font-family: google sans;
-}
-
-#p-title {
-	font-family: google sans;
-}
-
-#p-text {
+.p-text {
 	margin: 10px 0px;
-	font-family: google sans;
 }
 
 .links-container {
 	display: flex;
 	flex-direction: column;
-}
-
-#links-content-separator {
-	margin: 6px 0px;
+	gap: 20px;
 }
 
 #links-content-separator-two {
@@ -55,5 +52,5 @@ body {
 	padding: 8px 16px;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 20px;
+	text-decoration: none;
 }
-
