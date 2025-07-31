@@ -7,10 +7,10 @@ var __faketube_aplydbgimdtly = 2100;
 var __faketube_aplyfavstebgclr = 301;
 var __faketube_sttrdptydwnldr = 2900;
 var __faketube_stlkedlkecnts = 1450;
-var __faketube_stvwsndte = 2050;
+var __faketube_stvwsndte = 3050;
 var __faketube_stvtecnts = 1150;
-var __faketube_stytchnlifo = 2000;
-var __faketube_injtplyr = 1500;
+var __faketube_stytchnlifo = 4000;
+var __faketube_injtplyr = 4500;
 
 
 
