@@ -389,7 +389,7 @@ if (faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.enable_real_tim
 	setInterval(function() {
 		if (ryd_i < faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.ryd_request_loop_limit) {
 			ryd_i++;
-			RefreshRydDataWithVideoId(ytVideoId);
+			RefreshRydDataWithVideoId(global_data.yt.videoId);
 		}
 	}, faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.real_time_data_timer);
 }
@@ -436,7 +436,7 @@ if (faketube.config_.EXPERIMENT_FLAGS.match_older_16_xx_xx_version == true) {
 
 //	make the embedded youtube player's aspect ratio look 9 / 16 for youtube shorts (it will fetch the video id's metadata)
 if (faketube.config_.EXPERIMENT_FLAGS.video_player_is_youtube_shorts == true) {
-	metadataurl = "https://raw.githubusercontent.com/jpa102/jpa102.github.io/main/faketube/metadata/" + v + ".json";
+	metadataurl = "https://raw.githubusercontent.com/jpa102/jpa102.github.io/main/faketube/metadata/" + global_data.v + ".json";
 	UrlExists(metadataurl);
 	if (urldoesexists == true) {
 		fetch(
@@ -450,16 +450,19 @@ if (faketube.config_.EXPERIMENT_FLAGS.video_player_is_youtube_shorts == true) {
 								"beforeend",
 								`
 									<style id="youtube-shorts-styled-embeddded-player" type="text/css">
+										/*
+											instead of 9 / 16, 9 / 13 will be used for the aspect ratio
+										*/
 										#video-container {
-											aspect-ratio: 9 / 16 !important;
+											aspect-ratio: 9 / 13 !important;
 										}
 										
 										#video-player {
-											aspect-ratio: 9 / 16 !important;
+											aspect-ratio: 9 / 13 !important;
 										}
 										
 										iframe {
-											aspect-ratio: 9 / 16 !important;
+											aspect-ratio: 9 / 13 !important;
 										}
 									</style>
 								`
