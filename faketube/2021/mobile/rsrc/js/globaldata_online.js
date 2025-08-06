@@ -1,17 +1,17 @@
-﻿// globaldata_online.js
+// globaldata_online.js
 // this file contains code that requires internet connection
 
 //	INTERNAL VARIABLES
 //	(numbers are in milliseconds)
 var __faketube_asnvltleryddta = 1200;
-var __faketube_aplydbgimdtly = 3100;
+var __faketube_aplydbgimdtly = 2100;
 var __faketube_aplyfavstebgclr = 301;
-var __faketube_sttrdptydwnldr = 3900;
-var __faketube_stlkedlkecnts = 3450;
-var __faketube_stvwsndte = 3777;
-var __faketube_stvtecnts = 3550;
-var __faketube_stytchnlifo = 3400;
-var __faketube_injtplyr = 3500;
+var __faketube_sttrdptydwnldr = 2900;
+var __faketube_stlkedlkecnts = 2450;
+var __faketube_stvwsndte = 2777;
+var __faketube_stvtecnts = 2550;
+var __faketube_stytchnlifo = 2400;
+var __faketube_injtplyr = 2500;
 
 /*
 	main object for global data
@@ -35,6 +35,8 @@ var global_data = {
 		roundedlikepercentage: 0,
 		LikesFromRYD: "0",
 		DislikesFromRYD: "0",
+		rawLikes: 0,
+		rawDislikes: 0,
 		formattedlikes: "0",
 		formatteddislikes: "0",
 		unformattedviews: 0,
@@ -117,6 +119,8 @@ try {
 
 					global_data.ryd_data.likeCount = likes;
 					global_data.ryd_data.dislikeCount = dislikes;
+					global_data.ryd_data.rawLikes = rawLikes;
+					global_data.ryd_data.rawDislikes = rawDislikes;
 
 					// get averageRating from likes and dislikes ("star ratings" that was present in 2008 somewhere)
 					global_data.ryd_data.calcRating.oneStar = dislikes * 1;
