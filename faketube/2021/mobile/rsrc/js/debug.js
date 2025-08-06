@@ -1,4 +1,4 @@
-﻿/*
+/*
 	debug.js
 	
 	this file contains hidden functions that can be executed
@@ -68,6 +68,8 @@ function RefreshRydDataWithVideoId(id) {
 
 					global_data.ryd_data.likeCount = likes;
 					global_data.ryd_data.dislikeCount = dislikes;
+					global_data.ryd_data.rawLikes = rawLikes;
+					global_data.ryd_data.rawDislikes = rawDislikes;
 
 					// get averageRating from likes and dislikes ("star ratings" that was present in 2008 somewhere)
 					global_data.ryd_data.calcRating.oneStar = dislikes * 1;
