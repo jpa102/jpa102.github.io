@@ -1,0 +1,56 @@
+/*
+	style.css for index.html ( /faketube directory )
+*/
+
+@font-face {
+	font-family: "Google Sans";
+	src: url("https://jpa102.github.io/youkoso_rsrc/google-sans_regular.ttf");
+}
+
+:root {
+	--main-body-color: #36c8ff;
+	--padding-one: 25px;
+}
+
+* {
+	font-family: google sans;
+}
+
+code {
+	font-family: monospace !important;
+}
+
+body {
+	background: var(--main-body-color);
+	padding: var(--padding-one);
+}
+
+#hey-where-did-you-get-that-body-from {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: var(--padding-one);
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.08);
+}
+
+.p-text {
+	margin: 10px 0px;
+}
+
+.links-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+#links-content-separator-two {
+	margin: 12px 0px;
+}
+
+.button-styled-container {
+	padding: 8px 16px;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 20px;
+	text-decoration: none;
+}

@@ -1,0 +1,647 @@
+/*
+	this made my head hurt trying to mimic the way YouTube handles it
+*/
+
+:root {
+	--video-player-config: 820px;
+	--video-player-minimum-height: 480px;
+	--left-gradient-color: #d7d6d6;
+	--right-gradient-color: #00f3ff;
+	--sidebar-background-color: white;
+	--background-dark-color: rgba(0, 0, 0, 0.08);
+	--background-slightly-darker-color: rgba(0,0,0,0.12);
+	--buttons-color: rgba(0, 0, 0, 0.05);
+	--buttons-hover-color: rgba(0, 0, 0, 0.1);
+	--buttons-active-color: rgba(0, 0, 0, 0.2);
+}
+
+body {
+	background: rgb(241, 241, 241);
+}
+
+/*
+	For the main body container
+*/
+#main-body-page {
+	margin: 10px 20px;
+}
+
+/*
+	++++++++++++++++ watch page and recommendations ++++++++++++++++
+*/
+#watch-page-and-recommendations-container {
+	box-sizing: border-box;
+	display: flex;
+	position: relative;
+	margin: 0px 20px 0px 20px;
+}
+
+#watch-page.page-container {
+	min-width: var(--video-player-config);
+	width: -webkit-fill-available;
+	margin-right: 10px;
+}
+
+#video-metadata-info-container {
+	margin-top: 4px;
+}
+
+#recommendations-page {
+	min-width: 25%;
+	width: 40%;
+}
+
+/*
+	---------------- watch page and recommendations ----------------
+*/
+
+body {
+	margin: unset;
+}
+
+#topbar {
+	/* position: fixed; */
+	width: -webkit-fill-available;
+	background: linear-gradient(to right, var(--left-gradient-color) , var(--right-gradient-color));
+	padding: 3.5px 0px;
+	box-shadow: 0 2px 5px rgb(0 0 0 / 26%);
+}
+
+.page {
+	padding: 69px 0px 0px 0px;
+	transition: ease-in-out .3s;
+}
+
+#sidebar-button-and-app-name-title {
+	display: flex;
+}
+
+#sidebar-button {
+	margin-left: 14px;
+	background: none;
+	border: 0px;
+	border-radius: 40px;
+	transition: ease-in-out .1s;
+}
+
+#sidebar-button:hover {
+	cursor: pointer;
+}
+
+#sidebar-button:active {
+	background: var(--buttons-pressed-color);
+}
+
+.sidebar-icon {
+	width: 24px;
+	height: 24px;
+	/* fill: white; */
+}
+
+#app-title-text {
+	font-size: 20px;
+	/* color: white; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-family: Google Sans;
+}
+
+.action-buttons {
+	padding: 8px 10px;
+	margin: 0px 6px;
+	border-radius: 20px;
+	border: unset;
+	background: var(--background-dark-color);
+	transition: ease-in-out .3s;
+}
+
+.action-buttons:hover {
+	cursor: pointer;
+}
+
+.action-buttons:active {
+	background: var(--background-slightly-darker-color) !important;
+	transition: ease-in-out .3s;
+}
+
+#video-container {
+	aspect-ratio: 16 / 9;
+}
+
+#video-player {
+	min-width: var(--video-player-config);
+	aspect-ratio: 16 / 9;
+	width: -webkit-fill-available;
+}
+
+iframe {
+	min-width: var(--video-player-config);
+	min-height: var(--video-player-minimum-height);
+	aspect-ratio: 16 / 9;
+	width: -webkit-fill-available;
+}
+
+#video.title {
+	font-size: 20px;
+	font-family: Google Sans;
+	margin: unset;
+}
+
+#video-title-failed.video-title-failed-to-load {
+	font-size: 20px;
+	font-family: Google Sans;
+	margin: unset;
+}
+
+.video-hashtag {
+	font-family: google sans;
+	font-size: 12px;
+	padding: 1px 4px;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+
+
+.hashtag-link {
+	text-decoration: none;
+	color: black;
+}
+
+
+.hashtag-link:hover {
+	text-decoration: underline;
+}
+
+/* i'm unsure if i should do this or not [position improvements] */
+/*
+#video-metadata-and-yt-channel {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: end;
+	flex-direction: row;
+	position: relative;
+}
+*/
+
+#yt-channel-and-border-bottom {
+	margin-top: 10px;
+}
+
+#video-metadata-and-yt-channel {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#yt-channel {
+	min-width: 512px;
+	display: flex;
+	align-items: center;
+}
+
+#yt-channel-link {
+	font-family: "Google Sans";
+	text-decoration: none;
+	color: black;
+	font-size: 14px;
+}
+
+#yt-channel-link:hover {
+	text-decoration: underline;
+}
+
+#yt-channel-name-renderer {
+	padding-left: 20px;
+	display: flex;
+	flex-direction: column;
+	height: 46px;
+	justify-content: space-between;
+}
+
+#yt-channel-name {
+	margin: unset;
+}
+
+#yt-channel-profile-picture {
+	width: 48px;
+	height: 48px;
+}
+
+p.yt-channel-sub-count {
+	font-size: 14px;
+	font-family: google sans;
+	margin: unset;
+	padding: 4px 8px;
+	background: #f00;
+	color: white;
+}
+
+a.yt-channel-sub-count {
+	margin: unset;
+	font-family: Google Sans;
+	font-size: 12px;
+	background: red;
+	padding: 4px 8px;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+	text-decoration: none;
+	color: white;
+	width: fit-content;
+}
+
+a.yt-channel-sub-count:hover {
+	background: #ff3535;
+}
+
+a.yt-channel-sub-count:active {
+	background: #e50000;
+}
+
+#yt-channel-failed-to-load {
+	width: 500px;
+	display: flex;
+}
+
+#no-yt-channel-image {
+	width: 50px;
+	height: 50px;
+	background: lightgray;
+}
+
+#no-yt-channel-name-renderer {
+	padding: 2px 0px 0px 20px;
+}
+
+#all-buttons-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+#action-buttons-container {
+	display: flex;
+}
+
+.menu-buttons {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	padding: 2px 10px;
+	border: 1px solid transparent;
+	background: rgba(255, 255, 255, 0.0);
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.menu-buttons:hover {
+	background: rgba(255, 255, 255, 0.0);
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+.menu-buttons:active {
+	border: 1px solid transparent;
+	background-color: var(--buttons-active-color);
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.menu-buttons-text {
+	color: gray;
+	font-size: 11px;
+	font-family: "Roboto","Arial",sans-serif;
+	font-weight: bold;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#like-dislike-buttons-container {
+	display: flex;
+	flex-direction: row;
+}
+
+#like-button {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	border: 1px solid transparent;
+	background: rgba(255, 255, 255, 0.0);
+	padding: 2px 10px;
+	padding-right: 0px;
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	align-items: center;
+}
+
+#like-button:hover {
+	background: rgba(255, 255, 255, 0.0);
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+#like-button:active {
+	border: 1px solid transparent;
+	background-color: var(--buttons-active-color);
+}
+
+#like-count-renderer {
+	color: gray;
+	font-family: google sans;
+}
+
+#like-button[aria-pressed=false], #likebutton-icon > div > div > svg {
+	fill: gray;
+}
+
+#like-button[aria-pressed=true], #likebutton-icon > div > div > svg {
+	fill: rgb(72, 152, 214);
+}
+
+#like-button[aria-pressed=true] #like-count-renderer {
+	color: rgb(72, 152, 214);
+}
+
+#dislike-button {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	border: 1px solid transparent;
+	background: rgba(255, 255, 255, 0.0);
+	padding: 2px 10px;
+	padding-right: 0px;
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	align-items: center;
+}
+
+#dislike-button:hover {
+	background: rgba(255, 255, 255, 0.0);
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+#dislike-button:active {
+	border: 1px solid transparent;
+	background-color: var(--buttons-active-color);
+}
+
+#dislike-count-renderer {
+	color: gray;
+	font-family: google sans;
+}
+
+#dislike-button[aria-pressed=false], #dislikebutton-icon > div > div > svg {
+	fill: gray;
+}
+
+#dislike-button[aria-pressed=true], #dislikebutton-icon > div > div > svg {
+	fill: black;
+}
+
+#dislike-button[aria-pressed=true] #dislike-count-renderer {
+	color: black;
+}
+
+.button-text-style {
+	margin-right: 6px;
+}
+
+#no-yt-channel-name {
+	margin: unset;
+	font-family: "Google Sans";
+}
+
+#video-metadata.video-metadata-renderer {
+	margin: 0px 0px 4px 0px;
+	font-family: Google Sans;
+	font-size: 20px;
+}
+
+#video-metadata-info {
+	text-align: right;
+	margin-bottom: 16px;
+}
+
+p.vote-count {
+	margin: unset;
+}
+
+#statistics {
+	font-family: "Google Sans";
+}
+
+#failed-to-load-views-and-date {
+	font-family: "Google Sans";
+}
+
+#video-vote-counts {
+	font-family: "Google Sans";
+}
+
+#video-date-published {
+	font-size: 16px;
+	margin: unset;
+}
+
+#video-views {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: -22px;
+}
+
+#description-text {
+	margin: 16px 0px;
+	font-size: 14px;
+}
+
+#description.content {
+	font-family: "Google Sans";
+}
+
+#expand-description-button {
+	margin: unset;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+#comment-counts-and-sort-button-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#comment-counts {
+	font-family: google sans;
+	margin: unset;
+}
+
+.misc-buttons {
+	font-family: google sans;
+	padding: 4px 8px;
+	border-radius: 2px;
+	border: 1px solid var(--buttons-hover-color);
+	background: var(--buttons-color);
+	cursor: pointer;
+}
+
+.misc-buttons:hover {
+	border: 1px solid var(--buttons-active-color);
+	background: var(--buttons-hover-color);
+}
+
+.misc-buttons:active {
+	border: 1px solid var(--background-slightly-darker-color);
+	background: var(--background-dark-color);
+}
+
+#border-top-metadata {
+	/* border-bottom: 1px solid var(--buttons-active-color); */
+	margin: 4px 0px 4px 0px;
+}
+
+#border-bottom-metadata {
+	border-bottom: 1px solid var(--buttons-active-color);
+	margin: 4px 0px 4px 0px;
+}
+
+#border-bottom {
+	border-bottom: 1px solid var(--buttons-active-color);
+	margin: 12px 0px;
+}
+
+.nullo {
+	padding: 32px 0px 32px 0px;
+}
+
+#recommendations-text {
+	font-size: 20px;
+	margin: unset;
+}
+
+.watch-card {
+	margin: 0 0 10px;
+	padding: 15px 15px 5px 15px;
+	box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+	background: white;
+}
+
+
+
+/* sidebar source: https://www.w3schools.com/howto/howto_js_sidenav.asp */
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: var(--sidebar-background-color);
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 48px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+	font-family: Google Sans;
+}
+
+.sidenav a:hover {
+	color: black;
+	text-decoration: underline;
+	background: var(--background-slightly-darker-color);
+	transition: 0.3s;
+}
+
+.sidenav a:active {
+	color: white;
+	transition: 0.3s;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+#main {
+	transition: margin-left .5s;
+	padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+}
+
+
+
+/*
+	include: YouTube's native ratio bar (unused in the original HTML watch page)
+*/
+
+/*
+	taken from internal YouTube's HTML
+	so funny that it's still there sitting unused, being set to hidden
+	come on, bring it back natively mfs
+	
+	NOTE: This has been stripped off of its most YouTube references in the HTML
+ */
+#sentiment.like-dislike-info-renderer {
+	display: block;
+	min-width: 172px;
+	float: right;
+	padding-top: 8px;
+	padding-bottom: 4px;
+	margin-top: -10px;
+	cursor: help;
+}
+
+#container.like-dislike-info-renderer {
+	height: 2px;
+	background-color: #ccc;
+}
+
+#like-bar.like-dislike-info-renderer {
+	width: 100%;
+	background: #167ac6;
+	height: 2px;
+	transition: width 0.3s;
+}
+
+#tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+#tooltip .tooltiptext {
+	visibility: hidden;
+	top: 12px;
+	width: 230px;
+	margin-left: -210px;
+	background-color: #616161;
+	font-family: "Google Sans";
+	-webkit-font-smoothing: antialiased;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	opacity: 86%;
+	padding: 8px;
+	
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+}
+
+/*
+#sentiment.like-dislike-info-renderer:hover .tooltiptext {
+	visibility: visible;
+}
+*/

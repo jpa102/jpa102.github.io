@@ -1,0 +1,234 @@
+{
+	"packages": [
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning",
+			"latestVersionCode": "99.99",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 0
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.one",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.com",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 1
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.two",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.org",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 2
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.three",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.net",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 3
+		},
+		{
+			"appName": "YouTube (ReVanced)",
+			"androidPackageName": "app.revanced.android.youtube",
+			"latestVersionCode": "20.12.46",
+			"appShortDescription": "Youtube ReVanced, an app that basically gives you local premium features + additional features for free!",
+			"requireMicroG": true,
+			"latestVersionUrl": "https://revanced.app",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 4
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.four",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.to",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 5
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.five",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.jp",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 6
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.six",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.top",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 7
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.seven",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.xyz",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 8
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.eight",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.dev",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 9
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.nine",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.ph",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 10
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.ten",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.tw",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 11
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.eleven",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.tv",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 12
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.twelve",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.es",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 13
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.thirteen",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.en",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 14
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.fourteen",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.io",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 15
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.fifteen",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.tools",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 16
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.sixteen",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.xorg",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 17
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.seventeen",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.site",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 18
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.eighteen",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.apps",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 19
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.nineteen",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.me",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 20
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.twenty",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.fr",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 21
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.twentyone",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.nl",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 22
+		}
+	]
+}

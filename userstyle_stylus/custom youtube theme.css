@@ -1,0 +1,1097 @@
+/* ==UserStyle==
+@name           custom YouTube theme
+@namespace      github.com/openstyles/stylus
+@version        1.96
+@description    apply your own preferred theme color to YouTube + extra features!
+@author         John Patrick Adem
+
+@preprocessor stylus
+@var select colorOption                                           "select theme" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "spotifygreen:Spotify green", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "lonely_gray:Lonely gray", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme", "stu48_textcolor:_unused"]
+@var checkbox experimentalTransparentTopbar                       "[experimental] enable the transparent topbar" 0
+@var checkbox experimentalTransparentTopbar_useForLight           "transparent topbar - light mode" 0
+@var checkbox experimentalTransparentTopbar_useForDark            "transparent topbar - dark mode" 1
+@var range experimentalTransparentTopbar_val                      "transparent topbar value (in percentage)" [0, 0, 100, 0.01, '%']
+@var range expTransparentTopbar_wpercentage                       "transparent topbar (white intensity - dark mode)" [27, 0, 100, 0.01, '%']
+@var range expTransparentTopbar_bpercentage                       "transparent topbar (black intensity - light mode)" [27, 0, 100, 0.01, '%']
+@var range expTransparentTopbar_blurlevel                         "transparent topbar (blur intensity)" [0, 0, 10, 0.01, 'px']
+@var checkbox transparentSearchBar                                "transparent search bar" 0
+@var range expTransparentSearch_blurlevel                         "transparent search (blur intensity)" [3, 0, 10, 0.01, 'px']
+@var range expTransparentSearch_wpercentage                       "transparent search (white intensity)" [27, 0, 100, 0.01, '%']
+@var range expVideoTilesWidth                                     "[experimental] video tiles width (in pixels)" [365, 0, 727, 0.01, 'px']
+@var checkbox forceBlackText                                      "force black text on all elements" 0
+@var checkbox forceWhiteText                                      "force white text on all elements" 0
+@var checkbox materialYouStyledNotificationCounter                "Apply Material You color on the notification counter (dark mode only)" 0
+==/UserStyle== */
+
+@-moz-document regexp("^https:\\/\\/www\\.youtube\\.com.+"), regexp("^https:\\/\\/studio\\.youtube\\.com.+"), regexp("^https:\\/\\/m\\.youtube\\.com.+") {
+
+	/* ========================== [features] ========================== */
+
+	if (forceBlackText) {
+		* {
+			color: black !important;
+		}
+	}
+
+	if (forceWhiteText) {
+		* {
+			color: white !important;
+		}
+	}
+
+	if (transparentSearchBar) {
+		/* search box */
+		.ytSearchboxComponentInputBox {
+			background: rgba(0, 0, 0, 0.08);
+			border-color: rgba(0, 0, 0, 0.16);
+		}
+
+		.ytSearchboxComponentInputBoxDark {
+			background: rgba(255, 255, 255, 0.08);
+			border-color: rgba(255, 255, 255, 0.16);
+		}
+
+		.ytSearchboxComponentSearchButtonDark {
+			border-color: rgba(255, 255, 255, 0.16);
+		}
+
+		/* improve the border color around the search bar when it's focused (uses the border-color from 2021's sign in button) */
+		.ytSearchboxComponentInputBoxDark.ytSearchboxComponentInputBoxHasFocus {
+			border-color: #3ea6ff;
+		}
+	}
+
+	/* set a custom width for video tiles in pixels */
+	ytd-rich-item-renderer[rendered-from-rich-grid] {
+		width: expVideoTilesWidth;
+	}
+
+	if (materialYouStyledNotificationCounter) {
+		:root {
+			/* --material-you-background-color: #c2e7ff; */
+			--material-you-background-color: #76d1ff;
+		}
+
+		.yt-spec-icon-badge-shape--type-notification-refresh .yt-spec-icon-badge-shape__badge {
+			background: var(--material-you-background-color);
+			color: black;
+		}
+
+		.yt-spec-icon-badge-shape--type-notification .yt-spec-icon-badge-shape__badge {
+			background: var(--material-you-background-color);
+			color: black;
+		}
+	}
+
+	if (experimentalTransparentTopbar) {
+		/* at https://youtube.com, what the fuck is this frosted glass thing? y'all trying to copy the liquid glass design? */
+		#frosted-glass.with-chipbar.ytd-app {
+			background: unset !important;
+		}
+
+		html[dark] #header > ytd-feed-filter-chip-bar-renderer > #chips-wrapper,
+		#header > ytd-feed-filter-chip-bar-renderer > #chips-wrapper > #chips-content,
+		#header > ytd-feed-filter-chip-bar-renderer > #chips-wrapper > #chips-content > #scroll-container {
+			background: rgba(0, 0, 0, 0.45) !important;
+		}
+
+		/* spare element: ytd-masthead#masthead */
+		#masthead-container, ytd-masthead#masthead {
+			background: transparent;
+			backdrop-filter: blur(expTransparentTopbar_blurlevel) !important;
+		}
+
+		/* black tint on the transparent topbar */
+		if (experimentalTransparentTopbar_useForDark) {
+			html[dark] #masthead-container {
+				background: rgba(0, 0, 0, expTransparentTopbar_wpercentage) !important;
+				backdrop-filter: blur(expTransparentTopbar_blurlevel) !important;
+			}
+		}
+
+		/* search suggestions and results box */
+		html[dark] .sbsb_a,
+		.ytSearchboxComponentSuggestionsContainer.ytSearchboxComponentSuggestionsContainerDark.ytSearchboxComponentSuggestionsContainerScrollable {
+			background: rgba(255, 255, 255, expTransparentSearch_wpercentage) !important;
+			backdrop-filter: blur(expTransparentSearch_blurlevel) !important;
+		}
+
+		html[light] .sbsb_a {
+			background: rgba(255, 255, 255, expTransparentSearch_wpercentage) !important;
+			backdrop-filter: blur(expTransparentSearch_blurlevel) !important;
+		}
+	}
+
+	/* ========================== [features] ========================== */
+
+	/* ========================== [theme colors] ========================== */
+
+	/* "black" (vanced) theme */
+	if (colorOption=="blackhole") {
+		:root {
+			--main-body-color: rgb(0, 0, 0);
+			--main-body-color-light: rgb(20, 20, 20);
+			--main-body-color-lighter: rgb(48, 48, 48);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "dark purple" theme */
+	if (colorOption=="d_murasaki") {
+		:root {
+			--main-body-color: rgb(90, 18, 136);
+			--main-body-color-light: rgb(128, 37, 187);
+			--main-body-color-lighter: rgb(137, 52, 192);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "purple" theme */
+	if (colorOption=="murasaki") {
+		:root {
+			--main-body-color: rgb(134, 26, 204);
+			--main-body-color-light: rgb(153, 45, 223);
+			--main-body-color-lighter: rgb(168, 66, 234);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "light purple" theme */
+	if (colorOption=="murasaki_light") {
+		:root {
+			--main-body-color: rgb(211, 144, 255);
+			--main-body-color-light: rgb(223, 175, 255);
+			--main-body-color-lighter: rgb(230, 192, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "strawberry" theme */
+	if (colorOption=="strawberry") {
+		:root {
+			--main-body-color: rgb(252, 90, 141);
+			--main-body-color-light: rgb(255, 114, 158);
+			--main-body-color-lighter: rgb(255, 140, 176);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "pink" theme */
+	if (colorOption=="pinku") {
+		:root {
+			--main-body-color: rgb(255, 94, 217);
+			--main-body-color-light: rgb(255, 121, 223);
+			--main-body-color-lighter: rgb(255, 142, 228);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "legacy windows tooltip" theme */
+	if (colorOption=="windows_tooltip") {
+		:root {
+			--main-body-color: rgb(249, 251, 204);
+			--main-body-color-light: rgb(236, 238, 172);
+			--main-body-color-lighter: rgb(247, 249, 195);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "school blackboard" theme */
+	if (colorOption=="blackboard") {
+		:root {
+			--main-body-color: rgb(0, 92, 80);
+			--main-body-color-light: rgb(16, 117, 109);
+			--main-body-color-lighter: rgb(17, 132, 119);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "brat" theme */
+	if (colorOption=="brat") {
+		:root {
+			--main-body-color: rgb(138, 207, 0);
+			--main-body-color-light: rgb(143, 215, 0);
+			--main-body-color-lighter: rgb(155, 232, 0);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "windows 98 background" theme */
+	if (colorOption=="win98") {
+		:root {
+			--main-body-color: rgb(0, 128, 128);
+			--main-body-color-light: rgb(12, 156, 156);
+			--main-body-color-lighter: rgb(14, 181, 181);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "oppo a37fw green button" theme */
+	if (colorOption=="oppoa37fw_greenbutton") {
+		:root {
+			--main-body-color: rgb(60, 201, 182);
+			--main-body-color-light: rgb(67, 224, 202);
+			--main-body-color-lighter: rgb(71, 236, 213);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "spotify green" theme */
+	if (colorOption=="spotifygreen") {
+		:root {
+			--main-body-color: rgb(30, 215, 95);
+			--main-body-color-light: rgb(32, 230, 101);
+			--main-body-color-lighter: rgb(38, 252, 113);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "download mode" theme */
+	if (colorOption=="download_mode") {
+		:root {
+			--main-body-color: rgb(20, 164, 189);
+			--main-body-color-light: rgb(20, 161, 185);
+			--main-body-color-lighter: rgb(24, 188, 216);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "sunny yellow" theme */
+	if (colorOption=="yellow_sun") {
+		:root {
+			--main-body-color: rgb(255, 255, 21);
+			--main-body-color-light: rgb(255, 255, 154);
+			--main-body-color-lighter: rgb(253, 255, 232);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Future" theme */
+	if (colorOption=="future") {
+		:root {
+			--main-body-color: rgb(183, 194, 255);
+			--main-body-color-light: rgb(199, 208, 255);
+			--main-body-color-lighter: rgb(212, 219, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Future (dark)" theme */
+	if (colorOption=="future_dark") {
+		:root {
+			--main-body-color: rgb(85, 90, 122);
+			--main-body-color-light: rgb(97, 103, 143);
+			--main-body-color-lighter: rgb(99, 106, 145);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "sky" theme */
+	if (colorOption=="sky") {
+		:root {
+			--main-body-color: rgb(54, 200, 255);
+			--main-body-color-light: rgb(125, 219, 255);
+			--main-body-color-lighter: rgb(166, 230, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "discord" theme */
+	if (colorOption=="discord_mod") {
+		:root {
+			--main-body-color: rgb(64, 78, 237);
+			--main-body-color-light: rgb(111, 122, 255);
+			--main-body-color-lighter: rgb(137, 146, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "windows classic" theme */
+	if (colorOption=="winclassic") {
+		:root {
+			--main-body-color: rgb(58, 110, 165);
+			--main-body-color-light: rgb(65, 129, 196);
+			--main-body-color-lighter: rgb(76, 143, 213);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "navy blue" theme */
+	if (colorOption=="navyblue") {
+		:root {
+			--main-body-color: rgb(0, 6, 81);
+			--main-body-color-light: rgb(25, 30, 98);
+			--main-body-color-lighter: rgb(38, 44, 128);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "maroon" theme (intentional misspelling to avoid internal issues) */
+	if (colorOption=="d_maron") {
+		:root {
+			--main-body-color: rgb(136, 0, 0);
+			--main-body-color-light: rgb(187, 0, 0);
+			--main-body-color-lighter: rgb(219, 0, 0);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Reddit's OrangeRed" theme */
+	if (colorOption=="reddit") {
+		:root {
+			--main-body-color: rgb(255, 69, 0);
+			--main-body-color-light: rgb(255, 94, 35);
+			--main-body-color-lighter: rgb(255, 123, 75);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "TikTok Red" theme */
+	if (colorOption=="tiktok_red") {
+		:root {
+			--main-body-color: rgba(255, 59, 92, 1);
+			--main-body-color-light: rgb(255, 93, 120);
+			--main-body-color-lighter: rgb(255, 115, 138);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "TikTok Red focus" theme */
+	if (colorOption=="tiktok_focused_red") {
+		:root {
+			--main-body-color: rgb(255, 76, 58);
+			--main-body-color-light: rgb(255, 100, 85);
+			--main-body-color-lighter: rgb(255, 117, 104);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "youtube magenta" theme */
+	if (colorOption=="youtube_magenta") {
+		:root {
+			--main-body-color: rgb(255, 26, 71); /* hex code color: #ff1a47 */
+			--main-body-color-light: rgb(255, 53, 93);
+			--main-body-color-lighter: rgb(255, 69, 106);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "youtube red" theme */
+	if (colorOption=="youtube_red") {
+		:root {
+			--main-body-color: rgb(255, 0, 0);
+			--main-body-color-light: rgb(255, 61, 61);
+			--main-body-color-lighter: rgb(255, 88, 88);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "youtube dark" theme */
+	if (colorOption=="youtube_dark") {
+		:root {
+			--main-body-color: rgb(33, 33, 33);
+			--main-body-color-light: rgb(50, 50, 50);
+			--main-body-color-lighter: rgb(64, 64, 64);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Google Chrome - Dark" theme */
+	if (colorOption=="chrome_dark") {
+		:root {
+			--main-body-color: rgb(13, 20, 25);
+			--main-body-color-light: rgb(24, 40, 50);
+			--main-body-color-lighter: rgb(34, 58, 71);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+    
+	/* "pornhub logo color" theme */
+	if (colorOption=="pornhub") {
+		:root {
+			--main-body-color: rgb(239, 146, 28);
+			--main-body-color-light: rgb(255, 164, 46);
+			--main-body-color-lighter: rgb(255, 176, 73);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Lonely gray" theme */
+	if (colorOption=="lonely_gray") {
+		:root {
+			--main-body-color: rgb(91, 91, 91);
+			--main-body-color-light: rgb(106, 106, 106);
+			--main-body-color-lighter: rgb(118, 118, 118);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* experimental theme (1 - dark) */
+	if (colorOption=="__experimental") {
+		:root {
+			--main-body-color: rgb(224, 13, 118);
+			--main-body-color-light: rgb(255, 38, 146);
+			--main-body-color-lighter: rgb(255, 64, 159);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* experimental theme (2 - light) */
+	if (colorOption=="__experimental_two") {
+		:root {
+			--main-body-color: rgb(225, 229, 241);
+			--main-body-color-light: rgb(187, 190, 200);
+			--main-body-color-lighter: rgb(206, 209, 219);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* ----- unused ----- */
+	if (colorOption=="stu48_textcolor") {
+		:root {
+			--main-body-color: rgb(5, 28, 134);
+			--main-body-color-light: rgb(8, 36, 168);
+			--main-body-color-lighter: rgb(11, 44, 202);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* ========================== [theme colors] ========================== */
+
+	/* DO NOT ENABLE THIS IF YOU AREN'T USING DARK-BASED THEMES */
+	/* white colored texts for dark-based colors */
+	/*
+	yt-icon.ytd-logo {
+		color: white;
+	}
+
+	yt-formatted-string {
+		color: white;
+	}
+
+	#video-title {
+		color: white !important;
+	}
+
+	#endpoint > tp-yt-paper-item {
+		color: white;
+	}
+
+	#more > span > a {
+		color: white;
+	}
+
+	.ytd-mini-guide-entry-renderer {
+		color: white !important;
+	}
+
+	.ytd-channel-name > #text-container > yt-formatted-string {
+		color: white !important;
+	}
+
+	.yt-tab-shape-wiz__tab--tab-selected {
+		color: white;
+	}
+
+	.yt-tab-shape-wiz__tab-bar--tab-bar-selected {
+		background-color: white;
+	}
+	*/
+
+	/*
+		general
+	*/
+	#guide-content {
+		background: var(--main-body-color) !important;
+		border-right: 1px solid var(--yt-spec-10-percent-layer);
+	}
+
+	tp-yt-paper-item:hover {
+		background: rgba(255, 255, 255, 0.01);
+	}
+
+	ytd-guide-entry-renderer:hover {
+		background: var(--main-body-color-light) !important;
+	}
+
+	ytd-mini-guide-renderer {
+		background: var(--main-body-color) !important;
+		box-shadow: var(--shadow) !important;
+		border-right: 1px solid var(--yt-spec-10-percent-layer);
+		border-top: 1px solid var(--yt-spec-10-percent-layer);
+	}
+
+	ytd-mini-guide-entry-renderer {
+		background: var(--main-body-color);
+	}
+
+	ytd-mini-guide-entry-renderer:hover {
+		background: var(--main-body-color-light);
+	}
+
+	#container.ytd-searchbox {
+		background: var(--main-body-color) !important;
+	}
+
+	#page-header {
+		background: var(--main-body-color) !important;
+	}
+
+	#chips-content {
+		background: var(--main-body-color);
+	}
+
+	/* filter bar (below the topbar at youtube.com) */
+	ytd-feed-filter-chip-bar-renderer[frosted-glass-mode=with-chipbar] #chips-wrapper.ytd-feed-filter-chip-bar-renderer {
+		background: var(--main-body-color);
+	}
+
+	/*
+		watch page
+	*/
+	#masthead-container {
+		box-shadow: var(--shadow) !important;
+	}
+
+	#masthead {
+		background: var(--main-body-color);
+		border-bottom: 1px solid var(--yt-spec-10-percent-layer);
+	}
+
+	ytd-watch-flexy {
+		background: var(--main-body-color);
+	}
+
+	#columns {
+		background: var(--main-body-color);
+	}
+
+	/*
+		channel page
+	*/
+	#channel-header {
+		background: var(--main-body-color) !important;
+	}
+
+	#tabs-inner-container {
+		background: var(--main-body-color) !important;
+		box-shadow: var(--shadow) !important;
+	}
+
+	ytd-browse {
+		background: var(--main-body-color) !important;
+	}
+
+	ytd-menu-popup-renderer > tp-yt-paper-listbox {
+		background: var(--main-body-color-light) !important;
+	}
+
+	#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button {
+		background: var(--main-body-color-light) !important;
+	}
+
+	tp-yt-paper-dialog {
+		background: var(--main-body-color-light);
+	}
+
+	ytd-section-list-renderer.ytd-engagement-panel-section-list-renderer {
+		background: var(--main-body-color-light) !important;
+	}
+
+	ytd-backstage-post-dialog-renderer[is-creation-dialog][is-open] #dialog-header.ytd-backstage-post-dialog-renderer, ytd-commentbox[is-backstage-post][is-creation-box] #creation-box.ytd-commentbox, #main.ytd-commentbox {
+		background: var(--main-body-color-light);
+	}
+
+	/* sort by buttons (video tab) */
+	#scroll-container {
+		background: var(--main-body-color);
+	}
+
+	/*
+		shorts page
+	*/
+	#shorts-container.ytd-shorts {
+		background: var(--main-body-color) !important;
+	}
+
+	.navigation-container.ytd-shorts {
+		background: var(--main-body-color) !important;
+	}
+
+	/* make the player and right side panel look non-rounded */
+	#player-container {
+		border-radius: 0px;
+	}
+
+	#watch-while-engagement-panel {
+		border-radius: 0px;
+	}
+
+	ytd-page-manager {
+		background: var(--main-body-color);
+	}
+
+	#anchored-panel {
+		background: var(--main-body-color-light) !important;
+	}
+
+	ytd-backstage-post-dialog-renderer[is-creation-dialog] {
+		background: var(--main-body-color-light);
+	}
+
+	#watch-while-engagement-panel {
+		background: var(--main-body-color-light);
+	}
+
+	/*
+		notifications
+	*/
+	ytd-multi-page-menu-renderer {
+		background: var(--main-body-color-light);
+	}
+
+	ytd-simple-menu-header-renderer {
+		background: var(--main-body-color-light);
+	}
+
+	/*
+		search bar
+	*/
+	html[dark] #container.ytd-searchbox {
+		border: 1px solid var(--yt-spec-10-percent-layer) !important;
+	}
+
+	html[dark] #search-icon-legacy.ytd-searchbox {
+		border: 1px solid var(--yt-spec-10-percent-layer) !important;
+		border-left: unset !important;
+	}
+
+	html[dark] #search-icon-legacy.ytd-searchbox:hover {
+		background: rgba(255, 255, 255, 0.2) !important;
+	}
+
+	html[dark] #search-icon-legacy.ytd-searchbox:active {
+		background: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	html[dark] .sbsb_a {
+		background: var(--main-body-color-light);
+	}
+
+ 	.sbsb_a {
+		background: var(--main-body-color-light);
+	}
+
+	.sbsb_d {
+		background: var(--main-body-color-lighter);
+	}
+
+	/* if search bar is focused */
+	ytd-searchbox[has-focus] #container.ytd-searchbox {
+		border: 1px solid #3ea6ff !important;
+	}
+
+	/* dropdown selection (ex: sort by comments) */
+	tp-yt-paper-listbox.yt-dropdown-menu {
+		background-color: var(--main-body-color);
+	}
+
+	/*
+		================= [MOBILE] =================
+	*/
+	ytm-app {
+		background: var(--main-body-color);
+	}
+    
+	.engagement-panel-container {
+		background: var(--main-body-color);
+	}
+    
+	/*
+		================= [YOUTUBE STUDIO] =================
+	*/
+
+	/* pre-load elements */
+	body#html-body[rounded-container] {
+		background: var(--main-body-color);
+	}
+
+	ytcp-navigation-drawer.ytcp-entity-page {
+		background: var(--main-body-color);
+	}
+
+	ytcp-header {
+		background: var(--main-body-color);
+	}
+
+	/* pre-load elements */
+
+	header.ytcp-header {
+		background: var(--main-body-color);
+		border-bottom: 1px solid var(--yt-spec-10-percent-layer);
+	}
+
+	nav.ytcp-navigation-drawer {
+		background: var(--main-body-color);
+	}
+
+	ytcp-omnisearch[modern] input.ytcp-omnisearch {
+		background: var(--main-body-color-light);
+	}
+
+	ytcp-omnisearch[modern] input.ytcp-omnisearch:hover {
+		background: var(--main-body-color-lighter);
+		border-color: transparent !important;
+	}
+    
+    #results.ytcp-omnisearch {
+        background: var(--main-body-color);
+    }
+
+	#paper-list.ytcp-text-menu {
+		background: var(--main-body-color-light);
+	}
+
+	tp-yt-paper-item.tp-yt-paper-item.ytcp-text-menu:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	#main.ytcp-entity-page {
+		background: var(--main-body-color);
+	}
+
+	ytcp-sticky-header {
+		background: var(--main-body-color);
+	}
+
+	.all-pages.ytcp-app {
+		background: var(--main-body-color);
+	}
+    
+    #dialog.ytcp-filter-dialog {
+        background: var(--main-body-color-light);
+    }
+    
+    .header.ytcp-filter-dialog:not(:empty) {
+        border-bottom: 1px solid var(--ytcp-line-divider);
+    }
+    
+    .controls.ytcp-filter-dialog:not(:empty) {
+        border-top: 1px solid var(--ytcp-line-divider);
+    }
+    
+    #metrics-table-title-collapsable.yta-entity-snapshot {
+        background: var(--main-body-color-light);
+    }
+
+	ytcp-primary-action-bar.ytcp-content-section {
+		background: var(--main-body-color);
+	}
+
+	ytcp-filter-bar {
+		background: var(--main-body-color);
+	}
+
+	ytcp-table-header {
+		background: var(--main-body-color);
+	}
+
+	.cell-header.tablecell-selection.ytcp-table-header {
+		background: var(--main-body-color);
+	}
+
+	.cell-header.ytcp-table-header {
+		background: var(--main-body-color);
+	}
+
+	#row-container.ytcp-video-row, #row-container.ytcp-video-row .floating-column.ytcp-video-row {
+		background: var(--main-body-color);
+	}
+    
+    ytcp-paper-tooltip-placeholder[type=explanatory] #tooltip.ytcp-paper-tooltip-placeholder,
+    ytcp-paper-tooltip-placeholder[type=custom-content] #tooltip.ytcp-paper-tooltip-placeholder {
+        background: var(--main-body-color-light);
+    }
+
+	/* currently broken */
+	#row-container.ytcp-video-row:hover, #row-container.ytcp-video-row:hover .floating-column.ytcp-video-row:hover {
+		background: var(--main-body-color-light);
+	}
+
+	#footer-container.ytcp-video-section-content, #footer.ytcp-video-section-content {
+		background: var(--main-body-color);
+		border-bottom: 1px solid var(--yt-spec-10-percent-layer);
+	}
+
+	/* i forgot what element is being used here, but i'll leave it out as a comment for now...
+	.yta-screen {
+		background: var(--main-body-color);
+	}
+	*/
+
+	.staple-card.yta-card-container {
+		background: var(--main-body-color-light);
+	}
+
+	#container.yta-personalized-overview-bottom-card {
+		background: var(--main-body-color);
+	}
+
+	#entity-snapshot.yta-entity-snapshot-carousel {
+		background: var(--main-body-color-light);
+	}
+
+	.vertical-section-double-spacing.yta-entity-snapshot {
+		background: var(--main-body-color-light);
+	}
+
+	#metrics-table-title.yta-entity-snapshot {
+		background: var(--main-body-color-light);
+	}
+
+	.table-row.yta-entity-snapshot {
+		background: var(--main-body-color-light);
+	}
+
+	.layout.horizontal.yta-top-performing-entities {
+		background: var(--main-body-color);
+	}
+
+	.layout.horizontal.yta-card-container {
+		background: var(--main-body-color-light);
+	}
+
+	ytcp-primary-action-bar {
+		background: var(--main-body-color);
+	}
+
+	ytcp-comment {
+		background: var(--main-body-color);
+	}
+    
+    #more.ytcp-comment {
+        background: var(--main-body-color);
+    }
+
+	tp-yt-paper-icon-item.iron-selected.ytcp-navigation-drawer {
+		background: var(--main-body-color-light);
+	}
+
+	tp-yt-paper-icon-item.ytcp-navigation-drawer:hover {
+		background: var(--main-body-color-light);
+	}
+
+	#background.yta-overview-app {
+		background: var(--main-body-color);
+	}
+
+	yta-overview-app {
+		background: var(--main-body-color);
+	}
+
+	ytcp-primary-action-bar.yta-screen, .without-side-bar.yta-screen, .layout.vertical.yta-screen {
+		background: var(--main-body-color);
+	}
+
+	#right-side-bar.yta-screen {
+		background: var(--main-body-color);
+	}
+
+	.staple-cardborderless.yta-card-container {
+		background: var(--main-body-color-light);
+	}
+
+	.container.ytcp-video-info {
+		background: var(--main-body-color-light);
+	}
+
+	#restrictions.ytcp-video-metadata-restrictions[disabled] {
+		background: var(--main-body-color-light);
+	}
+
+	.ytcp-button-shape-impl--mono.ytcp-button-shape-impl--tonal {
+		background: var(--main-body-color-light);
+	}
+
+	.ytcp-button-shape-impl--mono.ytcp-button-shape-impl--tonal:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	if (colorOption=="chrome_dark" && materialYouStyledNotificationCounter) {
+		.ytcp-button-shape-impl--mono.ytcp-button-shape-impl--filled {
+			background: var(--material-you-background-color);
+		}
+
+		ytcp-chip[is-active] {
+			background: var(--material-you-background-color);
+		}
+	}
+
+	.infobox.ytkc-made-for-kids-select {
+		background: var(--main-body-color-light);
+	}
+
+	ytcp-chip {
+		background: var(--main-body-color-light);
+	}
+
+	ytcp-chip:hover {
+		background: var(--main-body-color-lighter) !important;
+	}
+
+	#dialog.ytcp-playlist-dialog {
+		background: var(--main-body-color-light);
+	}
+
+	ytcp-search-bar {
+		background: var(--main-body-color-lighter);
+	}
+
+	ytcp-ve > li:hover {
+		background: var(--main-body-color-lighter) !important;
+	}
+
+	.action-buttons.ytcp-playlist-dialog > .input-container.ytcp-playlist-dialog > ytcp-text-menu > tp-yt-paper-dialog > tp-yt-paper-listbox {
+		background: var(--main-body-color-lighter) !important;
+	}
+
+	.action-buttons.ytcp-playlist-dialog > .input-container.ytcp-playlist-dialog > ytcp-text-menu > tp-yt-paper-dialog > tp-yt-paper-listbox > tp-yt-paper-item:hover {
+		background: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	ytcp-search-bar[search-input-focused]:not([has-results-in-overlay]) {
+		background: var(--main-body-color-lighter);
+	}
+
+	.card.ytcd-card {
+		background: var(--main-body-color-light);
+	}
+
+	#scrim.yta-screen {
+		background: var(--main-body-color);
+	}
+
+	tp-yt-paper-item.yta-key-metric-card {
+		background: var(--main-body-color-light);
+	}
+
+	tp-yt-paper-item.yta-key-metric-card:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	tp-yt-paper-item.iron-selected.yta-key-metric-card {
+		background: var(--main-body-color-lighter);
+	}
+    
+    #row-container.ytgn-video-row, #row-container.ytgn-video-row .floating-column.ytgn-video-row {
+        background: var(--main-body-color);
+    }
+    
+    #row-container.ytgn-video-row:hover, #row-container.ytgn-video-row .floating-column.ytgn-video-row:hover {
+        background: var(--main-body-color-light);
+    }
+    
+    #footer-container.ytgn-channel-translations-list {
+        background: var(--main-body-color);
+    }
+    
+    .sticky.ytcr-management-section {
+        background: var(--main-body-color);
+    }
+    
+    .tiered-prepartner-double-column.ytpp-signup-overview {
+        background: var(--main-body-color);
+    }
+
+	/*
+		================= [old layout tweaks] =================
+	*/
+	.ryd-tooltip-old-design {
+		position: absolute;
+		top: 44px;
+	}
+
+	#menu-container {
+		flex: unset !important;
+	}
+
+	ytd-video-primary-info-renderer {
+		padding: 10px 0;
+	}
+
+	#top-row {
+		margin-top: 20px;
+	}
+
+	#subscribe-button {
+		position: relative !important;
+	}
+
+	#subscribe-button-shape > button {
+		padding: 20.5px 16.5px !important;
+	}
+
+	html[watch-metadata-style][layout] body ytd-app ytd-page-manager #subscribe-button.style-scope ytd-subscribe-button-renderer[subscribed] yt-button-shape button {
+	padding: 20.5px 16.5px !important;
+		background: rgba(255, 255, 255, 0.1) !important;
+	}
+    
+	/* shorts action buttons */
+	#actions {
+		margin-right: 72px;
+	}
+    
+	#analytics-button {
+		margin-top: -14px
+	}
+
+	.ytp-settings-menu {
+		border-radius: 4px;
+	}
+
+	/* old-styled action buttons like the download button */
+	.force-icon-button {
+		margin-top: -4px;
+	}
+
+	.dropdown-trigger {
+		margin-top: -4px;
+	}
+
+	ytd-button-renderer.style-visibly-disabled[is-icon-button], ytd-button-renderer.style-opacity[is-icon-button][disabled], ytd-button-renderer.style-text[is-icon-button][disabled] #text.ytd-button-renderer, ytd-button-renderer.style-default[is-icon-button][disabled] #text.ytd-button-renderer, ytd-button-renderer.style-opacity[is-icon-button][disabled] #text.ytd-button-renderer {
+		color: var(--yt-spec-text-secondary)
+	}
+
+	ytd-button-renderer[disabled] /* if the video doesn't permit downloads without premium */
+
+	/* right-side metadata texts */
+	html[watch-metadata-style] #owner-sub-count.ytd-video-owner-renderer, #owner-sub-count.ytd-video-owner-renderer {
+		color: var(--yt-spec-text-secondary) !important;
+	}
+
+	#channel-name.ytd-video-meta-block > #container > #text-container > yt-formatted-string {
+		color: var(--yt-spec-text-secondary) !important;
+	}
+
+	ytd-watch-flexy #metadata #text, ytd-watch-flexy #metadata span, html[related-videos] ytd-watch-flexy #metadata #text, html[related-videos] ytd-watch-flexy #metadata span {
+		color: var(--yt-spec-text-secondary) !important;
+	}
+
+	/* adjust for rounded channel banner */
+	.yt-image-banner-view-model-wiz--inset {
+		border-radius: unset;
+	}
+
+	/* old style dropdown (channel page when subscribed) */
+	.yt-contextual-sheet-layout-wiz {
+		background: var(--main-body-color-light);
+	}
+
+	.yt-sheet-view-model-wiz--contextual {
+		border-radius: unset;
+	}
+
+	yt-list-view-model {
+		padding: 12px 6px;
+	}
+}

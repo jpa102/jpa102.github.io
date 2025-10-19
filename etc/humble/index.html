@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>Form test - JavaScript</title>
+		<link rel="stylesheet" style="text/css" title="default css file" href="rsrc/style.css">
+		<link rel="alternate stylesheet" style="text/css" title="alternate css file" href="rsrc/style.css">
+		<script src="rsrc/main.js"></script>
+		<script src="rsrc/navigation.js"></script>
+		<meta name="robots" content="noindex,nofollow,noarchive">
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+	</head>
+	<body>
+		<header>
+			<div id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<a href="/">Home</a>
+				<a href="/faketube">FakeTube</a>
+				<a href="/rydfetch/mobile">RYD Frontend - Mobile</a>
+				<a href="/blog">Blog</a>
+			</div>
+			<div id="topbar">
+				<div id="sidebar-button-and-app-name-title">
+					<button id="sidebar-button" class="action-buttons" onclick="openNav()">
+						<svg class="yt-icon">
+							<path class="yt-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+						</svg>
+					</button>
+					<span id="app-title-text">Form test</span>
+				</div>
+			</div>
+		</header>
+		<div id="return-youtube-dislike-api-page" class="page">
+			<div id="body-container" class="info">
+				<div id="inputs-from-user" class="container">
+					<form>
+						<input type="text" id="getexpectation">
+					</form>
+					<button id="reset" class="action-buttons" onclick="Clear()">
+						Reset
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

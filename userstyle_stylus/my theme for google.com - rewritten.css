@@ -1,0 +1,6723 @@
+/* ==UserStyle==
+@name           my theme for google.com
+@namespace      github.com/openstyles/stylus
+@version        3.1.0
+@description    allows you to mostly change the colors of google.com pages with just few clicks
+@author         John Patrick Adem
+@preprocessor   stylus
+
+@var select colorOption                              "select theme" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme", "stu48_textcolor:_unused"]
+@var select mobileCompatibilityView                  "mobile compatibility view" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme"]
+@var checkbox hoverMenusUnderline                    "[deprecated] menu hover - underlines (2022+ layout)" 0
+@var checkbox hoverMenusUnderlineExperimental        "[optional] menu hover - underlines (2024+ layout)" 0
+@var checkbox correctionSearchTextVisibility         "[optional] correction text visibility (not all applied)" 0
+@var checkbox adaptSignInButtonToTheme               "[optional] make the Sign-In button adapt to theme" 0
+@var checkbox NonRoundedSignInButtonLook             "[optional] make the Sign-In button look non-rounded" 0
+@var checkbox searchboxHoverTransition               "[optional] apply hover transition to searchbox" 0
+@var checkbox buttonsHoverTransition                 "[optional] apply hover transition to buttons" 0
+@var range imgRadius                                 "[optional] image preview radius" [20, 0, 50, 1, 'px']
+@var range imgRadiusImagesSection                    "[optional] image preview radius - images tab" [12, 0, 50, 1, 'px']
+@var checkbox hideAiOverviewSection                  "[optional] hide the AI Overview section (experimental)" 0
+@var checkbox scroll_Bar                             "[optional] transparent dark scroll bar" 0
+@var checkbox paddedresults                          "[optional] padded search results" 0
+@var checkbox consolasTextInCiteLinks                "[optional] apply the Consolas font in citation links (below the webpage title)" 0
+@var checkbox GoogleBranding_Experimental            "[optional] Google branding for dark mode (experimental)" 0
+@var checkbox customoptionaltweaks                   "[misc] apply your own custom tweaks" 0
+@var checkbox forceblacktext                         "[debug] force black text on all themes" 0
+@var checkbox forcewhitetext                         "[debug] force white text on all themes" 0
+@var checkbox forcesmalllettersintitle               "[debug] force small letters in the search \"result title\"" 0
+==/UserStyle== */
+
+
+@-moz-document regexp("^https:\\/\\/www\\.google\\.com.*"), regexp("^https:\\/\\/www\\.google\\.co\\.jp.*"), regexp("^https:\\/\\/www\\.google\\.co\\.kr.*") {
+	/* ----- 「紫　－　むらさき (darker version)」 ----- */
+	if (colorOption=="d_murasaki") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(90, 18, 136);
+			--main-border-one: 1px solid rgb(128, 37, 187);
+			--main-border-two: rgb(128, 37, 187);
+			--main-border-three: 1px solid rgb(128, 37, 187);
+			--main-border-four: rgb(128, 37, 187);
+			--main-border-title-icon: 1px solid rgb(128, 37, 187);
+			--border-in-between-button: rgb(128, 37, 187);
+			--text-underline-in-active-menu: rgb(182, 105, 232);
+			--text-in-active-menu: rgb(182, 105, 232);
+			--text-in-links: rgb(95, 173, 255);
+			--link-has-been-visited: rgb(178, 110, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #392ae2; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(128, 37, 187);
+			--main-searchbox-body-color-hover: rgb(137, 52, 192);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(53, 10, 81, .38);
+			--secondary-searchbox-body-color: rgb(128, 37, 187);
+			--secondary-searchbox-body-color-hover: rgb(137, 52, 192);
+			--secondary-searchbox-border-color: 1px solid rgb(128, 37, 187);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(53, 10, 81, .38);
+			--searchbox-border-left-color: 1px solid rgb(204, 128, 255);
+			--searchbox-border-top-color: 1px solid rgb(204, 128, 255);
+			--stupid-overview-border-color: 1px solid rgb(153, 45, 223);
+			--stupid-overview-border-color-hover: rgb(168, 66, 234);
+			--top-bar-color: rgb(90, 18, 136);
+			--top-bar-border-bottom: 1px solid rgb(100, 13, 158);
+			--selection-color: rgb(156, 32, 236);
+			--searchbox-icons-color: rgb(182, 105, 232);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- 「紫　－　むらさき」 ----- */
+	if (colorOption=="murasaki") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(134, 26, 204);
+			--main-border-one: 1px solid rgb(175, 62, 249);
+			--main-border-two: rgb(175, 62, 249);
+			--main-border-three: 1px solid rgb(206, 132, 255);
+			--main-border-four: rgb(185, 79, 255);
+			--main-border-title-icon: 1px solid rgb(185, 79, 255);
+			--border-in-between-button: rgb(175, 62, 249);
+			--text-underline-in-active-menu: rgb(204, 123, 255);
+			--text-in-active-menu: rgb(210, 140, 255);
+			--text-in-links: rgb(95, 173, 255);
+			--link-has-been-visited: rgb(178, 110, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #4f3fff; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(153, 45, 223);
+			--main-searchbox-body-color-hover: rgb(168, 66, 234);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(78, 11, 121, .38);
+			--secondary-searchbox-body-color: rgb(153, 45, 223);
+			--secondary-searchbox-body-color-hover: rgb(168, 66, 234);
+			--secondary-searchbox-border-color: 1px solid rgb(153, 45, 223);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(78, 11, 121, .38);
+			--searchbox-border-left-color: 1px solid rgb(204, 128, 255);
+			--searchbox-border-top-color: 1px solid rgb(204, 128, 255);
+			--stupid-overview-border-color: 1px solid rgb(153, 45, 223);
+			--stupid-overview-border-color-hover: rgb(168, 66, 234);
+			--top-bar-color: rgb(138, 27, 211);
+			--top-bar-border-bottom: 1px solid rgb(100, 13, 158);
+			--selection-color: rgb(188, 96, 247);
+			--searchbox-icons-color: rgb(141, 196, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Discord color ----- */
+	if (colorOption=="discord_mod") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(64, 78, 237);
+			--main-border-one: 1px solid rgb(111, 122, 255);
+			--main-border-two: rgb(111, 122, 255);
+			--main-border-three: 1px solid rgb(111, 122, 255);
+			--main-border-four: rgb(111, 122, 255);
+			--main-border-title-icon: 1px solid rgb(153, 161, 255);
+			--border-in-between-button: rgb(111, 122, 255);
+			--text-underline-in-active-menu: rgb(142, 149, 234);
+			--text-in-active-menu: rgb(142, 149, 234);
+			--text-in-links: rgb(116, 184, 255);
+			--link-has-been-visited: rgb(189, 130, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff9f97;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1300ea; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(111, 122, 255);
+			--main-searchbox-body-color-hover: rgb(137, 146, 255);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(21, 31, 147, .38);
+			--secondary-searchbox-body-color: rgb(111, 122, 255);
+			--secondary-searchbox-body-color-hover: rgb(137, 146, 255);
+			--secondary-searchbox-border-color: 1px solid rgb(111, 122, 255);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(21, 31, 147, .38);
+			--searchbox-border-left-color: 1px solid rgb(183, 188, 255);
+			--searchbox-border-top-color: 1px solid rgb(183, 188, 255);
+			--stupid-overview-border-color: 1px solid rgb(111, 122, 255);
+			--stupid-overview-border-color-hover: rgb(137, 146, 255);
+			--top-bar-color: rgb(48, 64, 241);
+			--top-bar-border-bottom: 1px solid rgb(24, 41, 241);
+			--selection-color: rgb(138, 147, 255);
+			--searchbox-icons-color: rgb(141, 196, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- 「紫　－　「ライトパープル」」 ----- */
+	if (colorOption=="murasaki_light") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(211, 144, 255);
+			--main-border-one: 1px solid rgb(190, 91, 255);
+			--main-border-two: rgb(190, 91, 255);
+			--main-border-three: 1px solid rgb(190, 91, 255);
+			--main-border-four: rgb(190, 91, 255);
+			--main-border-title-icon: 1px solid rgb(178, 61, 255);
+			--border-in-between-button: rgb(190, 91, 255);
+			--text-underline-in-active-menu: rgb(26,115,232);
+			--text-in-active-menu: rgb(26,115,232);
+			--text-in-links: rgb(56, 43, 207);
+			--link-has-been-visited: rgb(145, 49, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #4f4f4f;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #392ae2; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(223, 175, 255);
+			--main-searchbox-body-color-hover: rgb(230, 192, 255);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(45, 45, 45, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(128, 60, 172, .38);
+			--secondary-searchbox-body-color: rgb(223, 175, 255);
+			--secondary-searchbox-body-color-hover: rgb(230, 192, 255);
+			--secondary-searchbox-border-color: 1px solid rgb(223, 175, 255);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(128, 60, 172, .38);
+			--searchbox-border-left-color: 1px solid rgb(190, 91, 255);
+			--searchbox-border-top-color: 1px solid rgb(190, 91, 255);
+			--stupid-overview-border-color: 1px solid rgb(51, 199, 255);
+			--stupid-overview-border-color-hover: rgb(158, 228, 255);
+			--top-bar-color: rgb(208, 135, 255);
+			--top-bar-border-bottom: rgb(190, 91, 255);
+			--selection-color: rgb(230, 192, 255);
+			--searchbox-icons-color: rgb(192, 92, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* Strawberry color from https://encycolorpedia.com/fc5a8d */
+	if (colorOption=="strawberry") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(252, 90, 141);
+			--main-border-one: 1px solid rgb(255, 139, 175);
+			--main-border-two: rgb(255, 139, 175);
+			--main-border-three: 1px solid rgb(255, 139, 175);
+			--main-border-four: rgb(255, 139, 175);
+			--main-border-title-icon: 1px solid rgb(255, 155, 186);
+			--border-in-between-button: rgb(255, 139, 175);
+			--text-underline-in-active-menu: rgb(255, 151, 184);
+			--text-in-active-menu: rgb(255, 151, 184);
+			--text-in-links: rgb(105, 178, 255);
+			--link-has-been-visited: rgb(97, 0, 207);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ffa29b;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 114, 158);
+			--main-searchbox-body-color-hover: rgb(255, 140, 176);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(202, 30, 84, .38);
+			--secondary-searchbox-body-color: rgb(255, 114, 158);
+			--secondary-searchbox-body-color-hover: rgb(255, 140, 176);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 114, 158);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(202, 30, 84, .38);
+			--searchbox-border-left-color: 1px solid rgb(204, 128, 255);
+			--searchbox-border-top-color: 1px solid rgb(204, 128, 255);
+			--stupid-overview-border-color: 1px solid rgb(255, 114, 158);
+			--stupid-overview-border-color-hover: rgb(255, 140, 176);
+			--top-bar-color: rgb(238, 86, 134);
+			--top-bar-border-bottom: 1px solid rgb(219, 78, 123);
+			--selection-color: rgb(255, 140, 176);
+			--searchbox-icons-color: rgb(141, 196, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- 「ピンクのテーマ」 ----- */
+	if (colorOption=="pinku") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(255, 94, 217);
+			--main-border-one: 1px solid rgb(255, 143, 228);
+			--main-border-two: rgb(255, 143, 228);
+			--main-border-three: 1px solid rgb(255, 143, 228);
+			--main-border-four: rgb(255, 143, 228);
+			--main-border-title-icon: 1px solid rgb(255, 143, 228);
+			--border-in-between-button: rgb(255, 143, 228);
+			--text-underline-in-active-menu: rgb(255, 165, 233);
+			--text-in-active-menu: rgb(255, 155, 231);
+			--text-in-links: rgb(255, 173, 236);
+			--link-has-been-visited: rgb(217, 0, 166);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff3526;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 121, 223);
+			--main-searchbox-body-color-hover: rgb(255, 142, 228);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(179, 23, 142, .38);
+			--secondary-searchbox-body-color: rgb(255, 121, 223);
+			--secondary-searchbox-body-color-hover: rgb(255, 142, 228);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 142, 228);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(179, 23, 142, .38);
+			--searchbox-border-left-color: 1px solid rgb(255, 167, 234);
+			--searchbox-border-top-color: 1px solid rgb(255, 167, 234);
+			--stupid-overview-border-color: 1px solid rgb(255, 121, 223);
+			--stupid-overview-border-color-hover: rgb(255, 142, 228);
+			--top-bar-color: rgb(255, 94, 217);
+			--top-bar-border-bottom: rgb(255, 143, 228);
+			--selection-color: rgb(255, 155, 231);
+			--searchbox-icons-color: rgb(255, 176, 236);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Legacy Windows tooltip (light yellow color) ----- */
+	if (colorOption=="windows_tooltip") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(249, 251, 204);
+			--main-border-one: 1px solid rgb(207, 207, 148);
+			--main-border-two: rgb(207, 207, 155);
+			--main-border-three: 1px solid rgb(207, 207, 155);
+			--main-border-four: rgb(207, 207, 155);
+			--main-border-title-icon: 1px solid rgb(166, 166, 117);
+			--border-in-between-button: rgb(207, 207, 155);
+			--text-underline-in-active-menu: rgb(109, 97, 243);
+			--text-in-active-menu: rgb(109, 97, 243);
+			--text-in-links: rgb(100, 87, 247);
+			--link-has-been-visited: rgb(145, 49, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #392ae2; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(236, 238, 172);
+			--main-searchbox-body-color-hover: white;
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(236, 238, 172);
+			--secondary-searchbox-body-color-hover: white;
+			--secondary-searchbox-border-color: 1px solid rgb(236, 238, 172);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(96, 95, 95, .38);
+			--searchbox-border-left-color: 1px solid rgb(207, 207, 148);
+			--searchbox-border-top-color: 1px solid rgb(207, 207, 148);
+			--stupid-overview-border-color: 1px solid rgb(236, 238, 172);
+			--stupid-overview-border-color-hover: white;
+			--top-bar-color: rgb(245, 247, 200);
+			--top-bar-border-bottom: rgb(192, 192, 135);
+			--selection-color: rgb(224, 224, 119);
+			--searchbox-icons-color: rgb(57, 152, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Brat (notably from Charli XCX) ----- */
+	if (colorOption=="brat") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(138, 207, 0);
+			--main-border-one: 1px solid rgb(104, 155, 0);
+			--main-border-two: rgb(104, 155, 0);
+			--main-border-three: 1px solid rgb(104, 155, 0);
+			--main-border-four: rgb(104, 155, 0);
+			--main-border-title-icon: 1px solid rgb(104, 155, 0);
+			--border-in-between-button: rgb(104, 155, 0);
+			--text-underline-in-active-menu: rgb(90, 134, 0);
+			--text-in-active-menu: rgb(90, 134, 0);
+			--text-in-links: rgb(90, 134, 0);
+			--link-has-been-visited: rgb(145, 49, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #392ae2; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(106, 158, 0);
+			--main-searchbox-body-color-hover: rgb(91, 136, 0);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(45, 62, 10, .38);
+			--secondary-searchbox-body-color: rgb(106, 158, 0);
+			--secondary-searchbox-body-color-hover: rgb(91, 136, 0);
+			--secondary-searchbox-border-color: 1px solid rgb(106, 158, 0);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(45, 62, 10, .38);
+			--searchbox-border-left-color: 1px solid rgb(207, 207, 148);
+			--searchbox-border-top-color: 1px solid rgb(207, 207, 148);
+			--stupid-overview-border-color: 1px solid rgb(236, 238, 172);
+			--stupid-overview-border-color-hover: white;
+			--top-bar-color: rgb(138, 207, 0)
+			--top-bar-border-bottom: rgb(106, 158, 0);
+			--selection-color: rgb(106, 158, 0);
+			--searchbox-icons-color: rgb(217, 255, 140)
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Oppo A37fw - green button ----- */
+	if (colorOption=="oppoa37fw_greenbutton") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(60, 201, 182);
+			--main-border-one: 1px solid rgb(52, 179, 161);
+			--main-border-two: rgb(52, 179, 161);
+			--main-border-three: 1px solid rgb(52, 179, 161);
+			--main-border-four: rgb(52, 179, 161);
+			--main-border-title-icon: 1px solid rgb(52, 179, 161);
+			--border-in-between-button: rgb(52, 179, 161);
+			--text-underline-in-active-menu: rgb(119, 232, 217);
+			--text-in-active-menu: rgb(119, 232, 217);
+			--text-in-links: rgb(21, 0, 255);
+			--link-has-been-visited: rgb(148, 65, 243);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #392ae2; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(67, 224, 202);
+			--main-searchbox-body-color-hover: rgb(71, 236, 213);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(21, 109, 97, .38);
+			--secondary-searchbox-body-color: rgb(67, 224, 202);
+			--secondary-searchbox-body-color-hover: rgb(71, 236, 213);
+			--secondary-searchbox-border-color: 1px solid rgb(67, 224, 202);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(21, 109, 97, .38);
+			--searchbox-border-left-color: 1px solid rgb(141, 240, 227);
+			--searchbox-border-top-color: 1px solid rgb(141, 240, 227);
+			--stupid-overview-border-color: 1px solid rgb(236, 238, 172);
+			--stupid-overview-border-color-hover: white;
+			--top-bar-color: rgb(60, 201, 182);
+			--top-bar-border-bottom: rgb(60, 201, 182);
+			--selection-color: rgb(119, 232, 217);
+			--searchbox-icons-color: rgb(141, 240, 227);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Download mode (found on older androids) ----- */
+	if (colorOption=="download_mode") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(20, 164, 189);
+			--main-border-one: 1px solid rgb(17, 134, 155);
+			--main-border-two: rgb(17, 134, 155);
+			--main-border-three: 1px solid rgb(17, 134, 155);
+			--main-border-four: rgb(17, 134, 155);
+			--main-border-title-icon: 1px solid rgb(18, 202, 202);
+			--border-in-between-button: rgb(14, 181, 181);
+			--text-underline-in-active-menu: rgb(0, 204, 204);
+			--text-in-active-menu: rgb(2, 217, 217);
+			--text-in-links: rgb(10, 255, 255);
+			--link-has-been-visited: rgb(209, 169, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #e2e2e2;
+			--red-text-color: #ff9b93;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(17, 134, 155);
+			--main-searchbox-body-color-hover: rgb(24, 188, 216);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(17, 134, 155);
+			--secondary-searchbox-body-color-hover: rgb(24, 188, 216);
+			--secondary-searchbox-border-color: 1px solid rgb(17, 134, 155);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(96, 95, 95, .78);
+			--searchbox-border-left-color: 1px solid rgb(2, 217, 217);
+			--searchbox-border-top-color: 1px solid rgb(2, 217, 217);
+			--stupid-overview-border-color: 1px solid rgb(12, 156, 156);
+			--stupid-overview-border-color-hover: rgb(14, 181, 181);
+			--top-bar-color: rgb(19, 155, 179);
+			--top-bar-border-bottom: 1px solid rgb(18, 146, 168);
+			--selection-color: rgb(48, 224, 254);
+			--searchbox-icons-color: rgb(48, 224, 254);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Windows 98 (background color) ----- */
+	if (colorOption=="win98") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(0 128 128);
+			--main-border-one: 1px solid rgb(14, 181, 181);
+			--main-border-two: rgb(14, 181, 181);
+			--main-border-three: 1px solid rgb(43, 202, 202);
+			--main-border-four: rgb(14, 181, 181);
+			--main-border-title-icon: 1px solid rgb(18, 202, 202);
+			--border-in-between-button: rgb(14, 181, 181);
+			--text-underline-in-active-menu: rgb(0, 204, 204);
+			--text-in-active-menu: rgb(2, 217, 217);
+			--text-in-links: rgb(2, 217, 217);
+			--link-has-been-visited: rgb(209, 169, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff9b93;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(12, 156, 156);
+			--main-searchbox-body-color-hover: rgb(14, 181, 181);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(12, 156, 156);
+			--secondary-searchbox-body-color-hover: rgb(14, 181, 181);
+			--secondary-searchbox-border-color: 1px solid rgb(12, 156, 156);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(6, 90, 105, .38);
+			--searchbox-border-left-color: 1px solid rgb(2, 217, 217);
+			--searchbox-border-top-color: 1px solid rgb(2, 217, 217);
+			--stupid-overview-border-color: 1px solid rgb(12, 156, 156);
+			--stupid-overview-border-color-hover: rgb(14, 181, 181);
+			--top-bar-color: rgb(0, 119, 119);
+			--top-bar-border-bottom: 1px solid rgb(0, 119, 119);
+			--selection-color: rgb(15, 202, 202);
+			--searchbox-icons-color: rgb(2, 217, 217);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- School blackboard (approximate background color) ----- */
+	if (colorOption=="blackboard") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(0, 92, 80);
+			--main-border-one: 1px solid rgb(0, 145, 126);
+			--main-border-two: rgb(0, 145, 126);
+			--main-border-three: 1px solid rgb(0, 145, 126);
+			--main-border-four: rgb(0, 145, 126);
+			--main-border-title-icon: 1px solid rgb(0, 187, 163);
+			--border-in-between-button: rgb(0, 145, 126);
+			--text-underline-in-active-menu: rgb(0, 179, 155);
+			--text-in-active-menu: rgb(0, 207, 179);
+			--text-in-links: rgb(0, 207, 180);
+			--link-has-been-visited: rgb(190, 134, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff897f;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #6355ff; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(16, 117, 109);
+			--main-searchbox-body-color-hover: rgb(17, 132, 119);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(47, 68, 58, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(5, 60, 42, .38);
+			--secondary-searchbox-body-color: rgb(16, 117, 109);
+			--secondary-searchbox-body-color-hover: rgb(17, 132, 119);
+			--secondary-searchbox-border-color: 1px solid rgb(16, 117, 109);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(5, 60, 42, .38);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(5, 60, 42, .38);
+			--searchbox-border-left-color: 1px solid rgb(0, 187, 163);
+			--searchbox-border-top-color: 1px solid rgb(0, 187, 163);
+			--stupid-overview-border-color: 1px solid rgb(18, 126, 117);
+			--stupid-overview-border-color-hover: rgb(20, 147, 132);
+			--top-bar-color: rgb(0, 102, 89);
+			--top-bar-border-bottom: 1px solid rgb(0, 102, 102);
+			--selection-color: rgb(20, 136, 123);
+			--searchbox-icons-color: rgb(0, 213, 185);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Windows Classic theme (background color) ----- */
+	if (colorOption=="winclassic") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(58, 110, 165);
+			--main-border-one: 1px solid rgb(77, 139, 204);
+			--main-border-two: rgb(77, 139, 204);
+			--main-border-three: 1px solid rgb(118, 185, 255);
+			--main-border-four: rgb(85, 168, 255);
+			--main-border-title-icon: 1px solid rgb(85, 168, 255);
+			--border-in-between-button: rgb(77, 139, 204);
+			--text-underline-in-active-menu: rgb(118, 185, 255);
+			--text-in-active-menu: rgb(141, 197, 255);
+			--text-in-links: rgb(158, 205, 255);
+			--link-has-been-visited: rgb(214, 151, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ffa79e;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(65, 129, 196);
+			--main-searchbox-body-color-hover: rgb(76, 143, 213);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(32, 82, 134, .78);
+			--secondary-searchbox-body-color: rgb(65, 129, 196);
+			--secondary-searchbox-body-color-hover: rgb(76, 143, 213);
+			--secondary-searchbox-border-color: 1px solid rgb(65, 129, 196);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(32, 82, 134, .78);
+			--searchbox-border-left-color: 1px solid rgb(101, 176, 255);
+			--searchbox-border-top-color: 1px solid rgb(101, 176, 255);
+			--stupid-overview-border-color: 1px solid rgb(65, 129, 196);
+			--stupid-overview-border-color-hover: rgb(76, 143, 213);
+			--top-bar-color: rgb(57, 115, 174);
+			--top-bar-border-bottom: 1px solid rgb(48, 96, 145);
+			--selection-color: rgb(89, 150, 215);
+			--searchbox-icons-color: rgb(141, 196, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Sunny yellow ----- */
+	if (colorOption=="yellow_sun") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(255, 255, 21);
+			--main-border-one: 1px solid rgb(192, 192, 0);
+			--main-border-two: rgb(192, 192, 0);
+			--main-border-three: 1px solid rgb(192, 192, 0);
+			--main-border-four: rgb(192, 192, 0);
+			--main-border-title-icon: 1px solid rgb(192, 192, 0);
+			--border-in-between-button: rgb(192, 192, 0);
+			--text-underline-in-active-menu: rgb(26,115,232);
+			--text-in-active-menu: rgb(26,115,232);
+			--text-in-links: rgb(56, 43, 207);
+			--link-has-been-visited: rgb(145, 49, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--main-searchbox-body-color: rgb(255, 255, 154);
+			--main-searchbox-body-color-hover: rgb(253, 255, 232);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(155, 155, 15, .38);
+			--secondary-searchbox-body-color: rgb(255, 255, 174);
+			--secondary-searchbox-body-color-hover: rgb(253, 255, 232);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 255, 174);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(155, 155, 15, .38);
+			--searchbox-border-left-color: 1px solid rgb(192, 192, 0);
+			--searchbox-border-top-color: 1px solid rgb(192, 192, 0);
+			--stupid-overview-border-color: 1px solid rgb(255, 255, 154);
+			--stupid-overview-border-color-hover: rgb(253, 255, 232);
+			--top-bar-color: rgb(255, 255, 0);
+			--top-bar-border-bottom: rgb(44, 154, 196);
+			--selection-color: rgb(23, 133, 175);
+			--searchbox-icons-color: rgb(57, 152, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Future ----- */
+	if (colorOption=="future") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(183, 194, 255);
+			--main-border-one: 1px solid rgb(109, 153, 198);
+			--main-border-two: rgb(109, 153, 198);
+			--main-border-three: 1px solid rgb(109, 153, 198);
+			--main-border-four: rgb(109, 153, 198);
+			--main-border-title-icon: 1px solid rgb(82, 126, 170);
+			--border-in-between-button: rgb(109, 153, 198);
+			--text-underline-in-active-menu: rgb(26,115,232);
+			--text-in-active-menu: rgb(26,115,232);
+			--text-in-links: rgb(56, 43, 207);
+			--link-has-been-visited: rgb(145, 49, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(200, 208, 255);
+			--main-searchbox-body-color-hover: rgb(222, 227, 255);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(200, 208, 255);
+			--secondary-searchbox-body-color-hover: rgb(166, 230, 255);
+			--secondary-searchbox-border-color: 1px solid rgb(200, 208, 255);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(96, 95, 95, .38);
+			--searchbox-border-left-color: 1px solid rgb(123, 171, 219);
+			--searchbox-border-top-color: 1px solid rgb(123, 171, 219);
+			--stupid-overview-border-color: 1px solid rgb(51, 199, 255);
+			--stupid-overview-border-color-hover: rgb(158, 228, 255);
+			--top-bar-color: rgb(200, 208, 255);
+			--top-bar-border-bottom: rgb(44, 154, 196);
+			--selection-color: rgb(23, 133, 175);
+			--searchbox-icons-color: rgb(57, 152, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Future (dark) ----- */
+	if (colorOption=="future_dark") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(85, 90, 122);
+			--main-border-one: 1px solid rgb(115, 123, 168);
+			--main-border-two: rgb(115, 123, 168);
+			--main-border-three: 1px solid rgb(115, 123, 168);
+			--main-border-four: rgb(115, 123, 168);
+			--main-border-title-icon: 1px solid rgb(115, 123, 168);
+			--border-in-between-button: rgb(115, 123, 168);
+			--text-underline-in-active-menu: rgb(26,115,232);
+			--text-in-active-menu: rgb(155, 165, 221);
+			--text-in-links: rgb(122, 179, 255);
+			--link-has-been-visited: rgb(145, 49, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(110, 117, 162);
+			--main-searchbox-body-color-hover: rgb(132, 140, 194);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(110, 117, 162);
+			--secondary-searchbox-body-color-hover: rgb(132, 140, 194);
+			--secondary-searchbox-border-color: 1px solid rgb(132, 140, 194);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(96, 95, 95, .38);
+			--searchbox-border-left-color: 1px solid rgb(123, 171, 219);
+			--searchbox-border-top-color: 1px solid rgb(123, 171, 219);
+			--stupid-overview-border-color: 1px solid rgb(51, 199, 255);
+			--stupid-overview-border-color-hover: rgb(158, 228, 255);
+			--top-bar-color: rgb(85, 90, 122);
+			--top-bar-border-bottom: rgb(85, 90, 122);
+			--selection-color: rgb(23, 133, 175);
+			--searchbox-icons-color: rgb(57, 152, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Bright sky ----- */
+	if (colorOption=="sky") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(54, 200, 255);
+			--main-border-one: 1px solid rgb(109, 153, 198);
+			--main-border-two: rgb(109, 153, 198);
+			--main-border-three: 1px solid rgb(109, 153, 198);
+			--main-border-four: rgb(109, 153, 198);
+			--main-border-title-icon: 1px solid rgb(82, 126, 170);
+			--border-in-between-button: rgb(109, 153, 198);
+			--text-underline-in-active-menu: rgb(26,115,232);
+			--text-in-active-menu: rgb(26,115,232);
+			--text-in-links: rgb(56, 43, 207);
+			--link-has-been-visited: rgb(145, 49, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #cfcfcf;
+			--red-text-color: #ff7d73;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(125, 219, 255);
+			--main-searchbox-body-color-hover: rgb(166, 230, 255);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(125, 219, 255);
+			--secondary-searchbox-body-color-hover: rgb(166, 230, 255);
+			--secondary-searchbox-border-color: 1px solid rgb(125, 219, 255);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(6, 90, 105, .38);
+			--searchbox-border-left-color: 1px solid rgb(123, 171, 219);
+			--searchbox-border-top-color: 1px solid rgb(123, 171, 219);
+			--stupid-overview-border-color: 1px solid rgb(51, 199, 255);
+			--stupid-overview-border-color-hover: rgb(158, 228, 255);
+			--top-bar-color: rgb(10, 188, 255);
+			--top-bar-border-bottom: rgb(44, 154, 196);
+			--selection-color: rgb(23, 133, 175);
+			--searchbox-icons-color: rgb(57, 152, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Reddit's OrangeRed color ----- */
+	if (colorOption=="reddit") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(255, 69, 0);
+			--main-border-one: 1px solid rgb(255, 98, 39);
+			--main-border-two: rgb(255, 98, 39);
+			--main-border-three: 1px solid rgb(255, 98, 39);
+			--main-border-four: rgb(255, 98, 39);
+			--main-border-title-icon: 1px solid rgb(255, 98, 39);
+			--border-in-between-button: rgb(255, 98, 39);
+			--text-underline-in-active-menu: rgb(0, 204, 204);
+			--text-in-active-menu: rgb(255, 138, 94);
+			--text-in-links: rgb(255, 177, 148);
+			--link-has-been-visited: rgb(209, 169, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #e2e2e2;
+			--red-text-color: #ff9b93;
+			--red-text-color-background: #ff6255; /* original color from google.com: #ea4335; */
+			--blue-text-color-background: #3b2ec6; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(255, 98, 39);
+			--main-searchbox-body-color-hover: rgb(255, 124, 75);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(138, 47, 13, .38);
+			--secondary-searchbox-body-color: rgb(255, 98, 39);
+			--secondary-searchbox-body-color-hover: rgb(255, 124, 75);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 98, 39);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(138, 47, 13, .38);
+			--searchbox-border-left-color: 1px solid rgb(255, 124, 75);
+			--searchbox-border-top-color: 1px solid rgb(255, 124, 75);
+			--stupid-overview-border-color: 1px solid rgb(12, 156, 156);
+			--stupid-overview-border-color-hover: rgb(14, 181, 181);
+			--top-bar-color: rgb(255, 69, 0);
+			--top-bar-border-bottom: 1px solid rgb(255, 98, 39);
+			--selection-color: rgb(255, 138, 94);
+			--searchbox-icons-color: rgb(255, 181, 154);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- TikTok Red ----- */
+	if (colorOption=="tiktok_red") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgba(255, 59, 92, 1);
+			--main-border-one: 1px solid rgb(255, 93, 120);
+			--main-border-two: rgb(255, 93, 120);
+			--main-border-three: 1px solid rgb(255, 93, 120);
+			--main-border-four: rgb(255, 93, 120);
+			--main-border-title-icon: 1px solid rgb(255, 93, 120);
+			--border-in-between-button: rgb(255, 93, 120);
+			--text-underline-in-active-menu: rgb(0, 204, 204);
+			--text-in-active-menu: rgb(255, 140, 159);
+			--text-in-links: rgb(255, 170, 184);
+			--link-has-been-visited: rgb(209, 169, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #e2e2e2;
+			--red-text-color: #ff9b93;
+			--red-text-color-background: #ff200d; /* original color from google.com: #ea4335; */
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 93, 120);
+			--main-searchbox-body-color-hover: rgb(255, 115, 138);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(192, 19, 48, .38);
+			--secondary-searchbox-body-color: rgb(255, 93, 120);
+			--secondary-searchbox-body-color-hover: rgb(255, 115, 138);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 93, 120);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(192, 19, 48, .38);
+			--searchbox-border-left-color: 1px solid rgb(255, 115, 138);
+			--searchbox-border-top-color: 1px solid rgb(255, 115, 138);
+			--stupid-overview-border-color: 1px solid rgb(12, 156, 156);
+			--stupid-overview-border-color-hover: rgb(14, 181, 181);
+			--top-bar-color: rgba(255, 59, 92, 1);
+			--top-bar-border-bottom: 1px solid rgba(255, 59, 92, 1);
+			--selection-color: rgb(255, 129, 150);
+			--searchbox-icons-color: rgb(255, 169, 183);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- TikTok Red focus ----- */
+	if (colorOption=="tiktok_focused_red") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(255, 76, 58);
+			--main-border-one: 1px solid rgb(255, 117, 104);
+			--main-border-two: rgb(255, 117, 104);
+			--main-border-three: 1px solid rgb(255, 117, 104);
+			--main-border-four: rgb(255, 117, 104);
+			--main-border-title-icon: 1px solid rgb(255, 117, 104);
+			--border-in-between-button: rgb(255, 117, 104);
+			--text-underline-in-active-menu: rgb(0, 204, 204);
+			--text-in-active-menu: rgb(255, 150, 140);
+			--text-in-links: rgb(255, 150, 140);
+			--link-has-been-visited: rgb(209, 169, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #e2e2e2;
+			--red-text-color: #ff9b93;
+			--red-text-color-background: #ff200d; /* original color from google.com: #ea4335; */
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 100, 85);
+			--main-searchbox-body-color-hover: rgb(255, 117, 104);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(187, 28, 12, .38);
+			--secondary-searchbox-body-color: rgb(255, 100, 85);
+			--secondary-searchbox-body-color-hover: rgb(255, 117, 104);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 100, 85);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(187, 28, 12, .38);
+			--searchbox-border-left-color: 1px solid rgb(255, 124, 75);
+			--searchbox-border-top-color: 1px solid rgb(255, 124, 75);
+			--stupid-overview-border-color: 1px solid rgb(12, 156, 156);
+			--stupid-overview-border-color-hover: rgb(14, 181, 181);
+			--top-bar-color: rgb(255, 76, 58);
+			--top-bar-border-bottom: 1px solid rgb(255, 100, 85);
+			--selection-color: rgb(255, 125, 112);
+			--searchbox-icons-color: rgb(255, 162, 153);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- YouTube Magenta ----- */
+	if (colorOption=="youtube_magenta") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(255, 26, 71); /* hex code color: #ff1a47 */
+			--main-border-one: 1px solid rgb(255, 53, 93);
+			--main-border-two: rgb(255, 53, 93);
+			--main-border-three: 1px solid rgb(255, 53, 93);
+			--main-border-four: rgb(255, 53, 93);
+			--main-border-title-icon: 1px solid rgb(255, 53, 93);
+			--border-in-between-button: rgb(255, 53, 93);
+			--text-underline-in-active-menu: rgb(0, 204, 204);
+			--text-in-active-menu: rgb(255, 115, 143);
+			--text-in-links: rgb(255, 136, 160);
+			--link-has-been-visited: rgb(209, 169, 255);
+			--title-text-color: white;
+			--normal-text-color: #e2e2e2;
+			--menu-text-color: #e2e2e2;
+			--red-text-color: #ff9b93;
+			--red-text-color-background: #ff4e3f; /* original color from google.com: #ea4335; */
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 53, 93);
+			--main-searchbox-body-color-hover: rgb(255, 81, 116);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(105, 6, 47, .38);
+			--secondary-searchbox-body-color: rgb(255, 53, 93);
+			--secondary-searchbox-body-color-hover: rgb(255, 81, 116);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 53, 93);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(105, 6, 47, .38);
+			--searchbox-border-left-color: 1px solid rgb(255, 115, 143);
+			--searchbox-border-top-color: 1px solid rgb(255, 115, 143);
+			--stupid-overview-border-color: 1px solid rgb(12, 156, 156);
+			--stupid-overview-border-color-hover: rgb(14, 181, 181);
+			--top-bar-color: rgb(255, 26, 71)
+			--top-bar-border-bottom: 1px solid rgb(255, 53, 93);
+			--selection-color: rgb(255, 115, 143);
+			--searchbox-icons-color: rgb(255, 135, 159);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- YouTube Red ----- */
+	if (colorOption=="youtube_red") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(255, 0, 0);
+			--main-border-one: 1px solid rgb(255, 70, 70);
+			--main-border-two: rgb(255, 70, 70);
+			--main-border-three: 1px solid rgb(255, 70, 70);
+			--main-border-four: rgb(255, 70, 70);
+			--main-border-title-icon: 1px solid rgb(255, 70, 70);
+			--border-in-between-button: rgb(255, 70, 70);
+			--text-underline-in-active-menu: rgb(255, 114, 114);
+			--text-in-active-menu: rgb(255, 114, 114);
+			--text-in-links: rgb(122, 179, 255);
+			--link-has-been-visited: rgb(204, 126, 255)
+			--title-text-color: white;
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(194, 194, 194);
+			--red-text-color: #ff897f;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 61, 61);
+			--main-searchbox-body-color-hover: rgb(255, 88, 88);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(126, 14, 14, .42);
+			--secondary-searchbox-body-color: rgb(255, 61, 61);
+			--secondary-searchbox-body-color-hover: rgb(255, 88, 88);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 61, 61);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(126, 14, 14, .42);
+			--searchbox-border-left-color: 1px solid rgb(255, 115, 143);
+			--searchbox-border-top-color: 1px solid rgb(255, 115, 143);
+			--stupid-overview-border-color: 1px solid rgb(12, 156, 156);
+			--stupid-overview-border-color-hover: rgb(14, 181, 181);
+			--top-bar-color: rgb(255, 0, 0);
+			--top-bar-border-bottom: 1px solid rgb(255, 70, 70);
+			--selection-color: rgb(255, 110, 110);
+			--searchbox-icons-color: rgb(255, 129, 129);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- YouTube Dark (post 2021) ----- */
+	if (colorOption=="youtube_dark") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(33, 33, 33);
+			--main-border-one: 1px solid rgb(86, 86, 86);
+			--main-border-two: rgb(86, 86, 86);
+			--main-border-three: 1px solid rgb(86, 86, 86);
+			--main-border-four: rgb(86, 86, 86);
+			--main-border-title-icon: 1px solid rgb(117, 117, 117);
+			--border-in-between-button: rgb(86, 86, 86);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26, 115, 232);
+			--text-in-links: rgb(94, 163, 255);
+			--link-has-been-visited: rgb(185, 77, 255)
+			--title-text-color: white;
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164, 164, 164);
+			--red-text-color: #ea4335;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #3b2ec6; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(50, 50, 50);
+			--main-searchbox-body-color-hover: rgb(64, 64, 64);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(126, 14, 14, .42);
+			--secondary-searchbox-body-color: rgb(50, 50, 50);
+			--secondary-searchbox-body-color-hover: rgb(64, 64, 64);
+			--secondary-searchbox-border-color: 1px solid rgb(50, 50, 50);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(126, 14, 14, .42);
+			--searchbox-border-left-color: 1px solid rgb(86, 86, 86);
+			--searchbox-border-top-color: 1px solid rgb(86, 86, 86);
+			--stupid-overview-border-color: 1px solid rgb(34, 34, 34);
+			--stupid-overview-border-color-hover: rgb(43, 43, 43);
+			--top-bar-color: rgb(33, 33, 33);
+			--top-bar-border-bottom: 1px solid rgb(86, 86, 86);
+			--selection-color: rgb(141, 141, 141);
+			--searchbox-icons-color: rgb(164 164 164);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Google chrome - Dark (found in android) ----- */
+	if (colorOption=="chrome_dark") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(13, 20, 25);
+			--main-border-one: 1px solid rgb(34, 58, 71);
+			--main-border-two: rgb(34, 58, 71);
+			--main-border-three: 1px solid rgb(34, 58, 71);
+			--main-border-four: rgb(34, 58, 71);
+			--main-border-title-icon: 1px solid rgb(34, 58, 71);
+			--border-in-between-button: rgb(34, 58, 71);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26, 115, 232);
+			--text-in-links: rgb(94, 163, 255);
+			--link-has-been-visited: rgb(185, 77, 255)
+			--title-text-color: white;
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164, 164, 164);
+			--red-text-color: #ea4335;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #3b2ec6; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(24, 40, 50);
+			--main-searchbox-body-color-hover: rgb(34, 58, 71);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(31, 48, 60, .42);
+			--secondary-searchbox-body-color: rgb(24, 40, 50);
+			--secondary-searchbox-body-color-hover: rgb(34, 58, 71);
+			--secondary-searchbox-border-color: 1px solid rgb(24, 40, 50);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(31, 48, 60, .42);
+			--searchbox-border-left-color: 1px solid rgb(34, 58, 71);
+			--searchbox-border-top-color: 1px solid rgb(34, 58, 71);
+			--stupid-overview-border-color: 1px solid rgb(34, 34, 34);
+			--stupid-overview-border-color-hover: rgb(43, 43, 43);
+			--top-bar-color: rgb(13, 20, 25);
+			--top-bar-border-bottom: 1px solid rgb(34, 58, 71);
+			--selection-color: rgb(46, 78, 96);
+			--searchbox-icons-color: rgb(90, 152, 187);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- PornHub's logo ----- */
+	if (colorOption=="pornhub") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(239, 146, 28);
+			--main-border-one: 1px solid rgb(255, 184, 93);
+			--main-border-two: rgb(255, 184, 93);
+			--main-border-three: 1px solid rgb(255, 184, 93);
+			--main-border-four: rgb(255, 184, 93);
+			--main-border-title-icon: 1px solid rgb(255, 230, 139);
+			--border-in-between-button: rgb(255, 184, 93);
+			--text-underline-in-active-menu: rgb(255, 225, 118);
+			--text-in-active-menu: rgb(255, 225, 118);
+			--text-in-links: rgb(148, 194, 255);
+			--link-has-been-visited: rgb(132, 0, 219);
+			--title-text-color: white;
+			--normal-text-color: rgb(213, 206, 198);
+			--menu-text-color: rgb(255, 229, 197);
+			--red-text-color: #ffb2ac;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 164, 46);
+			--main-searchbox-body-color-hover: rgb(255, 176, 73);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(31, 48, 60, .42);
+			--secondary-searchbox-body-color: rgb(255, 164, 46);
+			--secondary-searchbox-body-color-hover: rgb(255, 176, 73);
+			--secondary-searchbox-border-color: 1px solid rgb(255, 164, 46);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(31, 48, 60, .42);
+			--searchbox-border-left-color: 1px solid rgb(255, 231, 146);
+			--searchbox-border-top-color: 1px solid rgb(255, 231, 146);
+			--stupid-overview-border-color: 1px solid var(--main-searchbox-body-color);
+			--stupid-overview-border-color-hover: var(--main-searchbox-body-color-hover);
+			--top-bar-color: rgb(239, 146, 28);
+			--top-bar-border-bottom: 1px solid rgb(207, 116, 0);
+			--selection-color: rgb(255, 191, 108);
+			--searchbox-icons-color: rgb(255, 231, 146);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- unused ----- */
+	if (colorOption=="stu48_textcolor") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(5, 28, 134);
+			--main-border-one: 1px solid rgb(0, 14, 192);
+			--main-border-two: rgb(0, 14, 192);
+			--main-border-three: 1px solid rgb(0, 14, 192);
+			--main-border-four: rgb(0, 14, 192);
+			--main-border-title-icon: 1px solid rgb(16, 34, 255);
+			--border-in-between-button: rgb(0, 14, 192);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26, 115, 232);
+			--text-in-links: rgb(94, 163, 255);
+			--link-has-been-visited: rgb(185, 77, 255)
+			--title-text-color: white;
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164 164 164);
+			--red-text-color: #ff7165;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(8, 36, 168);
+			--main-searchbox-body-color-hover: rgb(11, 44, 202);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 9px 2px rgba(12, 21, 141, .42);
+			--secondary-searchbox-body-color: rgb(8, 36, 168);
+			--secondary-searchbox-body-color-hover: rgb(11, 44, 202);
+			--secondary-searchbox-border-color: 1px solid rgb(8, 36, 168);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(12, 21, 141, .42);
+			--searchbox-border-left-color: 1px solid rgb(77, 77, 77);
+			--searchbox-border-top-color: 1px solid rgb(77, 77, 77);
+			--stupid-overview-border-color: 1px solid rgb(8, 36, 168);
+			--stupid-overview-border-color-hover: rgb(11, 44, 202);
+			--top-bar-color: rgb(5, 28, 134);
+			--top-bar-border-bottom: 1px solid rgb(0, 10, 132);
+			--selection-color: rgb(48, 58, 200);
+			--searchbox-icons-color: rgb(164 164 164);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Navy blue ----- */
+	if (colorOption=="navyblue") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(0, 6, 81);
+			--main-border-one: 1px solid rgb(0, 14, 192);
+			--main-border-two: rgb(0, 14, 192);
+			--main-border-three: 1px solid rgb(0, 14, 192);
+			--main-border-four: rgb(0, 14, 192);
+			--main-border-title-icon: 1px solid rgb(16, 34, 255);
+			--border-in-between-button: rgb(0, 14, 192);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26, 115, 232);
+			--text-in-links: rgb(94, 163, 255);
+			--link-has-been-visited: rgb(185, 77, 255)
+			--title-text-color: white;
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164, 164, 164);
+			--red-text-color: #ff7165;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #3b2ec6; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(0, 9, 128);
+			--main-searchbox-body-color-hover: rgb(0, 11, 162);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(12, 21, 141, .42);
+			--secondary-searchbox-body-color: rgb(0, 9, 128);
+			--secondary-searchbox-body-color-hover: rgb(0, 11, 162);
+			--secondary-searchbox-border-color: 1px solid rgb(0, 9, 128);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(12, 21, 141, .42);
+			--searchbox-border-left-color: 1px solid rgb(16, 34, 255);
+			--searchbox-border-top-color: 1px solid rgb(16, 34, 255);
+			--stupid-overview-border-color: 1px solid rgb(34, 34, 34);
+			--stupid-overview-border-color-hover: rgb(43, 43, 43);
+			--top-bar-color: rgb(0, 6, 81);
+			--top-bar-border-bottom: 1px solid rgb(0, 10, 132);
+			--selection-color: rgb(48, 58, 200);
+			--searchbox-icons-color: rgb(123, 133, 255);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Maroon (intentional misspelling to avoid internal issues) ----- */
+	if (colorOption=="d_maron") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(136, 0, 0);
+			--main-border-one: 1px solid rgb(219, 0, 0);
+			--main-border-two: rgb(219, 0, 0);
+			--main-border-three: 1px solid rgb(219, 0, 0);
+			--main-border-four: rgb(219, 0, 0);
+			--main-border-title-icon: 1px solid rgb(228, 17, 17);
+			--border-in-between-button: rgb(219, 0, 0);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(236, 68, 68);
+			--text-in-links: rgb(94, 163, 255);
+			--link-has-been-visited: rgb(185, 77, 255)
+			--title-text-color: white;
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164, 164, 164);
+			--red-text-color: #ea4335;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #3b2ec6; /* original color from google.com: #1a0dab; */
+			--main-searchbox-body-color: rgb(187, 0, 0);
+			--main-searchbox-body-color-hover: rgb(219, 0, 0);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 5px 2px rgba(66, 8, 8, .42);
+			--secondary-searchbox-body-color: rgb(187, 0, 0);
+			--secondary-searchbox-body-color-hover: rgb(219, 0, 0);
+			--secondary-searchbox-border-color: 1px solid rgb(187, 0, 0);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(66, 8, 8, .42);
+			--searchbox-border-left-color: 1px solid rgb(236, 68, 68);
+			--searchbox-border-top-color: 1px solid rgb(236, 68, 68);
+			--stupid-overview-border-color: 1px solid rgb(34, 34, 34);
+			--stupid-overview-border-color-hover: rgb(43, 43, 43);
+			--top-bar-color: rgb(136, 0, 0);
+			--top-bar-border-bottom: 1px solid rgb(136, 0, 0);
+			--selection-color: rgb(236, 68, 68);
+			--searchbox-icons-color: rgb(232, 96, 96);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- black hole ----- */
+	if (colorOption=="blackhole") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(0, 0, 0);
+			--main-border-one: 1px solid rgb(64, 64, 64);
+			--main-border-two: rgb(64, 64, 64);
+			--main-border-three: 1px solid rgb(64, 64, 64);
+			--main-border-four: rgb(64, 64, 64);
+			--main-border-title-icon: 1px solid rgb(117, 117, 117);
+			--border-in-between-button: rgb(64, 64, 64);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26, 115, 232); /* #1a73e8; the original color */
+			--text-in-links: rgb(94, 163, 255);
+			--link-has-been-visited: rgb(185, 77, 255);
+			--title-text-color: rgb(255, 255, 255);
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164 164 164);
+			--red-text-color: #ea4335;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(20, 20, 20);
+			--main-searchbox-body-color-hover: rgb(48, 48, 48);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 9px 2px rgba(49, 49, 49, .78);
+			--secondary-searchbox-body-color: rgb(20, 20, 20);
+			--secondary-searchbox-body-color-hover: rgb(48, 48, 48);
+			--secondary-searchbox-border-color: 1px solid rgb(34, 34, 34);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .15);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(49, 49, 49, .78);
+			--searchbox-border-left-color: 1px solid rgb(77, 77, 77);
+			--searchbox-border-top-color: 1px solid rgb(77, 77, 77);
+			--stupid-overview-border-color: 1px solid rgb(117, 117, 117);
+			--stupid-overview-border-color-hover: rgb(43, 43, 43);
+			--top-bar-color: rgb(0, 0, 0);
+			--top-bar-border-bottom: 1px solid rgb(64, 64, 64);
+			--selection-color: rgb(141, 141, 141);
+			--searchbox-icons-color: rgb(164 164 164);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Experimental theme (dark based) ----- */
+	if (colorOption=="__experimental") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(224, 13, 118);
+			--main-border-one: 1px solid rgb(255, 66, 160);
+			--main-border-two: rgb(255, 66, 160);
+			--main-border-three: 1px solid rgb(255, 66, 160);
+			--main-border-four: rgb(255, 66, 160);
+			--main-border-title-icon: 1px solid rgb(255, 86, 170);
+			--border-in-between-button: rgb(255, 66, 160);
+			--text-underline-in-active-menu: rgb(255, 118, 186);
+			--text-in-active-menu: rgb(255, 118, 186);
+			--text-in-links: rgb(255, 131, 192);
+			--link-has-been-visited: rgb(170, 95, 255);
+			--title-text-color: rgb(255, 255, 255);
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164 164 164);
+			--red-text-color: #ea4335;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(255, 38, 146);
+			--main-searchbox-body-color-hover: rgb(255, 64, 159);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 9px 2px rgba(88, 10, 48, .42);
+			--secondary-searchbox-body-color: rgb(255, 38, 146);
+			--secondary-searchbox-body-color-hover: rgb(255, 64, 159);
+			--secondary-searchbox-border-color: 1px solid rgb(34, 34, 34);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(88, 10, 48, .42);
+			--searchbox-border-left-color: 1px solid rgb(255, 38, 146);
+			--searchbox-border-top-color: 1px solid rgb(255, 86, 170);
+			--stupid-overview-border-color: 1px solid rgb(255, 38, 146);
+			--stupid-overview-border-color-hover: rgb(255, 64, 159);
+			--top-bar-color: rgb(224, 13, 118);
+			--top-bar-border-bottom: 1px solid rgb(224, 13, 118);
+			--selection-color: rgb(255, 119, 187);
+			--searchbox-icons-color: rgb(255, 157, 206);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ----- Experimental theme (light based) ----- */
+	if (colorOption=="__experimental_two") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(225, 229, 241);
+			--main-border-one: 1px solid rgb(186, 190, 200);
+			--main-border-two: rgb(186, 190, 200);
+			--main-border-three: 1px solid rgb(186, 190, 200);
+			--main-border-four: rgb(186, 190, 200);
+			--main-border-title-icon: 1px solid rgb(174, 178, 187);
+			--border-in-between-button: rgb(186, 190, 200);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26,115,232);
+			--text-in-links: rgb(109, 97, 243);
+			--link-has-been-visited: rgb(110, 0, 236);
+			--title-text-color: rgb(255, 255, 255);
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164 164 164);
+			--red-text-color: #ea4335;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(187, 190, 200);
+			--main-searchbox-body-color-hover: rgb(206, 209, 219);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 9px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(187, 190, 200);
+			--secondary-searchbox-body-color-hover: rgb(206, 209, 219);
+			--secondary-searchbox-border-color: 1px solid rgb(187, 190, 200);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(96, 95, 95, .38);
+			--searchbox-border-left-color: 1px solid rgb(135, 138, 145);
+			--searchbox-border-top-color: 1px solid rgb(135, 138, 145);
+			--stupid-overview-border-color: 1px solid rgb(187, 190, 200);
+			--stupid-overview-border-color-hover: rgb(206, 209, 219);
+			--top-bar-color: rgb(225, 229, 241);
+			--top-bar-border-bottom: 1px solid rgb(187, 190, 200);
+			--selection-color: rgb(167, 171, 179);
+			--searchbox-icons-color: rgb(135, 138, 145);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ============================= set it up yourself! =============================*/
+
+	if (colorOption=="__custom") {
+		/*
+			introducing: variables!
+			this should make managing colors easier, no need to pull your hairs again!
+
+			it may not be perfect though
+		*/
+		:root {
+			--fourzero-background-color: #404040;
+			--main-body-color: rgb(225, 229, 241);
+			--main-border-one: 1px solid rgb(186, 190, 200);
+			--main-border-two: rgb(186, 190, 200);
+			--main-border-three: 1px solid rgb(186, 190, 200);
+			--main-border-four: rgb(186, 190, 200);
+			--main-border-title-icon: 1px solid rgb(174, 178, 187);
+			--border-in-between-button: rgb(186, 190, 200);
+			--text-underline-in-active-menu: rgb(26, 115, 232);
+			--text-in-active-menu: rgb(26,115,232);
+			--text-in-links: rgb(109, 97, 243);
+			--link-has-been-visited: rgb(110, 0, 236);
+			--title-text-color: rgb(255, 255, 255);
+			--normal-text-color: rgb(208, 197, 182);
+			--menu-text-color: rgb(164 164 164);
+			--red-text-color: #ea4335;
+			--red-text-color-background: #ea4335;
+			--blue-text-color-background: #1a0dab;
+			--main-searchbox-body-color: rgb(187, 190, 200);
+			--main-searchbox-body-color-hover: rgb(206, 209, 219);
+			--main-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--main-searchbox-box-shadow-hover: 0 3px 9px 2px rgba(6, 90, 105, .38);
+			--secondary-searchbox-body-color: rgb(187, 190, 200);
+			--secondary-searchbox-body-color-hover: rgb(206, 209, 219);
+			--secondary-searchbox-border-color: 1px solid rgb(187, 190, 200);
+			--secondary-searchbox-box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+			--secondary-searchbox-box-shadow-hover: 0 3px 9px 1px rgba(96, 95, 95, .38);
+			--searchbox-border-left-color: 1px solid rgb(135, 138, 145);
+			--searchbox-border-top-color: 1px solid rgb(135, 138, 145);
+			--stupid-overview-border-color: 1px solid rgb(187, 190, 200);
+			--stupid-overview-border-color-hover: rgb(206, 209, 219);
+			--top-bar-color: rgb(225, 229, 241);
+			--top-bar-border-bottom: 1px solid rgb(187, 190, 200);
+			--selection-color: rgb(167, 171, 179);
+			--searchbox-icons-color: rgb(135, 138, 145);
+			--white-text-color: white;
+			--best-answer-color: #23c253;
+			--mildlygray-text-color: rgb(179, 178, 178);
+			--black-text-color: black;
+		}
+	}
+
+	/* ============================= set it up yourself! =============================*/
+
+	/* ============================= [debug] ============================= */
+
+	if (forceblacktext) {
+		* {
+			color: black !important;
+		}
+	}
+
+	if (forcewhitetext) {
+		* {
+			color: white !important;
+		}
+	}
+
+	if (forcesmalllettersintitle) {
+		.ssJ7i {
+			text-transform: lowercase !important;
+		}
+	}
+
+	/* ============================= [debug] ============================= */
+
+	/* ============================= [misc] ============================= */
+	/*
+		NEW! apply your own custom tweaks
+		you can copy paste other people's tweaks too here
+	*/
+
+	if (customoptionaltweaks) {
+		/* remove extra bottom padding (near topbar) */
+		/*
+		.nfdoRb, .PHj8of {
+			padding-bottom: unset;
+		}
+		*/
+
+		/* old sign-in button padding look */
+		.gb_c {
+			padding: 6px 23px !important;
+		}
+
+		.SXXAaf {
+			color: var(--white-text-color);
+		}
+
+		.zNFAfd.RLCdOb > hr {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		.uzjuFc.X5YHTd {
+			border: 1px solid var(--main-border-two);
+		}
+
+		/* remove the "great matches for your search" */
+		.Ww4FFb.vt6azd {
+			display: none;
+		}
+	}
+
+	/* ============================= [misc] ============================= */
+
+	/* +++ ============================= [hide the AI Overview section (experimental)] ============================= */
+
+	if (hideAiOverviewSection) {
+		.q8sySb, #eKIzJc {
+			display: none;
+		}
+	}
+
+	/* --- ============================= [hide the AI Overview section (experimental)] ============================= */
+
+	/* +++ ============================= [google branding for dark mode (experimental)] ============================= */
+
+	if (GoogleBranding_Experimental) {
+		.logo > a > svg {
+			display: none;
+		}
+
+		.logo > a {
+			content: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png");
+			width: 91px;
+		}
+	}
+
+	/* -- ============================= [google branding for dark mode (experimental)] ============================= */
+
+	/* +++ ============================= [fix the sign-in button appearance (slowly becoming rounded - a/b testing i guess)] ============================= */
+
+	if (NonRoundedSignInButtonLook) {
+		.gb_c {
+			display: flex !important;
+			align-items: center;
+			border-radius: 4px !important;
+			padding: 0px 23px !important;
+		}
+
+		/* experimental */
+		/*
+		.gb_A {
+			display: flex !important;
+			align-items: center;
+			border-radius: 4px !important;
+			padding: 0px 23px !important;
+		}
+		*/
+
+		/* experimental - 2 */
+		.gb_A {
+			display: flex !important;
+			align-items: center;
+			border-radius: 4px !important;
+			padding: 0px 23px !important;
+		}
+
+		/* for google.com page (messy!) */
+		.gb_Pe {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.gb_Se {
+			display: flex !important;
+			flex-direction: row;
+			align-items: center;
+			padding: 0px 23px !important;
+			border-radius: 4px !important;
+		}
+
+		.gb_Qe {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.gb_Ta {
+			display: flex !important;
+			flex-direction: row;
+			align-items: center;
+			padding: 0px 23px !important;
+			border-radius: 4px !important;
+		}
+	}
+
+	/* --- ============================= [fix the sign-in button appearance (slowly becoming rounded - a/b testing i guess)] ============================= */
+
+	/* ============================= [dark scroll bar] ============================= */
+    
+	/* 🌑 Dark Scroll Bar */
+	if (scroll_Bar) {
+		/* scrollbar */
+		html[dark] {
+			::-webkit-scrollbar {
+				background-color: rgba(37, 40, 41, 0);
+				color: #a9a298;
+			}
+		}
+
+		html:not([dark]) {
+			::-webkit-scrollbar {
+				color: #a9a298;
+			}
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #484d50;
+		}
+
+		::-webkit-scrollbar-thumb:active {
+			background-color: #4b5053;
+		}
+
+		::-webkit-scrollbar-corner {
+			background-color: rgba(0, 0, 0, 0);
+		}
+	}
+
+	/* ============================= [dark scroll bar] ============================= */
+
+	/* [+] ============== preview top images radius ============== */
+
+	if (imgRadius) {
+		.ZHugbd {
+			border-radius: imgRadius;
+		}
+
+		.QJ1ykf {
+			border-radius: imgRadius;
+		}
+
+		.LicuJb.uhHOwf.BYbUcd {
+			border-radius: imgRadius !important;
+		}
+
+		.ZL2ove {
+			border-radius: imgRadius;
+		}
+
+		.ZN4ZI {
+			border-radius: imgRadius;
+		}
+
+		.t7VAxe {
+			border-radius: imgRadius;
+		}
+	}
+
+	/* [+] ============== preview top images radius ============== */
+
+	/* [+] ============== preview top images radius (images tab) ============== */
+
+	if (imgRadiusImagesSection) {
+		div.czzyk.XOEbc > .ob5Hkd > a > .F0uyec {
+			border-radius: imgRadiusImagesSection;
+		}
+	}
+
+	/* [-] ============== preview top images radius (images tab) ============== */
+
+	/* [+] ============== buttons transition ==============*/
+
+	if (buttonsHoverTransition) {
+		/* like the overview button, videos... */
+		.REySof {
+			transition: .16s ease-in-out;
+		}
+
+		/* i forgor what is this for, ごめん！ */
+		.zqrO0 .niO4u {
+			transition: .16s ease-in-out;
+		}
+
+		.jEYSNd {
+			transition: .16s ease-in-out;
+		}
+
+		/* filter buttons (below main menu at topbar) */
+		.GKS7s {
+			transition: .16s ease-in-out;
+		}
+
+		/* people also search for ?? */
+		.k8XOCe {
+			transition: .16s ease-in-out;
+		}
+
+		/* image tags (search pages - images preview) */
+		.ZkkK1e.ZkkK1e {
+			transition: .16s ease-in-out;
+		}
+
+		/* show more images ?? */
+		.ZFiwCf {
+			transition: .16s ease-in-out;
+		}
+
+		/* select translation dropdown */
+		.JBcDBe {
+			transition: .16s ease-in-out;
+		}
+
+		/* safesearch */
+		.fFI3rb.WTmhTe {
+			transition: .16s ease-in-out;
+		}
+
+		/* tools */
+		.BaegVc.YmvwI {
+			transition: .16s ease-in-out;
+		}
+	}
+
+	/* [-] ============== buttons transition ==============*/
+
+	/* [+] ============== Searchbox transition ==============*/
+
+	if (searchboxHoverTransition) {
+		/* searchbox */
+		.RNNXgb {
+			transition: .16s ease-in-out;
+		}
+
+		.RNNXgb:hover {
+			transition: .16s ease-in-out;
+		}
+
+		/* searchbox when you scroll down further */
+		.minidiv .RNNXgb {
+			transition: .16s ease-in-out;
+		}
+
+		.minidiv .RNNXgb:hover {
+			transition: .16s ease-in-out;
+		}
+	}
+
+	/* [-] ============== Searchbox transition ==============*/
+
+	/* ============== Hovering in menus (2022+ layout only) shows the underline ============== */
+
+	hmiu_forLightMode() {
+		.hdtb-mitem a, .hdtb-msel, .GOE98c {
+			margin: 0px 12px 0px 10.5px;
+		}
+
+		.hdtb-mitem a.hdtb-msel.GOE98c:hover {
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+		}
+
+		.hdtb-mitem a {
+			border-bottom: 3px solid var(--main-body-color);
+			color: var(--fourzero-background-color);
+			transition: .2s ease-in-out;
+		}
+
+		.hdtb-mitem a:hover {
+			border-bottom: 3px solid var(--fourzero-background-color);
+			transition: .2s ease-in-out;
+		}
+
+		.hdtb-mitem a:focus {
+			border-bottom: 3px solid rgb(26, 115, 232);
+			color: rgb(26 115 232);
+			transition: .2s ease-in-out;
+		}
+
+		.hdtb-mitem .GOE98c, .hdtb-mitem a, .hdtb-mitem.hdtb-msel, .t2vtad {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+
+		.GOE98c {
+			color: var(--fourzero-background-color) !important;
+			border-bottom: 3px solid var(--main-body-color);
+			transition: .2s ease-in-out;
+		}
+
+		.GOE98c:hover {
+			border-bottom: 3px solid var(--fourzero-background-color);
+			transition: .2s ease-in-out;
+		}
+
+		.GOE98c:focus {
+			color: rgb(26, 115, 232) !important;
+			border-bottom: 3px solid rgb(26, 115, 232);
+			transition: .2s ease-in-out;
+		}
+
+		/* only in images tab */
+		.NZmxZe {
+			margin: 0px 13px 0px 11px;
+			padding: 20px 0px 11px 0px;
+		}
+
+		.rQEFy:hover {
+			border-bottom: 3px solid var(--main-body-color);
+		}
+
+		a.NZmxZe:hover {
+			color: var(--text-in-active-menu);
+		}
+
+		a.NZmxZe:hover {
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		.NZmxZe.qlsyCb:hover {
+			color: var(--text-in-active-menu);
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		/* did an oopsie, fixing the "tool" button */
+		#hdtb-tls.t2vtad.hdtb-tl-sel {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+
+		#hdtb-tls.t2vtad {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+
+	hmiu_forDarkMode() {
+		.hdtb-mitem a, .hdtb-msel, .GOE98c {
+			margin: 0px 12px 0px 10.5px;
+		}
+
+		.hdtb-mitem a.hdtb-msel.GOE98c:hover {
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+		}
+
+		.hdtb-mitem a {
+			border-bottom: 3px solid var(--main-body-color);
+			color: var(--white-text-color);
+			transition: .2s ease-in-out;
+		}
+
+		.hdtb-mitem a:hover {
+			border-bottom: 3px solid var(--white-text-color);
+			color: var(--white-text-color);
+			transition: .1s ease-in-out;
+		}
+
+		.hdtb-mitem a:focus {
+			border-bottom: 3px solid rgb(26, 115, 232);
+			color: rgb(26, 115, 232);
+			transition: .3s ease-in-out;
+		}
+
+		.hdtb-mitem .GOE98c, .hdtb-mitem a, .hdtb-mitem.hdtb-msel, .t2vtad {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+
+		.GOE98c {
+			color: var(--menu-text-color) !important;
+			border-bottom: 3px solid var(--main-body-color);
+			transition: .2s ease-in-out;
+		}
+
+		.GOE98c:hover {
+			color: var(--white-text-color) !important;
+			border-bottom: 3px solid var(--white-text-color);
+			transition: .2s ease-in-out;
+		}
+
+		.GOE98c:focus {
+			color: rgb(26, 115, 232) !important;
+			border-bottom: 3px solid rgb(26, 115, 232);
+			transition: .2s ease-in-out;
+		}
+
+		/* only in images tab */
+		.NZmxZe {
+			margin: 0px 13px 0px 11px;
+			padding: 20px 0px 11px 0px;
+		}
+
+		.rQEFy:hover {
+			border-bottom: 3px solid var(--main-body-color);
+		}
+
+		a.NZmxZe:hover {
+			color: var(--text-in-active-menu);
+		}
+
+		a.NZmxZe:hover {
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		.NZmxZe.qlsyCb:hover {
+			color: var(--text-in-active-menu);
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		/* did an oopsie, fixing the "tool" button */
+		#hdtb-tls.t2vtad.hdtb-tl-sel {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+
+		#hdtb-tls.t2vtad {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+
+	if (colorOption=="d_murasaki" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="murasaki" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="discord_mod" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="murasaki_light" && hoverMenusUnderline) {
+		hmiu_forLightMode();
+	}
+
+	if (colorOption=="strawberry" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="pinku" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="windows_tooltip" && hoverMenusUnderline) {
+		hmiu_forLightMode();
+	}
+
+	if (colorOption=="brat" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="oppoa37fw_greenbutton" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="download_mode" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="win98" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="blackboard" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="winclassic" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="yellow_sun" && hoverMenusUnderline) {
+		hmiu_forLightMode();
+	}
+
+	if (colorOption=="future" && hoverMenusUnderline) {
+		hmiu_forLightMode();
+	}
+
+	if (colorOption=="future_dark" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="sky" && hoverMenusUnderline) {
+		hmiu_forLightMode();
+	}
+
+	if (colorOption=="reddit" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_red" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_focused_red" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="youtube_magenta" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="youtube_red" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="youtube_dark" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="chrome_dark" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="pornhub" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="navyblue" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="d_maron" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="blackhole" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="__experimental" && hoverMenusUnderline) {
+		hmiu_forDarkMode();
+	}
+
+	if (colorOption=="__experimental_two" && hoverMenusUnderline) {
+		hmiu_forLightMode();
+	}
+
+	/* ============== Hovering in menus (2022+ layout only) shows the underline ============== */
+
+	/* ============== Hovering in menus (experimental 2024 layout) shows the underline ============== */
+
+	hmiue_forLightMode() {
+		.YmvwI {
+			padding-left: 0px;
+			padding-right: 0px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.YmvwI:hover {
+			border-bottom: 3px solid var(--black-text-color);
+			color: var(--black-text-color);
+			padding-bottom: 8px;
+		}
+
+		.YmvwI:focus {
+			border-bottom: 3px solid var(--text-in-active-menu);
+			color: var(--text-in-active-menu);
+		}
+
+		/* fix the tool "button" */
+		.BaegVc.YmvwI {
+			padding: 0px 10px 0px 10px !important;
+			border-bottom: none;
+		}
+
+		.BaegVc.YmvwI:hover {
+			padding: 0px 10px 0px 10px !important;
+			border-bottom: none;
+			background: var(--main-searchbox-body-color-hover);
+		}
+	}
+
+	hmiue_forDarkMode() {
+		.YmvwI {
+			padding-left: 0px;
+			padding-right: 0px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.YmvwI:hover {
+			border-bottom: 3px solid var(--white-text-color);
+			color: var(--white-text-color);
+			padding-bottom: 8px;
+		}
+
+		.YmvwI:focus {
+			border-bottom: 3px solid var(--selection-color);
+			color: var(--selection-color);
+		}
+
+		/* what seems like an experimental navbar - region */
+		div > a > .mXwfNd:hover {
+			.R1QWuf {
+				border-bottom: 3px solid var(--white-text-color);
+			}
+		}
+
+		.mVH5Fc:hover {
+            border-bottom: 3px solid var(--white-text-color);
+			padding-bottom: 8px;
+		}
+
+		/* fix the tool "button" */
+		.BaegVc.YmvwI {
+			padding: 0px 10px 0px 10px !important;
+			border-bottom: none;
+		}
+
+		.BaegVc.YmvwI:hover {
+			padding: 0px 10px 0px 10px !important;
+			border-bottom: none;
+			background: var(--main-searchbox-body-color-hover);
+		}
+	}
+
+	if (colorOption=="d_murasaki" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="murasaki" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="discord_mod" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="murasaki_light" && hoverMenusUnderlineExperimental) {
+		hmiue_forLightMode();
+	}
+
+	if (colorOption=="strawberry" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="pinku" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="windows_tooltip" && hoverMenusUnderlineExperimental) {
+		hmiue_forLightMode();
+	}
+
+	if (colorOption=="brat" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="oppoa37fw_greenbutton" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="download_mode" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="win98" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="blackboard" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="winclassic" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="yellow_sun" && hoverMenusUnderlineExperimental) {
+		hmiue_forLightMode();
+	}
+
+	if (colorOption=="future" && hoverMenusUnderlineExperimental) {
+		hmiue_forLightMode();
+	}
+
+	if (colorOption=="future_dark" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="sky" && hoverMenusUnderlineExperimental) {
+		hmiue_forLightMode();
+	}
+
+	if (colorOption=="reddit" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_red" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_focused_red" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="youtube_magenta" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="youtube_red" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="youtube_dark" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="chrome_dark" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="pornhub" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="navyblue" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="d_maron" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="blackhole" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="__experimental" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (colorOption=="__experimental_two" && hoverMenusUnderlineExperimental) {
+		hmiue_forLightMode();
+	}
+
+	if (colorOption=="stu48_textcolor" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	/* ============== Hovering in menus (experimental 2024 layout) shows the underline ============== */
+
+	/* ============== Correction text visibility ============== */
+
+	cstv_forLightMode() {
+		a.gL9Hy, .QRYxYe.NNMgCf > a {
+			padding: 4px 5px 4px 5px;
+			background: var(--blue-text-color-background);
+			border-radius: 6px;
+		}
+
+		.d2IKib {
+			background-color: var(--red-text-color-background);
+			padding: 4px 5px 4px 5px;
+			border-radius: 6px;
+			color: #ffa4a4 !important;
+		}
+	}
+
+	cstv_forDarkMode() {
+		a.gL9Hy, .QRYxYe.NNMgCf > a {
+			padding: 4px 5px 4px 5px;
+			background: var(--blue-text-color-background);
+			border-radius: 6px;
+		}
+
+		.d2IKib,  {
+			background-color: var(--red-text-color-background);
+			padding: 4px 5px 4px 5px;
+			border-radius: 6px;
+			color: #ffa4a4 !important;
+		}
+	}
+
+	if (colorOption=="d_murasaki" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="murasaki" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="discord_mod" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="murasaki_light" && correctionSearchTextVisibility) {
+		cstv_forLightMode();
+	}
+
+	if (colorOption=="strawberry" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="pinku" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="windows_tooltip" && correctionSearchTextVisibility) {
+		cstv_forLightMode();
+	}
+
+	if (colorOption=="brat" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="oppoa37fw_greenbutton" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="download_mode" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="win98" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="blackboard" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="winclassic" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="future_dark" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="reddit" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_red" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_focused_red" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="youtube_magenta" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="youtube_red" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="youtube_dark" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="chrome_dark" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="pornhub" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="navyblue" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="d_maron" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="blackhole" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	if (colorOption=="__experimental" && correctionSearchTextVisibility) {
+		cstv_forDarkMode();
+	}
+
+	/* ============== Correction text visibility ============== */
+
+	/* ============== Adapt Sign In button's color to specified theme ============== */
+
+	asib_forLightMode() {
+		.gb_Aa.gb_kd.gb_Md.gb_le {
+			background: var(--main-searchbox-body-color);
+			.gb_Id {
+				color: var(--fourzero-background-color);
+			}
+		}
+        
+		.gb_Aa.gb_kd.gb_Md.gb_le:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.gb_Aa.gb_kd.gb_Md.gb_le:focus {
+			background: #1a73e8; /* the original color */
+			.gb_Id {
+				color: var(--white-text-color) !important;
+			}
+		}
+
+		/* experimental */
+		.gb_A {
+			background: var(--main-searchbox-body-color) !important;
+			.gb_S {
+				color: var(--black-text-color) !important;
+			}
+		}
+
+		.gb_A:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			.gb_S {
+				color: var(--black-text-color) !important;
+			}
+		}
+
+		.gb_A:focus {
+			background: #1a73e8 !important;
+			.gb_S {
+				color: var(--white-text-color) !important;
+			}
+		}
+
+		/* for google.com page */
+		a.gb_Ta {
+			background: var(--main-searchbox-body-color);
+			color: var(--black-text-color);
+		}
+
+		a.gb_Ta:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		a.gb_Ta:focus {
+			background: #1a73e8;
+			color: var(--white-text-color);
+		}
+	}
+
+	asib_forDarkMode() {
+		.gb_A {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.gb_A:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.gb_A:focus {
+			background: var(--text-in-active-menu) !important;
+		}
+
+        /* for the text inside the sign-in button */
+		.gb_T {
+			color: var(--white-text-color);
+		}
+
+		/* experimental */
+		
+
+		/* for google.com page */
+		a.gb_Ta {
+			background: var(--main-searchbox-body-color);
+		}
+
+		a.gb_Ta:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		a.gb_Ta:focus {
+			background: var(--text-in-active-menu) !important;
+		}
+	}
+
+	if (colorOption=="d_murasaki" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="murasaki" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="discord_mod" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="murasaki_light" && adaptSignInButtonToTheme) {
+		asib_forLightMode();
+	}
+
+	if (colorOption=="strawberry" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="pinku" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="windows_tooltip" && adaptSignInButtonToTheme) {
+		asib_forLightMode();
+	}
+
+	if (colorOption=="brat" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="oppoa37fw_greenbutton" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="download_mode" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="win98" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="blackboard" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="winclassic" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="yellow_sun" && adaptSignInButtonToTheme) {
+		asib_forLightMode();
+	}
+
+	if (colorOption=="future" && adaptSignInButtonToTheme) {
+		asib_forLightMode();
+	}
+
+	if (colorOption=="future_dark" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="sky" && adaptSignInButtonToTheme) {
+		asib_forLightMode();
+	}
+
+	if (colorOption=="reddit" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_red" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="tiktok_focused_red" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="youtube_magenta" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="youtube_red" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="youtube_dark" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="chrome_dark" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="pornhub" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="navyblue" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="d_maron" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="blackhole" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="__experimental" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	if (colorOption=="__experimental_two" && adaptSignInButtonToTheme) {
+		asib_forLightMode();
+	}
+
+	if (colorOption=="stu48_textcolor" && adaptSignInButtonToTheme) {
+		asib_forDarkMode();
+	}
+
+	/* ============== Adapt Sign In button's color to specified theme ============== */
+
+	/* ============== [+] Apply consolas font in citation links ============== */
+
+	if (consolasTextInCiteLinks) {
+		.qLRx3b.tjvcx.GvPZzd.cHaqb {
+			font-family: consolas !important;
+		}
+
+		.ylgVCe.ob9lvb {
+			font-family: consolas !important;
+		}
+
+		.tjvcx.GvPZzd.cHaqb {
+			font-family: consolas !important;
+		}
+
+		.ellip.iUh30.HmBl6 {
+			font-family: consolas !important;
+		}
+	}
+
+	/* ============== [-] Apply consolas font in citation links ============== */
+
+	/* ============== [+] padded search results ============== */
+
+	if (paddedresults) {
+		.g.Ww4FFb.vt6azd.tF2Cxc.asEBEc {
+			background-color: var(--main-searchbox-body-color);
+			padding: 12px 12px 12px 15px;
+			border-radius: 12px;
+		}
+
+		.g.Ww4FFb.vt6azd.tF2Cxc.asEBEc:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+	}
+
+	/* ============== [-] padded search results ============== */
+
+
+
+	/*
+		light mode css
+	*/
+	lightModeCSS() {
+		/* change color of text highlight */
+		::selection {
+			color: var(--white-text-color);
+			background: var(--selection-color);
+		}
+
+		.jfN4p {
+			content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+		}
+
+		body {
+			background-color: var(--main-body-color) !important;
+		}
+
+		/* ++ what the hell are these?? */
+		.appbar {
+			background: unset;
+			border-top: unset;
+		}
+
+		/* inner card (probably an experiment) */
+		.zf84ud {
+			background: var(--main-body-color);
+		}
+
+		.wdQNof {
+			border: var(--main-border-one);
+		}
+
+		.Ndm45b {
+			color: var(--white-text-color) !important;
+		}
+
+		/* -- what the hell are these?? */
+
+		/* topbar */
+		.sfbg {
+			background-color: var(--main-body-color);
+		}
+
+		/* second topbar (when you scroll down through the page) */
+		.minidiv .sfbg {
+			background-color: var(--top-bar-color);
+			border-bottom: var(--top-bar-border-bottom);
+		}
+
+		/* menu (filters) */
+		.yg51vc {
+			background-color: var(--main-body-color);
+		}
+
+		/* ++ for the "little translator" */
+
+		.j1iyq {
+			border: var(--main-border-one);
+		}
+
+		.hhB0V {
+			color: var(--text-in-links);
+		}
+
+		#tw-target {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.gt-is-itm {
+			background: var(--main-searchbox-body-color);
+		}
+
+		/* menu */
+		.zaokob {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.tw-lp-search {
+			border: var(--main-border-one);
+		}
+
+		.z1asCe {
+			fill: var(--searchbox-icons-color);
+		}
+
+		.YIxP4d.vGp1vb.z1asCe.JzW2Tc {
+			fill: #b3261e;
+		}
+
+		.tw-lliw:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.language_list_languages.tw-ll-top::after {
+			background: linear-gradient(to bottom,rgba(255,255,255,0),var(--main-searchbox-body-color-hover));
+		}
+
+		/* -- for the "little translator" */
+		
+		/* ++ mini rainfall forecast */
+
+		.XOKJuc {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.wob_ds {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.wob_ds:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		/* -- mini rainfall forecast */
+
+		/* about # results... */
+		.WE0UJf.NyYcvd {
+			background-color: var(--main-body-color);
+		}
+
+		/* article box | content colors ?? */
+		.rsGxI.Ww4FFb, .Ww4FFb {
+			background-color: var(--main-body-color);
+		}
+
+		.H9lube {
+			background-color: var(--main-body-color);
+			border: var(--main-border-title-icon);
+		}
+
+		.GLcBOb.cCvmNd .Lj8KXd, .GLcBOb.mCRcc .Lj8KXd {
+			background-color: var(--main-body-color);
+			border-bottom: var(--main-border-one);
+		}
+
+		.dG2XIf {
+			background: var(--main-body-color);
+		}
+
+		/*
+			Search pages
+			Okay, i really don't know what to describe here. But when i do see it, it
+			changes layouts everytime i refresh the page
+
+			It features large image previews + some slighly dark background (you can obviously
+			notice this if you force the background to be black)
+		*/
+		/* search page with large image previews (variant 1) */
+		.ZYbY5b.v7ex9d {
+			color: var(--main-body-color) !important;
+		}
+
+		.AIWFDc.Ffrp4e {
+			background: var(--main-body-color);
+		}
+
+		.AIWFDc.frDyzc {
+			background: var(--main-body-color);
+		}
+
+		/* search page with large image previews (variant 2) */
+		.FNMYpd {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.W0urI.CYJS5e.GHMsie.ZHugbd.UivI7b {
+			background-color: var(--main-searchbox-body-color) !important;
+		}
+
+		.REySof {
+			background-color: var(--main-searchbox-body-color);
+			border: var(--main-searchbox-body-color);
+		}
+
+		.REySof:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			border: unset;
+		}
+
+		/*
+			search page with large image previews (variant 3)
+			EXPERIMENTAL, found on https://www.google.com/search?q=%E3%81%AF%E3%82%84%E3%81%8F%E3%81%9D%E3%82%8C%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%9F%E3%81%84&hl=en incognito tab
+		*/
+		.FNMYpd {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.QeJgSc {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.FNMYpd:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.QeJgSc:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.VcURNc {
+			color: var(--title-text-color) !important;
+		}
+
+		/*
+			search page with large image previews (variant 4)
+		*/
+		.UivI7b {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.pe7FNb {
+			color: var(--black-text-color) !important;
+		}
+
+		.pe7FNb {
+			color: var(--menu-text-color);
+		}
+
+		/* for non-latin characters (see japanese for example) */
+		.gqF9jc {
+			color: var(--normal-text-color);
+		}
+
+		.cuFRh {
+			color: unset;
+		}
+
+		.Jb0Zif .AxJnmb.Wdsnue.UsNwd, .Jb0Zif .AxJnmb.Wdsnue.G088Ac {
+			border-color: rgb(0, 177, 177);
+		}
+
+		.Jb0Zif .AxJnmb.Wdsnue .rl_item_base {
+			background-color: var(--main-body-color);
+			border-color: var(--main-border-two);
+		}
+
+		.S8ee5.CwbYXd {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.S8ee5.CwbYXd:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		/* searchbox */
+		.RNNXgb {
+			background-color: var(--main-searchbox-body-color);
+			box-shadow: var(--main-searchbox-box-shadow);
+		}
+
+		.RNNXgb:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			box-shadow: var(--main-searchbox-box-shadow-hover);
+		}
+
+		/*
+		.RNNXgb:hover, .sbfc .RNNXgb {
+			background-color: #393939;
+		}
+		*/
+
+		.sbfc .RNNXgb, .emcav .RNNXgb {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.aajZCb {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.sbct.eIPGRd {
+			background-color: var(--fourzero-background-color);
+		}
+
+		.ACRAdd {
+			border-left: var(--searchbox-border-left-color);
+		}
+
+		.xtSCL {
+			border-top: var(--searchbox-border-top-color);
+		}
+
+		li.sbct:hover {
+			background-color: var(--main-body-color);
+		}
+
+		.WggQGd {
+			color: var(--text-in-links);
+		}
+
+		/* search icon (right side) */
+		.zgAlFc {
+			color: var(--searchbox-icons-color);
+		}
+
+		/* searchbox when you scroll down further */
+		.minidiv .RNNXgb {
+			background-color: var(--secondary-searchbox-body-color);
+			border: var(--secondary-searchbox-border-color);
+			box-shadow: var(--secondary-searchbox-box-shadow);
+		}
+
+		.minidiv .RNNXgb:hover {
+			background-color: var(--secondary-searchbox-body-color-hover);
+			box-shadow: var(--secondary-searchbox-box-shadow-hover);
+		}
+
+		.ExCKkf.z1asCe.rzyADb {
+			color: var(--searchbox-icons-color);
+		}
+
+		/* searchbox */
+
+		/* =========== border colors =========== */
+		.BA0zte {
+			border: var(--main-border-one);
+		}
+
+		.bqW4cb {
+			border-top: var(--main-border-one);
+		}
+
+		.WY0eLb .aokhrd .TZahnb {
+			border-color: var(--main-border-two);
+		}
+
+		.zWHLnd {
+			border-color: var(--main-border-two);
+		}
+
+		.zqrO0 .niO4u:hover {
+			border-color: var(--text-underline-in-active-menu);
+		}
+
+		.TzHB6b.cLjAic.LMRCfc {
+			border-color: var(--main-border-two) !important;
+		}
+
+		.TzHB6b.cLjAic {
+			border-color: var(--main-border-two) !important;
+		}
+
+		.dk7O2d {
+			border-color: var(--main-border-two);
+		}
+
+		.HsZQAe {
+			border-bottom: var(--main-border-one) !important;
+		}
+
+		.qDOt0b {
+			border-bottom: var(--main-border-one) !important;
+		}
+
+		/* retiring for now [DISABLED]
+		.GLcBOb {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		.GLcBOb.cCvmNd, .GLcBOb {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		.KLEmSd {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+		*/
+
+		.JryvJ .qS9jbf {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		.GCSyeb {
+			background: var(--main-border-two);
+		}
+
+		.Hwkikb.WY0eLb {
+			border-left: var(--main-border-one);
+		}
+
+		.MsCHpb {
+			border-bottom: var(--main-border-one);
+		}
+
+		.rKnmn {
+			border-top: var(--main-border-one);
+		}
+
+		.RzdJxc {
+			border-top: var(--main-border-one);
+		}
+
+		.rhHIGd {
+			background: var(--border-in-between-button);
+		}
+
+		#rhs .u7yw9 {
+			border-left: var(--main-border-one);
+		}
+
+		.akqY6 {
+			background: var(--border-in-between-button);
+		}
+
+		.iRPzcb {
+			border-bottom: var(--main-border-one);
+		}
+
+		.Bi9oQd {
+			background: var(--main-border-two);
+		}
+
+		#rhs .u7yw9 .cLjAic {
+			padding-bottom: 20px !important;
+		}
+
+		.Wz7gbe {
+			border-right: var(--main-border-one);
+		}
+
+		#swml {
+			border-left: var(--main-border-one);
+		}
+
+		/* ======== font colors ========= */
+		/* for the experimental 2024 layout */
+
+		[selected].YmvwI {
+			color: var(--text-in-active-menu);
+			border-bottom: 3px solid var(--text-in-active-menu);
+		}
+
+		.Lu57id {
+			background-color: var(--main-body-color);
+		}
+
+		/* for the experimental 2024 layout */
+
+		.ynAwRc {
+			color: var(--text-in-links);
+		}
+
+		.GCkZZe:hover {
+			color: var(--text-in-links);
+		}
+
+		.fm06If .ILfuVd b, .c2xzTb .ILfuVd b {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		.RVRNTb .z4R3Z.yb2zA {
+			color: var(--text-in-links);
+		}
+
+		a {
+		   color: var(--text-in-links);
+		}
+
+		a:visited {
+			color: var(--link-has-been-visited);
+			/* color: rgb(185, 77, 255); */
+		}
+
+		a:visited .ynAwRc, a:visited.ynAwRc {
+			color: var(--link-has-been-visited);
+		}
+
+		.SW5pqf {
+			color: var(--text-in-links);
+		}
+
+		/* for rounded buttons !! new layout !! */
+		.GKS7s {
+			background: var(--main-body-color) !important;
+			color: #868686;
+			border: var(--main-border-one) !important;
+		}
+
+		.GKS7s:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			color: var(--white-text-color);
+			border: 1px solid var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.GKS7s .FMKtTb, .RWhoyd .mol54e {
+			color: var(--black-text-color);
+		}
+
+		.fKmH1e {
+			color: var(--menu-text-color);
+		}
+
+		.IDFSOe {
+			background-color: var(--mildlygray-text-color);
+		}
+
+		.nfSF8e {
+			color: var(--menu-text-color);
+		}
+
+		.s75CSd {
+			color: unset !important;
+		}
+
+		.k8XOCe {
+		   background-color: var(--main-searchbox-body-color);
+		}
+
+		.k8XOCe:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		/* i have NO IDEA why it errors out (too bad i can't change the dark icon to the white one) */
+		/*
+		.aXBZVd {
+			background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(0,0,0,.54)' d='M20.49 19l-5.73-5.73C15.53 12.2 16 10.91 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.41 0 2.7-.47 3.77-1.24L19 20.49 20.49 19zM5 9.5C5 7.01 7.01 5 9.5 5S7.01 14 9.5 11.99 14 9.5 14 5 11.99 5 9.5z'/%3E%3C/svg%3E);
+		}
+		*/
+
+		.ZFiwCf {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.ZFiwCf:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		.Njmbc {
+			border-color: var(--main-border-two);
+		}
+
+		.Maj6Tc {
+			border: var(--stupid-overview-border-color);
+		}
+
+		.Maj6Tc:hover {
+			border-color: var(--stupid-overview-border-color-hover);
+		}
+
+		.Maj6Tc .REySof {
+			color: black !important;
+		}
+
+		.Maj6Tc .REySof:hover {
+			background-color: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.ZkkK1e.ZkkK1e {
+			background-color: var(--main-body-color);
+			border: var(--main-border-one);
+		}
+
+		.ZkkK1e.ZkkK1e:hover {
+			background-color: var(--text-in-links);
+			border: 1px solid var(--text-in-links);
+			color: var(--white-text-color);
+		}
+
+		/* ================================= miscellaneous ================================= */
+
+		.zqrO0 .niO4u {
+			border-color: var(--main-border-two);
+			background: var(--main-body-color);
+		}
+
+		.zqrO0 .niO4u:hover {
+			border-color: var(--main-border-two);
+			background: var(--main-border-two);
+		}
+
+		.ZHugbd:hover {
+			background: rgba(0, 0, 0, 0.11);
+		}
+
+		.UivI7b:hover {
+			background: rgba(0, 0, 0, 0.11) !important;
+		}
+
+		.F9Idpe {
+			background: linear-gradient(to right, transparent 0%, var(--main-searchbox-body-color) 60%, var(--main-searchbox-body-color-hover));
+		}
+
+		.F9Idpe.Iy1nvd {
+			background: linear-gradient(to left, transparent 0%, var(--main-searchbox-body-color) 60%, var(--main-searchbox-body-color-hover));
+		}
+
+		.SvoXfb:hover {
+			background: var(--main-border-two);
+		}
+
+		.CybWFf {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.LtmTod > div > a:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.GLcBOb .pZvJc {
+			background: var(--main-body-color);
+			border-bottom: 1px solid var(--main-body-color);
+		}
+
+		.X5YHTd {
+			border: var(--main-border-one);
+			margin-right: 22px;
+		}
+
+		.fxvkXe, .p8Jhnd {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.vIifob {
+			background: var(--main-searchbox-body-color);
+			.DxHbyd {
+			    background: var(--main-searchbox-body-color-hover);
+			}
+		}
+
+		.vIifob:hover {
+			background: var(--main-searchbox-body-color-hover);
+			.dg6jd {
+			    color: var(--text-in-links);
+			}
+			.DxHbyd {
+			    background: var(--main-searchbox-body-color);
+			}
+		}
+
+		.eFM0qc.BCF2pd {
+			background: var(--main-body-color);
+		}
+
+		.LAWljd {
+			color: var(--black-text-color);
+		}
+
+		.LVal7b {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.sr9hec.OvQkSb.s3IB3 {
+			background-color: var(--main-searchbox-body-color) !important;
+			border: var(--main-border-one);
+		}
+
+		.sr9hec.OvQkSb.s3IB3:hover {
+			background-color: var(--text-in-links) !important;
+			border: var(--main-border-one);
+			.z1asCe svg {
+			    fill: white;
+			}
+		}
+
+		.wHYlTd {
+			background-color: var(--main-body-color);
+		}
+
+		.tGS0Nc .z1asCe {
+			color: var(--text-in-links);
+		}
+
+		.CbAZb {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.lr_container.mBNN3d {
+			background-color: var(--main-body-color);
+		}
+
+		.O4T6Pe .itmdEc {
+			color: var(--mildlygray-text-color);
+		}
+
+		.ZVHLgc {
+			background-color: var(--main-body-color);
+		}
+
+		.acCJ4b {
+			background-color: var(--main-body-color);
+		}
+
+		.zqrO0 .niO4u {
+			border-color: var(--main-border-two);
+		}
+
+		.zqrO0 .niO4u:hover {
+			border-color: var(--main-border-two);
+			background: var(--main-border-two);
+		}
+
+		.cF4V5c {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.GZnQqe.LGiluc {
+			border-top-color: var(--main-border-four);
+		}
+
+		.t2vtad:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.hdtb-tl-sel {
+			background: var(--main-searchbox-body-color) !important;
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.hdtb-tl-sel:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover);
+		}
+
+		.nGydZ {
+			background-color: var(--main-searchbox-body-color);
+			border-radius: 6px;
+		}
+
+		.dG2XIf.Wnoohf.OJXvsb {
+			border: var(--main-border-three) !important;
+		}
+
+		#rhs .u7yw9 .KcXNxb {
+			background-color: var(--main-body-color);
+		}
+
+		.nm6nmc.l0jSyf.kpQuGf {
+			border-top: var(--main-border-three);
+		}
+
+		.y8Jpof.pPLc9e.kpQuGf {
+			border-top: var(--main-border-three);
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.y8Jpof.pPLc9e.kpQuGf:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		.y8Jpof.kpQuGf {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.y8Jpof.kpQuGf:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		.qe1Dgc {
+			background-color: var(--main-body-color);
+		}
+
+		.uais2d {
+			background-color: var(--main-searchbox-body-color);
+			.uODXEe {
+			    color: var(--fourzero-background-color);
+			}
+		}
+
+		.uais2d:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			color: var(--fourzero-background-color);
+			.uODXEe {
+				color: var(--black-text-color);
+			}			
+		}
+
+		.I6TXqe {
+			background-color: var(--main-body-color);
+			border: var(--main-border-one) !important;
+		}
+
+		.nD2EKb {
+			background-color: var(--main-searchbox-body-color);
+			border: 1px solid (--main-searchbox-body-color-hover);
+		}
+
+		.Gfzyee.R1smN .fSXkBc {
+			background: var(--text-in-links);
+		}
+
+		.Pjsr7c {
+			color: var(--white-text-color);
+		}
+
+		.Gfzyee {
+			border: 1px solid var(--text-in-active-menu);
+		}
+
+		.s6JM6d .dG2XIf {
+			background-color: var(--main-body-color);
+		}
+
+		.JBcDBe {
+			background-color: var(--main-body-color);
+			border: var(--main-border-one);
+		}
+
+		.JBcDBe:hover {
+			background-color: var(--main-searchbox-body-color);
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.qFRZdb .LsYFnd {
+			background-color: var(--main-searchbox-body-color);
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.pxhZNb {
+			background-color: var(--main-searchbox-body-color) !important;
+			border: 1px solid var(--main-searchbox-body-color) !important;
+		}
+
+		.gWUzU.MR2UAc.F5z5N.AsWFZc.Inx6Z.I6a0ee.En7IMd.rjpYgb.gjoUyf {
+			background-color: var(--main-searchbox-body-color);
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.qFRZdb .LsYFnd:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		.pxhZNb:hover {
+			background-color: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.pdpvld {
+			color: rgb(43 255 108);
+		}
+
+		.gWUzU.MR2UAc.F5z5N.AsWFZc.Inx6Z.I6a0ee.En7IMd.rjpYgb.gjoUyf:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+		}
+
+		.iv236 {
+			color: var(--white-text-color);
+		}
+
+		.kHtcsd {
+			color: var(--white-text-color);
+		}
+
+		.pmZ66.z1asCe.QFl0Ff {
+			color: var(--normal-text-color);
+		}
+
+		/* ================================= for other pages (this one right here is for images tab) ================================= */
+		.rfiSsc {
+			background: var(--main-body-color);
+		}
+
+		.rfiSsc.JiJthb {
+			border-bottom: var(--main-border-one);
+		}
+
+		.JiJthb .F9Idpe {
+			background: unset;
+		}
+
+		.JiJthb, .JiJthb .GKS7s:not([selected]) {
+			border: unset;
+		}
+
+		.wIjY0d.jFk0f {
+			background: var(--main-body-color);
+		}
+
+		.XZ5MVe {
+			color: var(--searchbox-icons-color);
+		}
+
+		.PNyWAd:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.PNyWAd.ZXJQ7c.XD1Bsc {
+			background: var(--main-searchbox-body-color) !important;
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.PNyWAd.ZXJQ7c.XD1Bsc:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover);
+		}
+
+		.EXjONc {
+			color: var(--mildlygray-text-color) !important;
+		}
+		
+		.EXjONc:hover {
+			color: var(--title-text-color) !important;
+		}
+
+		.EXjONc.lwlxKc:hover {
+			background-color: var(--main-body-color) !important;
+		}
+
+		.lwlxKc {
+			background-image: url(//ssl.gstatic.com/ui/v1/menu/checkmark2-light.png);
+		}
+
+		.nNzjpf-twKXnc-Zxcpp-SX9D7d.nNzjpf-twKXnc-LNRYDc {
+			border-top: 1px solid var(--text-underline-in-active-menu);
+		}
+
+		.ECgenc {
+			background: var(--main-body-color);
+		}
+
+		.qcTKEe {
+			background: var(--main-body-color);
+		}
+
+		.r9PaP:hover {
+			color: var(--title-text-color);
+		}
+
+		.H1KrKd {
+			fill: var(--mildlygray-text-color);
+		}
+
+		.gbZSUe {
+			color: var(--menu-text-color);
+		}
+
+		a.F1hUFe.jbTlie {
+			content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+			width: 92px;
+			margin-top: 2px;
+			margin-left: -1px;
+		}
+
+		.cB8JGb {
+			border: var(--main-border-title-icon);
+		}
+
+		.OkhOw.gadasb {
+			color: var(--title-text-color);
+		}
+
+		.mgK4fd {
+			border-top: var(--main-border-title-icon);
+		}
+
+		a.mgK4fd:hover {
+			text-decoration-color: var(--title-text-color);
+		}
+
+		.Ix6LGe {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.GMjygd {
+			background-image: url(//ssl.gstatic.com/ui/v1/menu/checkmark2-light.png);
+		}
+
+		.N8zP5b {
+			color: var(--title-text-color);
+		}
+
+		.qccUxe {
+			color: var(--menu-text-color);
+		}
+
+		.s8GCU {
+			background: unset;
+		}
+
+		.rQEFy {
+			color: var(--text-in-active-menu) !important;
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+		}
+
+		.rQEFy:hover {
+			border-bottom: 3px solid var(--main-body-color);
+		}
+
+		.Lj9fsd {
+			background-color: var(--main-body-color);
+		}
+
+		.jZWadf {
+			background: var(--main-body-color);
+		}
+
+		.cEPPT {
+			border-bottom: var(--main-border-one);
+		}
+
+		a.NZmxZe:hover {
+			color: var(--text-in-active-menu);
+		}
+
+		a.NZmxZe:hover {
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		.NZmxZe.qlsyCb:hover {
+			color: var(--text-in-active-menu);
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		.o6juZc {
+			background-color: var(--main-searchbox-body-color);
+			box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+		}
+
+		.o6juZc:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			box-shadow: 0 2px 5px 1px rgba(96, 95, 95, .7);
+		}
+
+		.Lj9fsd.DU1Mzb .o6juZc {
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.W6pGoe {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.WdWr7c {
+			border-top: var(--searchbox-border-top-color);
+		}
+
+		.CuUtHc:hover {
+			background-color: var(--main-body-color);
+		}
+
+		.sU3bKf {
+			color: var(--white-text-color);
+		}
+
+		.vyDMJf-gXhOqb-Bz112c.vyDMJf-gXhOqb-G0jgYd-Bz112c {
+			color: var(--white-text-color);
+		}
+
+		.ZZ7G7b {
+			border: var(--main-border-one);
+		}
+
+		.ZZ7G7b:hover {
+			color: var(--white-text-color);
+			background-color: var(--text-in-links);
+			border: 1px solid var(--text-in-links);
+		}
+
+		.FjVBEd {
+			color: #2be062;
+		}
+
+		/* ====== videos tab ====== */
+		#fbar.f6F9Be {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.b2hzT {
+			border-bottom: var(--main-border-title-icon);
+		}
+
+		.GS5rRd {
+			color: var(--text-in-links);
+		}
+
+		/* ====== google.com tab ====== */
+		.uU7dJb {
+			background-color: var(--main-searchbox-body-color);
+			border-bottom: var(--main-border-one);
+		}
+
+		.KxwPGc.SSwjIe {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.gNO89b {
+			background: var(--main-searchbox-body-color) !important;
+			border: var(--main-border-one) !important;
+		}
+
+		.RNmpXc {
+			background: var(--main-searchbox-body-color) !important;
+			border: var(--main-border-one) !important;
+		}
+
+		.gNO89b:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.RNmpXc:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.RNNXgb {
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.lnXdpd {
+			content: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png");
+		}
+	}
+
+
+
+	/*
+		dark mode css
+	*/
+	darkModeCSS() {
+		/*change color of text highlight*/
+		::selection {
+		  color: var(--white-text-color);
+		  background: var(--selection-color);
+		}
+
+		.jfN4p {
+			content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+		}
+
+		body {
+			background-color: var(--main-body-color) !important;
+		}
+
+		.YTDezd {
+		   background: var(--text-underline-in-active-menu);
+		}
+
+		/*.GLcBOb {
+			border-bottom: var(--main-border-one);
+		}*/
+
+		/* ++ what the hell are these?? */
+		.appbar {
+			background: unset;
+			border-top: unset;
+		}
+
+		/* inner card (probably an experiment) */
+		.zf84ud {
+			background: var(--main-body-color);
+		}
+
+		.wdQNof {
+			border: var(--main-border-one);
+		}
+
+		.eadHV.Ses7yd {
+			color: var(--white-text-color);
+		}
+
+		.Ndm45b {
+			color: var(--white-text-color) !important;
+		}
+
+		/* -- what the hell are these?? */
+
+		/* topbar */
+		.sfbg {
+			background-color: var(--main-body-color);
+		}
+
+		/* what seems like an experimental navbar */
+		.Fgyi2e.rZj61.caNvfd {
+			background-color: var(--main-body-color);
+		}
+
+		.wZQcA .BO2cCe {
+			border-bottom: var(--main-border-one);
+		}
+
+		/* tools (popup) */
+		.vH6rvf {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.btCOFd.XYRUld {
+			background: var(--main-border-four);
+		}
+
+		.XYRUld {
+			border-top: var(--main-border-one);
+		}
+
+		.qd6zO {
+			color: var(--menu-text-color);
+		}
+
+		/* EXPERIMENTAL */
+		.CvDJxb {
+			background-color: var(--main-body-color);
+		}
+
+		/* second topbar (when you scroll down through the page) */
+		.minidiv .sfbg {
+			background-color: var(--top-bar-color);
+			border-bottom: var(--top-bar-border-bottom);
+		}
+
+		/* menu (filters) */
+		.yg51vc {
+			background-color: var(--main-body-color);
+		}
+
+		/* deprecated "!" warning info about "disturbing" search results */
+		.YIxP4d.vGp1vb.z1asCe.JzW2Tc {
+			fill: #b3261e;
+		}
+
+		/* ++ for the "little translator" */
+		
+		.j1iyq {
+			border: var(--main-border-one);
+		}
+
+		.j1iyq:hover {
+			border: 1px solid var(--menu-text-color);
+		}
+
+		.hhB0V {
+			color: var(--text-in-links);
+		}
+
+		.tw-ta.tw-text-large.q8U8x.goog-textarea {
+			color: var(--white-text-color);
+		}
+
+		#tw-target {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.tw-data-text.tw-text-large.tw-ta {
+			color: var(--white-text-color);
+		}
+
+		#tw-target-rmn.tw-data-text, #tw-source-rmn.tw-data-text {
+			color: var(--menu-text-color) !important;
+		}
+
+		.gt-is-itm {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.gt-is-sg {
+			color: var(--white-text-color);
+		}
+
+		.QXzCSe {
+			color: var(--white-text-color);
+		}
+
+		.SvKTZc {
+			color: var(--white-text-color);
+		}
+
+		.MaH2Hf {
+			color: var(--menu-text-color);
+		}
+
+		.bHOicb {
+			color: var(--menu-text-color);
+		}
+
+		.tw-bilingual-pos {
+			color: var(--mildlygray-text-color);
+		}
+
+		/* people also search for */
+		.FalWJb {
+			background: var(--main-body-color);
+		}
+
+		/* ai overview - bottom gradient */
+		.RDmXvc {
+			background-image: linear-gradient(transparent 0px, var(--main-body-color) 52px, var(--main-body-color) 80px);
+		}
+
+		.zNsLfb {
+			background-color: var(--main-body-color);
+		}
+
+		/* ai overview - texts */
+		.OZ9ddf .Fzsovc strong {
+			color: var(--white-text-color);
+		}
+
+		a.NOo3C {
+			color: var(--text-in-links);
+		}
+
+		.rPeykc {
+			color: var(--white-text-color);
+		}
+
+		.QVRyCf {
+			background: var(--main-searchbox-body-color-hover)
+		}
+
+		.WaaZC > div > ul {
+			color: var(--white-text-color);
+		}
+
+		.mNme1d {
+			color: var(--white-text-color);
+		}
+
+		.ZigeC {
+			color: var(--menu-text-color);
+		}
+
+		.LzPlYe .HAC9Fd.vDF3Oc .R8BTeb, .HAC9Fd .xuPcX.PCBdKc, .LzPlYe .xTFaxe {
+			color: var(--menu-text-color);
+		}
+
+		.suSUf {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.in7vHe {
+			color: var(--text-in-links) !important;
+			border: var(--main-border-one);
+		}
+
+		.omFXYd, .KMCbD {
+			border: var(--main-border-one);
+		}
+
+		/* menu */
+		.zaokob {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.tw-lp-search {
+			border: var(--main-border-one);
+			color: var(--white-text-color);
+		}
+
+		.z1asCe {
+			fill: var(--searchbox-icons-color);
+		}
+
+		.fM33ce.dRYYxd > div > .goxjub > path, .fM33ce.dRYYxd > div > .Gdd5U > path {
+			fill: var(--searchbox-icons-color);
+		}
+
+		.language_list_item {
+			color: var(--menu-text-color);
+		}
+
+		.tw-lliw:hover {
+			background: var(--main-searchbox-body-color-hover);
+			.language_list_item {
+			    color: var(--white-text-color);
+			}
+		}
+
+		.language_list_languages.tw-ll-top::after {
+			background: linear-gradient(to bottom,rgba(255,255,255,0),var(--main-searchbox-body-color-hover));
+		}
+
+		/* -- for the "little translator" */
+
+		/* ++ mini rainfall forecast */
+
+		.TylWce {
+			color: var(--white-text-color);
+		}
+
+		.wob-unit {
+			color: var(--white-text-color);
+		}
+
+		.wob_loc {
+			color: var(--white-text-color);
+		}
+
+		.ksb {
+			color: var(--white-text-color);
+		}
+
+		.XOKJuc {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.wob_ds {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.wob_ds:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.Z1VzSb {
+			color: var(--white-text-color);
+		}
+
+		.gNCp2e {
+			color: var(--white-text-color);
+		}
+
+		/* -- mini rainfall forecast */
+
+		/* ++ color picker */
+		.L9kPD.ND9HDc.q8U8x {
+			color: var(--white-text-color);
+		}
+
+		.B678Hb {
+			background: var(--main-body-color);
+			color: var(--white-text-color);
+		}
+
+		.P2c8Dd {
+			background: var(--main-body-color);
+			color: var(--menu-text-color);
+		}
+
+		.R9RxHd {
+			border: var(--main-border-one);
+		}
+
+		.cjSy4c.p8Ujvb {
+			border-top: var(--main-border-one);
+		}
+
+		.zzG8g.QmGLUd.koXAMb.kvxLRc {
+			color: var(--white-text-color) !important;
+		}
+
+		a.zzG8g.koXAMb.kvxLRc {
+			color: var(--white-text-color) !important;
+		}
+
+		.Q0y6Td .zzG8g, .Q0y6Td .zzG8g:link, .Q0y6Td .zzG8g:visited {
+			border-color: var(--text-underline-in-active-menu) !important;
+		}
+
+		g-tabs {
+			color: var(--main-border-two);
+		}
+
+		.kno-ftr {
+			color: var(--menu-text-color);
+		}
+		/* -- color picker */
+
+		/* ++ movie rating */
+
+		.KMdzJ {
+			color: var(--menu-text-color);
+		}
+
+		.WY0eLb .aokhrd .TZahnb {
+			border-color: var(--main-border-two);
+		}
+
+		.qd9Mkf {
+			color: var(--white-text-color);
+		}
+
+		.OZ8wsd {
+			color: var(--menu-text-color);
+		}
+
+		/* -- movie rating */
+
+		/* about # results... */
+		.WE0UJf.NyYcvd {
+			background-color: var(--main-body-color);
+		}
+
+		/* article box | content colors ?? */
+		.rsGxI.Ww4FFb, .Ww4FFb {
+			background-color: var(--main-body-color);
+		}
+
+		.H9lube {
+			background-color: var(--main-body-color);
+			border: var(--main-border-title-icon);
+		}
+
+		.VuuXrf {
+		   color: var(--title-text-color);
+		}
+
+		cite, cite a:link, cite a:visited {
+			color: var(--normal-text-color);
+		}
+
+		.dyjrff {
+			color: var(--normal-text-color);
+		}
+
+		.yDYNvb.lyLwlc {
+		   color: var(--normal-text-color) !important;
+		}
+
+		/*.GLcBOb.cCvmNd .Lj8KXd, .GLcBOb.mCRcc .Lj8KXd {
+			background-color: var(--main-body-color);
+			border-bottom: var(--main-border-one);
+		}*/
+
+		.QrNVmd {
+			color: var(--menu-text-color);
+		}
+
+		.wob_dts, .wob_dcp {
+			color: var(--menu-text-color);
+		}
+
+		.wtsRwe {
+			color: var(--menu-text-color);
+		}
+
+		.Az4ne {
+			border-left: 1px solid var(--menu-text-color);
+		}
+
+		.wob-unit a.wob_t {
+			color: var(--menu-text-color);
+		}
+
+		/*
+			Search pages
+			Okay, i really don't know what to describe here. But when i do see it, it
+			changes layouts everytime i refresh the page
+
+			It features large image previews + some slighly dark background (you can obviously notice
+			this if you force the background to be black)
+		*/
+		/* search page with large image previews (variant 1) */
+		.ZYbY5b.v7ex9d {
+			color: var(--main-body-color) !important;
+		}
+
+		.AIWFDc.Ffrp4e {
+			background: var(--main-body-color);
+		}
+
+		.AIWFDc.frDyzc {
+			background: var(--main-body-color);
+		}
+
+		.hgKElc {
+			color: var(--normal-text-color) !important;
+		}
+
+		/* search page with large image previews (variant 2) */
+		.FNMYpd {
+			background-color: var(--main-searchbox-body-color);
+			color: var(--normal-text-color);
+		}
+
+		.W0urI.CYJS5e.GHMsie.ZHugbd.UivI7b {
+			background-color: var(--main-searchbox-body-color) !important;
+			color: var(--normal-text-color) !important ;
+		}
+
+		.REySof {
+			background-color: var(--main-searchbox-body-color);
+			border: var(--main-searchbox-body-color);
+		}
+
+		.REySof:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			border: unset;
+		}
+
+		.b0Xfjd {
+			color: var(--white-text-color) !important;
+		}
+
+		/*
+			search page with large image previews (variant 3)
+			EXPERIMENTAL, found on https://www.google.com/search?q=%E3%81%AF%E3%82%84%E3%81%8F%E3%81%9D%E3%82%8C%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%9F%E3%81%84&hl=en incognito tab
+		*/
+		.FNMYpd {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.QeJgSc {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.FNMYpd:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.QeJgSc:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.CVouqc.OSrXXb.qsqQjb {
+			color: var(--title-text-color) !important;
+		}
+
+		.ZOyhid.cHaqb.LLotyc {
+			color: var(--title-text-color) !important;
+		}
+
+		.VcURNc {
+			color: var(--title-text-color) !important;
+		}
+
+		/*
+			search page with large image previews (variant 4)
+		*/
+		.UivI7b {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.UynAtc.OSrXXb {
+			color: var(--title-text-color);
+		}
+
+		.pe7FNb {
+			color: var(--menu-text-color);
+		}
+
+		.xxP3Ff.cHaqb {
+			color: var(--title-text-color);
+		}
+
+		.BAMmIc {
+			color: var(--menu-text-color) !important;
+		}
+
+		.YmWkNe.cHaqb {
+			color: var(--menu-text-color) !important;
+		}
+
+		.FtYymb.OSrXXb {
+			color: var(--menu-text-color);
+		}
+
+		.JgVSVb.LLotyc.ewCpyf {
+			color: var(--menu-text-color) !important;
+		}
+
+		/* for non-latin characters (see japanese for example) */
+		.yXK7lf em {
+			color: var(--normal-text-color);
+		}
+
+		.ITZIwc {
+			color: var(--normal-text-color);
+		}
+
+		.gqF9jc {
+			color: var(--normal-text-color);
+		}
+
+		.cuFRh {
+			color: unset;
+		}
+
+		.Jb0Zif .AxJnmb.Wdsnue.UsNwd, .Jb0Zif .AxJnmb.Wdsnue.G088Ac {
+			border-color: var(--main-border-two);
+		}
+
+		.Jb0Zif .AxJnmb.Wdsnue .rl_item_base {
+			background-color: var(--main-body-color);
+			border-color: var(--main-border-two);
+		}
+
+		.S8ee5.CwbYXd {
+			background-color: var(--main-searchbox-body-color);
+			color: var(--normal-text-color);
+		}
+
+		.S8ee5.CwbYXd:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			color: var(--white-text-color);
+		}
+    
+		/* searchbox */
+		.RNNXgb {
+			background-color: var(--main-searchbox-body-color);
+			box-shadow: var(--main-searchbox-box-shadow);
+		}
+
+		.RNNXgb:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			box-shadow: var(--main-searchbox-box-shadow-hover);
+		}
+
+		.emcav .RNNXgb:hover, .sbfc.emcav .RNNXgb, .BgPPrc .RNNXgb:hover {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		/*
+		.RNNXgb:hover, .sbfc .RNNXgb {
+			background-color: #393939;
+		}
+		*/
+
+		.sbfc .RNNXgb, .emcav .RNNXgb {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.aajZCb {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		#APjFqb.gLFyf {
+			color: var(--white-text-color);
+		}
+
+		.ynRric {
+			color: var(--menu-text-color);
+		}
+
+		.wM6W7d {
+			color: var(--white-text-color);
+		}
+
+		.WggQGd {
+			color: var(--text-in-links);
+		}
+
+		.WzNHm {
+			color: var(--menu-text-color);
+		}
+
+		.JCHpcb {
+			color: var(--menu-text-color);
+		}
+
+		.JCHpcb:hover {
+			color: var(--text-in-links);
+		}
+
+		.sbct.eIPGRd {
+			background-color: var(--fourzero-background-color);
+		}
+
+		.ACRAdd {
+			border-left: var(--searchbox-border-left-color);
+		}
+
+		.xtSCL {
+			border-top: var(--searchbox-border-top-color);
+		}
+
+		li.sbct:hover {
+			background-color: var(--main-body-color);
+		}
+
+		/* search icon (right side) */
+		.zgAlFc {
+			color: var(--searchbox-icons-color);
+		}
+
+		/* searchbox when you scroll down further */
+		.minidiv .RNNXgb {
+			background-color: var(--secondary-searchbox-body-color);
+			border: var(--secondary-searchbox-border-color);
+			box-shadow: var(--secondary-searchbox-box-shadow);
+		}
+
+		.minidiv .RNNXgb:hover {
+			background-color: var(--secondary-searchbox-body-color-hover);
+			box-shadow: var(--secondary-searchbox-box-shadow-hover);
+		}
+
+		.ExCKkf.z1asCe.rzyADb {
+			color: var(--searchbox-icons-color);
+		}
+
+		/* /searchbox */
+
+		/* ================================= border colors ================================= */
+
+		.Q28AE {
+			border-right: var(--main-border-one);
+		}
+
+		.umRolb {
+			border-bottom-color: var(--main-border-two);
+		}
+
+		hr {
+			border-bottom: var(--main-border-one);
+		}
+
+		.kVs2Uc {
+			border-left: var(--main-border-one);
+		}
+
+		.MmyPhf {
+			border-top: var(--main-border-one);
+		}
+
+		.CeIyHb.WY0eLb {
+			border-left: var(--main-border-one);
+		}
+
+		.jEYSNd {
+			border: var(--main-border-one);
+		}
+
+		.sHEJob {
+			border-top: var(--main-border-one);
+		}
+
+		#rhs .pCnXsf, #rhs .A6K0A .pCnXsf {
+			border-top: var(--main-border-one);
+		}
+
+		.jOAHU {
+			border-left: var(--main-border-one);
+		}
+
+		.wDYxhc > .PZPZlf.hb8SAc.IFvyDb > div[jscontroller^=GCSbhd] {
+			border-bottom: var(--main-border-one) !important;
+		}
+
+		#swml {
+			border-left: var(--main-border-title-icon);
+		}
+
+		.FcOujd .v5jHUb {
+			border: var(--main-border-one);
+		}
+
+		.Wz7gbe {
+			border-right: var(--main-border-one);
+		}
+
+		.dndTs {
+			border-bottom: var(--main-border-one);
+		}
+
+		hr.XPA7rb {
+			border-bottom: var(--main-border-one);
+		}
+
+		.DFDLnc {
+			border-bottom: var(--main-border-one);
+		}
+
+		.bHOicb {
+			border-top: var(--main-border-one);
+		}
+
+		.fgc1P {
+			border-top: var(--main-border-title-icon);
+		}
+
+		.aHd5n {
+			border-top: var(--main-border-one);
+		}
+
+		.XKnPEd {
+			border-bottom: var(--main-border-one);
+		}
+
+		.egcvbb {
+			border: var(--main-border-one);
+		}
+
+		.egcvbb:hover {
+			border: 1px solid var(--white-text-color);
+			.aURkK {
+			    border-left: 1px solid var(--white-text-color);
+			}
+		}
+
+		.aURkK {
+			border-left: var(--main-border-one);
+		}
+
+		.zWHLnd {
+			border-left: var(--main-border-one);
+		}
+
+		.QdZIX {
+			border-color: var(--main-border-two);
+		}
+
+		.YPxNKd {
+			background: var(--main-border-two);
+		}
+
+		.EsIlz {
+			border: var(--main-border-one);
+		}
+
+		.zqrO0 .niO4u:hover {
+			border-color: var(--text-underline-in-active-menu);
+		}
+
+		.TzHB6b.cLjAic.LMRCfc {
+			border-color: var(--main-border-two) !important;
+		}
+
+		.TzHB6b.cLjAic {
+			border-color: var(--main-border-two) !important;
+		}
+
+		.dk7O2d {
+			border-color: var(--main-border-two);
+		}
+
+		.HsZQAe {
+			border-bottom: var(--main-border-one) !important;
+		}
+
+		.qDOt0b {
+			border-bottom: var(--main-border-one) !important;
+		}
+
+		/* retiring for now [DISABLED]
+		.GLcBOb {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		.GLcBOb.cCvmNd, .GLcBOb {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		.KLEmSd {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+		*/
+
+		.JryvJ .qS9jbf {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		/* EXPERIMENTAL */
+		.zLSRge {
+			border-bottom: 1px solid var(--main-border-two);
+		}
+
+		.GCSyeb {
+			background: var(--main-border-two);
+		}
+
+		.Hwkikb.WY0eLb {
+			border-left: var(--main-border-one);
+		}
+
+		.MsCHpb {
+			border-bottom: var(--main-border-one);
+		}
+
+		.rKnmn {
+			border-top: var(--main-border-one);
+		}
+
+		.RzdJxc {
+			border-top: var(--main-border-one);
+		}
+
+		.rhHIGd {
+			background: var(--border-in-between-button);
+		}
+
+		#rhs .u7yw9 {
+			border-left: var(--main-border-one);
+		}
+
+		.akqY6 {
+			background: var(--border-in-between-button);
+		}
+
+		.iRPzcb {
+			border-bottom: var(--main-border-one);
+		}
+
+		.Bi9oQd {
+			background: var(--main-border-two);
+		}
+
+		#rhs .u7yw9 .cLjAic {
+			padding-bottom: 20px !important;
+		}
+
+		.JJZKK.Wui1sd {
+			border-right: var(--main-border-one);
+		}
+
+		.WxVj2b {
+			background: var(--main-border-two);
+		}
+
+		/* ================================= font colors ================================= */
+
+		/* for the experimental 2024 layout */
+
+		.YmvwI {
+			color: var(--menu-text-color);
+		}
+
+		[selected].YmvwI {
+			color: var(--text-in-active-menu);
+			border-bottom: 3px solid var(--text-in-active-menu);
+		}
+
+		.main .QRYxYe {
+			color: var(--white-text-color);
+		}
+
+		.Lu57id {
+			background-color: var(--main-body-color);
+			color: var(--menu-text-color);
+		}
+
+		/* for the experimental 2024 layout */
+
+		.QVei5e {
+			color: var(--menu-text-color);
+		}
+
+		.R8BTeb {
+			color: var(--white-text-color);
+		}
+
+		.xuPcX {
+			color: var(--menu-text-color);
+		}
+
+		.t6uYac {
+			color: var(--white-text-color);
+		}
+
+		.vDF3Oc.vDF3Oc .R8BTeb {
+			color: var(--white-text-color);
+		}
+
+		.card-section {
+			color: var(--white-text-color);
+		}
+
+		.CYJS5e {
+			color: var(--white-text-color);
+		}
+
+		.v0JUTb {
+			border-top: var(--main-border-one);
+		}
+
+		.yIwS3e {
+			color: var(--best-answer-color);
+		}
+
+		.yaX1fe .pW8op {
+			color: var(--best-answer-color);
+		}
+
+		.yaX1fe .nZ1RBb {
+			color: var(--menu-text-color);
+		}
+
+		span[jsname^=YS01Ge] {
+			color: var(--white-text-color);
+		}
+
+		.PmPt7d {
+			color: var(--menu-text-color);
+		}
+
+		.N6Sb2c {
+			color: var(--menu-text-color);
+		}
+
+		.i29hTd .qLLird {
+			color: var(--white-text-color);
+		}
+
+		.i29hTd .kR7nSc {
+			color: var(--white-text-color);
+		}
+
+		.aKoISd {
+			color: var(--white-text-color);
+		}
+
+		.cyspcb {
+			color: var(--menu-text-color);
+		}
+
+		.QjI2jc {
+			color: var(--menu-text-color);
+		}
+
+		.YyVfkd {
+			color: var(--white-text-color);
+		}
+
+		.ss6qqb .PKDVJd {
+			color: var(--menu-text-color);
+		}
+
+		.wOrN4.JYk9gf {
+			color: var(--menu-text-color);
+		}
+
+		.YAB8Ob {
+			color: var(--menu-text-color);
+		}
+
+		.VwiC3b {
+			color: var(--menu-text-color);
+		}
+
+		a.gb_I, span.gb_I {
+			color: var(--normal-text-color);
+		}
+
+		.VDgVie.k0Jjg.fCrZyc.NQYJvc.zqrO0.sLl7de.OJeuxf.PrjL8c:hover {
+			.zqrO0 .QuU3Wb {
+			    color: var(--menu-text-color) !important;
+			}
+		}
+
+		.v3jTId {
+			color: var(--white-text-color) !important;
+		}
+
+		.HJSKzf {
+			color: var(--text-in-links);
+		}
+
+		.HJSKzf > a {
+			color: var(--text-in-links) !important;
+			text-decoration-color: var(--text-in-links) !important;
+		}
+
+		.zqrO0 .QuU3Wb {
+			color: var(--menu-text-color);
+		}
+
+		.EETcFd.OSrXXb {
+			color: var(--normal-text-color);
+		}
+
+		.LEwnzc {
+			color: var(--normal-text-color);
+		}
+
+		.ZjzLYc {
+			color: var(--white-text-color);
+		}
+
+		.ZjzLYc:hover {
+			color: var(--text-in-links);
+		}
+		
+		.a-no-hover-decoration > div:hover {
+			.ZjzLYc {
+			    color: var(--text-in-links);
+			}
+		}
+
+		.Z0LcW {
+			color: var(--white-text-color);
+		}
+
+		.y9jQLc {
+			color: var(--white-text-color);
+		}
+
+		.t6TnNd {
+			color: var(--menu-text-color);
+		}
+
+		.ss6qqb .oBrLN {
+			 color: var(--white-text-color);
+		}
+
+		.xlBGCb {
+			color: var(--menu-text-color);
+		}
+
+		.NDTw3e.K7R36c {
+			color: var(--menu-text-color);
+		}
+
+		.lQ6Auc {
+			color: var(--white-text-color);
+		}
+
+		.WU6Mge {
+			color: var(--white-text-color);
+		}
+
+		.NJU16b {
+			color: var(--mildlygray-text-color);
+		}
+
+		.knowledge-finance-wholepage-chart__hover-card-value {
+			color: var(--white-text-color);
+		}
+
+		.knowledge-finance-wholepage-chart__hover-card-time {
+			color: var(--white-text-color);
+		}
+
+		.lWzCpb {
+			color: var(--mildlygray-text-color);
+		}
+
+		.sBsFoc {
+			color: var(--mildlygray-text-color);
+		}
+
+		.c8Zgcf {
+			color: var(--mildlygray-text-color);
+		}
+
+		.hqAUc {
+			color: var(--mildlygray-text-color);
+		}
+
+		.NXHf6d {
+			color: var(--mildlygray-text-color);
+		}
+
+		.ikb4Bb {
+			color: var(--white-text-color);
+		}
+
+		.GCkZZe {
+			color: var(--white-text-color);
+		}
+
+		.GCkZZe:hover {
+			color: var(--text-in-links);
+		}
+
+		.IVvPP .oBrLN {
+			color: var(--white-text-color);
+		}
+
+		.hqwb1b {
+			color: var(--white-text-color);
+		}
+
+		.Zd9MXe {
+			color: var(--white-text-color);
+		}
+
+		.ylgVCe {
+			color: var(--normal-text-color);
+		}
+
+		.G0nQ7b {
+			color: #ffa4a4;
+		}
+
+		.TADXpd {
+			color: var(--text-in-links);
+		}
+
+		.r025kc.lVm3ye {
+			color: var(--menu-text-color);
+		}
+
+		a.tGS0Nc {
+			color: var(--text-in-links);
+		}
+
+		.w8qArf {
+			color: var(--title-text-color);
+		}
+
+		.FoJoyf.w8qArf {
+			color: var(--title-text-color);
+		}
+
+		.RATAGd {
+			color: var(--text-in-links);
+		}
+
+		.DofxGf.KNggpc.tNxQIb.NgxHdb {
+			color: var(--text-in-links);
+		}
+
+		a.jWoQKe {
+			color: var(--text-in-links);
+		}
+
+		.WGwSK {
+			color: var(--white-text-color);
+		}
+
+		.z4P7Tc {
+			color: var(--white-text-color);
+		}
+
+		.lEGC9b {
+			color: var(--white-text-color);
+		}
+
+		.paD5uf {
+			color: var(--menu-text-color);
+		}
+
+		.tVRLD {
+			color: var(--text-in-links);
+		}
+
+		.Bo9xMe {
+			color: var(--menu-text-color);
+		}
+
+		.oyj2db {
+			color: var(--title-text-color);
+		}
+
+		.X0VScb {
+			color: var(--menu-text-color);
+		}
+
+		.sL5nkf {
+			color: var(--title-text-color);
+		}
+
+		.usJj9c .zz3gNc {
+			color: var(--normal-text-color);
+		}
+
+		.ss6qqb .Ui2TZ {
+			color: var(--title-text-color);
+		}
+
+		a.ekf0x.hSQtef:hover {
+			color: var(--text-in-links);
+			h3.GmE3X.kWYf3c {
+			    color: var(--text-in-links);
+			}
+		}
+
+		.d2IKib {
+			color: var(--red-text-color);
+		}
+
+		.kzt0Nc {
+			color: var(--menu-text-color);
+		}
+
+		.kzt0Nc a {
+			color: var(--menu-text-color);
+		}
+
+		.S8wJ3 {
+			color: var(--title-text-color);
+		}
+
+		.ZI7elf {
+			color: var(--title-text-color);
+		}
+
+		.kQEH5b {
+			color: var(--menu-text-color);
+		}
+
+		.kNKdL {
+			color: var(--normal-text-color);
+		}
+
+		.YpcDnf.OSrXXb.HG1dvd {
+			color: var(--menu-text-color);
+		}
+
+		.zriOQb g-menu-item {
+			color: var(--menu-text-color);
+		}
+
+		.dbg0pd {
+			color: var(--title-text-color);
+		}
+
+		.cXedhc {
+			color: var(--mildlygray-text-color);
+		}
+
+		.IKQu9e, .o5Wcxb {
+			color: var(--mildlygray-text-color);
+		}
+
+		.d9FyLd {
+			color: var(--title-text-color);
+		}
+
+		.mh8jsf {
+			    color: var(--text-in-links);
+		}
+
+		.BBwThe {
+			color: var(--title-text-color);
+		}
+
+		.gm7Ysb {
+			color: var(--mildlygray-text-color);
+		}
+
+		.lyLwlc {
+			color: var(--title-text-color);
+		}
+
+		.lhLbod {
+			color: var(--mildlygray-text-color) !important;
+		}
+
+		.srTCxb {
+			color: var(--title-text-color);
+		}
+
+		.IbDaqf {
+			color: var(--mildlygray-text-color);
+		}
+
+		.rbYSKb {
+			color: var(--mildlygray-text-color);
+		}
+
+		.J1FGbf, .x2knX {
+			color: var(--normal-text-color);
+		}
+
+		/* okay, why this changes to black everytime it's hovered? */
+		.JNkvid.gsrt.wp-ms > .XmmGVd > .a-no-hover-decoration.T9EeC.B1Dzie.oRJe3d > .HnYYW > div {
+			color: var(--title-text-color);
+		}
+
+		.P1usbc {
+			color: var(--mildlygray-text-color);
+		}
+
+		.hdtb-mn-hd {
+			color: var(--mildlygray-text-color);
+		}
+
+		.hdtb-mn-hd:hover {
+			color: var(--title-text-color);
+		}
+
+		.XaIwc {
+			color: var(--mildlygray-text-color);
+		}
+
+		.c5aZPb, .ZoN4Lb {
+			color: var(--mildlygray-text-color);
+		}
+
+		.XJa8af a:link, .XJa8af a:visited {
+			color: var(--text-in-links);
+		}
+
+		.Mp2bze.cHaqb {
+			color: var(--normal-text-color);
+		}
+
+		.YzmYw.cHaqb.RiJqbb {
+			color: var(--title-text-color);
+		}
+
+		.ZxvFYc {
+			color: var(--title-text-color);
+		}
+
+		.NUnG9d {
+			color: var(--title-text-color);
+		}
+
+		.uo4vr {
+			color: var(--mildlygray-text-color);
+		}
+
+		.wwUB2c {
+			color: var(--normal-text-color);
+		}
+
+		.w8qArf .fl {
+			color: var(--title-text-color) !important;
+		}
+
+		.JY0AYd .Y2Bcn {
+			color: var(--title-text-color);
+		}
+
+		.JY0AYd .Uk2tw {
+			color: var(--normal-text-color);
+		}
+
+		.Ss2Faf a {
+			color: var(--title-text-color);
+		}
+
+		.auw0zb, .j04ED {
+			color: var(--mildlygray-text-color);
+		}
+
+		.j04ED a, .j04ED a:active, .j04ED a:link, .j04ED a:visited {
+			color: var(--mildlygray-text-color);
+		}
+
+		.p64x9c.card-section.KDCVqf {
+			color: var(--white-text-color);
+		}
+
+		.vk_gy {
+			color: var(--normal-text-color) !important;
+		}
+
+		.f {
+			color: var(--normal-text-color);
+		}
+
+		.ZYHQ7e {
+			color: var(--normal-text-color);
+			background-color: var(--main-body-color-light);
+		}
+
+		.OwbDmd {
+			color: var(--normal-text-color);
+		}
+
+		.ZtihLe {
+			color: var(--normal-text-color);
+		}
+
+		.rl_item_base .title {
+			color: var(--white-text-color);
+		}
+
+		.uDMnUc.wYIIv {
+			color: var(--normal-text-color);
+		}
+
+		.hdtb-mitem.hdtb-msel {
+			color: var(--text-in-active-menu);
+		}
+
+		.ssJ7i {
+			color: var(--white-text-color);
+		}
+
+		.PyJv1b {
+			color: var(--white-text-color);
+		}
+
+		.wx62f {
+			color: var(--normal-text-color) !important;
+		}
+
+		.aCOpRe em {
+			color: var(--white-text-color);
+		}
+
+		.aCOpRe.ljeAnf {
+			color: var(--normal-text-color);
+		}
+
+		.hb8SAc {
+			color: var(--normal-text-color) !important;
+		}
+
+		.i3LlFf {
+			color: var(--white-text-color);
+		}
+
+		.ujudUb.WRZytc {
+			color: var(--white-text-color);
+		}
+
+		.fm06If .ILfuVd b, .c2xzTb .ILfuVd b {
+			background-color: var(--main-searchbox-body-color-hover);
+			color: var(--white-text-color);
+		}
+
+		.c2xzTb .ILfuVd b {
+			background: linear-gradient(90deg,var(--main-searchbox-body-color-hover) 100%,#0000 50%) no-repeat 75% 0;
+		}
+
+		.f3LoEf.OSrXXb {
+			color: var(--white-text-color);
+		}
+
+		.FzCfme {
+			color: var(--white-text-color);
+		}
+
+		.Od5Jsd {
+			color: gray;
+		}
+
+		.TrT0Xe, .lhLbod {
+			color: var(--white-text-color);
+		}
+
+		.ynAwRc {
+			color: var(--text-in-links);
+		}
+
+		.GmE3X.kWYf3c:hover {
+			color: var(--text-in-links);
+		}
+
+		.iJ1Kvb:hover {
+			h3.GmE3X.kWYf3c {
+			    color: var(--text-in-links);
+			}
+		}
+
+		.CSkcDe, .related-question-pair div.iDjcJe {
+			color: var(--white-text-color);
+		}
+
+		a {
+		   color: var(--text-in-links);
+		}
+
+		a:visited {
+			color: var(--link-has-been-visited);
+			/* color: rgb(185, 77, 255); */
+		}
+
+		a:visited .ynAwRc, a:visited.ynAwRc {
+			color: var(--link-has-been-visited);
+		}
+
+		.IFvyDb.hb8SAc .ruhjFe {
+			color: var(--text-in-links);
+		}
+
+		.SW5pqf {
+			color: var(--text-in-links);
+		}
+
+		.cUnQKe .ILfuVd b {
+		   background-color: rgba(80, 151, 255, 0.32);
+			color: var(--white-text-color);
+		}
+
+		.toI8Rb {
+			color: var(--white-text-color);
+		}
+
+		.cUnQKe .ILfuVd, .cUnQKe .UiGGAb.ILfuVd {
+			color: var(--normal-text-color);
+		}
+
+		.GdN4W.d0fCJc.BOZ6hd {
+			color: var(--white-text-color);
+		}
+
+		.aTI8gc {
+			color: var(--white-text-color);
+		}
+
+		.guK3rf {
+			color: var(--white-text-color);
+		}
+
+		.PZPZlf.ssJ7i.B5dxMb {
+			color: var(--white-text-color);
+		}
+
+		.a3glFf {
+			color: var(--white-text-color);
+		}
+
+		.NhRr3b {
+			color: var(--mildlygray-text-color);
+		}
+
+		.KFFQ0c .YfftMc, .KFFQ0c .YfftMc span, .KFFQ0c .YfftMc div, .KFFQ0c .YfftMc a {
+			color: var(--mildlygray-text-color);
+		}
+
+		.GmE3X {
+			color: var(--white-text-color);
+		}
+
+		.RES9jf {
+			color: var(--white-text-color) !important;
+		}
+
+		.vmod {
+			color: var(--normal-text-color);
+		}
+
+		.F75bid {
+			color: var(--menu-text-color);
+		}
+
+		.Pqkn2e {
+			color: var(--normal-text-color);
+		}
+
+		.cfBJGe {
+			color: var(--normal-text-color);
+		}
+
+		.LiOdre {
+			color: var(--normal-text-color);
+			border-color: var(--text-underline-in-active-menu);
+		}
+
+		.LiOdre:hover {
+			background-color: var(--main-searchbox-body-color) !important;
+			border-color: var(--text-underline-in-active-menu);
+		}
+
+		a.oBa0Fe {
+			color: var(--normal-text-color);
+		}
+
+		.c07z9 a, .c07z9 a:active, .c07z9 a:link, .c07z9 {
+			color: var(--normal-text-color);
+		}
+
+		.YrbPuc {
+			color: var(--normal-text-color);
+		}
+
+		.JNkvid .HnYYW {
+			color: var(--white-text-color);
+		}
+
+		.L3Ezfd {
+			color: var(--white-text-color);
+		}
+
+		.iAIpCb {
+			color: var(--menu-text-color);
+		}
+
+		.nwVKo {
+			color: var(--menu-text-color);
+		}
+
+		.hdtb-mitem .GOE98c, .hdtb-mitem a, .t2vtad{
+			color: var(--menu-text-color);
+		}
+
+		.rVusze {
+			color: var(--normal-text-color);
+		}
+
+		.LrzXr {
+			color: var(--normal-text-color);
+		}
+
+		.RES9jf {
+			color: var(--normal-text-color);
+		}
+
+		.LHJvCe {
+			color: var(--menu-text-color);
+		}
+
+		.Jb0Zif .OOijTb .kno-vrt-t .fl a {
+		   color: var(--white-text-color);
+		}
+
+		/* for rounded buttons !! new layout !! */
+		.GKS7s {
+			background: var(--main-body-color) !important;
+			color: #868686;
+			border: var(--main-border-one) !important;
+			box-shadow: unset;
+		}
+
+		.GKS7s:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			color: var(--white-text-color);
+			border: 1px solid var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.GKS7s .FMKtTb, .RWhoyd .mol54e {
+			color: var(--white-text-color);
+		}
+
+		.fKmH1e {
+			color: var(--menu-text-color);
+		}
+
+		/* i have NO IDEA why it errors out (too bad i can't change the dark icon to the white one) */
+		/*
+		.aXBZVd {
+			background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(0,0,0,.54)' d='M20.49 19l-5.73-5.73C15.53 12.2 16 10.91 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.41 0 2.7-.47 3.77-1.24L19 20.49 20.49 19zM5 9.5C5 7.01 7.01 5 9.5 5S7.01 14 9.5 11.99 14 9.5 14 5 11.99 5 9.5z'/%3E%3C/svg%3E);
+		}
+		*/
+
+		.LGwnxb {
+			color: var(--normal-text-color);
+		}
+
+		#rhs .S8ee5 {
+			background-color: var(--main-searchbox-body-color);
+			color: var(--normal-text-color);
+		}
+
+		#rhs .S8ee5:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			color: var(--white-text-color);
+		}
+
+		.ZFiwCf {
+			background-color: var(--main-searchbox-body-color);
+			.w2fKdd {
+			    color: var(--normal-text-color);
+			}
+		}
+
+		.ZFiwCf:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			.LGwnxb {
+			    color: var(--white-text-color);
+			}
+			.w2fKdd {
+			    color: var(--title-text-color);
+			}
+		}
+
+		.Njmbc {
+			border-color: var(--main-border-two);
+		}
+
+		.Maj6Tc {
+			border: var(--stupid-overview-border-color);
+		}
+
+		.Maj6Tc:hover {
+			border-color: var(--stupid-overview-border-color-hover);
+		}
+
+		.Maj6Tc .REySof {
+			color: var(--main-body-color) !important;
+		}
+
+		.Maj6Tc .REySof:hover {
+			background-color: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.ZkkK1e.ZkkK1e {
+			background-color: var(--main-body-color);
+			color: #c8c8c8;
+			border: var(--main-border-one);
+		}
+
+		.ZkkK1e.ZkkK1e:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			color: var(--white-text-color);
+		}
+
+		.YkS8D .N6jJud {
+			color: var(--best-answer-color);
+		}
+
+		/* ================================= miscellaneous ================================= */
+
+		.bCwlI.T9Wh5 g-fab, .VdehBf.T9Wh5 g-fab {
+			background-color: var(--main-searchbox-body-color) !important;
+		}
+
+		.GLcBOb .qCqYBc {
+			background-color: var(--main-body-color);
+			border-bottom: var(--main-border-one);
+		}
+
+		.euDXsc .rmxqbe {
+			background-color: var(--main-body-color);
+		}
+
+		.ZHugbd:hover {
+			background: rgba(255, 255, 255, 0.11);
+		}
+
+		.UivI7b:hover {
+			background: rgba(255, 255, 255, 0.11) !important;
+		}
+
+		.F9Idpe {
+			background: linear-gradient(to right, transparent 0%, var(--main-searchbox-body-color) 60%, var(--main-searchbox-body-color-hover));
+		}
+
+		.F9Idpe.Iy1nvd {
+			background: linear-gradient(to left, transparent 0%, var(--main-searchbox-body-color) 60%, var(--main-searchbox-body-color-hover));
+		}
+
+		.SvoXfb:hover {
+			background: var(--main-border-two);
+		}
+
+		.CybWFf {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.LtmTod > div > a:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+		}
+
+		/*.GLcBOb .pZvJc {
+			background: var(--main-body-color);
+			border-bottom: 1px solid var(--main-body-color);
+		}*/
+
+		.AozSsc {
+			color: var(--menu-text-color);
+		}
+
+		.AozSsc:hover {
+			color: var(--white-text-color);
+		}
+
+		.k8XOCe {
+			background: var(--main-searchbox-body-color);
+			.s75CSd {
+			    color: var(--menu-text-color);
+			}
+		}
+
+		.k8XOCe:hover {
+			background: var(--main-searchbox-body-color-hover);
+			.s75CSd {
+			    color: var(--white-text-color);
+			}
+		}
+
+		.aXBZVd {
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,.54)' d='M20.49 19l-5.73-5.73C15.53 12.2 16 10.91 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.41 0 2.7-.47 3.77-1.24L19 20.49 20.49 19zM5 9.5C5 7.01 7.01 5 9.5 5S14 7.01 14 9.5 11.99 14 9.5 14 5 11.99 5 9.5z'/%3E%3C/svg%3E");
+		}
+
+		.b2Rnsc {
+			background: var(--main-searchbox-body-color);
+			.dg6jd {
+			    color: var(--menu-text-color);
+			}
+		}
+
+		.b2Rnsc:hover {
+			background: var(--main-searchbox-body-color-hover);
+			.dg6jd {
+			    color: var(--white-text-color);
+			}
+		}
+
+		.fxvkXe, .p8Jhnd {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.vIifob {
+			background: var(--main-searchbox-body-color);
+			.dg6jd {
+				color: var(--menu-text-color);
+			}
+			.DxHbyd {
+				background: var(--main-searchbox-body-color-hover);
+			}
+		}
+
+		.vIifob:hover {
+			background: var(--main-searchbox-body-color-hover);
+			.dg6jd {
+			    color: var(--text-in-links);
+			}
+			.DxHbyd {
+			    background: var(--main-searchbox-body-color);
+			}
+		}
+
+		.eFM0qc.BCF2pd {
+			background: var(--main-body-color);
+		}
+
+		.LAWljd {
+			color: var(--white-text-color);
+		}
+
+		.fxvkXe, .p8Jhnd:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.w5mTAe .YWkDN, .W0urI .YWkDN {
+			background: var(--main-searchbox-body-color) !important;
+		}
+
+		.gb_Ka svg {
+			color: var(--normal-text-color);
+		}
+
+		.yvg0ob span {
+			background-color: var(--main-searchbox-body-color-hover);
+			color: var(--white-text-color);
+		}
+
+		.uch-xa-tl {
+			background: var(--main-searchbox-body-color-hover);
+			color: var(--white-text-color);
+		}
+
+		.EyBRub .v8MW6c {
+			color: var(--menu-text-color);
+		}
+
+		.XKnPEd {
+			background: var(--main-body-color);
+		}
+
+		.vg4Xpd {
+			background: var(--main-body-color);
+		}
+
+		.fw-ch-sel .KWk7r.qUjgX {
+			 background-color: var(--main-searchbox-body-color);
+			 color: var(--text-in-links);
+		}
+
+		.knowledge-finance-wholepage-chart__hover-card {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.lWzCpb {
+			background: var(--main-body-color);
+		}
+
+		.xNzW0d {
+			background: var(--main-body-color);
+		}
+
+		.xNzW0d:focus-within {
+			background: var(--main-body-color);
+		}
+
+		.Zm4QFc {
+			background-color: var(--main-searchbox-body-color);
+			fill: var(--text-in-links);
+		}
+
+		.yp1CPe.wDYxhc.NFQFxe.viOShc.LKPcQc {
+			background-color: var(--main-body-color);
+		}
+
+		.hqwb1b {
+			background-color: var(--main-searchbox-body-color);
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.EpPYLd.GZnQqe:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.bepeF {
+			color: var(--menu-text-color);
+		}
+
+		.z1asCe.dC6Tmc {
+			color: var(--menu-text-color) !important;
+		}
+
+		.tGS0Nc .z1asCe {
+			color: var(--text-in-links);
+		}
+
+		/* quick searchbox - options when hovered */
+		.q0yked:hover {
+			background: var(--main-searchbox-body-color-hover);
+		}
+
+		.CcNe6e.v4Zpbe {
+			color: var(--menu-text-color);
+		}
+
+		.EsIlz {
+			background-color: var(--main-body-color);
+		}
+
+		.zqrO0 .niO4u {
+			background: var(--main-body-color);
+		}
+
+		.nZWEZc .ttwCMe {
+			background-color: var(--main-body-color);
+		}
+
+		.q0yked .z1asCe {
+			color: var(--menu-text-color);
+		}
+
+		.CbAZb {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.lr_container.mBNN3d {
+			background-color: var(--main-body-color);
+		}
+
+		.p8VO6e {
+			color: var(--mildlygray-text-color);
+		}
+
+		.O4T6Pe .itmdEc {
+			color: var(--mildlygray-text-color);
+		}
+
+		.ZVHLgc {
+			background-color: var(--main-body-color);
+		}
+
+		.acCJ4b {
+			background-color: var(--main-body-color);
+		}
+
+		.WeviRb {
+			color: var(--mildlygray-text-color);
+		}
+
+		.zqrO0 .niO4u {
+			border-color: var(--main-border-two);
+		}
+
+		.zqrO0 .niO4u:hover {
+			border-color: var(--main-border-two);
+			background: var(--main-border-two);
+		}
+
+		.cF4V5c {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.RVRNTb .z4R3Z {
+			color: var(--normal-text-color) !important;
+		}
+
+		.RVRNTb .z4R3Z:hover {
+			color: var(--title-text-color) !important;
+		}
+
+		.GZnQqe.LGiluc {
+			border-top-color: var(--main-border-four);
+		}
+
+		.t2vtad:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			color: var(--title-text-color) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.hdtb-tl-sel {
+			background: var(--main-searchbox-body-color) !important;
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.hdtb-tl-sel:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover);
+		}
+
+		.nGydZ {
+			background-color: var(--main-searchbox-body-color);
+			border-radius: 6px;
+		}
+
+		.dG2XIf.Wnoohf.OJXvsb {
+			border: var(--main-border-three) !important;
+		}
+
+		#rhs .u7yw9 .KcXNxb {
+			background-color: var(--main-body-color);
+		}
+
+		.nm6nmc.l0jSyf.kpQuGf {
+			border-top: var(--main-border-three);
+		}
+
+		.y8Jpof.pPLc9e.kpQuGf {
+			border-top: var(--main-border-three);
+			background-color: var(--main-searchbox-body-color);
+			.RJn8N.xXEKkb.ellip.tNxQIb.ynAwRc {
+			    color: var(--normal-text-color) !important;
+			}
+		}
+
+		.y8Jpof.pPLc9e.kpQuGf:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			.RJn8N.xXEKkb.ellip.tNxQIb.ynAwRc {
+			    color: var(--title-text-color) !important;
+			}
+		}
+
+		.y8Jpof.kpQuGf {
+			background-color: var(--main-searchbox-body-color);
+			.RJn8N.xXEKkb.ellip.tNxQIb.ynAwRc {
+			    color: var(--normal-text-color) !important;
+			}
+		}
+
+		.y8Jpof.kpQuGf:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			.RJn8N.xXEKkb.ellip.tNxQIb.ynAwRc {
+			    color: var(--title-text-color) !important;
+			}
+		}
+
+		.SwlyWb {
+			color: var(--normal-text-color);
+		}
+
+		#rhs .nGydZ .garHBe {
+			color: var(--title-text-color);
+		}
+
+		.qe1Dgc {
+			background-color: var(--main-body-color);
+		}
+
+		.uais2d {
+			background-color: var(--main-searchbox-body-color);
+			.uODXEe {
+			    color: var(--normal-text-color);
+			}
+		}
+
+		.uais2d:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			.uODXEe {
+			    color: var(--title-text-color);
+			}
+			.wfg6Pb.P2m1Af, .DiRBKb {
+			    color: var(--menu-text-color);
+			}
+		}
+
+		.wfg6Pb.P2m1Af, .DiRBKb {
+			color: var(--mildlygray-text-color);
+		}
+
+		.xTFaxe {
+			color: var(--normal-text-color);
+		}
+
+		.I6TXqe {
+			background-color: var(--main-body-color);
+			border: var(--main-border-one) !important;
+		}
+
+		.nD2EKb {
+			background-color: var(--main-searchbox-body-color);
+			border: 1px solid (--main-searchbox-body-color-hover);
+		}
+
+		.gfw2tc {
+			color: var(--menu-text-color);
+		}
+
+		.DKlyaf {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.Gfzyee.R1smN .fSXkBc {
+			background: var(--menu-text-color);
+		}
+
+		.Pjsr7c {
+			color: var(--black-text-color);
+		}
+
+		.Gfzyee {
+			border: 1px solid var(--text-in-active-menu);
+		}
+
+		.EbJ6ge {
+			color: var(--white-text-color);
+		}
+
+		.fLciMb {
+			color: var(--normal-text-color);
+		}
+
+		.gb_Na svg, .gb_Rc svg, .gb_Id .gb_ld, .gb_3c .gb_ld {
+			color: var(--normal-text-color);
+		}
+
+		.s6JM6d .dG2XIf {
+			background-color: var(--main-body-color);
+		}
+
+		.JBcDBe {
+			background-color: var(--main-body-color);
+		}
+
+		.iv236 {
+			color: var(--white-text-color);
+		}
+
+		.kHtcsd {
+			color: var(--white-text-color);
+		}
+
+		.pmZ66.z1asCe.QFl0Ff {
+			color: var(--normal-text-color);
+		}
+
+		.dfB0uf {
+			color: var(--menu-text-color);
+		}
+
+		.KwU3F {
+			color: var(--text-in-links);
+		}
+
+		.xSQxL {
+			color: var(--text-in-links);
+		}
+
+		/* ================================= for other pages (this one right here is for images tab) ================================= */
+
+		/* picture and text shelf links container */
+		.BA0zte {
+			border: var(--main-border-one);
+		}
+
+		.bqW4cb {
+			border-top: var(--main-border-one);
+		}
+
+		.UU8K7 {
+			color: var(--white-text-color);
+		}
+
+		.bqW4cb {
+			color: var(--white-text-color);
+		}
+		/* picture and text shelf links container */
+
+		/* safesearch bar */
+		.CbazZd {
+			background: var(--main-body-color);
+		}
+
+		.jyrzrc {
+			color: var(--white-text-color);
+		}
+
+		.sLl7de[selected] .niO4u {
+			background-color: var(--text-in-links);
+		}
+
+		.oMunfd:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			color: var(--menu-text-color);
+		}
+		/* safesearch bar */
+		
+		.X5YHTd {
+			border: var(--main-border-one);
+			margin-right: 22px;
+		}
+
+		.rfiSsc {
+			background: var(--main-body-color);
+		}
+
+		.rfiSsc.JiJthb {
+			border-bottom: var(--main-border-one);
+		}
+
+		.JiJthb .F9Idpe {
+			background: unset;
+		}
+
+		.JiJthb, .JiJthb .GKS7s:not([selected]) {
+			border: unset;
+		}
+
+		.wIjY0d.jFk0f {
+			background: var(--main-body-color);
+		}
+
+		.BwPElf .toI8Rb {
+			color: var(--menu-text-color);
+		}
+
+		.XZ5MVe {
+			color: var(--searchbox-icons-color);
+		}
+
+		.PNyWAd:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			color: var(--title-text-color) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover) !important;
+		}
+
+		.PNyWAd.ZXJQ7c.XD1Bsc {
+			background: var(--main-searchbox-body-color) !important;
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		.PNyWAd.ZXJQ7c.XD1Bsc:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			border: 1px solid var(--main-searchbox-body-color-hover);
+		}
+
+		.PNyWAd {
+			color: var(--menu-text-color);
+		}
+
+		.G2XB8d {
+			color: var(--menu-text-color);
+		}
+
+		.G2XB8d:hover {
+			color: var(--title-text-color) !important;
+		}
+
+		.CgGjZc:hover {
+			.G2XB8d {
+			    color: var(--title-text-color) !important;
+			}
+		}
+
+		.EXjONc {
+			color: var(--mildlygray-text-color) !important;
+		}
+
+		.EXjONc:hover {
+			color: var(--title-text-color) !important;
+		}
+
+		.EXjONc.lwlxKc:hover {
+			background-color: var(--main-body-color) !important;
+		}
+
+		.lwlxKc {
+			background-image: url(//ssl.gstatic.com/ui/v1/menu/checkmark2-light.png);
+		}
+
+		.nNzjpf-twKXnc-Zxcpp-SX9D7d.nNzjpf-twKXnc-LNRYDc {
+			border-top: 1px solid var(--text-underline-in-active-menu);
+		}
+
+		.cF4V5c-WAutxc-j4gsHd g-menu-item {
+			color: var(--menu-text-color);
+		}
+
+		.ECgenc {
+			background: var(--main-body-color);
+		}
+
+		.qcTKEe {
+			background: var(--main-body-color);
+		}
+
+		.r9PaP {
+			color: var(--mildlygray-text-color);
+		}
+
+		.r9PaP:hover {
+			color: var(--title-text-color);
+		}
+
+		.H1KrKd {
+			fill: var(--mildlygray-text-color);
+		}
+
+		.gbZSUe {
+			color: var(--menu-text-color);
+		}
+
+		a.F1hUFe.jbTlie {
+			content: url(https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png);
+			width: 92px;
+			margin-top: 2px;
+			margin-left: -1px;
+		}
+
+		.cB8JGb {
+			border: var(--main-border-title-icon);
+		}
+
+		.OkhOw.gadasb {
+			color: var(--title-text-color);
+		}
+
+		.mgK4fd {
+			border-top: var(--main-border-title-icon);
+		}
+
+		a.mgK4fd:hover {
+			text-decoration-color: var(--title-text-color);
+		}
+
+		.Ix6LGe {
+			background: var(--main-searchbox-body-color);
+		}
+
+		.igM9Le {
+			color: var(--mildlygray-text-color);
+		}
+
+		.Hm7Qac.GMjygd:hover {
+			background: var(--main-searchbox-body-color-hover);
+			.igM9Le {
+			    color: var(--title-text-color);
+			}
+		}
+
+		.Hm7Qac:hover {
+			background: var(--main-searchbox-body-color-hover);
+			.igM9Le {
+			    color: var(--title-text-color);
+			}
+		}
+
+		.GMjygd {
+			background-image: url(//ssl.gstatic.com/ui/v1/menu/checkmark2-light.png);
+		}
+
+		.N8zP5b {
+			color: var(--title-text-color);
+		}
+
+		.qccUxe {
+			color: var(--menu-text-color);
+		}
+
+		.s8GCU {
+			background: unset;
+		}
+
+		.rQEFy {
+			color: var(--text-in-active-menu) !important;
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+		}
+
+		.rQEFy:hover {
+			border-bottom: 3px solid var(--main-body-color);
+		}
+
+		.Lj9fsd {
+			background-color: var(--main-body-color);
+		}
+
+		.jZWadf {
+			background: var(--main-body-color);
+		}
+
+		.cEPPT {
+			border-bottom: var(--main-border-one);
+		}
+
+		.NZmxZe {
+			color: var(--normal-text-color);
+		}
+
+		a.NZmxZe:hover {
+			color: var(--text-in-active-menu);
+		}
+
+		a.NZmxZe:hover {
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		.NZmxZe.qlsyCb:hover {
+			color: var(--text-in-active-menu);
+			border-bottom: 3px solid var(--text-underline-in-active-menu);
+			padding-bottom: 11px;
+		}
+
+		.o6juZc {
+			background-color: var(--main-searchbox-body-color);
+			box-shadow: 0 2px 5px 1px rgba(11, 11, 11, .14);
+		}
+
+		.o6juZc:hover {
+			background-color: var(--main-searchbox-body-color-hover);
+			box-shadow: 0 2px 5px 1px rgba(96, 95, 95, .7);
+		}
+
+		.Lj9fsd.DU1Mzb .o6juZc {
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		#REsRA.og3lId {
+			color: var(--white-text-color);
+		}
+
+		.W6pGoe {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.WdWr7c {
+			border-top: var(--searchbox-border-top-color);
+		}
+
+		.CuUtHc:hover {
+			background-color: var(--main-body-color);
+		}
+
+		.sU3bKf {
+			color: var(--white-text-color);
+		}
+
+		.vyDMJf-gXhOqb-Bz112c.vyDMJf-gXhOqb-G0jgYd-Bz112c {
+			color: var(--white-text-color);
+		}
+
+		.ZZ7G7b {
+			color: #cfcfcf;
+			border: var(--main-border-one);
+		}
+
+		.ZZ7G7b:hover {
+			color: var(--white-text-color);
+			background: var(--main-searchbox-body-color);
+		}
+
+		.LAA3yd {
+			color: var(--white-text-color);
+		}
+
+		.zbRPDe {
+			color: #cfcfcf;
+		}
+
+		.FjVBEd {
+			color: var(--best-answer-color);
+		}
+
+		/* ====== videos tab ====== */
+		.ZU8Abc {
+			color: var(--menu-text-color);
+		}
+
+		.zFcCq {
+			color: var(--menu-text-color);
+		}
+
+		#fbar.f6F9Be {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.b2hzT {
+			border-bottom: var(--main-border-title-icon);
+		}
+
+		.b0KoTc {
+			color: var(--menu-text-color);
+		}
+
+		.GS5rRd {
+			color: var(--text-in-links);
+		}
+
+		.z8gr9e {
+			color: var(--mildlygray-text-color);
+		}
+
+		/* ====== google.com tab ====== */
+		.gb_Fa.gb_2a .gb_9c.gb_ad, .gb_Fa.gb_2a a.gb_X, .gb_Fa.gb_2a span.gb_X, .gb_Fa.gb_2a .gb_sd .gb_td, .gb_Fa.gb_2a .gb_2c .gb_td {
+			color: var(--white-text-color);
+		}
+
+		.uU7dJb {
+			background-color: var(--main-searchbox-body-color);
+			border-bottom: var(--main-border-one);
+			color: var(--white-text-color);
+		}
+
+		.KxwPGc.SSwjIe {
+			background-color: var(--main-searchbox-body-color);
+		}
+
+		.pHiOh, a.pHiOh {
+			color: var(--menu-text-color);
+		}
+
+		.gNO89b {
+			background: var(--main-searchbox-body-color) !important;
+			border: var(--main-border-one) !important;
+			color: var(--menu-text-color) !important;
+		}
+
+		.RNmpXc {
+			background: var(--main-searchbox-body-color) !important;
+			border: var(--main-border-one) !important;
+			color: var(--menu-text-color) !important;
+		}
+
+		.gNO89b:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			color: var(--white-text-color) !important;
+		}
+
+		.RNmpXc:hover {
+			background: var(--main-searchbox-body-color-hover) !important;
+			color: var(--white-text-color) !important;
+		}
+
+		.RNNXgb {
+			border: 1px solid var(--main-searchbox-body-color);
+		}
+
+		#SIvCob {
+			color: var(--menu-text-color);
+		}
+
+		.lnXdpd {
+			content: url("https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png");
+		}
+	}
+
+
+
+	/* ============================= [+++ MAIN +++] ============================= */
+
+	if (colorOption=="d_murasaki") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="murasaki") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="discord_mod") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="murasaki_light") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="strawberry") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="pinku") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="windows_tooltip") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="brat") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="oppoa37fw_greenbutton") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="download_mode") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="win98") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="blackboard") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="winclassic") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="yellow_sun") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="future") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="future_dark") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="sky") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="reddit") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="tiktok_red") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="tiktok_focused_red") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="youtube_magenta") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="youtube_red") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="youtube_dark") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="chrome_dark") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="pornhub") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="navyblue") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="d_maron") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="blackhole") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="__experimental") {
+		darkModeCSS();
+	}
+
+	if (colorOption=="__experimental_two") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="stu48_textcolor") {
+		darkModeCSS();
+	}
+
+	/* ----- custom theme option ----- */
+	/*
+		define if it's for light mode or dark mode
+		use the following:
+
+			lightModeCSS();
+			darkModeCSS();
+
+		set the colors according to the type of theme
+		wrong values might render the page unreadable / "hurt" someone's eyes
+	*/
+	if (colorOption=="__custom") {
+		lightModeCSS();
+	}
+
+	if (colorOption=="__custom" && hoverMenusUnderlineExperimental) {
+		hmiue_forDarkMode();
+	}
+
+	if (mobileCompatibilityView=="__custom") {
+		.example {
+			color: white;
+		}
+	}
+
+	/* ============================= [--- MAIN ---] ============================= */
+}

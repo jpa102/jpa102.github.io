@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<title>FakeTube - Home</title>
+		<link rel="stylesheet" href="style.css">
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+		<script id="theme-switcher-javascript">
+			function themeSwitcher(type) {
+				if (type == "light") {
+					if (document.querySelector("#dark-style-theme") != null) {
+						document.querySelector("#dark-style-theme").remove();
+					} else {
+						console.log("[error] there's no instance in the \<head\> tag yet");
+					}
+
+					return;
+				}
+
+				if (type == "dark") {
+					document.querySelector("head").insertAdjacentHTML(
+						"beforeend",
+						`
+							<style id="dark-style-theme">
+								body {
+									background: navy;
+								}
+
+								#hey-where-did-you-get-that-body-from {
+									background: rgba(255, 255, 255, 0.2);
+								}
+
+								.h1-title {
+									color: white;
+									font-weight: 500;
+								}
+
+								.h1-title-border {
+									border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+								}
+
+								.p-title, .p-text {
+									color: lightgray;
+								}
+
+								.button-styled-container {
+									color: var(--main-body-color);
+								}
+							</style>
+						`
+					);
+				}
+
+				console.log("[error] unknown type: " + type);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="hey-where-did-you-get-that-body-from">
+			<h1 class="h1-title">
+				Welcome to FakeTube!
+			</h1>
+			<p class="p-title">
+				FakeTube is a site where you can watch YouTube videos in embedded form
+			</p>
+			<p class="p-text">
+				Feel free to choose one of the options below, they have different designs
+			</p>
+			<h2 class="h1-title h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px;">
+				Desktop:
+			</h2>
+			<div class="links-container">
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2017/">2017 layout page</a>
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2020/">2020 layout page</a>
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2021/">2021 layout page</a>
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2022/">2022 layout page</a>
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2023/">2023 layout page</a>
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2024/">2024 layout page</a>
+			</div>
+			<h2 class="h1-title h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px;">
+				Mobile:
+			</h2>
+
+			<div class="links-container">
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2021/mobile/">2021 layout page</a>
+			</div>
+			<div class="links-container">
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2023/mobile/">2023 layout page</a>
+			</div>
+			<h2 class="h1-title h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px;">
+				Suggested browser extensions:
+			</h2>
+			<div class="links-container">
+				<span><a class="button-styled-container" class="notranslate button-styled-container" href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a><span class="p-title"> - block ads, malicious redirects, and more</span></span>
+				<span><a class="button-styled-container" class="notranslate button-styled-container" href="https://chromewebstore.google.com/detail/return-youtube-dislike/gebbhagfogifgggkldgodflihgfeippi">Return YouTube Dislike</a><span class="p-title"> - display unofficial dislike counts</span></span>
+				<span><a class="button-styled-container" class="notranslate button-styled-container" href="https://chromewebstore.google.com/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone">SponsorBlock</a><span class="p-title"> - skip sponsorships in videos and more</span></span>
+			</div>
+			<p class="p-text h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px; margin-top: 16px;">
+				last updated at <code>2025年8月9日 18:28:27 utc+08:00</code> (singapore time)
+			</p>
+		</div>
+	</body>
+</html>
+

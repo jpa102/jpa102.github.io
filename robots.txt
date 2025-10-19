@@ -1,0 +1,10 @@
+# robots.txt
+# i have no idea what it does, but i'll put it in anyway
+# 
+# if you decide to archive my web pages, congratulations because you just archived my shit that's made by a filipino
+
+Disallow: /
+User-agent: *
+
+Disallow: /youkoso.html
+Disallow: /Return%20YouTube%20Dislike/mobile/main.html

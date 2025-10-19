@@ -1,0 +1,1926 @@
+/* ==UserStyle==
+@name           my theme for tiktok.com
+@namespace      github.com/openstyles/stylus
+@version        4.5.0
+@description    "my theme for google.com" userstyle, now ported to tiktok.com
+@author         John Patrick Adem
+
+@preprocessor stylus
+@var select colorOption                                           "select theme" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "spotifygreen:Spotify green", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "lonely_gray:Lonely gray", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme"]
+@var checkbox bordersOnly                                         "remove padded background" 0
+@var checkbox nonroundedThumbnails                                "non-rounded thumbnails" 0
+@var checkbox hideFollowingAccountsSidebar                        "Hide the accounts that you follow at the sidebar" 0
+@var checkbox hideAllTikTokNavLinks                               "Hide all TikTok navigation links at the sidebar (overrides the ones below)" 0
+@var checkbox hideForYouSidebar                                   "Hide the \"For You\" at the sidebar" 0
+@var checkbox hideExploreSidebar                                  "Hide the \"Explore\" at the sidebar" 0
+@var checkbox hideFollowingSidebar                                "Hide the \"Following\" at the sidebar" 0
+@var checkbox hideFriendsSidebar                                  "Hide the \"Friends\" at the sidebar" 0
+@var checkbox hideUploadSidebar                                   "Hide the \"Upload\" at the sidebar" 0
+@var checkbox hideActivitySidebar                                 "Hide the \"Activity\" at the sidebar" 0
+@var checkbox hideTikTokLiveSidebar                               "Hide the \"Live\" at the sidebar" 0
+@var checkbox hideMessagesSidebar                                 "Hide the \"Messages\" at the sidebar" 0
+@var checkbox hideProfileSidebar                                  "Hide the \"Profile\" at the sidebar" 0
+@var checkbox paddedSoundSourceLinkInDescriptionBox               "Add padding and background to sound source link (video description)" 0
+@var checkbox fixPaddedSoundSourceLinkInDescriptionBox            "fix the sound source link being stretched all the way (video description)" 0
+@var checkbox hideBottomPlayerControlElements                     "Hide the player controls at the bottom and right of the video player (only on direct video link)" 0
+@var checkbox hideSuggestedVideosAtRightSide                      "Hide the suggested videos at the right side of the video player (only on direct video link)" 0
+@var checkbox hideEffectsUsed                                     "Hide the effects used in the video description (only on direct video link)" 0
+@var checkbox hideSoundUsed                                       "Hide the sound used in the video description (only on direct video link)" 0
+@var checkbox hideFollowFollowingButton                           "Hide the \"Follow\" / \"Following\" button in the video description (only on direct video link)" 0
+@var checkbox tux-colorPrimary                                    "Custom TikTok red color (edit the userstyle)" 0
+@var checkbox roundedbuttons                                      "make some buttons rounded" 0
+
+@var checkbox experimentalPageLayoutTest                          "[experimental] new redesigned layout (incognito or other)" 0
+@var checkbox experimentalUncenterVideoContentProfile             "[experimental] uncenter the video grid in the account's profile" 0
+@var checkbox experimentalOldAndNewLayout_translucentSearch       "[experimental] translucent search - old & new layout" 0
+@var range expOldAndNewLayout_translucentSearch_wpercentage       "[experimental] translucent search - old & new layout (white intensity)" [27, 0, 100, 0.01, '%']
+@var range expOldAndNewLayout_translucentSearch_blurlevel         "[experimental] translucent search - old & new layout (blur intensity)" [3, 0, 10, 0.01, 'px']
+@var checkbox experimentalTransparentTopbar                       "[experimental] transparent topbar" 0
+@var checkbox experimentalTransparentSearchContainer              "[experimental] transparent search bar" 0
+@var checkbox experimentalHighlightFollowingUserInSidebar         "[experimental - deprecated] highlight the user you're currently following in the sidebar (user page)" 0
+@var checkbox forceBlackText                                      "[debug] force black text on all elements" 0
+@var checkbox forceWhiteText                                      "[debug] force white text on all elements" 0
+@var checkbox forceNoBorderRadius                                 "[debug] force all elements to have 0 border-radius (roundness)" 0
+@var checkbox forceReversedList                                   "[debug] force reverse the items in the popup container" 0
+@var checkbox forceReversedDirection                              "[debug] force reverse the page direction (Right to Left)" 0
+==/UserStyle== */
+
+@-moz-document regexp("^https:\\/\\/www\\.tiktok\\.com.+") {
+	/* universal root variables */
+	:root {
+		--dark-mode-background-light-color-level-one: rgba(255, 255, 255, 0.1);
+		--dark-mode-background-light-color-level-two: rgba(255, 255, 255, 0.2);
+		--light-mode-background-dark-color-level-one: rgba(0, 0, 0, 0.1);
+		--light-mode-background-dark-color-level-two: rgba(0, 0, 0, 0.2);
+	}
+
+	/* "black" (vanced) theme */
+	if (colorOption=="blackhole") {
+		:root {
+			--main-body-color: rgb(0, 0, 0);
+			--main-body-color-light: rgb(20, 20, 20);
+			--main-body-color-lighter: rgb(48, 48, 48);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "dark purple" theme */
+	if (colorOption=="d_murasaki") {
+		:root {
+			--main-body-color: rgb(90, 18, 136);
+			--main-body-color-light: rgb(128, 37, 187);
+			--main-body-color-lighter: rgb(137, 52, 192);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "purple" theme */
+	if (colorOption=="murasaki") {
+		:root {
+			--main-body-color: rgb(134, 26, 204);
+			--main-body-color-light: rgb(153, 45, 223);
+			--main-body-color-lighter: rgb(168, 66, 234);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "light purple" theme */
+	if (colorOption=="murasaki_light") {
+		:root {
+			--main-body-color: rgb(211, 144, 255);
+			--main-body-color-light: rgb(223, 175, 255);
+			--main-body-color-lighter: rgb(230, 192, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "strawberry" theme */
+	if (colorOption=="strawberry") {
+		:root {
+			--main-body-color: rgb(252, 90, 141);
+			--main-body-color-light: rgb(255, 114, 158);
+			--main-body-color-lighter: rgb(255, 140, 176);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "pink" theme */
+	if (colorOption=="pinku") {
+		:root {
+			--main-body-color: rgb(255, 94, 217);
+			--main-body-color-light: rgb(255, 121, 223);
+			--main-body-color-lighter: rgb(255, 142, 228);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "legacy windows tooltip" theme */
+	if (colorOption=="windows_tooltip") {
+		:root {
+			--main-body-color: rgb(249, 251, 204);
+			--main-body-color-light: rgb(236, 238, 172);
+			--main-body-color-lighter: rgb(247, 249, 195);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "school blackboard" theme */
+	if (colorOption=="blackboard") {
+		:root {
+			--main-body-color: rgb(0, 92, 80);
+			--main-body-color-light: rgb(16, 117, 109);
+			--main-body-color-lighter: rgb(17, 132, 119);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "brat" theme */
+	if (colorOption=="brat") {
+		:root {
+			--main-body-color: rgb(138, 207, 0);
+			--main-body-color-light: rgb(143, 215, 0);
+			--main-body-color-lighter: rgb(155, 232, 0);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "windows 98 background" theme */
+	if (colorOption=="win98") {
+		:root {
+			--main-body-color: rgb(0, 128, 128);
+			--main-body-color-light: rgb(12, 156, 156);
+			--main-body-color-lighter: rgb(14, 181, 181);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "oppo a37fw green button" theme */
+	if (colorOption=="oppoa37fw_greenbutton") {
+		:root {
+			--main-body-color: rgb(60, 201, 182);
+			--main-body-color-light: rgb(67, 224, 202);
+			--main-body-color-lighter: rgb(71, 236, 213);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "spotify green" theme */
+	if (colorOption=="spotifygreen") {
+		:root {
+			--main-body-color: rgb(30, 215, 95);
+			--main-body-color-light: rgb(32, 230, 101);
+			--main-body-color-lighter: rgb(38, 252, 113);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "download mode" theme */
+	if (colorOption=="download_mode") {
+		:root {
+			--main-body-color: rgb(20, 164, 189);
+			--main-body-color-light: rgb(20, 161, 185);
+			--main-body-color-lighter: rgb(24, 188, 216);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "sunny yellow" theme */
+	if (colorOption=="yellow_sun") {
+		:root {
+			--main-body-color: rgb(255, 255, 21);
+			--main-body-color-light: rgb(255, 255, 154);
+			--main-body-color-lighter: rgb(253, 255, 232);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Future" theme */
+	if (colorOption=="future") {
+		:root {
+			--main-body-color: rgb(183, 194, 255);
+			--main-body-color-light: rgb(199, 208, 255);
+			--main-body-color-lighter: rgb(212, 219, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Future (dark)" theme */
+	if (colorOption=="future_dark") {
+		:root {
+			--main-body-color: rgb(85, 90, 122);
+			--main-body-color-light: rgb(97, 103, 143);
+			--main-body-color-lighter: rgb(99, 106, 145);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "sky" theme */
+	if (colorOption=="sky") {
+		:root {
+			--main-body-color: rgb(54, 200, 255);
+			--main-body-color-light: rgb(125, 219, 255);
+			--main-body-color-lighter: rgb(166, 230, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "discord" theme */
+	if (colorOption=="discord_mod") {
+		:root {
+			--main-body-color: rgb(64, 78, 237);
+			--main-body-color-light: rgb(111, 122, 255);
+			--main-body-color-lighter: rgb(137, 146, 255);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "windows classic" theme */
+	if (colorOption=="winclassic") {
+		:root {
+			--main-body-color: rgb(58, 110, 165);
+			--main-body-color-light: rgb(65, 129, 196);
+			--main-body-color-lighter: rgb(76, 143, 213);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "navy blue" theme */
+	if (colorOption=="navyblue") {
+		:root {
+			--main-body-color: rgb(0, 6, 81);
+			--main-body-color-light: rgb(25, 30, 98);
+			--main-body-color-lighter: rgb(38, 44, 128);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "maroon" theme (intentional misspelling to avoid internal issues) */
+	if (colorOption=="d_maron") {
+		:root {
+			--main-body-color: rgb(136, 0, 0);
+			--main-body-color-light: rgb(187, 0, 0);
+			--main-body-color-lighter: rgb(219, 0, 0);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Reddit's OrangeRed" theme */
+	if (colorOption=="reddit") {
+		:root {
+			--main-body-color: rgb(255, 69, 0);
+			--main-body-color-light: rgb(255, 94, 35);
+			--main-body-color-lighter: rgb(255, 123, 75);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "TikTok Red" theme */
+	if (colorOption=="tiktok_red") {
+		:root {
+			--main-body-color: rgba(255, 59, 92, 1);
+			--main-body-color-light: rgb(255, 93, 120);
+			--main-body-color-lighter: rgb(255, 115, 138);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "TikTok Red focus" theme */
+	if (colorOption=="tiktok_focused_red") {
+		:root {
+			--main-body-color: rgb(255, 76, 58);
+			--main-body-color-light: rgb(255, 100, 85);
+			--main-body-color-lighter: rgb(255, 117, 104);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "youtube magenta" theme */
+	if (colorOption=="youtube_magenta") {
+		:root {
+			--main-body-color: rgb(255, 26, 71); /* hex code color: #ff1a47 */
+			--main-body-color-light: rgb(255, 53, 93);
+			--main-body-color-lighter: rgb(255, 69, 106);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "youtube red" theme */
+	if (colorOption=="youtube_red") {
+		:root {
+			--main-body-color: rgb(255, 0, 0);
+			--main-body-color-light: rgb(255, 61, 61);
+			--main-body-color-lighter: rgb(255, 88, 88);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "youtube dark" theme */
+	if (colorOption=="youtube_dark") {
+		:root {
+			--main-body-color: rgb(33, 33, 33);
+			--main-body-color-light: rgb(50, 50, 50);
+			--main-body-color-lighter: rgb(64, 64, 64);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Google Chrome - Dark" theme */
+	if (colorOption=="chrome_dark") {
+		:root {
+			--main-body-color: rgb(16, 18, 24);
+			--main-body-color-light: rgb(25, 42, 52);
+			--main-body-color-lighter: rgb(35, 60, 74);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "pornhub logo color" theme */
+	if (colorOption=="pornhub") {
+		:root {
+			--main-body-color: rgb(239, 146, 28);
+			--main-body-color-light: rgb(255, 164, 46);
+			--main-body-color-lighter: rgb(255, 176, 73);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* "Lonely gray" theme */
+	if (colorOption=="lonely_gray") {
+		:root {
+			--main-body-color: rgb(91, 91, 91);
+			--main-body-color-light: rgb(106, 106, 106);
+			--main-body-color-lighter: rgb(118, 118, 118);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* experimental theme (1 - dark) */
+	if (colorOption=="__experimental") {
+		:root {
+			--main-body-color: rgb(224, 13, 118);
+			--main-body-color-light: rgb(255, 38, 146);
+			--main-body-color-lighter: rgb(255, 64, 159);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/* experimental theme (2 - light) */
+	if (colorOption=="__experimental_two") {
+		:root {
+			--main-body-color: rgb(225, 229, 241);
+			--main-body-color-light: rgb(187, 190, 200);
+			--main-body-color-lighter: rgb(206, 209, 219);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+		}
+	}
+
+	/*
+		LIGHT MODE
+	*/
+
+	body {
+		background: var(--main-body-color);
+	}
+
+	.css-cytknd-DivColumnListContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-1bqimst-DivColumnListContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-k49mk-ArticleItemContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-96x7nv-ArticleItemContainer {
+		background: var(--main-body-color);
+	}
+
+	/* scroll bar color */
+	/* -- todo (to this day) :( -- */
+
+	/* topbar (loading) */
+	.css-iu8yw8-DivSkeletonHeaderWrapper-StyledDivSkeletonHeaderWrapperV2 {
+		background: var(--main-body-color);
+	}
+
+	.css-1a0rjhz-DivHeaderWrapperMain-StyledDivHeaderWrapperMainV2 {
+		background: var(--main-body-color);
+	}
+
+	/* topbar */
+	.css-1a0rjhz-DivHeaderWrapperMain-StyledDivHeaderWrapperMainV2, .css-iozudi-DivHeaderContainer {
+		background: var(--main-body-color);
+	}
+
+	/* user profile hover - dropdown */
+	#header-setting-popup-list {
+		background: var(--main-body-color-light);
+	}
+
+	#header-setting-popup-list > svg {
+		fill: var(--main-body-color-light);
+	}
+
+	.css-16r28j-ALink-StyledLinkItem:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	.css-12p6qtz-LiItemWrapper:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	.css-j4glix-StyledLink-StyledUserLink:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	.css-1hji1mo-LiItemWrapper:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	/* sidebar */
+	.e14l9ebt0.css-qf469v-DivScrollContainer-StyledScroll.e1b4u1n1 {
+		background: var(--main-body-color);
+	}
+
+	/* sidebar items (hover) */
+	.css-12zznuq-StyledLink-StyledTmpLink:hover {
+		background: rgba(0, 0, 0, 0.09);
+	}
+
+	.css-118dbw7-ALink-StyledTmpLink:hover {
+		background: rgba(0, 0, 0, 0.09); /* tiktok live */
+	}
+
+	/* body (just tiktok.com) */
+	.css-13skusu-DivOneColumnContainer {
+		background: var(--main-body-color);
+	}
+
+	/* search results container */
+	.css-fwfrfq-UlContainer {
+		background: var(--main-body-color-lighter);
+	}
+
+	.css-1wubcpo-UlContainer {
+		background: var(--main-body-color-lighter);
+	}
+	
+	.css-58cehy-UlContainer {
+		background: var(--main-body-color-lighter);
+	}
+
+	.css-1e11j9m-UlContainer {
+		background: var(--main-body-color-lighter);
+	}
+
+	/* profile page */
+	.css-12vsicr-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-1ioblcb-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-1qup28j-DivUpload {
+		background: transparent;
+	}
+
+	.css-16gecda-Button-StyledEditButton {
+		background: var(--main-body-color-light);
+	}
+
+	.css-16gecda-Button-StyledEditButton:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	/* idk, right-side creator info and comment section? */
+	.css-1qjw4dg-DivContentContainer.e1mecfx00 {
+		background: var(--main-body-color);
+	}
+
+	.css-1qp5gj2-DivCommentListContainer.ekjxngi3 {
+		background: var(--main-body-color);
+	}
+
+	.css-3yeu18-DivTabMenuContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-19hqadz-DivBottomCommentContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-vubwh3-DivInboxContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.css-e0rxz1-StyledArrow {
+		fill: var(--main-body-color-light);
+	}
+
+	/* video page - bottom info */
+	.css-15ip68j-DivDescriptionContentWrapper-StyledDetailContentWrapper {
+		background: rgba(0, 0, 0, 0.09);
+	}
+
+	.css-1dvjwcq-DivBodyContainer {
+		background: var(--main-body-color);
+	}
+
+	/* profile page */
+	.css-difc72-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-1pbyc88-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	/* more - tooltip */
+	.css-vc8iir-DivContainer {
+		background: var(--main-body-color-lighter) !important;
+	}
+
+	.css-vc8iir-DivContainer > svg {
+		fill: var(--main-body-color-lighter) !important;
+	}
+
+	.css-huwdo5-DivContainer {
+		background: var(--main-body-color-lighter) !important;
+	}
+
+	/* sign-in popup */
+	.css-1e4hvda-DivModalContent {
+		background: var(--main-body-color);
+	}
+
+	.css-1qd588d-DivAgreement {
+		background: var(--main-body-color);
+	}
+
+	.css-17hparj-DivBoxContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.css-17hparj-DivBoxContainer:hover {
+		background: var(--main-body-color-lighter);
+	}
+
+	/* etc elements */
+	.css-ywki3p-DivCommentTop {
+		background: var(--main-body-color);
+	}
+
+	.css-hwc5eg-DivBottomCommentContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-ns1v7o-Button-StyledLogin {
+		background: var(--main-body-color-light);
+	}
+
+	.css-13xyzx0-DivLoginBar {
+		background: rgba(0, 0, 0, 0.09);
+	}
+
+	.css-cjg0nh-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-1ey00cv-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-727ec1-DivProfileContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.TUXSegmentedControl-item[data-active='true'] {
+		background: var(--main-body-color-light);
+	}
+
+	.css-6v58j6-DivContainer {
+		background: var(--main-body-color-light) !important;
+	}
+
+	.css-z67uhz-DivContainer {
+		background: var(--main-body-color-light) !important;
+	}
+
+	.css-7pd62b-StyledTopArrow {
+		fill: var(--main-body-color-light);
+	}
+
+	.css-wr1fk-DivBodyContainer-StyledDivBodyContainerV2 {
+		background: var(--main-body-color);
+	}
+
+	.css-1iaigq-DivMainContainer {
+		background: var(--main-body-color);
+	}
+
+	/* /setting page */
+	.css-1yee0yl-DivSettingContainer, .tiktok-1yee0yl-DivSettingContainer, .tiktok-l3wolk-DivSettingContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-1bzkgzu-DivContentContainer, .tiktok-1bzkgzu-DivContentContainer, .tiktok-3kukfb-DivContentContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.css-u0f6nm-DivNavScrollContainer, .tiktok-u0f6nm-DivNavScrollContainer, .tiktok-1f4dsax-DivNavScrollContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.css-19l8hzs-ModalContentSection {
+		background: var(--main-body-color);
+	}
+
+	/* messages page */
+	.css-ppjb4t-DivLayout {
+		background: var(--main-body-color);
+	}
+
+	.css-d0yksp-DivChatBox {
+		background: var(--main-body-color-light);
+	}
+
+	.css-14y9fbm-DivConversationListContainer {
+		background: var(--main-body-color-light);
+	}
+
+
+
+	/*
+		=============================================
+				DARK MODE (some elements)
+		=============================================
+	*/
+
+
+
+	/* scroll bar color */
+	html *::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: rgba(255,255,255,0.12);
+	}
+
+	.css-ixlgsx-DivColumnListContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-1gqn9m0-DivCategoryListWrapper, .css-ldiizi-DivColumnListContainer {
+		background: var(--main-body-color);
+	}
+
+	/* topbar */
+	[data-tux-color-scheme^="dark"] .tiktok-1a0rjhz-DivHeaderWrapperMain-StyledDivHeaderWrapperMainV2 {
+		background: var(--main-body-color);
+	}
+
+	/* sidebar */
+	.tiktok-1qs75bj-DivScrollContainer-StyledScroll, .css-1qs75bj-DivScrollContainer-StyledScroll {
+		background: var(--main-body-color);
+	}
+
+	/* sidebar items (hover) */
+	.css-16h0vz7-StyledLink-StyledTmpLink:hover {
+		background: rgba(255,255,255,0.12);
+	}
+
+	.css-dch9ro-ALink-StyledTmpLink:hover {
+		background: rgba(255,255,255,0.12); /* tiktok live */
+	}
+
+	/* body (just tiktok.com) */
+	.tiktok-ixlgsx-DivColumnListContainer {
+		background: var(--main-body-color);
+	}
+
+	/* video (within tiktok.com) */
+	.css-1u3jkat-DivDescriptionContentWrapper {
+		background: var(--dark-mode-background-light-color-level-one);
+	}
+
+	.css-2cfmui-Button {
+		background: var(--dark-mode-background-light-color-level-one);
+	}
+
+	.css-2cfmui-Button:hover {
+		background: var(--dark-mode-background-light-color-level-two) !important;
+	}
+
+	.css-10hhkxy-DivInputAreaContainer {
+		border: 1px solid var(--tux-colorPrimary);
+	}
+
+	/* video page - bottom info */
+	.css-3lfoqn-DivDescriptionContentWrapper-StyledDetailContentWrapper {
+		background: rgba(255, 255, 255, 0.12)   
+	}
+
+	.css-1v8ndi3-DivBodyContainer {
+		background: var(--main-body-color);
+	}
+
+	/* profile page */
+	.css-12fxnw6-DivShareLayoutBase-StyledShareLayoutV2 {
+		background: var(--main-body-color);
+	}
+
+	.css-1pbyc88-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	/* search results box */
+	.css-16196sa-UlContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.css-7jh3o6-UlContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.css-xj971c-UlContainer {
+		background: var(--main-body-color-lighter);
+	}
+
+	.css-12ii946-UlContainer {
+		background: var(--main-body-color-lighter);
+	}
+
+	/* input text form - logged out */
+	.css-1i7be9r-DivLoginBar {
+		background: var(--main-body-color);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+	}
+
+	/* etc elements */
+	.css-ywki3p-DivCommentTop {
+		background: var(--main-body-color);
+	}
+
+	.css-hwc5eg-DivBottomCommentContainer {
+		background: var(--main-body-color);
+	}
+
+	.css-11wrl1g-Button-StyledLogin {
+		background: var(--main-body-color);
+	}
+
+	.css-nz8bok-ButtonAtBottom {
+		background: var(--main-body-color-light);
+	}
+
+	.css-ryk05x-UlPopupContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.css-1sacct4-DivUpload {
+		background: rgba(255, 255, 255, 0.12);
+	}
+
+	.css-1sacct4-DivUpload:hover {
+		background: rgba(255, 255, 255, 0.24);
+	}
+
+	.css-1sacct4-DivUpload:active {
+		background: rgba(255, 255, 255, 0.06);
+	}
+
+	.css-159axd7-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-q2e5xl-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	[data-tux-color-scheme^="dark"] .css-1i6o6mp-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-ru4pqy-DivProfileContainer {
+		background: var(--main-body-color-light);
+	}
+
+	[data-tux-color-scheme^="dark"] .TUXSegmentedControl-item[data-active='true'] {
+		background: var(--dark-mode-background-light-color-level-one);
+	}
+
+	.css-13z12do-DivContainer {
+		background: var(--main-body-color-light) !important;
+	}
+
+	.css-19h7d3x-DivContainer {
+		background: var(--main-body-color-light) !important;
+	}
+
+	.css-7pd62b-StyledTopArrow {
+		fill: var(--main-body-color-light);
+	}
+
+	[data-tux-color-scheme^="dark"] .css-59bnpx-Button-StyledFollowButtonTux {
+		background: var(--dark-mode-background-light-color-level-one);
+	}
+
+	[data-tux-color-scheme^="dark"] .css-59bnpx-Button-StyledFollowButtonTux:hover {
+		background: rgba(255, 255, 255, 0.2) !important;
+	}
+
+	[data-tux-color-scheme^="dark"] .css-19l8hzs-ModalContentSection {
+		background: var(--main-body-color);
+	}
+
+	.TUXPopover-popover--dark {
+		background: var(--main-body-color-light);
+		border-color: var(--main-body-color-lighter);
+	}
+
+	.TUXPopover-popover--dark > svg {
+		fill: var(--main-body-color-light);
+	}
+
+	[data-tux-color-scheme^="dark"] .css-1jr0x3q-DivInputAreaContainer {
+		border: 1px solid rgba(255, 59, 92, 1); /* ah yes, the "TikTok Red" (internally named "tux color") */
+	}
+
+	[data-tux-color-scheme^="dark"] .css-ejp1tv-DivContainer {
+		background: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	[data-tux-color-scheme^="dark"] .css-qobtlf-StyledTopArrow {
+		fill: rgba(255, 255, 255, 0.1) !important;
+	}
+
+	[data-tux-color-scheme^="dark"] .tiktok-1mavlr4-UserContainer {
+		background: var(--main-body-color);
+	}
+
+	[data-tux-color-scheme^="dark"] .tiktok-1pbyc88-FeedTabWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-1tg8vfr-DivExpandContainer {
+		background: var(--main-body-color-light);
+	}
+
+	.TUXModal {
+		background: var(--main-body-color);
+	}
+
+	.css-158es8r-DivLayout {
+		background: var(--main-body-color);
+	}
+
+	.css-uo36yz-DivConversationListContainer, .css-1hepufx-DivChatBox {
+		background: var(--main-body-color-light);
+	}
+
+	.css-1ivvxcq-DivPageWrapper {
+		background: var(--main-body-color);
+	}
+
+	.css-1qfhzia-DivAgreement {
+		background: var(--main-body-color-light);
+	}
+
+	.tiktok-1iaigq-DivMainContainer {
+		background: var(--main-body-color);
+	}
+
+	/*
+		OPTIONAL SETTINGS
+	*/
+	if (forceBlackText) {
+		* {
+			color: black !important;
+		}
+	}
+
+	if (forceWhiteText) {
+		* {
+			color: white !important;
+		}
+	}
+
+	if (forceNoBorderRadius) {
+		* {
+			border-radius: 0px !important;
+		}
+	}
+
+	if (paddedSoundSourceLinkInDescriptionBox) {
+		.epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
+			background: rgba(0, 0, 0, 0.09);
+			border-radius: 6px;
+			padding: 4px 10px;
+		}
+
+		[data-tux-color-scheme^="dark"] .epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
+			background: rgba(255, 255, 255, 0.09);
+			border-radius: 6px;
+			padding: 4px 10px;
+		}
+
+		[data-tux-color-scheme^="dark"] .css-blqru4-H4Link {
+			background: rgba(255, 255, 255, 0.09);
+			border-radius: 6px;
+			padding: 4px 10px;
+		}
+
+		if (bordersOnly) {
+			.epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
+				background: unset;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				border-radius: 6px;
+				padding: 4px 10px;
+			}
+
+			[data-tux-color-scheme^="dark"] .epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
+				background: unset;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 6px;
+				padding: 4px 10px;
+    			}
+
+			[data-tux-color-scheme^="dark"] .css-blqru4-H4Link {
+				background: unset;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 6px;
+				padding: 4px 10px;
+			}
+		}
+	}
+
+	if (fixPaddedSoundSourceLinkInDescriptionBox) {
+		.epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
+			width: fit-content;
+		}
+
+		.css-blqru4-H4Link {
+			width: fit-content;
+		}
+	}
+
+	/* remove the padded background in some elements and replace them with the main theme color and 1px borders */
+	if (bordersOnly) {
+		/*
+			LIGHT MODE
+		*/
+		.css-15ip68j-DivDescriptionContentWrapper-StyledDetailContentWrapper {
+			background: var(--main-body-color);
+			border: 1px solid rgba(0, 0, 0, 0.12);
+		}
+
+		/* input text form */
+		.css-ey6t7j-DivInputAreaContainer {
+			background: var(--main-body-color);
+			border: 1px solid rgba(0, 0, 0, 0.12);
+		}
+
+		.css-1c2ssez-DivInputAreaContainer {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 59, 92, 1); /* ah yes, the "TikTok Red" (internally named "tux color") */
+		}
+
+		/* search bar */
+		.css-dhqzc6-FormElement {
+			background: var(--main-body-color);
+			border: 1px solid rgba(0, 0, 0, 0.12);
+		}
+
+		/* upload button - topbar */
+		[data-tux-color-scheme^="dark"] .css-1sacct4-DivUpload {
+			background: var(--main-body-color);
+			border: 1px solid rgba(0, 0, 0, 0.12);
+		}
+
+		/* action buttons (home link) */
+		.css-1lgsxst-SpanIconWrapper {
+			background: transparent;
+			border: 1px solid rgba(0, 0, 0, 0.12);
+		}
+
+		/*
+			DARK MODE
+		*/
+		/* description box */
+		[data-tux-color-scheme^="dark"] .css-3lfoqn-DivDescriptionContentWrapper-StyledDetailContentWrapper {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1u3jkat-DivDescriptionContentWrapper {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		/* input text form */
+		[data-tux-color-scheme^="dark"] .css-1nyj48c-DivInputAreaContainer {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1yh5t6t-DivInputAreaContainer {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1jr0x3q-DivInputAreaContainer {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 59, 92, 1); /* ah yes, the "TikTok Red" (internally named "tux color") */
+		}
+
+		/* search bar */
+		[data-tux-color-scheme^="dark"] .css-1jxegix-FormElement {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		/* upload button - topbar */
+		[data-tux-color-scheme^="dark"] .css-1sacct4-DivUpload {
+			background: var(--main-body-color);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		/* action buttons (home link) */
+		.css-1r4kxri-SpanIconWrapper {
+			background: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		/* sign-in button (topbar) */
+		.css-1shjfvw-Button-StyledLoginButton {
+			background: transparent;
+			border: 1px solid rgb(255, 59, 92);
+		}
+
+		/* follow button [& action buttons in profile] (tested on incognito page) */
+		[data-tux-color-scheme^="dark"] .TUXButton--primary {
+			background: transparent;
+			border: 1px solid rgb(255, 59, 92);
+		}
+
+		[data-tux-color-scheme^="dark"] .TUXButton--secondary {
+			background: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.12);
+		}
+
+		if (tux-colorPrimary) {
+			/* sign-in button (topbar) */
+			.css-1shjfvw-Button-StyledLoginButton {
+				background: transparent !important;
+				border: 1px solid var(--tux-colorPrimary);
+				color: white !important;
+			}
+
+			/* follow button [& action buttons in profile] (tested on incognito page) */
+			[data-tux-color-scheme^="dark"] .TUXButton--primary {
+				background: transparent;
+				border: 1px solid var(--tux-colorPrimary);
+				color: var(--tux-colorConstTextInverse) !importan;
+			}
+
+			[data-tux-color-scheme^="dark"] .TUXButton--secondary {
+				background: transparent;
+				border: 1px solid rgba(255, 255, 255, 0.12);
+			}
+		}
+
+		[data-tux-color-scheme^="dark"] .css-59bnpx-Button-StyledFollowButtonTux {
+			background: transparent;
+		}
+
+		[data-tux-color-scheme^="dark"] .css-59bnpx-Button-StyledFollowButtonTux:hover {
+			background: rgba(255, 255, 255, 0.1) !important;
+		}
+	}
+
+	if (nonroundedThumbnails) {
+		.css-fj00f7-DivCoverContainer {
+			border-radius: 0px;
+		}
+
+		.css-x6y88p-DivItemContainerV2 {
+			border-radius: 0px;
+		}
+
+		.css-x6f6za-DivContainer-StyledDivContainerV2 {
+			border-radius: 0px;
+		}
+
+		.css-15dmpca-BasePlayerContainer-DivVideoPlayerContainer {
+			border-radius: 0px;
+		}
+
+		.css-1j3k693-DivContainer, .css-yf3ohr-DivContainer {
+			border-radius: 0px !important;
+		}
+
+		.css-yf3ohr-DivContainer.ec2xuek0 {
+			border-radius: 0px !important;
+		}
+
+		.css-1anqn3y-BasePlayerContainer-DivVideoPlayerContainer > div {
+			border-radius: 0px !important;
+		}
+
+		.css-1uqux2o-DivItemContainerV2 {
+			border-radius: 0px !important;
+		}
+
+		.css-pth5ka-DivPlayerContainer {
+			border-radius: 0px !important;
+		}
+
+		.css-8dx572-DivContainer-StyledDivContainerV2 {
+			border-radius: 0px !important;
+		}
+
+		/* part of the beta layout (incognito) */
+		.css-1uqux2o-DivItemContainerV2, .css-8dx572-DivContainer-StyledDivContainerV2 {
+			border-radius: 0px !important;
+		}
+	}
+
+	if (hideFollowingAccountsSidebar) {
+		.css-labfmt-DivUserContainer {
+			display: none;
+		}
+	}
+
+	if (hideForYouSidebar) {
+		a[data-e2e^="nav-foryou"] {
+			display: none;
+		}
+	}
+
+	if (hideExploreSidebar) {
+		a[data-e2e^="nav-explore"] {
+			display: none;
+		}
+	}
+
+	if (hideFollowingSidebar) {
+		a[data-e2e^="nav-following"] {
+			display: none;
+		}
+	}
+
+	if (hideFriendsSidebar) {
+		a[data-e2e^="nav-friends"] {
+			display: none;
+		}
+	}
+
+	if (hideUploadSidebar) {
+		a[data-e2e^="nav-upload"] {
+			display: none;
+		}
+	}
+
+	if (hideActivitySidebar) {
+		div > button[aria-label^="Activity"], div > button[aria-label^="アクティビティ"] {
+			display: none;
+		}
+	}
+
+	if (hideTikTokLiveSidebar) {
+		a[data-e2e^="nav-live"] {
+			display: none;
+		}
+	}
+
+	if (hideMessagesSidebar) {
+		a[data-e2e^="nav-messages"] {
+			display: none;
+		}
+	}
+
+	if (hideProfileSidebar) {
+		a[data-e2e^="nav-profile"] {
+			display: none;
+		}
+	}
+
+	/*
+		hide all navigation buttons except the more button
+	*/
+	if (hideForYouSidebar && hideExploreSidebar && hideFollowingSidebar && hideFriendsSidebar && hideUploadSidebar && hideActivitySidebar && hideTikTokLiveSidebar && hideMessagesSidebar && hideProfileSidebar) {
+		.css-5yxamm-DivMainNavContainer {
+			margin-top: -32px;
+		}
+	}
+
+	if (hideAllTikTokNavLinks) {
+		.css-1rvr9ul-NavMainNavContainer, .css-1eo184-DivFooterContainer, .css-5yxamm-DivMainNavContainer {
+			display: none;
+		}
+	}
+
+	if (tux-colorPrimary) {
+		:root {
+			--tux-colorPrimary: #36c8ff;
+			--tux-colorConstTextInverse: black;
+		}
+
+		.twv-container .tt-text-field--input, .twv-container .twv-components-code-input .code-input {
+			caret-color: var(--tux-colorPrimary) !important;
+		}
+
+		/* elements */
+		[data-tux-color-scheme^="dark"] .css-1shjfvw-Button-StyledLoginButton {
+			background-color: var(--tux-colorPrimary);
+			color: var(--tux-colorConstTextInverse);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1shjfvw-Button-StyledLoginButton:hover {
+			background-color: #00b9ff;
+		}
+
+		[data-tux-color-scheme^="dark"] .TUXButton--primary {
+			background-color: var(--tux-colorPrimary);
+			color: var(--tux-colorConstTextInverse);
+		}
+
+		[data-tux-color-scheme^="dark"] .TUXButton--primary:active {
+			background-color: #00b9ff;
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1jr0x3q-DivInputAreaContainer {
+			border: 1px solid var(--tux-colorPrimary);
+		}
+
+		.css-bqwj18-DivNewLabelContainer {
+			background-color: var(--tux-colorPrimary);
+			color: var(--tux-colorConstTextInverse);
+		}
+
+		.css-3on00d-DivBadge {
+			background-color: var(--tux-colorPrimary);
+			color: var(--tux-colorConstTextInverse);
+		}
+
+		.css-11wrl1g-Button-StyledLogin {
+			border: 1px solid var(--tux-colorPrimary);
+			color: var(--tux-colorPrimary);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1g1i6o0-SupBadge {
+			background: var(--tux-colorPrimary);
+			color: var(--tux-colorConstTextInverse);
+		}
+
+		/* follow button (following - signed in) */
+		/*
+		.TUXTooltip-reference > .TUXButton--secondary {
+			border: 1px solid var(--tux-colorPrimary);
+		}
+		*/
+
+		/* edit profile (your account - signed in) */
+		[data-tux-color-scheme^="dark"] .TUXButton--primary:hover {
+			background: var(--tux-colorPrimary);
+		}
+
+		/* selected text (sidebar) */
+		[data-tux-color-scheme^="dark"] .css-1yqikl8-SpanMainNavText {
+			color: var(--tux-colorPrimary);
+		}
+
+		[data-tux-color-scheme^="dark"] a[data-e2e^="nav-foryou"] > svg {
+			fill: var(--tux-colorPrimary);
+		}
+	}
+    
+	if (hideBottomPlayerControlElements) {
+		.css-1dmpd7c-DivVideoSwiperControlContainer {
+			visibility: hidden !important;
+		}
+
+		.css-17w0x0b-DivSeekBarContainer {
+			visibility: hidden !important;
+		}
+
+		.css-1elr43g-DivActionBarWrapper {
+			visibility: hidden !important;
+		}
+	}
+
+	if (hideSuggestedVideosAtRightSide) {
+		.css-1czmy9n-DivVideoList {
+			/* this is the default internal setting */
+			 visibility: hidden;
+
+			/* use this if you want to give the video player and the comment section more space */
+			/* display: none; */
+		}
+	}
+
+	if (hideEffectsUsed) {
+		.css-1483eyc-DivAnchorTagWrapper {
+			display: none;
+		}
+	}
+
+	if (hideSoundUsed) {
+		.css-blqru4-H4Link, h4[data-e2e^="browse-music"] {
+			display: none;
+		}
+	}
+
+	if (hideFollowFollowingButton) {
+		.css-59bnpx-Button-StyledFollowButtonTux {
+			display: none;
+		}
+	}
+
+	if (roundedbuttons) {
+		button.TUXButton--primary {
+			border-radius: 20px;
+		}
+
+		button.TUXButton--secondary {
+			border-radius: 20px;
+		}
+
+		.TUXSegmentedControl[data-size='xs'][data-shape='rectangle'],
+		.TUXSegmentedControl[data-size='xs'][data-shape='rectangle'] .TUXSegmentedControl-item {
+			border-radius: 20px;
+		}
+
+		.css-1shjfvw-Button-StyledLoginButton, .css-1fef8ew-Button-StyledLoginButton {
+			border-radius: 20px;
+		}
+
+		.css-11wrl1g-Button-StyledLogin, .css-ns1v7o-Button-StyledLogin {
+			border-radius: 40px;
+		}
+
+		.css-1sacct4-DivUpload, .css-1qup28j-DivUpload {
+			border-radius: 20px;
+		}
+
+		/* not a button, but still including it for consistency */
+		.css-e30u3h-UlPopupContainer, .css-760a8n-DivContainer, .css-z5mokk-DivContainer {
+			border-radius: 24px;
+		}
+	}
+
+	/*
+		forceReversedList
+
+		this option will try to reverse the items in the popup container
+		a great example of this is the people that you follow
+
+		NOTE: this is experimental and can cause issues
+	*/
+	if (forceReversedList) {
+		.css-wq5jjc-DivUserListContainer {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+	}
+
+	/*
+		forceReversedDirection
+
+		only applies in the <body> html tag
+		enabling this makes the page appear from right to left
+		
+		example of languages that uses this are arabic, hebrew, etc...
+	*/
+	if (forceReversedDirection) {
+		body {
+			direction: rtl;
+		}
+	}
+
+	if (experimentalOldAndNewLayout_translucentSearch) {
+		/* ===== LIGHT MODE ===== */
+		/* old layout - bottom form */
+		[data-tux-color-scheme^="light"] .css-fwfrfq-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="light"] .css-1wubcpo-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="light"] .css-58cehy-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="light"] .css-1e11j9m-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+
+
+		/* ===== DARK MODE ===== */
+		/* old layout - bottom form */
+		[data-tux-color-scheme^="dark"] .css-16196sa-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-7jh3o6-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-xj971c-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-12ii946-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		/* this is commented out by default, only uncomment this if you want the tooltip menu to be also transparent */
+		/*
+		.css-760a8n-DivContainer {
+			background: rgba(255, 255, 255, 0.1) !important;
+			}
+		*/
+
+		/* attempt to fix the position of the three-dots popup (when hovered) */
+		.css-760a8n-DivContainer, .css-lsaq9i-DivContainer {
+			margin-top: -50px;
+		}
+
+		[data-tux-color-scheme^="light"] #header-setting-popup-list.css-lsaq9i-DivContainer.e2ipgxl0 {
+			margin-top: 8px;
+			border-radius: 24px;
+		}
+
+		#header-setting-popup-list.css-760a8n-DivContainer {
+			margin-top: unset;
+		}
+
+		/* new layout - sidebar form */
+		[data-tux-color-scheme^="light"] .css-6dsq89-DivDrawerContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage) !important;
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1x87i4d-DivDrawerContainer {
+		background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage) !important;
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+	}
+
+	if (experimentalTransparentTopbar) {
+		.css-1a0rjhz-DivHeaderWrapperMain-StyledDivHeaderWrapperMainV2 {
+			background: transparent !important;
+		}
+
+		.css-iozudi-DivHeaderContainer {
+			background: transparent !important;
+		}
+
+		.css-1nhxvas-DivHeaderContainer {
+			background: transparent !important;
+		}
+	}
+
+	if (experimentalTransparentSearchContainer) {
+		[data-tux-color-scheme^="light"] .css-960d5u-FormElement {
+			background: transparent;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-1x92qzh-FormElement {
+			background: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+	}
+
+	/* SCRAPPED CODE, HARD TO IMPLEMENT. USE MY JS USERSCRIPT FOR IT INSTEAD */
+	if (experimentalHighlightFollowingUserInSidebar) {
+		h1[data-e2e="user-title"].css-11ay367-H1ShareTitle, a[data-e2e="following-user-avatar"] {
+			
+		}
+	}
+
+	/* attempt to fix the "oval-looking" profile pictures in search results preview */
+	/*
+		potentially obsolete css trigger code that will be removed:
+		@var checkbox fixProfilePicturesOvalRendering                     "fix the \"oval-looking\" profile pictures in search results preview" 1
+
+	if (fixProfilePicturesOvalRendering) {
+		why are the pfps inside looking like oval? scaling issue?
+
+		.css-7duo66-SpanAvatarContainer-StyledAvatar {
+			width: 45px !important;
+		}
+
+		new redesign
+		div > div > div > ul > li > span[shape^=circle] {
+			width: 50px !important;
+		}
+	}
+	*/
+
+	/* replace the "gap" with "margin-bottom" in sidebar navigation links (for you, following, etc...) */
+	if (gapFixSidebarLinks) {
+		.css-5yxamm-DivMainNavContainer {
+			gap: unset !important;
+		}
+
+		.TUXTooltip-reference.css-ommic2-StyledTUXTooltip {
+			padding-bottom: 0.2rem; /* original is 0.25rem */
+		}
+	}
+
+	if (experimentalUncenterVideoContentProfile) {
+		.css-1ppreyt-DivShareLayoutBase-StyledShareLayoutV2 {
+			max-width: unset;
+		}
+	}
+
+	if (experimentalPageLayoutTest) {
+		/* =============== LIGHT MODE =============== */
+		/* ===== home page (just tiktok.com) ===== */
+		.css-1dpaaex-DivColumnListContainer {
+			background: var(--main-body-color);
+		}
+
+		/*
+			coins, download app, profile | container pill
+			replaces the ugly 0.8 transparent white color with a 0.1 black one
+		*/
+		.css-xq3sil-DivActionBarContainer {
+			background: var(--light-mode-background-dark-color-level-one);
+		}
+
+		/* options popup (3 dots button) */
+		.TUXPopover-popover {
+			background: var(--main-body-color-light);
+			border: 1px solid var(--main-body-color-lighter);
+		}
+
+		/* searchbox background */
+		[data-tux-color-scheme^="light"] .css-1d3fmhu-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		[data-tux-color-scheme^="light"] .css-1d3fmhu-StyledTUXSearchButton.TUXButton.TUXButton:hover {
+			background: var(--light-mode-background-dark-color-level-one);
+		}
+
+		.css-1b2c53y-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		/* if a user leaves the searchbox but still has text inside the preview */
+		.css-1u35a8q-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		.css-flkb7b-DivSideNavPlaceholderContainer, .css-rttqv-DivSideNavPlaceholderContainer {
+			background: var(--main-body-color);
+		}
+
+		.css-1n2obys-DivFeedTabWrapper, .css-wj6kyd-DivFeedTabWrapper {
+			background: var(--main-body-color);
+		}
+
+		.css-13dh6fn-DivColumnListContainer {
+			background: var(--main-body-color);
+		}
+
+		.css-ja606s-BaseCommentContainerStyles-SectionCommentSidebarContainer,
+		.css-2m2m87-BaseCommentContainerStyles-SectionCommentSidebarContainer {
+			background: var(--main-body-color-light);
+		}
+
+		/* filter tabs */
+		.css-teupm2-DivTabsContainer {
+			background: var(--main-body-color);
+		}
+
+		/* get the app button (bottom right, seen on search page) */
+		.css-ytq1cb-ButtonAtBottom, .css-1xdkanj-DivCloseWrapper {
+			background: var(--light-mode-background-dark-color-level-one);
+		}
+
+		/* login popup */
+		.css-pquamt-DivPageWrapper {
+			background: var(--main-body-color);
+		}
+
+		/* ===== profile page ===== */
+		.css-1yczxwx-DivBodyContainer {
+			background: var(--main-body-color);
+		}
+
+
+		/* ===== tiktok.com/tag/<tagname> page ===== */
+		[data-tux-color-scheme^="light"] .css-1n2sz82-DivShareLayoutBase-StyledShareLayoutV2 {
+			background: var(--main-body-color);
+		}
+
+
+		/* ===== settings page ===== */
+		.css-l3wolk-DivSettingContainer {
+			background: var(--main-body-color);
+		}
+
+		.css-3kukfb-DivContentContainer, .css-1f4dsax-DivNavScrollContainer {
+			background: var(--main-body-color-light);
+		}
+
+		/* ===== watch page (tiktok.com/@<username>/video/<id>) ===== */
+		/*
+			full title preview card (3 dots button)
+
+			can someone say this preview is shitty?
+			(current preview method is indeed shitty at the moment)
+
+			also, why the many gradients? so fucking funny
+		*/
+		.css-ay8lx4-DivCardScrollContainer,
+		.css-og6awc-DivCardWrapper,
+		.css-1ukohjn-DivVideoInfoCardContainer::before,
+		.css-1mb742o-DivStyledTopInfoCardMask,
+		.css-1ukohjn-DivVideoInfoCardContainer::after,
+		.css-m92vf3-DivStyledBottomInfoCardMask {
+			background: var(--main-body-color-light);
+		}
+
+		.css-6sto0k-DivInfoCardArrow {
+			border-bottom-color: var(--main-body-color-light);
+		}
+
+		/* keyboard shortcuts */
+		.css-skgaxq-DivKeyboardShortcutContainer {
+			background: var(--main-body-color-light);
+		}
+
+
+		/* ================================================================= */
+
+
+		/* =============== DARK MODE =============== */
+		/* ===== home page (just tiktok.com) ===== */
+		[data-tux-color-scheme^="dark"] .tiktok-9zb2bk-DivSideNavContainer, .tiktok-1pou19r-DivAnimationCover {
+			background: var(--main-body-color);
+		}
+
+		[data-tux-color-scheme^="dark"] article,
+		.css-1xzh9re-DivColumnListContainer,
+		.css-9dpzar-DivColumnListContainer { /* why do they need a separate class for this? this generalizes the theme color to all article tags... */
+			background: var(--main-body-color);
+		}
+
+		/*
+			coins, download app, profile | container pill
+			replaces the ugly 0.8 transparent black color with a 0.1 white one
+		*/
+		[data-tux-color-scheme^="dark"] .css-bcj5ai-DivActionBarContainer {
+			background: var(--dark-mode-background-light-color-level-one);
+		}
+
+		.tiktok-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: var(--dark-mode-background-light-color-level-one);
+		}
+
+		.tiktok-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-a4smml-BaseCommentContainerStyles-SectionCommentSidebarContainer,
+		.css-e9fs8h-BaseCommentContainerStyles-SectionCommentSidebarContainer {
+			background: var(--main-body-color-light);
+		}
+
+		.css-1ppreyt-DivShareLayoutBase-StyledShareLayoutV2 {
+			background: var(--main-body-color);
+		}
+
+		/* explore page */
+		.css-1n4q7ra-DivCategoryListWrapper, .tiktok-1n4q7ra-DivCategoryListWrapper {
+			background: var(--main-body-color);
+		}
+
+		.css-f1lgvc-DivShadow, .tiktok-f1lgvc-DivShadow {
+			background: linear-gradient(270deg, var(--main-body-color) 0%, rgba(18, 18, 18, 0) 100%) content-box;
+		}
+
+		.css-1z50a0-DivBtn, .tiktok-1z50a0-DivBtn, .css-1pi6qhe-DivArrowIconContainer,
+		.tiktok-1pi6qhe-DivArrowIconContainer, .tiktok-1eshtii-DivCloseWrapper {
+			background: var(--dark-mode-background-light-color-level-one);
+		}
+
+		/* filter tabs */
+		.css-1qhga5t-DivTabsContainer {
+			background: var(--main-body-color);
+		}
+
+		/* get the app button (bottom right, seen on search page) */
+		.css-6nybh2-ButtonAtBottom, .css-1qskxth-DivCloseWrapper {
+			background: var(--dark-mode-background-light-color-level-one);
+		}
+
+		.tiktok-d9ly1j-DivShareLayoutBase-StyledShareLayoutV2-ExploreLayout {
+			background: var(--main-body-color);
+		}
+
+		if (roundedbuttons) {
+			.css-189kgrc-ButtonCategoryItemContainer, .tiktok-189kgrc-ButtonCategoryItemContainer {
+				border-radius: 30px !important;
+    		}
+
+			.css-qexeba-ButtonCategoryItemContainer, .tiktok-qexeba-ButtonCategoryItemContainer {
+				border-radius: 30px !important;
+			}
+		}
+
+		if (nonroundedThumbnails) {
+			.tiktok-1anqn3y-BasePlayerContainer-DivVideoPlayerContainer,
+			.tiktok-1anqn3y-BasePlayerContainer-DivVideoPlayerContainer > div {
+				border-radius: unset !important;
+    			}
+
+			.css-1tda5g5-DivPlayerContainer {
+				border-radius: unset !important;
+    			}
+
+			.css-10op4xt-DivContainer-StyledDivContainerV2, .css-1612e1e-DivPlayerContainer {
+				border-radius: unset !important;
+			}
+
+			.css-pth5ka-DivPlayerContainer {
+				border-radius: unset !important;
+			}
+		}
+
+		/*
+			if the selected theme is google chrome - dark
+			make some elements colored according to the theme color values
+		*/
+		if (colorOption=="chrome_dark") {
+			button.TUXButton--secondary {
+				background: var(--main-body-color-light);
+			}
+
+			button.TUXButton--secondary:hover {
+				background: var(--main-body-color-lighter) !important;
+			}
+
+			[data-tux-color-scheme^="dark"] .css-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton {
+				background: var(--main-body-color-light) !important;
+			}
+
+			[data-tux-color-scheme^="dark"] .css-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton:hover {
+				background: var(--main-body-color-lighter) !important;
+    			}
+
+			.TUXSegmentedControl, .TUXSegmentedControl-item {
+				background: var(--main-body-color-light);
+    			}
+
+			[data-tux-color-scheme^="dark"] .TUXSegmentedControl-item[data-active='true'] {
+				background: var(--main-body-color-lighter);
+			}
+		}
+
+		.css-r6ot4i-DivPopupContentContainer, .tiktok-r6ot4i-DivPopupContentContainer {
+			background: var(--main-body-color-light);
+		}
+
+		/* search box */
+		[data-tux-color-scheme^="dark"] .css-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+		.css-1xuhhof-StyledTUXSearchButton.TUXButton.TUXButton {
+				background: rgba(255, 255, 255, 0.15);
+		}
+
+		[data-tux-color-scheme^="dark"] .tiktok-1x87i4d-DivDrawerContainer,
+		.tiktok-1imd4n7-DivAnimationCover, .css-1imd4n7-DivAnimationCover, .css-1x87i4d-DivDrawerContainer {
+			background: var(--main-body-color);
+		}
+
+		.css-6dsq89-DivDrawerContainer {
+			background: var(--main-body-color);
+		}
+
+		/* challenge popup */
+		[data-tux-color-scheme^="dark"] .captcha-verify-container.TUXModal {
+			background: var(--main-body-color);
+		}
+
+		[data-tux-color-scheme^="dark"] .cap-bg-UISheetGrouped3 {
+			background: var(--main-body-color-light);
+		}
+
+		/* readd the transition on hover that was present in the "old" layout before */
+		[data-tux-color-scheme^="dark"] .tiktok-19eo4dx-StyledTUXNavButton.TUXButton.TUXButton,
+		.tiktok-89vl65-StyledTUXNavButton.TUXButton.TUXButton, .tiktok-lqrzcp-StyledTUXSearchButton.TUXButton.TUXButton {
+			transition: .2s ease-in-out
+		}
+
+		/* get app button */
+		[data-tux-color-scheme^="dark"] .tiktok-18e9sac-ButtonGetAppText {
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+		/* log in to tiktok popup */
+		[data-tux-color-scheme^="dark"] .tiktok-1e4hvda-DivModalContent, .tiktok-1qfhzia-DivAgreement {
+			background: var(--main-body-color);
+		}
+
+
+		/* ===== profile page ===== */
+		[data-tux-color-scheme^="dark"] .css-9zb2bk-DivSideNavContainer, .css-1pou19r-DivAnimationCover {
+			background: var(--main-body-color);
+		}
+
+		.css-1gt6k5c-DivSideNavContainer {
+			background: var(--main-body-color);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-3kge87-DivShareLayoutBase-StyledShareLayoutV2 {
+			background: var(--main-body-color);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-n3mgw7-FeedTabWrapper {
+			background: var(--main-body-color);
+		}
+
+		.css-pr62b3-FeedTabWrapper {
+			background: var(--main-body-color);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-14qb40m-FeedTabWrapper, .css-rx8r84-DivFeedTabWrapper, .css-zc0mio-DivFeedTabWrapper {
+			background: var(--main-body-color);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-17kj7a4-DivStyledShadow {
+			background: linear-gradient(0.25turn, rgba(255, 0, 0, 0), 50%, var(--main-body-color-lighter));
+		}
+
+		/* search box */
+		[data-tux-color-scheme^="dark"] .css-17anyqh-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+		.css-gwrpu3-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: var(--light-mode-background-dark-color-level-one);
+		}
+
+		/* ===== watch page (tiktok.com/@<username>/video/<id>) ===== */
+		[data-tux-color-scheme^="dark"] .css-1yczxwx-DivBodyContainer {
+			background: var(--main-body-color);
+		}
+
+		.css-3kge87-DivShareLayoutBase-StyledShareLayoutV2 {
+			background: var(--main-body-color);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-90v5ry-DivLoginBar {
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+        .css-du7vid-BaseBodyContainer, .css-1e8aoaa-BaseBodyContainer {
+			background: var(--main-body-color);
+		}
+
+		/*
+			full title preview card (3 dots button)
+
+			can someone say this preview is shitty?
+			(current preview method is indeed shitty at the moment)
+
+			also, why the many gradients? so fucking funny
+		*/
+		.css-1nayj3c-DivCardScrollContainer,
+		.css-17ye3jb-DivStyledTopInfoCardMask
+		.css-99f0n5-DivStyledBottomInfoCardMask {
+			background: var(--main-body-color-light);
+		}
+
+		.css-d1vt1x-DivInfoCardArrow {
+			border-bottom-color: var(--main-body-color-light);
+		}
+
+		/* keyboard shortcuts */
+		.css-1gt7x97-DivKeyboardShortcutContainer {
+			background: var(--main-body-color-light);
+		}
+	}
+}

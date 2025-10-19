@@ -1,0 +1,498 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>Return YouTube Dislike - Frontend (YouTube)</title>
+		<link rel="stylesheet" style="text/css" title="default css file" href="rsrc/style.css">
+		<link rel="alternate stylesheet" style="text/css" title="alternate css file" href="rsrc/style.css">
+		<script id="experiment-flags-container" type="text/javascript">
+			closeSidebarTrial = false;
+		</script>
+		<script src="rsrc/api.js"></script>
+		<script src="rsrc/api_combined.js"></script>
+		<script src="rsrc/exception.js"></script>
+		<script src="rsrc/navigation.js"></script>
+		<script src="rsrc/theme.js"></script>
+		<script src="rsrc/jsConsole.js"></script>
+		<script src="rsrc/main.js"></script>
+		<meta name="robots" content="noindex,nofollow,noarchive">
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+	</head>
+	<body>
+		<header>
+			<div id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<div id="sidebar-links-container">
+					<a href="/">jpa102.github.io</a>
+					<div class="border-bottom-separator"></div>
+					<a id="home-page" href="javascript:void(0)" class="" onclick="gotoHomePage()">Home</a>
+					<a id="main-frontend-page" href="javascript:void(0)" class="selected" onclick="gotoMainFrontend()">Main page</a>
+					<a id="alternate-frontend-page" href="javascript:void(0)" class="" onclick="gotoAlternateFrontend()">Alternate page</a>
+					<a id="tutorial-page" href="javascript:void(0)" class="" onclick="gotoTutorialPage()">Tutorial / Guide</a>
+					<a id="changelog-page" href="javascript:void(0)" class="" onclick="gotoChangelogPage()">Changelog</a>
+					<a id="about-page" href="javascript:void(0)" class="" onclick="gotoAboutPage()">About this webapp</a>
+					<div class="border-bottom-separator"></div>
+					<a id="light-mode-option" href="javascript:void(0)" class="selected" onclick="lightModeOption()">Light mode</a>
+					<a id="dark-mode-option" href="javascript:void(0)" class="" onclick="darkModeOption()">Dark mode</a>
+					<a id="black-hole-option" href="javascript:void(0)" class="" onclick="blackHoleOption()">Black hole</a>
+					<a id="extreme-black-hole-option" href="javascript:void(0)" class="" onclick="e_blackHoleOption()">Black hole (extreme)</a>
+				</div>
+			</div>
+			<div id="topbar">
+				<div id="sidebar-button-and-app-name-title">
+					<button id="sidebar-button" class="action-buttons" onclick="openNav()">
+						<svg class="sidebar-icon">
+							<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+						</svg>
+					</button>
+					<span id="app-title-text">Main RYD Frontend</span>
+				</div>
+			</div>
+		</header>
+		<div id="main-home-page" class="page" hidden="">
+			<div class="body-container info">
+				<div id="main-home-page-container" class="container" style="width: 100%; margin-top: 0px;">
+					
+				</div>
+			</div>
+		</div>
+		<div id="return-youtube-dislike-api-page" class="page">
+			<div class="body-container info">
+				<div id="headline-text" class="container">
+					<div id="header-text">
+						<a href="https://returnyoutubedislike.com">Return YouTube Dislike</a> - Frontend
+					</div>
+					<div id="dislikes-reminder-text" class="info">
+						<p style="margin-bottom: unset;">A frontend that fetches dislike counts (and other data) from <a href="https://returnyoutubedislike.com">Return YouTube Dislike</a>'s API</p>
+					</div>
+				</div>
+				<div id="inputs-from-user" class="container">
+					Simply put the id of a YouTube video (it's 11 characters)
+					<form>
+						YouTube Video ID: <input type="text" id="videoId" placeholder="kxOuG8jMIgI" title="Example video id: kxOuG8jMIgI - Update to YouTube's dislike count">
+					</form>
+					<button id="fetch" class="action-buttons" onclick="checkFormContainer()">
+						Fetch data
+					</button>
+					<button id="reset" class="action-buttons" onclick="Clear()">
+						Reset
+					</button>
+				</div>
+				<div id="display-results" class="container">
+					<h2 id="resultTitle">
+						Average rating: 
+						<span id="avg" style="font-weight:normal"></span>
+					</h2>
+					<p id="roundp">
+						Rounded Average = 
+						<span id="round" style="color:goldenrod;"></span>
+					</p>
+					<div id="ratio-bar-renderer-container">
+						<ratio-bar-renderer id="sentiment" class="like-dislike-info-renderer">
+							<div id="container" class="like-dislike-info-renderer">
+								<div id="like-bar" class="like-dislike-info-renderer">
+								</div>
+							</div>
+							<tooltip-bar fit-to-visible-bounds="" class="like-dislike-info-renderer" role="tooltip">
+							</tooltip-bar>
+						</ratio-bar-renderer>
+					</div>
+					<span id="ldv-container">
+						<h2>Statistics:</h2>
+						<div style="margin-top: 12px;">
+							<ul class="statistics-container">
+								<li><p id="like-count" class="statistics-text-renderer">Likes: <span id="likeCount"></span></p></li>
+								<li><p id="dislike-count" class="statistics-text-renderer">Dislikes: <span id="dislikeCount"></span></p></li>
+								<li><p id="view-count" class="statistics-text-renderer">Views: <span id="viewCount"></span></p></li>
+								<li><p id="precise-percentage" class="statistics-text-renderer">likePercentage: <span id="likePercentage"></span></p></li>
+								<li><p id="precise-rating" class="statistics-text-renderer">averageRating: <span id="averageRating"></span></p></li>
+							</ul>
+							<hr style="border: 1px solid var(--background-dark-color);">
+							<ul class="statistics-container">
+								<li><p id="raw-like-count" class="statistics-text-renderer">Raw like counts: <span id="rawLikeCount"></span></p></li>
+								<li><p id="raw-dislike-count" class="statistics-text-renderer">Raw dislike counts: <span id="rawDislikeCount"></span></p></li>
+								<li><p id="raw-precise-percentage" class="statistics-text-renderer">likePercentage: <span id="rawLikePercentage"></span></p></li>
+								<li><p id="raw-precise-rating" class="statistics-text-renderer">averageRating: <span id="rawAverageRating"></span></p></li>
+							</ul>
+							<div class="action-buttons-container">
+								<button id="copy-raw-json-response" class="action-buttons" onclick="copyRawJSONResponseFromRYD()" title="Clicking this will copy the JSON response data from the RYD API to the clipboard." style="margin-left: 0px;">Copy raw JSON data</button>
+								<button id="show-yt-embed-video-with-some-metadata" class="action-buttons" onclick="getSomeMetadataFromVideoId()" title="Clicking this will show a window containing the youtube video embed which you can view and watch." style="margin-right: 0px;">Show video embed?</button>
+							</div>
+						</div>
+					</span>
+				</div>
+				<div id="display-youtube-embed" class="container" style="margin-top: 20px;" hidden="">
+					<div style="padding-bottom: 20px;">
+						<div id="embed-window-title-and-action-buttons">
+							<h2 style="margin-bottom: 8px; font-size: 22px;">YouTube video embed</h2>
+							<div id="embed-action-buttons">
+								<button id="embed-minimize-button" class="action-buttons" title="Minimize this window" onclick="minimizeEmbedWindow()" aria-pressed="false">
+									<svg class="sidebar-icon">
+										<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v"></path>
+									</svg>
+								</button>
+								<button id="embed-close-button" class="action-buttons" title="Close this window" onclick="closeEmbedWindow()" style="margin-right: 0px;">
+									<svg class="sidebar-icon">
+										<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<p id="title-text-container" style="margin: 2px 0px;"></p>
+						<p id="uploaded-by" style="margin: 2px 0px;"></p>
+						<a id="channel-url"></a>
+					</div>
+				</div>
+				<div id="credits-container" class="container">
+					<h2>
+						Credits:
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.returnyoutubedislike.com">Return YouTube Dislike</a> (API)
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://codepen.io/ShubhamKLogic/pen/QWGgzwQ">5-star Rating Calculation</a> (for the stars and rating)
+					</p>
+					<h2>
+						Creator:
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; John Patrick Adem
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="combined-apis-page" class="page" hidden="">
+			<div class="body-container info">
+				<div id="headline-text" class="container">
+					<div id="header-text">
+						Alternate Frontend
+					</div>
+					<div id="dislikes-reminder-text" class="info">
+						<p style="margin-bottom: unset;">An alternate frontend that fetches <b>likes</b> from <a href="https://googleapis.com">googleapis.com</a> and <b>dislikes</b> from <a href="https://returnyoutubedislikeapi.com">returnyoutubedislikeapi.com</a> (plus other data)</p>
+					</div>
+				</div>
+				<div id="inputs-from-user" class="container">
+					Simply put the id of a YouTube video (it's 11 characters)
+					<br>
+					You'll also need your Google API key for this to work
+					<form>
+						YouTube Video ID: <input type="text" id="video-id" placeholder="kxOuG8jMIgI" title="Example video id: kxOuG8jMIgI - Update to YouTube's dislike count">
+					</form>
+					<form>
+						API key: <input type="text" id="google-api-key" placeholder="REQUIRED" title="This field is required. Otherwise, the google api will respond with an error.">
+					</form>
+					<button id="fetch" class="action-buttons" onclick="alt_checkFormContainer()">
+						Fetch data
+					</button>
+					<button id="reset" class="action-buttons" onclick="ClearAlt()">
+						Reset
+					</button>
+				</div>
+				<div id="alt-display-results" class="container">
+					<h2 id="alt-result-title">
+						Average rating: 
+						<span id="alt-avg" style="font-weight:normal"></span>
+					</h2>
+					<p id="alt-roundp">
+						Rounded Average = 
+						<span id="alt-round" style="color: goldenrod;"></span>
+					</p>
+					<div id="ratio-bar-renderer-container">
+						<ratio-bar-renderer id="sentiment" class="like-dislike-info-renderer">
+							<div id="container" class="like-dislike-info-renderer">
+								<div id="like-bar" class="like-dislike-info-renderer"></div>
+							</div>
+							<tooltip-bar fit-to-visible-bounds="" class="like-dislike-info-renderer" role="tooltip">
+								
+							</tooltip-bar>
+						</ratio-bar-renderer>
+					</div>
+					<span id="alt-ldv-container">
+						<h2>Statistics:</h2>
+						<div style="margin-top: 12px;">
+							<ul class="alt-statistics-container">
+								<li><p id="like-count" class="alt-statistics-text-renderer">Likes: <span id="alt-likeCount"></span></p></li>
+								<li><p id="dislike-count" class="alt-statistics-text-renderer">Dislikes: <span id="alt-dislikeCount"></span></p></li>
+								<li><p id="view-count" class="alt-statistics-text-renderer">Views: <span id="alt-viewCount"></span></p></li>
+								<li><p id="precise-percentage" class="alt-statistics-text-renderer">likePercentage: <span id="alt-likePercentage"></span></p></li>
+								<li><p id="precise-rating" class="alt-statistics-text-renderer">averageRating: <span id="alt-averageRating"></span></p></li>
+								<li><p id="comment-count" class="alt-statistics-text-renderer">Comments: <span id="alt-commentCount"></span></p></li>
+								<li><p id="favorite-count" class="alt-statistics-text-renderer">Favorites: <span id="alt-favoriteCount"></span></p></li>
+							</ul>
+							<hr style="border: 1px solid var(--background-dark-color);">
+							<ul class="alt-statistics-container">
+								<li><p id="alt-raw-like-count" class="alt-statistics-text-renderer">Raw like counts: <span id="alt-rawLikeCount"></span></p></li>
+								<li><p id="alt-raw-dislike-count" class="alt-statistics-text-renderer">Raw dislike counts: <span id="alt-rawDislikeCount"></span></p></li>
+								<li><p id="alt-raw-precise-percentage" class="alt-statistics-text-renderer">likePercentage: <span id="alt-rawLikePercentage"></span></p></li>
+								<li><p id="alt-raw-precise-rating" class="alt-statistics-text-renderer">averageRating: <span id="alt-rawAverageRating"></span></p></li>
+							</ul>
+							<div class="action-buttons-container">
+								<div id="copy-dropdown-options">
+									<select name="json-data-api-sources" id="json-data-sources-options">
+										<option class="option-select-json-data-apis" value="googleapis">Google APIs</option>
+										<option class="option-select-json-data-apis" value="rydapi">RYD API</option>
+										<option class="option-select-json-data-apis" value="merged">Merged</option>
+									</select>
+									<button id="alt-copy-raw-json-response" class="action-buttons" onclick="alt_copyRawJSONResponse()" title="Clicking this will copy the JSON response data from the one selected to the clipboard." style="margin-right: 0px;">Copy</button>
+								</div>
+								<button id="alt-show-yt-embed-video-with-some-metadata" class="action-buttons" onclick="alt_getSomeMetadataFromVideoId()" title="Clicking this will show a window containing the youtube video embed which you can view and watch." style="margin: unset;">Show video embed?</button>
+							</div>
+						</div>
+					</span>
+				</div>
+				<div id="alt-display-youtube-embed" class="container" style="margin-top: 20px;" hidden="">
+					<div style="padding-bottom: 20px;">
+						<div id="embed-window-title-and-action-buttons">
+							<h2 style="margin-bottom: 8px; font-size: 22px;">YouTube video embed</h2>
+							<div id="embed-action-buttons">
+								<button id="embed-minimize-button" class="action-buttons" title="Minimize this window" onclick="alt_minimizeEmbedWindow()" aria-pressed="false">
+									<svg class="sidebar-icon">
+										<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v"></path>
+									</svg>
+								</button>
+								<button id="embed-close-button" class="action-buttons" title="Close this window" onclick="alt_closeEmbedWindow()">
+									<svg class="sidebar-icon">
+										<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<p id="alt-title-text-container" style="margin: 2px 0px;"></p>
+						<p id="alt-uploaded-by" style="margin: 2px 0px;"></p>
+						<a id="alt-channel-url"></a>
+					</div>
+				</div>
+				<div id="credits-container" class="container">
+					<h2>
+						Credits:
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.googleapis.com">Google APIs</a> (for the most up-to-date likes & view counts)
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.returnyoutubedislike.com">Return YouTube Dislike</a> (API)
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://codepen.io/ShubhamKLogic/pen/QWGgzwQ">5-star Rating Calculation</a> (for the stars and rating)
+					</p>
+					<h2>
+						Creator:
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; John Patrick Adem
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="ryd-tutorial-page" class="page" hidden="">
+			<div class="body-container info">
+				<div id="ryd-tutorial-page-container" class="container" style="width: 100%; margin-top: 0px;">
+					<div id="frontend-tutorial-box">
+						<h2>Frontend Tutorial</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="ryd-changelog-page" class="page" hidden="">
+			<div class="body-container info">
+				<div id="ryd-changelog-page-container" class="container" style="width: 100%;">
+					<h2>version 2.02</h2>
+					<ul>
+						<li>fix a bug in the alternate frontend where the raw like percentage and rating are <b>swapped</b> and displayed <b>incorrectly</b></li>
+						<li>fix the js code for displaying the youtube video both in main and alternate frontends</li>
+						<li><b>minor bug</b>: the tooltip in the alternate frontend doesn't show up <i>(shouldn't matter much but will be fixed sometime)</i></li>
+						<li>introducing: copy raw json data & extreme black hole - theme option </li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年11月16日 6:56:16 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 2.01</h2>
+					<ul>
+						<li>fix a problem in the css where the ratio bar will show up unexpectedly at the topbar while scrolling</li>
+						<li>implemented themes functionality</li>
+						<li>some fixes in both frontends (mainly the js code for displaying the youtube video), now it's a little less buggy</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年10月25日 17:24:16 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 2.00</h2>
+					<ul>
+						<li>MAJOR UPDATE: The alternate frontend is now working (beta phase)</li>
+						<li>made some overhaul in the html and most js files</li>
+						<li>added some theme options, but it's still work in progress :D</li>
+						<li>improve how navigating through the sidebar works</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年10月22日 13:18:21 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.19.06</h2>
+					<ul>
+						<li>improve how the statistics info get rendered</li>
+						<li>made some css & js tweaks</li>
+						<li>made some corrections & tweaks to the frontends (main & alt)</li>
+						<li>NOTE: the alternate frontend is still unfinished, but is now making some progress. Please use the main frontend for now</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年10月20日 23:11:28 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.19.05</h2>
+					<ul>
+						<li>add consolas font file (for devices which don't have it)</li>
+						<li>made some css & js tweaks</li>
+						<li>made some corrections & tweaks to the frontends (main & alt)</li>
+						<li>NOTE: the alternate frontend is still unfinished to this day, please use the main frontend for now</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年10月18日 20:02:38 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.19.04</h2>
+					<ul>
+						<li>add exception handling to extension likes & dislikes if they don't have data from it yet</li>
+						<li>fixed a js bug where it sends requests to the ryd api <b>twice</b></li>
+						<li>NOTE: the alternate frontend is still unfinished to this day, please use the main frontend for now</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年8月17日 8:24:05 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.19.03</h2>
+					<ul>
+						<li>RYD Update: new variables (raw likes & dislikes)</li>
+						<li>made some css & js tweaks</li>
+						<li>experimental: vibrate functionality</li>
+						<li>improve how the embed window is loaded</li>
+						<li>NOTE: the alternate frontend is still unfinished to this day, please use the main frontend for now</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年8月16日 9:30:14 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.19.02 (beta)</h2>
+					<ul>
+						<li>improve how the content inside the changelog looks inside</li>
+						<li>NOTE: the alternate frontend is still unfinished to this day, please use the main frontend for now</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月16日 18:17:12 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.19.01 (beta)</h2>
+					<ul>
+						<li>added new svg icons for the video embed window</li>
+						<li>NOTE: the alternate frontend is still unfinished to this day, please use the main frontend for now</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月7日 8:28:03 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.19</h2>
+					<ul>
+						<li>fixed bugs in the video embed code</li>
+						<li>edited the css to adjust the padding</li>
+						<li>rewritten some parts of the html structure</li>
+						<li>shortened the app title to "RYD - Frontend"</li>
+						<li>introducing: changelog page & tutorial page</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月6日 21:24:16 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.18</h2>
+					<ul>
+						<li>made some css edit to make the action buttons look nice</li>
+						<li>introducing: video embed window (now you can see the youtube video in the embedded version)</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月6日 16:41:53 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.15 (beta)</h2>
+					<ul>
+						<li>changed the topbar and sidebar color</li>
+						<li>also fixed a bug where windows from a previous page would appear in the new instance</li>
+						<li>introducing: home page (placeholder)</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月6日 8:42:01 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.14 (beta)</h2>
+					<ul>
+						<li>edited the css to introduce variables (an easy way for me to apply colors without hardcoding them manually)</li>
+						<li>introducing: about page & alternate frontend</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月5日 17:32:23 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.11</h2>
+					<ul>
+						<li>slowly transformed some ui elements to material you design style</li>
+						<li>also fixed some javascript and html structure bugs</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月3日 20:55:40 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.10 (beta)</h2>
+					<ul>
+						<li>introducing: sidebar functionality</li>
+						<li>there were some bugs but were being fixed and adjusted in the stable version</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年6月2日 21:25:35 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.02</h2>
+					<ul>
+						<li>edited the css file to adjust some styles</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年3月7日 18:31:57 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.01</h2>
+					<ul>
+						<li>fixed some minor bugs in the javascript</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年3月7日 14:23:48 (utc +08:00)</span>
+				</div>
+				<div id="ryd-changelog-page-container" class="container top-margin-windows" style="width: 100%;">
+					<h2>version 1.0</h2>
+					<ul>
+						<li>the very first version of this webapp!</li>
+					</ul>
+					<span style="float: right; font-size: 14px;">posted at 2024年3月4日 13:53:13 (utc +08:00)</span>
+				</div>
+			</div>
+		</div>
+		<div id="about-screen-page" class="page" hidden="">
+			<div class="body-container info">
+				<div id="about-container" class="container" style="width: 100%; margin-top: 0px;">
+					<h2>
+						Version:
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.02
+					</p>
+					<h2>
+						Creator:
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; John Patrick Adem
+					</p>
+					<h2>
+						Description:
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I created this in my own free time.
+						<br>
+						<br>
+						Ever since YouTube decided to hide the dislike count from the public view back when it was announced on November 11, 2021 (it was still accessible via the backend from <a href="https://googleapis.com">googleapis.com</a>) and eventually hidden on December 13, 2021, there was no way to view the public dislike counts ever again unless you're one of the developers to apply in the <a href="https://docs.google.com/forms/d/e/1FAIpQLScbR9rxo3vx7Xd8h-1o_PDKAq4lM62pTKUIDoqnDzAn-2ooKQ/viewform">API Exemption program</a> by Google.
+						<br>
+						<br>
+						Luckily, there is a person named <a href="https://github.com/Anarios/">Dmitrii Selivanov</a> who goes by the alias <b>"Anarios"</b> from <a href="https://github.com">GitHub</a>. This person created the whole infrastracture in storing the dislike counts from <b>all videos</b> ever uploaded on YouTube whether it was made public or not, and is also behind the now most popular browser extension called <b>"Return YouTube Dislike"</b> which displays the dislike count for you whenever you watch a YouTube video.
+						<br>
+						<br>
+						But there's a catch, the dislike counts are <b>never</b> going to be 100% accurate unless more and more users install the extension and use it. (again, unless you're a whitelisted google apis developer)
+						<br>
+						<br>
+						Average users probably don't know how to install <b>browser extensions</b> from a web store <i>(<a href="https://chromewebstore.google.com/">Google Chrome web store</a> for example)</i> and also mobile apps outside of an app store, so I created this frontend to view the <b>unofficial dislike counts</b> from videos that are published <b>before</b> and <b>after</b> the dislike removal announcement.
+					</p>
+					<h2>
+						Personal note
+					</h2>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I think this should help people who are watching YouTube on their handheld devices and can't be bothered to install such 3rd party apps like <a href="https://revanced.app">ReVanced</a>, this kind of app typically requires enabling <b>Unknown Sources</b> in android settings to install it which an average user will not understand what it does at first glance.
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

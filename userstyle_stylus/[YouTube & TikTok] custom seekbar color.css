@@ -1,0 +1,126 @@
+/* ==UserStyle==
+@name           [YouTube & TikTok] custom seekbar color
+@namespace      github.com/openstyles/stylus
+@version        1.23
+@description    allows for customizing the seekbar and progress bar colors
+@author         John Patrick Adem
+@preprocessor   stylus
+==/UserStyle== */
+
+@-moz-document regexp("^https:\\/\\/www\\.youtube\\.com.+"), regexp("^https:\\/\\/www\\.tiktok\\.com.+") {
+	:root {
+	/* there's a new seekbar color, original values are #f03 80% & #ff2791 100% */
+		--main-seekbar-color: #ff5ed9; /* the main video player's seekbar */
+		--secondary-progress-bar-color: var(--main-seekbar-color); /* you can change this to other color, it's using the main variable by default. */
+		--left-gradient-seekbar-color:var(--main-seekbar-color) 80% ;
+		--right-gradient-seekbar-color: #36c8ff 100%;
+	}
+
+	/*
+		video player seekbar
+	*/
+	.ytp-swatch-background-color {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	/*
+		progress bar in thumbnail previews, found in up-next videos for example
+	*/
+	#progress {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	#progress.yt-page-navigation-progress {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	/* seems to be an alpha / beta seekbar (incognito mode) */
+	.ytp-cairo-refresh-signature-moments .ytp-play-progress {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.ytp-scrubber-button.ytp-swatch-background-color {
+		background: var(--right-gradient-seekbar-color);
+	}
+
+	ytd-thumbnail-overlay-resume-playback-renderer[enable-refresh-signature-moments-web] #progress.ytd-thumbnail-overlay-resume-playback-renderer {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	/* mobile */
+	.YtmProgressBarProgressBarPlayedRefresh {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.YtmChapteredProgressBarChapteredPlayerBarChapterRefresh {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.YtmChapteredProgressBarChapteredPlayerBarFillRefresh {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.YtmProgressBarProgressBarPlayheadDot {
+		background: var(--right-gradient-seekbar-color);
+	}
+
+
+
+	/*
+		TIKTOK - css
+	*/
+	.css-3ytetj-DivSeekBar {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.css-8ss576-DivSeekBarCircle {
+		background: var(--main-seekbar-color);
+	}
+
+	.css-19pp78-DivProgressBarContainer .e1n49v434 {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.css-ifi2lf-DivSeekBarCircle {
+		background: var(--main-seekbar-color);
+	}
+
+	.css-15eycei-DivProgressBarElapsed {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.css-27xl66-DivProgressBarElapsed {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.e8opym42 {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.css-kqqewi-DivSeekBar {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.css-1ioucls-DivSeekBarCircle {
+		background: var(--right-gradient-seekbar-color);
+	}
+
+	/* light mode */
+	.css-1fftn9x-DivSeekBarCircle {
+		background: var(--main-seekbar-color);
+	}
+
+	/* home page (like tiktok.com only) */
+	.css-1pwszcz {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	.css-1u719zj-DivProgressBarElapsed {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color));
+	}
+
+	/* pip mode */
+	.pip-15ufb8f-DivSeekBar {
+		background: linear-gradient(to right,var(--left-gradient-seekbar-color),var(--right-gradient-seekbar-color)) !important;
+	}
+}

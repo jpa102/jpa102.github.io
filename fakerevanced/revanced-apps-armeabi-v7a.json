@@ -1,0 +1,54 @@
+{
+	"packages": [
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning",
+			"latestVersionCode": "99.99",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 0
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.one",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.com",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 1
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.two",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.org",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 2
+		},
+		{
+			"appName": "WARNING",
+			"androidPackageName": "counterfeit.warning.three",
+			"latestVersionCode": "69.42.0",
+			"appShortDescription": "You are using a counterfeit version of ReVanced Manager. Uninstall this app and all apps you installed from it. To learn more, visit https://counterfeits.revanced.app ",
+			"requireMicroG": false,
+			"latestVersionUrl": "https://dummydomain.net",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 3
+		},
+		{
+			"appName": "YouTube (ReVanced)",
+			"androidPackageName": "app.revanced.android.youtube",
+			"latestVersionCode": "20.12.46",
+			"appShortDescription": "Youtube ReVanced, an app that basically gives you local premium features + additional features for free!",
+			"requireMicroG": true,
+			"latestVersionUrl": "https://revanced.app",
+			"icon": "https://counterfeits.revanced.app/fake_app_alert.webp",
+			"index": 4
+		}
+	]
+}

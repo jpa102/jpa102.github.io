@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<title>10 Laboratory Exercise 1 - Adem</title>
+		<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+		<style id="custom-styles-adem">
+			* { font-family: meiryo; }
+		</style>
+	</head>
+	<body>
+		<p id="demo">Hello</p>
+		<script>
+			var txtVal = $("<p></p>").text("Good morning");
+			$("#demo").after(txtVal);
+			
+			// append my name
+			$("#demo").append(", John Patrick Adem");
+		</script>
+	</body>
+</html>
