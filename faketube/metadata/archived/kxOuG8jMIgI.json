@@ -4,6 +4,8 @@
 	"fulldesc": "Earlier in 2021, YouTube experimented with making the public dislike count private to see if it would help reduce dislike attacks across the platform. And after analysis conducted in July of this year, we did see a reduction. Now, the YouTube public dislike count will be made private (but the dislike button is staying). Viewers can still dislike videos, and that action will be used to tune their personal recommendations. But, viewers won’t be able to see the dislike count -- only creators can see it in YouTube Studio. \n\nSubscribe and hit the bell to see new videos: https://goo.gl/So4XIG\n\n► Check out our Help Center: https://goo.gl/fBzr7",
 	"uploaddateandtime": "2021-11-10T09:01:02-08:00",
 	"uploaddate": "Nov 10, 2021",
+	"desc_date": "November 10",
+	"desc_year": 2021,
 	"uploadtime": "T09:01:02-08:00",
 	"subcountintguess": 7460000,
 	"commentCount": 205246,
@@ -20,3 +22,4 @@
 		"ytvideotitle": "Update to YouTube's Dislike Count"
 	}
 }
+
