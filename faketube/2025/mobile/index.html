@@ -1,0 +1,437 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>Basic HTML Player</title>
+		<link rel="stylesheet" href="rsrc/css/player.css"/>
+		<script src="rsrc/js/jsConsole.js"></script>
+		<script src="rsrc/js/debug.js"></script>
+		<script src="rsrc/js/globaldata_online.js"></script>
+		<script src="rsrc/js/faketube.js"></script>
+		<script src="rsrc/js/operations.js"></script>
+		<script src="rsrc/js/theme.js"></script>
+		<script src="rsrc/js/player.js"></script>
+		<script src="rsrc/js/setvotecounts.js"></script>
+		<script src="rsrc/js/setviewsanddate.js"></script>
+		<script src="rsrc/js/setytchannelinfo.js"></script>
+		<script src="rsrc/js/buttonslistener.js"></script>
+		<script src="rsrc/js/likedislikebuttons.js"></script>
+		<script id="set-language" type="text/javascript">
+			document.querySelector("html").lang = navigator.language;
+		</script>
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+		<style type="text/css">
+			@font-face {
+				font-family: "Google Sans";
+				src: url("rsrc/player/google-sans_regular.ttf");
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div id="topbar"></div>
+		</header>
+		<div id="main-body-page">
+			<div id="watch-page-and-recommendations-container">
+				<div id="watch-page" class="page-container">
+					<iframe id="yt-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+					<div id="bottom-area">
+						<div id="video-metadata-info-container">
+							<div id="video-title-date-and-expand-description-container">
+								<div id="video-title-and-date-published" onclick="displaySecondaryDescription()" aria-pressed="false">
+									<h1 id="video" class="title">
+										Getting video title...
+									</h1>
+									<div id="video-views-and-date">
+										<p id="video-metadata" class="video-metadata-renderer">
+											NaN views&nbsp;&nbsp;•&nbsp;&nbsp;NaN/NaN/NaN
+										</p>
+									</div>
+								</div>
+							</div>
+							<div id="segmented-video-metadata-and-action-buttons">
+								<div id="video-metadata-and-yt-channel">
+									<div id="yt-channel-container">
+										<div id="yt-channel">
+											<img id="yt-channel-profile-picture" src="rsrc/player/YourVideoId.jpg">
+											<div id="yt-channel-name-renderer">
+												<a id="yt-channel-name-link" href="https://www.youtube.com/channel/">Getting Channel name...</a>
+												<a class="yt-channel-sub-count gray-text">NaN subscribers</a>
+											</div>
+										</div>
+									</div>
+									<div id="subscribe-text-container">
+										<a id="subscribe-text-link" href="" title="">
+											Subscribe
+										</a>
+									</div>
+								</div>
+								<div id="menu">
+									<div id="all-buttons-container">
+										<div id="like-dislike-buttons-container" class="segmented-like-dislike-buttons-container">
+											<div id="like" class="like-dislike-buttons">
+												<button id="like-button" class="menu-buttons" onclick="likeButton()" title="I like this" aria-pressed="false">
+													<div id="likebutton-icon" class="button-text-style" aria-hidden="true">
+														<div style="width: 100%; height: 100%; fill: currentcolor;">
+															<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+																<path d="M9.221 1.795a1 1 0 011.109-.656l1.04.173a4 4 0 013.252 4.784L14 9h4.061a3.664 3.664 0 013.576 2.868A3.68 3.68 0 0121 14.85l.02.087A3.815 3.815 0 0120 18.5v.043l-.01.227a2.82 2.82 0 01-.135.663l-.106.282A3.754 3.754 0 0116.295 22h-3.606l-.392-.007a12.002 12.002 0 01-5.223-1.388l-.343-.189-.27-.154a2.005 2.005 0 00-.863-.26l-.13-.004H3.5a1.5 1.5 0 01-1.5-1.5V12.5A1.5 1.5 0 013.5 11h1.79l.157-.013a1 1 0 00.724-.512l.063-.145 2.987-8.535Zm-1.1 9.196A3 3 0 015.29 13H4v4.998h1.468a4 4 0 011.986.528l.27.155.285.157A10 10 0 0012.69 20h3.606c.754 0 1.424-.483 1.663-1.2l.03-.126a.819.819 0 00.012-.131v-.872l.587-.586c.388-.388.577-.927.523-1.465l-.038-.23-.02-.087-.21-.9.55-.744A1.663 1.663 0 0018.061 11H14a2.002 2.002 0 01-1.956-2.418l.623-2.904a2 2 0 00-1.626-2.392l-.21-.035-2.71 7.741Z"></path>
+															</svg>
+														</div>
+													</div>
+													<span id="like-count-renderer" class="menu-buttons-text">Like</span>
+												</button>
+											</div>
+											<div id="dislike" class="like-dislike-buttons">
+												<button id="dislike-button" class="menu-buttons" onclick="dislikeButton()" title="I dislike this" aria-pressed="false">
+													<div id="dislikebutton-icon" class="button-text-style button-border" aria-hidden="true">
+														<div style="width: 100%; height: 100%; fill: currentcolor;">
+															<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+																<path d="m11.31 2 .392.007c1.824.06 3.61.534 5.223 1.388l.343.189.27.154c.264.152.56.24.863.26l.13.004H20.5a1.5 1.5 0 011.5 1.5V11.5a1.5 1.5 0 01-1.5 1.5h-1.79l-.158.013a1 1 0 00-.723.512l-.064.145-2.987 8.535a1 1 0 01-1.109.656l-1.04-.174a4 4 0 01-3.251-4.783L10 15H5.938a3.664 3.664 0 01-3.576-2.868A3.682 3.682 0 013 9.15l-.02-.088A3.816 3.816 0 014 5.5v-.043l.008-.227a2.86 2.86 0 01.136-.664l.107-.28A3.754 3.754 0 017.705 2h3.605ZM7.705 4c-.755 0-1.425.483-1.663 1.2l-.032.126a.818.818 0 00-.01.131v.872l-.587.586a1.816 1.816 0 00-.524 1.465l.038.23.02.087.21.9-.55.744a1.686 1.686 0 00-.321 1.18l.029.177c.17.76.844 1.302 1.623 1.302H10a2.002 2.002 0 011.956 2.419l-.623 2.904-.034.208a2.002 2.002 0 001.454 2.139l.206.045.21.035 2.708-7.741A3.001 3.001 0 0118.71 11H20V6.002h-1.47c-.696 0-1.38-.183-1.985-.528l-.27-.155-.285-.157A10.002 10.002 0 0011.31 4H7.705Z"></path>
+															</svg>
+														</div>
+													</div>
+													<span id="dislike-count-renderer" class="menu-buttons-text">Dislike</span>
+												</button>
+											</div>
+										</div>
+										<button id="share-button" class="menu-buttons" onclick="shareButton()" title="Share this video">
+											<div id="sharebutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M10 3.158V7.51c-5.428.223-8.27 3.75-8.875 11.199-.04.487-.07.975-.09 1.464l-.014.395c-.014.473.578.684.88.32.302-.368.61-.73.925-1.086l.244-.273c1.79-1.967 3-2.677 4.93-2.917a18.011 18.011 0 012-.112v4.346a1 1 0 001.646.763l9.805-8.297 1.55-1.31-1.55-1.31-9.805-8.297A1 1 0 0010 3.158Zm2 6.27v.002-4.116l7.904 6.688L12 18.689v-4.212l-2.023.024c-1.935.022-3.587.17-5.197 1.024a9 9 0 00-1.348.893c.355-1.947.916-3.39 1.63-4.425 1.062-1.541 2.607-2.385 5.02-2.485L12 9.428Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="share-text-renderer" class="menu-buttons-text">Share</span>
+										</button>
+										<button id="live-chat-button" class="menu-buttons" onclick="liveChatButton()" title="Live chat replay">
+											<div id="livechatbutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M16 2H4a3 3 0 00-3 3v8a3 3 0 003 3h1v2.14a.8.8 0 001.188.7L11.3 16H16a3 3 0 003-3V5a3 3 0 00-3-3ZM4 4h12a1 1 0 011 1v8a1 1 0 01-1 1h-5.218l-.452.252L7 16.1V14H4a1 1 0 01-1-1V5a1 1 0 011-1Zm17 2.174A3 3 0 0123 9v8a3 3 0 01-2.846 2.996L20 20v2.14a.8.8 0 01-1.189.7L13.701 20H8.216l3.6-2h2.402l.453.252L18 20.101V18.05l1.95-.05.113-.003A1 1 0 0021 17V6.174Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="live-chat-text-renderer" class="menu-buttons-text">Chat</span>
+										</button>
+										<button id="super-thanks-button" class="menu-buttons" onclick="thanksButton()" title="Show support with Super Thanks">
+											<div id="superthanksbutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M16.25 2A6.7 6.7 0 0012 3.509 6.75 6.75 0 001 8.75c0 4.497 2.784 7.818 5.207 9.87a23.498 23.498 0 004.839 3.143l.096.044.03.013.01.005.003.002.002.001c.273-.609.544-1.218.813-1.828 0 0-9-4-9-11.25a4.75 4.75 0 018.932-2.247A1 1 0 0011 7.5v.638c-.357.1-.689.26-.979.49A2.35 2.35 0 009.13 10.5c-.007.424.112.84.342 1.197.21.31.497.563.831.734.546.29 1.23.411 1.693.502.557.109.899.19 1.117.315.086.048.109.082.114.09.004.006.028.045.028.162 0 .024-.008.118-.165.235-.162.122-.5.27-1.09.27-.721 0-1.049-.21-1.181-.323a.6.6 0 01-.142-.168l.005.013.006.014.002.009a.996.996 0 00-1.884.64l.947-.316-.003.001c-.875.292-.939.314-.943.317l.001.003.003.006.004.015.012.032c.045.111.1.218.162.321.146.236.324.444.535.624.357.306.841.566 1.476.702v.605a1 1 0 002 0v-.614c1.29-.289 2.245-1.144 2.245-2.386 0-.44-.103-.852-.327-1.212-.22-.355-.52-.6-.82-.77-.555-.316-1.244-.445-1.719-.539-.567-.111-.915-.185-1.143-.305a.5.5 0 01-.1-.07l-.004-.003-.003-.009a.4.4 0 01-.009-.092c0-.158.053-.244.14-.314.109-.086.341-.19.74-.19.373-.001.73.144.997.404a.996.996 0 001.518-1.286l-.699.58.698-.582v-.001l-.002-.001-.002-.003-.006-.006-.016-.018a2.984 2.984 0 00-.178-.182A3.45 3.45 0 0013 8.154V7.5a1 1 0 00-.933-.997A4.75 4.75 0 0121 8.75C21 16 12 20 12 20l.813 1.827.002-.001.003-.001.01-.005.029-.013.097-.045c.081-.037.191-.09.33-.16a23.5 23.5 0 004.509-2.982C20.216 16.568 23 13.248 23 8.75A6.75 6.75 0 0016.25 2Zm-3.437 19.827L12 20l-.813 1.828.813.36.813-.361Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="super-thanks-text-renderer" class="menu-buttons-text">Thanks</span>
+										</button>
+										<button id="remix-button" class="menu-buttons" onclick="createButton()" title="Remix this video">
+											<div id="remixbutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path clip-rule="evenodd" d="m7.61 15.719.392-.22v-2.24l-.534-.228-.942-.404c-.869-.372-1.4-1.15-1.446-1.974-.047-.823.39-1.642 1.203-2.097h.001L15.13 3.59c1.231-.689 2.785-.27 3.466.833.652 1.058.313 2.452-.879 3.118l-1.327.743-.388.217v2.243l.53.227.942.404c.869.372 1.4 1.15 1.446 1.974.047.823-.39 1.642-1.203 2.097l-.002.001-8.845 4.964-.001.001c-1.231.688-2.784.269-3.465-.834-.652-1.058-.313-2.451.879-3.118l1.327-.742Zm1.993 6.002c-1.905 1.066-4.356.46-5.475-1.355-1.057-1.713-.548-3.89 1.117-5.025a4.14 4.14 0 01.305-.189l1.327-.742-.942-.404a4.055 4.055 0 01-.709-.391c-.963-.666-1.578-1.718-1.644-2.877-.08-1.422.679-2.77 1.968-3.49l8.847-4.966c1.905-1.066 4.356-.46 5.475 1.355 1.057 1.713.548 3.89-1.117 5.025a4.074 4.074 0 01-.305.19l-1.327.742.942.403c.253.109.49.24.709.392.963.666 1.578 1.717 1.644 2.876.08 1.423-.679 2.77-1.968 3.491l-8.847 4.965ZM10 14.567a.25.25 0 00.374.217l4.45-2.567a.25.25 0 000-.433l-4.45-2.567a.25.25 0 00-.374.216v5.134Z" fill-rule="evenodd"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="remix-text-renderer" class="menu-buttons-text">Remix</span>
+										</button>
+										<button id="stop-ads-button" class="menu-buttons" title="Stop the ads in this video with Premium">
+											<div id="stopadsbutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1Zm0 2a9 9 0 018.246 12.605L4.755 6.661A8.99 8.99 0 0112 3ZM3.754 8.393l15.491 8.944A9 9 0 013.754 8.393Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="stop-ads-text-renderer" class="menu-buttons-text">Stop ads</span>
+										</button>
+										<button id="download-button" class="menu-buttons" aria-pressed="false" title="Download this video">
+											<div id="downloadbutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M12 2a1 1 0 00-1 1v11.586l-4.293-4.293a1 1 0 10-1.414 1.414L12 18.414l6.707-6.707a1 1 0 10-1.414-1.414L13 14.586V3a1 1 0 00-1-1Zm7 18H5a1 1 0 000 2h14a1 1 0 000-2Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="download-text-renderer" class="menu-buttons-text">Download</span>
+										</button>
+										<button id="clip-button" class="menu-buttons" onclick="clipButton()" title="Clip this video">
+											<div id="clipbutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M6 2.002a4 4 0 102.03 7.445L10.586 12l-2.554 2.555a4 4 0 101.414 1.414L12 13.416l7.07 7.071a2 2 0 002.829 0L9.446 8.032A4 4 0 006 2.002Zm8.826 8.588 7.073-7.074a2 2 0 00-2.828 0l-5.66 5.66 1.415 1.414ZM8 6a2 2 0 11-4 0 2 2 0 014 0Zm0 12a2 2 0 11-4 0 2 2 0 014 0Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="clip-text-renderer" class="menu-buttons-text">Clip</span>
+										</button>
+										<button id="save-button" class="menu-buttons" onclick="saveButton()" aria-pressed="false" title="Save this video">
+											<div id="savebutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M19 2H5a2 2 0 00-2 2v16.887c0 1.266 1.382 2.048 2.469 1.399L12 18.366l6.531 3.919c1.087.652 2.469-.131 2.469-1.397V4a2 2 0 00-2-2ZM5 20.233V4h14v16.233l-6.485-3.89-.515-.309-.515.309L5 20.233Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="save-text-renderer" class="menu-buttons-text">Save</span>
+										</button>
+										<button id="report-button" class="menu-buttons" onclick="reportButton()" title="Report this video">
+											<div id="reportbutton-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="m4 2.999-.146.073A1.55 1.55 0 003 4.454v16.545a1 1 0 102 0v-6.491a7.26 7.26 0 016.248.115l.752.376a8.94 8.94 0 008 0l.145-.073c.524-.262.855-.797.855-1.382V4.458a1.21 1.21 0 00-1.752-1.083 7.26 7.26 0 01-6.496 0L12 2.999a8.94 8.94 0 00-8 0Zm7.105 1.79v-.002l.752.376A9.26 9.26 0 0019 5.641v7.62a6.95 6.95 0 01-6.105-.052l-.752-.376A9.261 9.261 0 005 12.355v-7.62a6.94 6.94 0 016.105.054Z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="report-text-renderer" class="menu-buttons-text">Report</span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div id="comment-section">
+								<div id="comment-caption-and-counts">
+									<span>
+										<p id="comment-caption">Comments &nbsp;&nbsp;</p>
+									</span>
+									<span>
+										<p id="comment-counts" class="gray-text">NaN</p>
+									</span>
+								</div>
+								<div id="account-picture-and-comment-entrypoint">
+									<img id="comment-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj">
+									<form id="comment-entrypoint">
+										<input id="comment-field" placeholder="Add a comment..."></input>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div id="description-section" style="height: 100%; transform: translateY(0px);" hidden>
+							<div class="engagement-panel-drag-line-margin-top"></div>
+							<div class="engagement-panel-drag-line"></div>
+							<div id="description" class="content">
+								<div id="description-caption-and-exit-button">
+									<p id="description-title">Description</p>
+									<button id="hide-secondary-description-button" onclick="hideSecondaryDescription()">
+										<svg id="hide-sec-desc-button-icon">
+											<path d="M17.293 5.293 12 10.586 6.707 5.293a1 1 0 10-1.414 1.414L10.586 12l-5.293 5.293a1 1 0 001.414 1.414L12 13.414l5.293 5.293a1 1 0 001.414-1.414L13.414 12l5.293-5.293a1 1 0 10-1.414-1.414Z"></path>
+										</svg>
+									</button>
+								</div>
+								<div id="border-bottom-metadata"></div>
+								<div id="video-metadata-info-container-description">
+									<h4 id="video-title-desc">Getting video title...</h4>
+									<div id="video-stats-desc">
+										<div id="total-like-counts-container" class="grouped-text-renderer">
+											<span id="total-like-counts-renderer">NaN</span>
+											<span id="total-like-counts-title">Likes</span>
+										</div>
+										<div id="total-dislike-counts-container" class="grouped-text-renderer">
+											<span id="total-dislike-counts-renderer">NaN</span>
+											<span id="total-dislike-counts-title">Dislikes</span>
+										</div>
+										<div id="total-views-container" class="grouped-text-renderer">
+											<span id="total-view-counts-renderer">NaN</span>
+											<span id="total-view-counts-title">Views</span>
+										</div>
+										<div id="date-uploaded-container" class="grouped-text-renderer">
+											<span id="upload-date-renderer">NaN</span>
+											<span id="upload-date-title">Upload date</span>
+										</div>
+									</div>
+									<p id="description-text">
+										
+									</p>
+									<div id="yt-img-and-channel-name-desc">
+										<img id="yt-channel-profile-picture-desc" src="rsrc/player/YourVideoId.jpg">
+										<div id="yt-channel-name-renderer-desc">
+											<a id="yt-channel-name-link-desc" href="https://www.youtube.com/channel/">Getting Channel name...</a>
+										</div>
+									</div>
+									<div id="channel-links-buttons">
+										<a href="" id="videos-button" class="transparent-button-with-border">
+											<div id="videos-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="m10 8 6 4-6 4V8zm11-5v18H3V3h18zm-1 1H4v16h16V4z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="videos-text-renderer" class="menu-buttons-text">Videos</span>
+										</a>
+										<a href="" id="about-button" class="transparent-button-with-border">
+											<div id="about-icon" class="button-text-style">
+												<div style="width: 100%; height: 100%; fill: currentcolor;">
+													<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+														<path d="M3 3v18h18V3H3zm1.99 17c.39-2.62 2.38-5.1 7.01-5.1s6.62 2.48 7.01 5.1H4.99zM9 10c0-1.65 1.35-3 3-3s3 1.35 3 3-1.35 3-3 3-3-1.35-3-3zm3.72 3.93A4.004 4.004 0 0016 10c0-2.21-1.79-4-4-4s-4 1.79-4 4c0 1.96 1.42 3.59 3.28 3.93-4.42.25-6.84 2.8-7.28 6V4h16v15.93c-.44-3.2-2.86-5.75-7.28-6z"></path>
+													</svg>
+												</div>
+											</div>
+											<span id="about-text-renderer" class="menu-buttons-text">About</span>
+										</a>
+									</div>
+									<div class="nullo"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="video-recommendations">
+					<div id="recommendations-container">
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="shorts-skeleton-container-carousel">
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="shorts-skeleton-container-carousel">
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+							<div class="shorts-skeleton"></div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+						<div class="loading-video-skeleton">
+							<div class="loading-video-thumbnails"></div>
+							<div class="author-image-and-video-details-skeleton">
+								<div class="img-author-skeleton"></div>
+								<div class="video-details-skeleton">
+									<div class="video-title-skeleton"></div>
+									<div class="video-author-skeleton"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="nullo"></div>
+			</div>
+		</div>
+	</body>
+</html>
+
