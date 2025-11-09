@@ -357,7 +357,7 @@ iframe {
 	overflow-y: hidden;
 	justify-content: start;
 	white-space: nowrap;
-	padding: 8px 30px;
+	padding: 8px 34px;
 	scrollbar-width: none;
 }
 
@@ -594,3 +594,4 @@ a.transparent-button-with-border > span {
 .nullo {
 	padding: 32px 0px 32px 0px;
 }
+
