@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>YouTube ReVanced - Installation</title>
+		<script>document.querySelector("html").setAttribute("data-theme-display", "light");</script>
+		<link rel="stylesheet" style="text/css" title="default css file" href="rsrc/style.css">
+		<link rel="alternate stylesheet" style="text/css" title="alternate css file" href="rsrc/style.css">
+		<script src="rsrc/main.js"></script>
+		<script src="rsrc/navigation.js"></script>
+		<meta name="robots" content="noindex,nofollow,noarchive">
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="theme-color" content="#36c8ff">
+		<script id="theme-setter">
+			/*
+				automatically set the theme (system light or dark mode)
+				source: https://stackoverflow.com/a/60971231
+			*/
+			// Check to see if Media-Queries are supported
+			if (window.matchMedia) {
+				// Check if the dark-mode Media-Query matches
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					document.querySelector("html").setAttribute("data-theme-display", "dark");
+				} else {
+					document.querySelector("html").setAttribute("data-theme-display", "light");
+				}
+			} else {
+				document.querySelector("html").setAttribute("data-theme-display", "light");
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<div id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<a href="/blog/tutorials/revanced/">&lt;-- back</a>
+				<div class="border-bottom"></div>
+				<a href="/">Home</a>
+				<a href="/blog">Blogs</a>
+				<a href="/faketube" class="notranslate">FakeTube</a>
+				<a href="/rydfetch/mobile/" class="notranslate">RYD Frontend</a>
+			</div>
+			<div id="topbar">
+				<div id="sidebar-button-and-app-name-title">
+					<button id="sidebar-button" class="action-buttons" onclick="openNav()">
+						<svg class="sidebar-icon">
+							<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+						</svg>
+					</button>
+					<span id="app-title-text" class="notranslate">YouTube ReVanced</span>
+				</div>
+			</div>
+		</header>
+		<div id="post" class="page">
+			<div id="body-container" class="info">
+				<span class="paragraph-text" style="margin-bottom: 24px; margin-left: 0px !important;">revision: <code>2025年11月11日 12:44:11</code></span>
+				<div class="header-text headline-text">IMPORTANT NOTE: Make sure your ReVanced Manager is using the latest patches version before proceeding</div>
+				<div class="border-bottom"></div>
+				<div class="header-text headline-text">Getting the APK File</div>
+				<ul>
+					<li>Go to ReVanced Manager, tap the Patcher tab, then the Select an app, and tap the <code>Suggested: xx.xx.xx</code> box in the app that you want to patch. This should perform a google search for the app name and version, where it should display <a href="https://www.apkmirror.com">APKMirror</a> as the 1st search result <i>(The APK version should match with the suggested one that you saw)</i></li>
+					<li>Once you're in the <a href="https://www.apkmirror.com">APKMirror</a> web page, scroll till you find the APK links for YouTube <i>(Don't tap the one that says <code>BUNDLE</code>)</i></li>
+					<li>Download the APK file, but DO NOT install it YET. If you do, you will instead try updating the stock unpatched YouTube app which you probably have preinstalled depending on your device</li>
+				</ul>
+				<div class="header-text headline-text">Now to the patching process</div>
+				<ul>
+					<li>Go to ReVanced Manager, tap the Patcher tab, then the Select an app, and tap the "Storage" button. Now find the YouTube APK that you just downloaded</li>
+					<li>If you want, you can review the patches by tapping the Selected patches section. Changing the patches selection requires enabling <code>Allow changing patch selection</code> at Settings</li>
+					<li>Tap the "Patch" button and wait / watch the patching process</li>
+					<li>If the patching process is successful, you can now install the patched YouTube app</li>
+				</ul>
+				<div class="header-text headline-text">Questions and Answers</div>
+				<span class="paragraph-text">&gt; I can't download anything from APKMirror</span>
+				<ul>
+					<li>Find a reputable source for the base APK file, APKPure for example</li>
+				</ul>
+				<span class="paragraph-text">&gt; What is the purpose of microG Services and why do I need it as a non-rooted user?</span>
+				<ul>
+					<li><a href="https://github.com/ReVanced/GmsCore/releases">microG Services (ReVanced fork)</a> allows you to sign in to apps that have been patched with <code>GmsCore support</code> patch like <strong>YouTube</strong>, YT Music, and Google Photos <i>(Reasons: Package name renaming and to use microG instead of <a href="https://play.google.com/store/apps/details?id=com.google.android.gms">Google Play Services</a>)</i></li>
+					<li>This is a comment explaining why it's needed for non-rooted users: <a href="https://www.reddit.com/r/revancedapp/comments/1bwvwpk/safetynet_is_important_and_if_your_phone_is/ky9nngt/">https://www.reddit.com/r/revancedapp/comments/1bwvwpk/safetynet_is_important_and_if_your_phone_is/ky9nngt/</a></li>
+				</ul>
+				<span class="paragraph-text">&gt; It says "Installation conflict"</span>
+				<ul>
+					<li>There are multiple possible scenarios with this one:</li>
+				</ul>
+				<ol>
+					<li>Did you patch YouTube with the <code>Default</code> patches selection? If you accidentally excluded the <code>GmsCore support</code> patch, include it back <i>(This is not needed for rooted users as they use the Mounted install)</i></li>
+					<li>Did you just recently uninstalled and reinstalled ReVanced Manager? If so, then the keystore being used is now different from the last time the YouTube app was patched & installed <i>(The root problem: Signature mismatch)</i></li>
+					<li>Did you use the universal <code>Change package name</code> patch? The package name has to be unique and do not rely on the <code>Default</code> preset <i>(Example: <code>youtube.revanced.build.compiled.by.jpa102</code>)</i></li>
+					<li>You have patched an older (but compatible) version of YouTube <i>(Example: 20.07.39 to 20.14.43)</i></li>
+				</ol>
+				<span class="paragraph-text">&gt; When I update my old YouTube ReVanced build, will my ReVanced preferences stay?</span>
+				<ul>
+					<li>Absolutely yes! But you can back up your preferences at Settings &gt ReVanced &gt Miscelllaneous &gt Import / Export just to be on the safe side</li>
+				</ul>
+				<span class="paragraph-text">&gt; I want to create my own app icon and header, how can I do that?</span>
+				<ul>
+					<li>Since i'm no expert at something like Photoshop, there are probably guides out there like in Reddit which you can search <i>(Certain patches have instructions that you can follow and give you an idea)</i></li>
+				</ul>
+				<span class="paragraph-text">&gt; I was told to repatch after posting a question to my problem but I still experience it, what can I do?</span>
+				<ul>
+					<li>You can open a bug report at <a href="https://github.com/ReVanced/revanced-patches/issues">https://github.com/ReVanced/revanced-patches/issues</a></li>
+					<li>Or open a discussion at my repository so we can have a nice detailed chat: <a href="https://github.com/jpa102/revanced-discussions/discussions">https://github.com/jpa102/revanced-discussions/discussions</a></li> <i>(I may not be able to see your discussion immediately though as I tend to be offline at some times)</i>
+				</ul>
+				<span class="paragraph-text">&gt; I can't successfully patch YouTube using ReVanced Manager on my device, what can I do?</span>
+				<ul>
+					<li>If you have access to a PC, you can still patch using <a href="https://github.com/ReVanced/revanced-cli">revanced-cli</a> [ sample command: <code>java -jar revanced-cli-5.0.1-all.jar patch youtube-20.14.43-apkmirror.apk -p patches-5.46.0.rvp</code> ]. You will need to set up the Java environment first though in order to use it</li>
+					<li>Or if you have a secondary device or someone else's device that you can borrow, you can try patching from there and export the patched apk to your device afterwards</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
