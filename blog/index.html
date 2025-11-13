@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+	<head>
+		<title>jpa102's blogs</title>
+		<link rel="stylesheet" style="text/css" title="default css file" href="rsrc/style.css">
+		<link rel="alternate stylesheet" style="text/css" title="alternate css file" href="rsrc/style.css">
+		<script src="rsrc/main.js"></script>
+		<script src="rsrc/navigation.js"></script>
+		<meta name="robots" content="noindex,nofollow,noarchive">
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="theme-color" content="#36c8ff">
+		<script id="manual-theme-setter">
+			function lightTheme() { document.querySelector("html").setAttribute("data-theme-display", "light"); }
+			function darkTheme() { document.querySelector("html").setAttribute("data-theme-display", "dark"); }
+			function blackhole() { document.querySelector("html").setAttribute("data-theme-display", "blackhole"); }
+		</script>
+		<script id="automatic-theme-setter">
+			/*
+				automatically set the theme (system light or dark mode)
+				source: https://stackoverflow.com/a/60971231
+			*/
+			// Check to see if Media-Queries are supported
+			if (window.matchMedia) {
+				// Check if the dark-mode Media-Query matches
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					document.querySelector("html").setAttribute("data-theme-display", "dark");
+				} else {
+					document.querySelector("html").setAttribute("data-theme-display", "light");
+				}
+			} else {
+				document.querySelector("html").setAttribute("data-theme-display", "light");
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<div id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<a href="/">Home</a>
+				<a href="/blog" class="selected">Blogs</a>
+				<a href="/faketube">FakeTube</a>
+				<a href="/rydfetch/mobile/">RYD Frontend</a>
+				<div class="border-bottom"></div>
+				<a href="javascript:void(0)" onclick="lightTheme()">Light mode</a>
+				<a href="javascript:void(0)" onclick="darkTheme()">Dark mode</a>
+				<a href="javascript:void(0)" onclick="blackhole()">暗闇</a>
+			</div>
+			<div id="topbar">
+				<div id="sidebar-button-and-app-name-title">
+					<button id="sidebar-button" class="action-buttons" onclick="openNav()">
+						<svg class="sidebar-icon">
+							<path class="sidebar-icon" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+						</svg>
+					</button>
+					<span id="app-title-text">Blogs</span>
+				</div>
+			</div>
+		</header>
+		<div id="post" class="page">
+			<div id="body-container" class="info">
+				<a class="link-container" href="/blog/jokes/">
+					<div class="container">
+						<div class="header-text headline-text">
+							Jokes
+						</div>
+					</div>
+				</a>
+				<a class="link-container" href="/blog/tutorials/">
+					<div class="container">
+						<div class="header-text headline-text">
+							My tutorials
+						</div>
+					</div>
+				</a>
+				<div class="container">
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
