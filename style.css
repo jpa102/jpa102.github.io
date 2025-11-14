@@ -1,5 +1,5 @@
-﻿/*
-	style.css for youkoso.html
+/*
+	style.css for index.html & youkoso.html
 */
 
 @font-face {
@@ -7,16 +7,75 @@
 	src: url("https://jpa102.github.io/youkoso_rsrc/google-sans_regular.ttf");
 }
 
-:root {
-	--main-body-color: #36c8ff;
-}
-
 #topbar::-webkit-scrollbar {
 	display: none;
 }
 
+@media (min-width:112px) and (max-width:442px) {
+	body {
+		padding: 30px 12px !important;
+	}
+}
+
+
+
+/*
+	dark mode css
+*/
+html[data-theme-display='dark'] body {
+	background: rgb(90, 18, 136);
+}
+
+html[data-theme-display='dark'] .hey-where-did-you-get-that-body-from {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme-display='dark'] .sidebar-icon {
+	fill: white;
+}
+
+html[data-theme-display='dark'] a {
+	color: rgb(62, 166, 255);
+}
+
+html[data-theme-display='dark'] #app-title-text,
+html[data-theme-display='dark'] #h1-title,
+html[data-theme-display='dark'] .p-title {
+	color: white;
+}
+
+html[data-theme-display='dark'] .paragraph-text {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme-display='dark'] ul,
+html[data-theme-display='dark'] ol {
+	color: lightgray;
+}
+
+html[data-theme-display='dark'] i {
+	color: lightsalmon;
+}
+
+html[data-theme-display='dark'] code {
+	color: white;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+/*
+	light mode css
+*/
+code {
+	font-family: consolas, monospace !important;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, 0.2);
+	padding: 0px 6px;
+}
+
 body {
-	background: var(--main-body-color);
+	background: rgb(54, 200, 255);
 	padding: 30px;
 }
 
