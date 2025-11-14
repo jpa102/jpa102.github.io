@@ -2,14 +2,40 @@
 <html>
 	<head>
 		<link rel="icon" href="favicon.ico">
-		<title>ようこそ！ welcome to my boring site</title>
-		<link rel="stylesheet" href="style.css">
+		<title>こんにちは！ welcome to my boring site</title>
+		<script>document.querySelector("html").setAttribute("data-theme-display", "light");</script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="robots" content="noindex,nofollow,noarchive">
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="theme-color" content="#36c8ff" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#5a1288" media="(prefers-color-scheme: dark)">
+		<script id="manual-theme-setter">
+			function lightTheme() { document.querySelector("html").setAttribute("data-theme-display", "light"); }
+			function darkTheme() { document.querySelector("html").setAttribute("data-theme-display", "dark"); }
+			function blackhole() { document.querySelector("html").setAttribute("data-theme-display", "blackhole"); }
+		</script>
+		<script id="automatic-theme-setter">
+			/*
+				automatically set the theme (system light or dark mode)
+				source: https://stackoverflow.com/a/60971231
+			*/
+			// Check to see if Media-Queries are supported
+			if (window.matchMedia) {
+				// Check if the dark-mode Media-Query matches
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					document.querySelector("html").setAttribute("data-theme-display", "dark");
+				} else {
+					document.querySelector("html").setAttribute("data-theme-display", "light");
+				}
+			} else {
+				document.querySelector("html").setAttribute("data-theme-display", "light");
+			}
+		</script>
 	</head>
 	<body>
 		<div id="topbar" class="hey-where-did-you-get-that-body-from">
 			<span class="topbar-link-renderer">
-				<a class="topbar-link-renderer-content" href="/blog">Blogs</a>
+				<a class="topbar-link-renderer-content" href="/blog">blogs</a>
 			</span>
 			<span class="topbar-link-renderer">
 				<a class="topbar-link-renderer-content" href="/faketube">FakeTube</a>
@@ -17,13 +43,27 @@
 			<span class="topbar-link-renderer">
 				<a class="topbar-link-renderer-content" href="/rydfetch/mobile/">RYD Frontend</a>
 			</span>
+			<span class="topbar-link-renderer">
+				<a class="topbar-link-renderer-content" href="https://github.com/jpa102">github profile</a>
+			</span>
+			<span class="topbar-link-renderer">
+				<a class="topbar-link-renderer-content" href="https://www.youtube.com/@johnpatrickadem6294">youtube channel</a>
+			</span>
+			<span class="topbar-link-renderer">
+				<a class="topbar-link-renderer-content" href="https://www.instagram.com/jpadem_official">instagram</a>
+			</span>
+			<span class="topbar-link-renderer">
+				<a class="topbar-link-renderer-content" href="https://www.threads.com/@jpadem_official">threads</a>
+			</span>
+			<span class="topbar-link-renderer">
+				<a class="topbar-link-renderer-content" href="https://twitter.com/jpadem51452">twitter</a>
+			</span>
 		</div>
 		<hr style="border: unset;">
 		<div class="hey-where-did-you-get-that-body-from">
 			<h1 id="h1-title">
 				what brings you here?
 			</h1>
-			<br>
 			<p class="p-title">
 				welcome to my homepage, by the way
 			</p>
@@ -31,7 +71,19 @@
 				<i>(feel free to browse, you may find something!)</i>
 			</p>
 			<p class="p-title">
-				last updated at 2024年10月3日 19:25:31 (utc +08:00)
+				i may not be able to have my own website, but i do have github pages on my side!
+			</p>
+			<p class="p-title">
+				i love typing in lowercase, it's where i'm used to and i find it comfortable to type compared to the usual typing that most people do <i>(except of course, if i have to be in a formal setting)</i>
+			</p>
+			<p class="p-title">
+				i also love messing with apps <i>(new and old)</i> by changing their version numbers and codes, installing a mobile game using their apks and obb files, using userscripts / userstyles that change the layout and theme, managing my multiboot pc which has windows xp, vista, 7, 8.1, 10, and even 11 on my dell optiplex 3010 with 12gb of ram, 1tb + 250gb of hdd storage <i>(one is a 7200rpm seagate and the other is 5400rpm western digital)</i></i>
+			</p>
+			<p class="p-title">
+				i'm also a heavy revanced user, i love revanced so much that i sometimes monitor their repository for problems and i would try commenting on the issues
+			</p>
+			<p class="p-title">
+				last updated at <code>2025年11月14日 21:29:47</code>
 			</p>
 		</div>
 	</body>
