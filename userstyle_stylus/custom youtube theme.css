@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           custom YouTube theme
 @namespace      github.com/openstyles/stylus
-@version        1.96
+@version        1.98.4
 @description    apply your own preferred theme color to YouTube + extra features!
 @author         John Patrick Adem
 
@@ -23,7 +23,7 @@
 @var checkbox materialYouStyledNotificationCounter                "Apply Material You color on the notification counter (dark mode only)" 0
 ==/UserStyle== */
 
-@-moz-document regexp("^https:\\/\\/www\\.youtube\\.com.+"), regexp("^https:\\/\\/studio\\.youtube\\.com.+"), regexp("^https:\\/\\/m\\.youtube\\.com.+") {
+@-moz-document regexp("^https:\\/\\/www\\.youtube\\.com.+"), regexp("^https:\\/\\/music\\.youtube\\.com.+"), regexp("^https:\\/\\/studio\\.youtube\\.com.+"), regexp("^https:\\/\\/m\\.youtube\\.com.+") {
 
 	/* ========================== [features] ========================== */
 
@@ -57,7 +57,7 @@
 
 		/* improve the border color around the search bar when it's focused (uses the border-color from 2021's sign in button) */
 		.ytSearchboxComponentInputBoxDark.ytSearchboxComponentInputBoxHasFocus {
-			border-color: #3ea6ff;
+			border-color: var(--yt-spec-call-to-action);
 		}
 	}
 
@@ -86,7 +86,7 @@
 	if (experimentalTransparentTopbar) {
 		/* at https://youtube.com, what the fuck is this frosted glass thing? y'all trying to copy the liquid glass design? */
 		#frosted-glass.with-chipbar.ytd-app {
-			background: unset !important;
+			background: rgba(0, 0, 0, 0.0) !important;
 		}
 
 		html[dark] #header > ytd-feed-filter-chip-bar-renderer > #chips-wrapper,
@@ -97,14 +97,23 @@
 
 		/* spare element: ytd-masthead#masthead */
 		#masthead-container, ytd-masthead#masthead {
-			background: transparent;
+			background: rgba(0, 0, 0, 0.0) !important;
 			backdrop-filter: blur(expTransparentTopbar_blurlevel) !important;
 		}
 
 		/* black tint on the transparent topbar */
 		if (experimentalTransparentTopbar_useForDark) {
 			html[dark] #masthead-container {
-				background: rgba(0, 0, 0, expTransparentTopbar_wpercentage) !important;
+				background: rgba(255, 255, 255, expTransparentTopbar_wpercentage) !important;
+				backdrop-filter: blur(expTransparentTopbar_blurlevel) !important;
+			}
+		}
+        
+        /**/
+		/* white tint on the transparent topbar */
+		if (experimentalTransparentTopbar_useForLight) {
+			html:not([dark]) #masthead-container {
+				background: rgba(255, 255, 255, expTransparentTopbar_bpercentage) !important;
 				backdrop-filter: blur(expTransparentTopbar_blurlevel) !important;
 			}
 		}
@@ -130,8 +139,8 @@
 	if (colorOption=="blackhole") {
 		:root {
 			--main-body-color: rgb(0, 0, 0);
-			--main-body-color-light: rgb(20, 20, 20);
-			--main-body-color-lighter: rgb(48, 48, 48);
+			--main-body-color-light: rgb(8, 8, 8);
+			--main-body-color-lighter: rgb(24, 24, 24);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
 		}
 	}
@@ -140,7 +149,7 @@
 	if (colorOption=="d_murasaki") {
 		:root {
 			--main-body-color: rgb(90, 18, 136);
-			--main-body-color-light: rgb(128, 37, 187);
+			--main-body-color-light: rgb(105, 29, 155);
 			--main-body-color-lighter: rgb(137, 52, 192);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
 		}
@@ -501,9 +510,8 @@
 	/*
 		general
 	*/
-	#guide-content {
-		background: var(--main-body-color) !important;
-		border-right: 1px solid var(--yt-spec-10-percent-layer);
+	#guide-content, #guide-inner-content.ytd-app {
+		background: var(--main-body-color-light) !important;
 	}
 
 	tp-yt-paper-item:hover {
@@ -514,15 +522,17 @@
 		background: var(--main-body-color-light) !important;
 	}
 
+	ytd-guide-entry-renderer[active] {
+		background: var(--main-body-color-lighter) !important;
+	}
+
 	ytd-mini-guide-renderer {
-		background: var(--main-body-color) !important;
+		background: var(--main-body-color-light) !important;
 		box-shadow: var(--shadow) !important;
-		border-right: 1px solid var(--yt-spec-10-percent-layer);
-		border-top: 1px solid var(--yt-spec-10-percent-layer);
 	}
 
 	ytd-mini-guide-entry-renderer {
-		background: var(--main-body-color);
+		background: var(--main-body-color-light);
 	}
 
 	ytd-mini-guide-entry-renderer:hover {
@@ -546,6 +556,19 @@
 		background: var(--main-body-color);
 	}
 
+	ytd-modal-with-title-and-button-renderer {
+		background: var(--main-body-color-light);
+	}
+
+	yt-tooltip-renderer.ytd-popup-container {
+		background: var(--yt-spec-call-to-action);
+		border-radius: 2px;
+	}
+
+	yt-tooltip-renderer[position-type=OPEN_POPUP_POSITION_BOTTOM]::before {
+		border-color: transparent transparent var(--yt-spec-call-to-action) transparent !important;
+	}
+
 	/*
 		watch page
 	*/
@@ -553,9 +576,9 @@
 		box-shadow: var(--shadow) !important;
 	}
 
-	#masthead {
-		background: var(--main-body-color);
-		border-bottom: 1px solid var(--yt-spec-10-percent-layer);
+	ytd-masthead.shell.dark, ytd-masthead.shell.theater,
+	#container.ytd-masthead, #guide-content.ytd-app, ytd-mini-guide-renderer, a.ytd-mini-guide-entry-renderer {
+		background: var(--main-body-color-light) !important;
 	}
 
 	ytd-watch-flexy {
@@ -564,6 +587,15 @@
 
 	#columns {
 		background: var(--main-body-color);
+	}
+
+	ytd-offline-promo-renderer[dialog][dialog][dialog],
+	ytd-download-quality-selector-renderer[dialog][dialog][dialog] {
+		background: var(--main-body-color-light);
+	}
+
+    ytd-live-chat-frame #show-hide-button.ytd-live-chat-frame>ytd-button-renderer.ytd-live-chat-frame {
+		background: var(--main-body-color-light);
 	}
 
 	/*
@@ -582,24 +614,18 @@
 		background: var(--main-body-color) !important;
 	}
 
-	ytd-menu-popup-renderer > tp-yt-paper-listbox {
+	tp-yt-paper-dialog,
+	ytd-flow-step-renderer,
+	ytd-flow-root-renderer[dialog][dialog][dialog],
+	#header.ytd-engagement-panel-title-header-renderer,
+	ytd-section-list-renderer.ytd-engagement-panel-section-list-renderer,
+	ytd-menu-popup-renderer > tp-yt-paper-listbox, .ytListViewModelHost,
+	ytd-engagement-panel-section-list-renderer[dialog] #content.ytd-engagement-panel-section-list-renderer,
+	ytd-commentbox[is-backstage-post][is-creation-box] #creation-box.ytd-commentbox, #main.ytd-commentbox,
+	ytd-backstage-post-dialog-renderer[is-creation-dialog][is-open] #dialog-header.ytd-backstage-post-dialog-renderer,
+	#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button,
+	ytd-pdg-buy-flow-renderer[dialog][dialog][dialog] {
 		background: var(--main-body-color-light) !important;
-	}
-
-	#notification-preference-button > ytd-subscription-notification-toggle-button-renderer-next > yt-button-shape > button {
-		background: var(--main-body-color-light) !important;
-	}
-
-	tp-yt-paper-dialog {
-		background: var(--main-body-color-light);
-	}
-
-	ytd-section-list-renderer.ytd-engagement-panel-section-list-renderer {
-		background: var(--main-body-color-light) !important;
-	}
-
-	ytd-backstage-post-dialog-renderer[is-creation-dialog][is-open] #dialog-header.ytd-backstage-post-dialog-renderer, ytd-commentbox[is-backstage-post][is-creation-box] #creation-box.ytd-commentbox, #main.ytd-commentbox {
-		background: var(--main-body-color-light);
 	}
 
 	/* sort by buttons (video tab) */
@@ -623,8 +649,14 @@
 		border-radius: 0px;
 	}
 
-	#watch-while-engagement-panel {
+	#watch-while-engagement-panel,
+	.anchored-panel.ytd-shorts {
 		border-radius: 0px;
+		background: var(--main-body-color-light);
+	}
+
+	ytd-engagement-panel-section-list-renderer[match-content-theme] #content.ytd-engagement-panel-section-list-renderer {
+		background: var(--main-body-color-light);
 	}
 
 	ytd-page-manager {
@@ -639,8 +671,24 @@
 		background: var(--main-body-color-light);
 	}
 
-	#watch-while-engagement-panel {
+	/* make some adjustments to the bottom seekbar */
+	.desktopShortsPlayerControlsHost {
+		left: 0px;
+		right: 0px;
+	}
+
+	.ytProgressBarLineProgressBarLine {
+		height: 4px;
+	}
+
+	.navigation-button.ytd-shorts ytd-button-renderer.ytd-shorts,
+	.yt-spec-button-shape-next--size-l.yt-spec-button-shape-next--icon-button {
 		background: var(--main-body-color-light);
+	}
+
+	.navigation-button.ytd-shorts ytd-button-renderer.ytd-shorts:hover,
+	.yt-spec-button-shape-next--size-l.yt-spec-button-shape-next--icon-button:hover {
+		background: var(--main-body-color-lighter);
 	}
 
 	/*
@@ -686,9 +734,14 @@
 		background: var(--main-body-color-lighter);
 	}
 
+	.ytSearchboxComponentSuggestionsContainer {
+		background: var(--main-body-color-lighter); /* the new search suggestions */
+	}
+
 	/* if search bar is focused */
-	ytd-searchbox[has-focus] #container.ytd-searchbox {
-		border: 1px solid #3ea6ff !important;
+	ytd-searchbox[has-focus] #container.ytd-searchbox,
+	.ytSearchboxComponentInputBoxDark.ytSearchboxComponentInputBoxHasFocus {
+		border: 1px solid var(--yt-spec-call-to-action) !important; /* originally #3ea6ff */
 	}
 
 	/* dropdown selection (ex: sort by comments) */
@@ -699,6 +752,12 @@
 	/*
 		================= [MOBILE] =================
 	*/
+
+	.mobile-topbar-header-background,
+	.mobile-topbar-header[data-mode=watch] {
+		background: var(--main-body-color);
+	}
+
 	ytm-app {
 		background: var(--main-body-color);
 	}
@@ -707,6 +766,19 @@
 		background: var(--main-body-color);
 	}
     
+	.slim-video-action-bar-actions button,
+	.ytVideoMetadataCarouselViewModelHost {
+		background: var(--main-body-color-light) !important;
+	}
+
+	.ytCommentInputBoxCarouselItemViewModelInputBox {
+		background: var(--main-body-color-lighter);
+	}
+
+	.YtmChipCloudRendererHost.chip-bar {
+		background: var(--main-body-color);
+	}
+
 	/*
 		================= [YOUTUBE STUDIO] =================
 	*/
@@ -726,7 +798,7 @@
 
 	/* pre-load elements */
 
-	header.ytcp-header {
+	header.ytcp-header, ytcp-header > header {
 		background: var(--main-body-color);
 		border-bottom: 1px solid var(--yt-spec-10-percent-layer);
 	}
@@ -1006,9 +1078,15 @@
 	/*
 		================= [old layout tweaks] =================
 	*/
-	.ryd-tooltip-old-design {
+	.ryd-tooltip-old-design, .ryd-tooltip-new-design {
 		position: absolute;
-		top: 44px;
+		top: 41px;
+	}
+
+	html[watch-metadata-style] .yt-page-header-view-model__page-header-headline-info > yt-flexible-actions-view-model > .ytFlexibleActionsViewModelAction > button-view-model > a {
+		background: rgba(255, 255, 255, 0.1) !important;
+		padding: 20.5px 16.5px !important;
+		border-radius: 2px
 	}
 
 	#menu-container {
@@ -1023,40 +1101,47 @@
 		margin-top: 20px;
 	}
 
-	#subscribe-button {
-		position: relative !important;
-	}
-
 	#subscribe-button-shape > button {
 		padding: 20.5px 16.5px !important;
 	}
 
 	html[watch-metadata-style][layout] body ytd-app ytd-page-manager #subscribe-button.style-scope ytd-subscribe-button-renderer[subscribed] yt-button-shape button {
-	padding: 20.5px 16.5px !important;
+		padding: 20.5px 16.5px !important;
 		background: rgba(255, 255, 255, 0.1) !important;
 	}
-    
-	/* shorts action buttons */
+
+	yt-flexible-actions-view-model > div > button-view-model > button {
+		padding: 20.5px 16.5px !important;
+		border-radius: 2px !important;
+		background: red !important;
+		color: white !important;
+	}
+
+	/*
+		shorts action buttons
+		used to be present on the older shorts elements, not anymore
+	*/
+	/*
 	#actions {
 		margin-right: 72px;
 	}
-    
-	#analytics-button {
-		margin-top: -14px
-	}
+	*/
 
 	.ytp-settings-menu {
 		border-radius: 4px;
 	}
 
 	/* old-styled action buttons like the download button */
+	/*
 	.force-icon-button {
 		margin-top: -4px;
 	}
+	*/
 
 	.dropdown-trigger {
 		margin-top: -4px;
 	}
+	
 
 	ytd-button-renderer.style-visibly-disabled[is-icon-button], ytd-button-renderer.style-opacity[is-icon-button][disabled], ytd-button-renderer.style-text[is-icon-button][disabled] #text.ytd-button-renderer, ytd-button-renderer.style-default[is-icon-button][disabled] #text.ytd-button-renderer, ytd-button-renderer.style-opacity[is-icon-button][disabled] #text.ytd-button-renderer {
 		color: var(--yt-spec-text-secondary)
@@ -1077,6 +1162,11 @@
 		color: var(--yt-spec-text-secondary) !important;
 	}
 
+	#page-header.ytd-tabbed-page-header,
+	tp-yt-app-toolbar.ytd-tabbed-page-header > #tabs-container > #tabs-inner-container {
+		background-color: var(--main-body-color-light) !important;
+	}
+
 	/* adjust for rounded channel banner */
 	.yt-image-banner-view-model-wiz--inset {
 		border-radius: unset;
@@ -1092,6 +1182,12 @@
 	}
 
 	yt-list-view-model {
-		padding: 12px 6px;
+		padding: 12px 0px;
+	}
+
+	.ytThumbnailViewModelMedium,
+	.ytSheetViewModelContextual,
+	tp-yt-paper-item.ytd-menu-service-item-renderer {
+		border-radius: unset;
 	}
 }
