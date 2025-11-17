@@ -1,25 +1,16 @@
 /* ==UserStyle==
 @name           my theme for tiktok.com
 @namespace      github.com/openstyles/stylus
-@version        4.5.0
+@version        4.6.9
 @description    "my theme for google.com" userstyle, now ported to tiktok.com
 @author         John Patrick Adem
 
 @preprocessor stylus
-@var select colorOption                                           "select theme" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "brat:brat", "spotifygreen:Spotify green", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "lonely_gray:Lonely gray", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme"]
+@var select colorOption                                           "select theme" ["d_murasaki:紫 - purple (dark)", "murasaki:紫 - purple", "discord_mod:Discord", "murasaki_light:紫 - purple (light)", "strawberry:Strawberry", "pinku:ピンク　－　pink", "windows_tooltip:legacy Windows tooltip", "rule34xxx:rule 34 (xxx)", "spotifygreen:Spotify green", "brat:brat", "oppoa37fw_greenbutton:Oppo A37fw - green button", "download_mode:Download mode", "win98:Windows 98 background", "blackboard:School blackboard", "winclassic:Windows Classic background", "yellow_sun:Sunny yellow", "future:Future", "future_dark:Future (dark)", "sky:Bright sky", "reddit:Reddit OrangeRed", "tiktok_red:TikTok Red", "tiktok_focused_red:TikTok Red focus", "youtube_magenta:YouTube Magenta", "youtube_red:YouTube Red", "youtube_dark:YouTube Dark", "chrome_dark: Google Chrome - Dark mode", "pornhub:PornHub logo color", "navyblue:Navy blue", "d_maron:Maroon", "blackhole:暗闇 - Black hole", "lonely_gray:Lonely gray", "__experimental:Experimental theme (dark based)", "__experimental_two:Experimental theme (light based)", "__custom:Custom theme"]
 @var checkbox bordersOnly                                         "remove padded background" 0
 @var checkbox nonroundedThumbnails                                "non-rounded thumbnails" 0
 @var checkbox hideFollowingAccountsSidebar                        "Hide the accounts that you follow at the sidebar" 0
-@var checkbox hideAllTikTokNavLinks                               "Hide all TikTok navigation links at the sidebar (overrides the ones below)" 0
-@var checkbox hideForYouSidebar                                   "Hide the \"For You\" at the sidebar" 0
-@var checkbox hideExploreSidebar                                  "Hide the \"Explore\" at the sidebar" 0
-@var checkbox hideFollowingSidebar                                "Hide the \"Following\" at the sidebar" 0
-@var checkbox hideFriendsSidebar                                  "Hide the \"Friends\" at the sidebar" 0
-@var checkbox hideUploadSidebar                                   "Hide the \"Upload\" at the sidebar" 0
-@var checkbox hideActivitySidebar                                 "Hide the \"Activity\" at the sidebar" 0
-@var checkbox hideTikTokLiveSidebar                               "Hide the \"Live\" at the sidebar" 0
-@var checkbox hideMessagesSidebar                                 "Hide the \"Messages\" at the sidebar" 0
-@var checkbox hideProfileSidebar                                  "Hide the \"Profile\" at the sidebar" 0
+@var checkbox hideAllTikTokNavLinks                               "Hide all TikTok navigation links at the sidebar" 0
 @var checkbox paddedSoundSourceLinkInDescriptionBox               "Add padding and background to sound source link (video description)" 0
 @var checkbox fixPaddedSoundSourceLinkInDescriptionBox            "fix the sound source link being stretched all the way (video description)" 0
 @var checkbox hideBottomPlayerControlElements                     "Hide the player controls at the bottom and right of the video player (only on direct video link)" 0
@@ -61,6 +52,7 @@
 			--main-body-color-light: rgb(20, 20, 20);
 			--main-body-color-lighter: rgb(48, 48, 48);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -71,6 +63,7 @@
 			--main-body-color-light: rgb(128, 37, 187);
 			--main-body-color-lighter: rgb(137, 52, 192);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -81,6 +74,7 @@
 			--main-body-color-light: rgb(153, 45, 223);
 			--main-body-color-lighter: rgb(168, 66, 234);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -91,6 +85,7 @@
 			--main-body-color-light: rgb(223, 175, 255);
 			--main-body-color-lighter: rgb(230, 192, 255);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -101,6 +96,7 @@
 			--main-body-color-light: rgb(255, 114, 158);
 			--main-body-color-lighter: rgb(255, 140, 176);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -111,6 +107,7 @@
 			--main-body-color-light: rgb(255, 121, 223);
 			--main-body-color-lighter: rgb(255, 142, 228);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -121,6 +118,7 @@
 			--main-body-color-light: rgb(236, 238, 172);
 			--main-body-color-lighter: rgb(247, 249, 195);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -131,6 +129,7 @@
 			--main-body-color-light: rgb(16, 117, 109);
 			--main-body-color-lighter: rgb(17, 132, 119);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -141,6 +140,7 @@
 			--main-body-color-light: rgb(143, 215, 0);
 			--main-body-color-lighter: rgb(155, 232, 0);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -151,6 +151,7 @@
 			--main-body-color-light: rgb(12, 156, 156);
 			--main-body-color-lighter: rgb(14, 181, 181);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -161,6 +162,7 @@
 			--main-body-color-light: rgb(67, 224, 202);
 			--main-body-color-lighter: rgb(71, 236, 213);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -171,6 +173,18 @@
 			--main-body-color-light: rgb(32, 230, 101);
 			--main-body-color-lighter: rgb(38, 252, 113);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
+		}
+	}
+
+	/* "rule 34" theme (https://rule34.xxx/index.php) */
+	if (colorOption=="rule34xxx") {
+		:root {
+			--main-body-color: rgb(170, 229, 164);
+			--main-body-color-light: rgb(32, 230, 101);
+			--main-body-color-lighter: rgb(38, 252, 113);
+			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -181,6 +195,7 @@
 			--main-body-color-light: rgb(20, 161, 185);
 			--main-body-color-lighter: rgb(24, 188, 216);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -191,6 +206,7 @@
 			--main-body-color-light: rgb(255, 255, 154);
 			--main-body-color-lighter: rgb(253, 255, 232);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -201,6 +217,7 @@
 			--main-body-color-light: rgb(199, 208, 255);
 			--main-body-color-lighter: rgb(212, 219, 255);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -211,6 +228,7 @@
 			--main-body-color-light: rgb(97, 103, 143);
 			--main-body-color-lighter: rgb(99, 106, 145);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -221,6 +239,7 @@
 			--main-body-color-light: rgb(125, 219, 255);
 			--main-body-color-lighter: rgb(166, 230, 255);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -231,6 +250,7 @@
 			--main-body-color-light: rgb(111, 122, 255);
 			--main-body-color-lighter: rgb(137, 146, 255);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -241,6 +261,7 @@
 			--main-body-color-light: rgb(65, 129, 196);
 			--main-body-color-lighter: rgb(76, 143, 213);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -251,6 +272,7 @@
 			--main-body-color-light: rgb(25, 30, 98);
 			--main-body-color-lighter: rgb(38, 44, 128);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -261,6 +283,7 @@
 			--main-body-color-light: rgb(187, 0, 0);
 			--main-body-color-lighter: rgb(219, 0, 0);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -271,6 +294,7 @@
 			--main-body-color-light: rgb(255, 94, 35);
 			--main-body-color-lighter: rgb(255, 123, 75);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -281,6 +305,7 @@
 			--main-body-color-light: rgb(255, 93, 120);
 			--main-body-color-lighter: rgb(255, 115, 138);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -291,6 +316,7 @@
 			--main-body-color-light: rgb(255, 100, 85);
 			--main-body-color-lighter: rgb(255, 117, 104);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -301,6 +327,7 @@
 			--main-body-color-light: rgb(255, 53, 93);
 			--main-body-color-lighter: rgb(255, 69, 106);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -311,6 +338,7 @@
 			--main-body-color-light: rgb(255, 61, 61);
 			--main-body-color-lighter: rgb(255, 88, 88);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -321,6 +349,7 @@
 			--main-body-color-light: rgb(50, 50, 50);
 			--main-body-color-lighter: rgb(64, 64, 64);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -331,6 +360,7 @@
 			--main-body-color-light: rgb(25, 42, 52);
 			--main-body-color-lighter: rgb(35, 60, 74);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -341,6 +371,7 @@
 			--main-body-color-light: rgb(255, 164, 46);
 			--main-body-color-lighter: rgb(255, 176, 73);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -351,6 +382,7 @@
 			--main-body-color-light: rgb(106, 106, 106);
 			--main-body-color-lighter: rgb(118, 118, 118);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -361,6 +393,7 @@
 			--main-body-color-light: rgb(255, 38, 146);
 			--main-body-color-lighter: rgb(255, 64, 159);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
 
@@ -371,8 +404,18 @@
 			--main-body-color-light: rgb(187, 190, 200);
 			--main-body-color-lighter: rgb(206, 209, 219);
 			--shadow: 0 2px 5px 1px rgba(11,11,11,0.14);
+			--ui-page-flat-1: var(--main-body-color); /* override the native :root value */
 		}
 	}
+
+
+
+	/* overrides */
+	[data-tux-color-scheme=dark] {
+		--ui-sheet-flat-1: var(--main-body-color-light);
+	}
+
+
 
 	/*
 		LIGHT MODE
@@ -523,7 +566,7 @@
 	}
 
 	/* video page - bottom info */
-	.css-15ip68j-DivDescriptionContentWrapper-StyledDetailContentWrapper {
+	.css-1j7staj-5e6d46e3--DivDescriptionContentWrapper-5e6d46e3--StyledDetailContentWrapper {
 		background: rgba(0, 0, 0, 0.09);
 	}
 
@@ -653,6 +696,66 @@
 		background: var(--main-body-color-light);
 	}
 
+	/* shitty mobile version of tiktok website (always on light mode?) */
+	.css-11h9w0-f59ed85f--DivLogoContainer {
+		background: var(--main-body-color);
+	}
+    
+	.css-11h9w0-f59ed85f--DivLogoContainer > svg > path:nth-child(1) {
+		fill: var(--main-body-color);
+	}
+
+	[data-tux-color-scheme^="light"] div > #root, .css-1m3p8s9-f59ed85f--DivBgContainer {
+		background: var(--main-body-color);
+	}
+
+	[data-tux-color-scheme^="light"] #app-skeleton, .css-keaaq4-f59ed85f--DivFlex1, .css-93xiyv-f59ed85f--DivContentContainer {
+		background: var(--main-body-color) !important;
+	}
+
+    [data-tux-color-scheme^="light"] .css-1slh6gi-f59ed85f--DivCover, .css-1mi54yk-f59ed85f--DivTitle, .css-1eto16k-f59ed85f--DivSubTitle {
+		background: var(--main-body-color-light);
+	}
+
+	[data-tux-color-scheme^="light"] .css-xq885x-f59ed85f--DivShareLayoutTopHeader, .css-1hz8sez-f59ed85f--DivShareLayout {
+		background: var(--main-body-color);
+	}
+
+    [data-tux-color-scheme^="light"] .css-3bmll3-DivTopHeaderUser, .css-1ymeiru-f59ed85f--DivTopHeader {
+		background: var(--main-body-color);
+	}
+
+	[data-tux-color-scheme^="light"] .css-9uwm1s-f59ed85f--DivVideoFeedTab {
+		background: var(--main-body-color);
+	}
+
+    [data-tux-color-scheme^="light"] .css-h475iv-f59ed85f--DivCtaGuideWrapper {
+		background: var(--main-body-color);
+	}
+
+	[data-tux-color-scheme^="light"] .css-1hridqm-f59ed85f--DivCover {
+		background: linear-gradient(rgba(255, 255, 255, 0) 0%, var(--main-body-color) 100%);
+	}
+
+	[data-tux-color-scheme^="light"] .css-eurr8i-f59ed85f--FooterRoot, .css-vqyylw-f59ed85f--FooterFeedFooterSkeletonContainer {
+		background: var(--main-body-color);
+	}
+
+	[data-tux-color-scheme^="system"] ._TUXNavBar--withBackground {
+		background: var(--main-body-color) !important;
+	}
+
+	[data-tux-color-scheme^="system"] .background-color-UIPageGrouped1 {
+		background: var(--main-body-color) !important;
+	}
+
+	if (tux-colorPrimary) {
+		[data-tux-color-scheme^="light"] .css-1qy0z6z-DivFakeFollowButton, button.TUXButton--primary {
+			background: var(--tux-colorPrimary);
+			color: black;
+		}
+	}
+
 
 
 	/*
@@ -714,12 +817,12 @@
 		background: var(--dark-mode-background-light-color-level-two) !important;
 	}
 
-	.css-10hhkxy-DivInputAreaContainer {
+	.css-n45loi-5e6d46e3--DivInputAreaContainer {
 		border: 1px solid var(--tux-colorPrimary);
 	}
 
 	/* video page - bottom info */
-	.css-3lfoqn-DivDescriptionContentWrapper-StyledDetailContentWrapper {
+	.css-a1uu1h-5e6d46e3--DivDescriptionContentWrapper-5e6d46e3--StyledDetailContentWrapper {
 		background: rgba(255, 255, 255, 0.12)   
 	}
 
@@ -915,7 +1018,7 @@
 	}
 
 	if (paddedSoundSourceLinkInDescriptionBox) {
-		.epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
+		.css-71kmmi-5e6d46e3--StyledLink {
 			background: rgba(0, 0, 0, 0.09);
 			border-radius: 6px;
 			padding: 4px 10px;
@@ -927,14 +1030,8 @@
 			padding: 4px 10px;
 		}
 
-		[data-tux-color-scheme^="dark"] .css-blqru4-H4Link {
-			background: rgba(255, 255, 255, 0.09);
-			border-radius: 6px;
-			padding: 4px 10px;
-		}
-
 		if (bordersOnly) {
-			.epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
+			.css-71kmmi-5e6d46e3--StyledLink {
 				background: unset;
 				border: 1px solid rgba(0, 0, 0, 0.1);
 				border-radius: 6px;
@@ -946,23 +1043,12 @@
 				border: 1px solid rgba(255, 255, 255, 0.1);
 				border-radius: 6px;
 				padding: 4px 10px;
-    			}
-
-			[data-tux-color-scheme^="dark"] .css-blqru4-H4Link {
-				background: unset;
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				border-radius: 6px;
-				padding: 4px 10px;
-			}
+    		}
 		}
 	}
 
 	if (fixPaddedSoundSourceLinkInDescriptionBox) {
-		.epjbyn1.css-v80f7r-StyledLink-StyledLink.er1vbsz0 {
-			width: fit-content;
-		}
-
-		.css-blqru4-H4Link {
+		.css-71kmmi-5e6d46e3--StyledLink {
 			width: fit-content;
 		}
 	}
@@ -1010,12 +1096,7 @@
 			DARK MODE
 		*/
 		/* description box */
-		[data-tux-color-scheme^="dark"] .css-3lfoqn-DivDescriptionContentWrapper-StyledDetailContentWrapper {
-			background: var(--main-body-color);
-			border: 1px solid rgba(255, 255, 255, 0.12);
-		}
-
-		[data-tux-color-scheme^="dark"] .css-1u3jkat-DivDescriptionContentWrapper {
+		[data-tux-color-scheme^="dark"] .css-a1uu1h-5e6d46e3--DivDescriptionContentWrapper-5e6d46e3--StyledDetailContentWrapper {
 			background: var(--main-body-color);
 			border: 1px solid rgba(255, 255, 255, 0.12);
 		}
@@ -1102,6 +1183,16 @@
 	}
 
 	if (nonroundedThumbnails) {
+		.css-4jt2ug-5e6d46e3--BasePlayerContainer-5e6d46e3--DivVideoPlayerContainer, .css-kb4ju-5e6d46e3--DivContainer,
+		.css-4jt2ug-5e6d46e3--BasePlayerContainer-5e6d46e3--DivVideoPlayerContainer > div {
+			border-radius: 0px !important;
+		}
+        
+		/* not really a part of the tiktok.com player thumbnail, but this still gives the illusion of having a border radius */
+        .css-xbssbv-5e6d46e3--DivProgressBarContainer {
+			clip-path: unset;
+		}
+
 		.css-fj00f7-DivCoverContainer {
 			border-radius: 0px;
 		}
@@ -1110,11 +1201,16 @@
 			border-radius: 0px;
 		}
 
-		.css-x6f6za-DivContainer-StyledDivContainerV2 {
+		.css-x6f6za-DivContainer-StyledDivContainerV2,
+		.css-16cwaxc-5e6d46e3--DivContainer-5e6d46e3--StyledDivContainerV2,
+		.css-us4asz-0be0dc34--DivContainer-0be0dc34--StyledDivContainerV2 {
 			border-radius: 0px;
 		}
 
-		.css-15dmpca-BasePlayerContainer-DivVideoPlayerContainer {
+		.css-15dmpca-BasePlayerContainer-DivVideoPlayerContainer,
+		.css-1s9xgl8-5e6d46e3--DivPlayerContainer,
+		.css-1pq3ma5-0be0dc34--DivPlayerContainer,
+		 {
 			border-radius: 0px;
 		}
 
@@ -1146,79 +1242,24 @@
 		.css-1uqux2o-DivItemContainerV2, .css-8dx572-DivContainer-StyledDivContainerV2 {
 			border-radius: 0px !important;
 		}
-	}
 
-	if (hideFollowingAccountsSidebar) {
-		.css-labfmt-DivUserContainer {
-			display: none;
+		.css-1i4k9km-DivPlayerContainer, .css-s1cpa0-DivContainer-StyledDivContainerV2 {
+			border-radius: 0px !important;
 		}
-	}
 
-	if (hideForYouSidebar) {
-		a[data-e2e^="nav-foryou"] {
-			display: none;
-		}
-	}
-
-	if (hideExploreSidebar) {
-		a[data-e2e^="nav-explore"] {
-			display: none;
-		}
-	}
-
-	if (hideFollowingSidebar) {
-		a[data-e2e^="nav-following"] {
-			display: none;
-		}
-	}
-
-	if (hideFriendsSidebar) {
-		a[data-e2e^="nav-friends"] {
-			display: none;
-		}
-	}
-
-	if (hideUploadSidebar) {
-		a[data-e2e^="nav-upload"] {
-			display: none;
-		}
-	}
-
-	if (hideActivitySidebar) {
-		div > button[aria-label^="Activity"], div > button[aria-label^="アクティビティ"] {
-			display: none;
-		}
-	}
-
-	if (hideTikTokLiveSidebar) {
-		a[data-e2e^="nav-live"] {
-			display: none;
-		}
-	}
-
-	if (hideMessagesSidebar) {
-		a[data-e2e^="nav-messages"] {
-			display: none;
-		}
-	}
-
-	if (hideProfileSidebar) {
-		a[data-e2e^="nav-profile"] {
-			display: none;
-		}
-	}
-
-	/*
-		hide all navigation buttons except the more button
-	*/
-	if (hideForYouSidebar && hideExploreSidebar && hideFollowingSidebar && hideFriendsSidebar && hideUploadSidebar && hideActivitySidebar && hideTikTokLiveSidebar && hideMessagesSidebar && hideProfileSidebar) {
-		.css-5yxamm-DivMainNavContainer {
-			margin-top: -32px;
+		.css-1ba5yhh-5e6d46e3--DivCoverContainer {
+			border-radius: 0px;
 		}
 	}
 
 	if (hideAllTikTokNavLinks) {
-		.css-1rvr9ul-NavMainNavContainer, .css-1eo184-DivFooterContainer, .css-5yxamm-DivMainNavContainer {
+		.css-1uo8fiu-0be0dc34--DivMainNavContainer {
+			display: none;
+		}
+	}
+
+	if (hideFollowingAccountsSidebar) {
+		.css-1poor2r-0be0dc34--DivUserContainer {
 			display: none;
 		}
 	}
@@ -1299,21 +1340,25 @@
 	}
     
 	if (hideBottomPlayerControlElements) {
-		.css-1dmpd7c-DivVideoSwiperControlContainer {
-			visibility: hidden !important;
+		.css-1d7llwy-5e6d46e3--DivActionBarWrapper {
+			display: none;
 		}
 
-		.css-17w0x0b-DivSeekBarContainer {
-			visibility: hidden !important;
+		.css-1rm1mha-5e6d46e3--DivMoreMenuContainer {
+			display: none;
 		}
 
-		.css-1elr43g-DivActionBarWrapper {
-			visibility: hidden !important;
+		.css-1iid74b-5e6d46e3--DivVideoSwiperControlContainer, .css-pscx-5e6d46e3--DivVideoSwiperControlContainer {
+			display: none;
+		}
+
+		.css-v56omg-5e6d46e3--DivSeekBarProgress {
+			display: none;
 		}
 	}
 
 	if (hideSuggestedVideosAtRightSide) {
-		.css-1czmy9n-DivVideoList {
+		.css-1czmy9n-DivVideoList, .css-19k36hi-5e6d46e3--DivVideoList {
 			/* this is the default internal setting */
 			 visibility: hidden;
 
@@ -1409,6 +1454,11 @@
 			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
 		}
 
+		[data-tux-color-scheme^="light"] .css-1p2aikf-5e6d46e3--DivDrawerContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
 		[data-tux-color-scheme^="light"] .css-1wubcpo-UlContainer {
 			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
 			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
@@ -1429,6 +1479,11 @@
 		/* ===== DARK MODE ===== */
 		/* old layout - bottom form */
 		[data-tux-color-scheme^="dark"] .css-16196sa-UlContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-4rr31o-5e6d46e3--DivDrawerContainer {
 			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage);
 			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
 		}
@@ -1475,6 +1530,15 @@
 			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
 		}
 
+		[data-tux-color-scheme^="light"] .css-111x69g-DivDrawerContainer {
+			background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage) !important;
+			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
+		}
+
+		.css-1w5o2is, .css-1ai34r1 {
+			background: var(--main-body-color);
+		}
+
 		[data-tux-color-scheme^="dark"] .css-1x87i4d-DivDrawerContainer {
 		background: rgba(255, 255, 255, expOldAndNewLayout_translucentSearch_wpercentage) !important;
 			backdrop-filter: blur(expOldAndNewLayout_translucentSearch_blurlevel);
@@ -1496,12 +1560,12 @@
 	}
 
 	if (experimentalTransparentSearchContainer) {
-		[data-tux-color-scheme^="light"] .css-960d5u-FormElement {
+		[data-tux-color-scheme^="light"] .css-960d5u-FormElement, .css-18fn2ug-5e6d46e3--StyledTUXSearchButton.TUXButton.TUXButton, .css-1ehpvcz-5e6d46e3--StyledTUXSearchButton.TUXButton.TUXButton {
 			background: transparent;
 			border: 1px solid rgba(0, 0, 0, 0.1);
 		}
 
-		[data-tux-color-scheme^="dark"] .css-1x92qzh-FormElement {
+		[data-tux-color-scheme^="dark"] .css-1x92qzh-FormElement, .css-18fn2ug-5e6d46e3--StyledTUXSearchButton.TUXButton.TUXButton, .css-f2kxeo-5e6d46e3--StyledTUXSearchButton.TUXButton.TUXButton {
 			background: transparent;
 			border: 1px solid rgba(255, 255, 255, 0.1);
 		}
@@ -1545,7 +1609,10 @@
 	}
 
 	if (experimentalUncenterVideoContentProfile) {
-		.css-1ppreyt-DivShareLayoutBase-StyledShareLayoutV2 {
+		.css-1ppreyt-DivShareLayoutBase-StyledShareLayoutV2,
+		.css-y7530m-DivShareLayoutBase-StyledShareLayoutV2,
+		.css-668v76-5e6d46e3--DivShareLayoutBase-5e6d46e3--StyledShareLayoutV2,
+		.css-eb8u7l-0be0dc34--DivShareLayoutBase-0be0dc34--StyledShareLayoutV2 {
 			max-width: unset;
 		}
 	}
@@ -1561,7 +1628,7 @@
 			coins, download app, profile | container pill
 			replaces the ugly 0.8 transparent white color with a 0.1 black one
 		*/
-		.css-xq3sil-DivActionBarContainer {
+		.css-12o8exr-5e6d46e3--DivActionBarContainer {
 			background: var(--light-mode-background-dark-color-level-one);
 		}
 
@@ -1572,11 +1639,11 @@
 		}
 
 		/* searchbox background */
-		[data-tux-color-scheme^="light"] .css-1d3fmhu-StyledTUXSearchButton.TUXButton.TUXButton {
+		[data-tux-color-scheme^="light"] .css-udify9-5e6d46e3--StyledTUXSearchButton.TUXButton.TUXButton {
 			background: rgba(0, 0, 0, 0.05);
 		}
 
-		[data-tux-color-scheme^="light"] .css-1d3fmhu-StyledTUXSearchButton.TUXButton.TUXButton:hover {
+		[data-tux-color-scheme^="light"] .css-udify9-5e6d46e3--StyledTUXSearchButton.TUXButton.TUXButton:hover {
 			background: var(--light-mode-background-dark-color-level-one);
 		}
 
@@ -1594,6 +1661,18 @@
 		}
 
 		.css-1n2obys-DivFeedTabWrapper, .css-wj6kyd-DivFeedTabWrapper {
+			background: var(--main-body-color);
+		}
+
+		.css-shen3t-DivFeedTabWrapper {
+			background: var(--main-body-color);
+		}
+
+		.css-1srs86p-DivFeedTabWrapper {
+			background: var(--main-body-color);
+		}
+
+		.css-1d3w78y, .css-14q5yoy, .css-czbn5c {
 			background: var(--main-body-color);
 		}
 
@@ -1626,6 +1705,9 @@
 			background: var(--main-body-color);
 		}
 
+		.css-jlksbo-UserContainer {
+			background: var(--main-body-color);
+		}
 
 		/* ===== tiktok.com/tag/<tagname> page ===== */
 		[data-tux-color-scheme^="light"] .css-1n2sz82-DivShareLayoutBase-StyledShareLayoutV2 {
@@ -1651,6 +1733,14 @@
 
 			also, why the many gradients? so fucking funny
 		*/
+		.css-1yd0jk7-5e6d46e3--DivStyledTopInfoCardMask,
+		.css-1aqkrfe-5e6d46e3--DivVideoInfoCardContainer::before,
+		.css-akgpb3-5e6d46e3--DivCardScrollContainer,
+		.css-1aqkrfe-5e6d46e3--DivVideoInfoCardContainer::after,
+		.css-1401og-5e6d46e3--DivStyledBottomInfoCardMask, {
+			background: var(--main-body-color-light);
+		}
+
 		.css-ay8lx4-DivCardScrollContainer,
 		.css-og6awc-DivCardWrapper,
 		.css-1ukohjn-DivVideoInfoCardContainer::before,
@@ -1660,12 +1750,12 @@
 			background: var(--main-body-color-light);
 		}
 
-		.css-6sto0k-DivInfoCardArrow {
+		.css-6sto0k-DivInfoCardArrow, .css-p3joez-5e6d46e3--DivInfoCardArrow {
 			border-bottom-color: var(--main-body-color-light);
 		}
 
 		/* keyboard shortcuts */
-		.css-skgaxq-DivKeyboardShortcutContainer {
+		.css-skgaxq-DivKeyboardShortcutContainer, .css-1d497rd-5e6d46e3--DivKeyboardShortcutContainer {
 			background: var(--main-body-color-light);
 		}
 
@@ -1675,7 +1765,7 @@
 
 		/* =============== DARK MODE =============== */
 		/* ===== home page (just tiktok.com) ===== */
-		[data-tux-color-scheme^="dark"] .tiktok-9zb2bk-DivSideNavContainer, .tiktok-1pou19r-DivAnimationCover {
+		[data-tux-color-scheme^="dark"] .tiktok-9zb2bk-DivSideNavContainer, .tiktok-1pou19r-DivAnimationCover, .css-1whs392-DivSideNavContainer, .css-1d4ut9v-DivAnimationCover {
 			background: var(--main-body-color);
 		}
 
@@ -1689,7 +1779,8 @@
 			coins, download app, profile | container pill
 			replaces the ugly 0.8 transparent black color with a 0.1 white one
 		*/
-		[data-tux-color-scheme^="dark"] .css-bcj5ai-DivActionBarContainer {
+		[data-tux-color-scheme^="dark"] .css-jw2lbj-5e6d46e3--DivActionBarContainer,
+		[data-tux-color-scheme^="dark"] .css-xgqode-0be0dc34--DivActionBarContainer {
 			background: var(--dark-mode-background-light-color-level-one);
 		}
 
@@ -1802,12 +1893,17 @@
 		}
 
 		/* search box */
-		[data-tux-color-scheme^="dark"] .css-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton {
+		[data-tux-color-scheme^="dark"] .css-1cio32a-StyledTUXSearchButton.TUXButton.TUXButton,
+		[data-tux-color-scheme^="dark"] .css-rhf0v6-0be0dc34--StyledTUXSearchButton.TUXButton.TUXButton {
 			background: rgba(255, 255, 255, 0.15);
 		}
 
 		.css-1xuhhof-StyledTUXSearchButton.TUXButton.TUXButton {
 				background: rgba(255, 255, 255, 0.15);
+		}
+        
+		.css-6ttom8.TUXButton.TUXButton {
+				background: rgba(0, 0, 0, 0.05);
 		}
 
 		[data-tux-color-scheme^="dark"] .tiktok-1x87i4d-DivDrawerContainer,
@@ -1854,6 +1950,10 @@
 			background: var(--main-body-color);
 		}
 
+		.css-1me2sf9-DivSideNavContainer {
+			background: var(--main-body-color);
+		}
+
 		[data-tux-color-scheme^="dark"] .css-3kge87-DivShareLayoutBase-StyledShareLayoutV2 {
 			background: var(--main-body-color);
 		}
@@ -1875,7 +1975,11 @@
 		}
 
 		/* search box */
-		[data-tux-color-scheme^="dark"] .css-17anyqh-StyledTUXSearchButton.TUXButton.TUXButton {
+		[data-tux-color-scheme^="dark"] .css-17anyqh-StyledTUXSearchButton.TUXButton.TUXButton, .css-10j3soq-StyledTUXSearchButton.TUXButton.TUXButton {
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+		[data-tux-color-scheme^="dark"] .css-11csefp.TUXButton.TUXButton {
 			background: rgba(255, 255, 255, 0.15);
 		}
 
@@ -1898,6 +2002,14 @@
 
         .css-du7vid-BaseBodyContainer, .css-1e8aoaa-BaseBodyContainer {
 			background: var(--main-body-color);
+		}
+
+        .css-159fg5o-BaseBodyContainer {
+			background: var(--main-body-color);
+		}
+
+        .css-1wk2qve-DivKeyboardShortcutContainer, .css-qrtvk6-5e6d46e3--DivKeyboardShortcutContainer {
+			background: var(--main-body-color-light);
 		}
 
 		/*
