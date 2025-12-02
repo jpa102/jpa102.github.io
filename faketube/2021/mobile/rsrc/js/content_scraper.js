@@ -48,29 +48,27 @@ fetch(`https://www.youtube.com/watch?v=${global_data.v}&app=desktop`) // use the
 		}, 2260);
 
 		setTimeout(function() {
+			global_data.yt.viewCountFormatted = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.shortViewCount.simpleText; // moving at the top because it seems delayed?
+			global_data.yt.uploadedYearsAgo = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.relativeDateText.simpleText; // moving at the top because it seems delayed?
 			global_data.yt.commentCount = parseInt(ytInitialData.engagementPanels[0].engagementPanelSectionListRenderer.header.engagementPanelTitleHeaderRenderer.contextualInfo.runs[0].text);
 			global_data.yt.onlineProfilePicture = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.thumbnail.thumbnails[2].url;
 			global_data.yt.descriptionText = ytInitialPlayerResponse.videoDetails.shortDescription;
 			global_data.yt.subscriberCount = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.subscriberCountText.simpleText;
-			
+			global_data.yt.videoId = ytInitialPlayerResponse.videoDetails.videoId;
+			global_data.yt.viewCount = parseInt(ytInitialPlayerResponse.videoDetails.viewCount);
+
 			if (ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer == null) {
 				global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 			} else {
 				global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 			}
-			
+
 			if (ytInitialData.engagementPanels[5] == null) {
 				global_data.yt.uploadYear = ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 			} else {
 				global_data.yt.uploadYear = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 			}
-			
-			global_data.yt.uploadedYearsAgo = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.relativeDateText.simpleText;
-			global_data.yt.videoId = ytInitialPlayerResponse.videoDetails.videoId;
-			global_data.yt.viewCount = parseInt(ytInitialPlayerResponse.videoDetails.viewCount);
-			
-			global_data.yt.viewCountFormatted = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.shortViewCount.simpleText;
-		}, 2300);
+		}, 2367);
 	})
 .catch(error => {
 	console.error(`Failed to fetch html from https://www.youtube.com/watch?v=${global_data.v}&app=desktop`);
