@@ -19,12 +19,12 @@ setTimeout(function(){
 	document.querySelector("#yt-channel-profile-picture").src = global_data.yt.onlineProfilePicture; // the channel profile picture
 	document.querySelector("#yt-channel-name-link").href = global_data.yt.channelIdLink; // the link to the youtube channel
 	document.querySelector("#yt-channel-name-link").innerText = global_data.yt.channelName; // the name of the youtube channel
-	document.querySelector(".yt-channel-sub-count.gray-text").innerText = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.subscriberCountText.simpleText; // the subscriber counts, in your language
+	document.querySelector(".yt-channel-sub-count.gray-text").innerText = global_data.yt.subscriberCount; // the subscriber counts, in your language
 
 	document.querySelector("#subscribe-text-link").href = global_data.yt.channelSubConfirmLink;
 	document.querySelector("#subscribe-text-link").title = "Subscribe to " + global_data.yt.channelName + " (YouTube)";
 
-	document.querySelector("#comment-counts.gray-text").innerText = ytInitialData.engagementPanels[0].engagementPanelSectionListRenderer.header.engagementPanelTitleHeaderRenderer.contextualInfo.runs[0].text; // the comment counts
+	document.querySelector("#comment-counts.gray-text").innerText = global_data.yt.commentCount; // the comment counts
 
 	// at the description page
 	document.querySelector("#yt-channel-name-link-desc").href = global_data.yt.channelIdLink; // the link to the youtube channel
