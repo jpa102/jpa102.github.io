@@ -4,53 +4,24 @@
 		<title>FakeTube - Home</title>
 		<link rel="stylesheet" href="style.css">
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
-		<script id="theme-switcher-javascript">
-			function themeSwitcher(type) {
-				if (type == "light") {
-					if (document.querySelector("#dark-style-theme") != null) {
-						document.querySelector("#dark-style-theme").remove();
-					} else {
-						console.log("[error] there's no instance in the \<head\> tag yet");
-					}
-
-					return;
+		<meta name="theme-color" content="#36c8ff">
+		<meta name="robots" content="noindex,nofollow,noarchive">
+		<script>document.querySelector("html").setAttribute("data-theme-display", "light");</script>
+		<script id="theme-setter">
+			/*
+				automatically set the theme (system light or dark mode)
+				source: https://stackoverflow.com/a/60971231
+			*/
+			// Check to see if Media-Queries are supported
+			if (window.matchMedia) {
+				// Check if the dark-mode Media-Query matches
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					document.querySelector("html").setAttribute("data-theme-display", "dark");
+				} else {
+					document.querySelector("html").setAttribute("data-theme-display", "light");
 				}
-
-				if (type == "dark") {
-					document.querySelector("head").insertAdjacentHTML(
-						"beforeend",
-						`
-							<style id="dark-style-theme">
-								body {
-									background: navy;
-								}
-
-								#hey-where-did-you-get-that-body-from {
-									background: rgba(255, 255, 255, 0.2);
-								}
-
-								.h1-title {
-									color: white;
-									font-weight: 500;
-								}
-
-								.h1-title-border {
-									border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
-								}
-
-								.p-title, .p-text {
-									color: lightgray;
-								}
-
-								.button-styled-container {
-									color: var(--main-body-color);
-								}
-							</style>
-						`
-					);
-				}
-
-				console.log("[error] unknown type: " + type);
+			} else {
+				document.querySelector("html").setAttribute("data-theme-display", "light");
 			}
 		</script>
 	</head>
@@ -60,7 +31,7 @@
 				Welcome to FakeTube!
 			</h1>
 			<p class="p-title">
-				FakeTube is a site where you can watch YouTube videos in embedded form
+				FakeTube is a site where you can watch YouTube videos in <s>embedded</s> form
 			</p>
 			<p class="p-text">
 				Feel free to choose one of the options below, they have different designs
@@ -79,12 +50,10 @@
 			<h2 class="h1-title h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px;">
 				Mobile:
 			</h2>
-
 			<div class="links-container">
-				<a class="button-styled-container" class="button-styled-container" href="/faketube/2021/mobile/">2021 layout page</a>
-			</div>
-			<div class="links-container">
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2021/mobile/">mid 2021 layout page</a>
 				<a class="button-styled-container" class="button-styled-container" href="/faketube/2023/mobile/">2023 layout page</a>
+				<a class="button-styled-container" class="button-styled-container" href="/faketube/2025/mobile/">late 2025 layout page</a>
 			</div>
 			<h2 class="h1-title h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px;">
 				Suggested browser extensions:
@@ -95,9 +64,14 @@
 				<span><a class="button-styled-container" class="notranslate button-styled-container" href="https://chromewebstore.google.com/detail/sponsorblock-for-youtube/mnjggcdmjocbbbhaepdhchncahnbgone">SponsorBlock</a><span class="p-title"> - skip sponsorships in videos and more</span></span>
 			</div>
 			<p class="p-text h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px; margin-top: 16px;">
-				last updated at <code>2025年8月9日 18:28:27 utc+08:00</code> (singapore time)
+				in the future, FakeTube will utilize web scraping, which will make this more than just watching youtube videos in embedded form
+				<br>
+				<br>
+				the web scraping functionality is experimental and has <code>CORS</code> issues at the moment, so if you want to use it especially on mobile, install a browser with a capable extension functionality, and install this browser extension called "Allow CORS: Access-Control-Allow-Origin" <a href="https://chrome.google.com/webstore/detail/lhobafahddgcelffkeicbaginigeejlf">(the chrome version of it)</a>
+			</p>
+			<p class="p-text h1-title-border" style="border-top: 1px solid rgba(0, 0, 0, 0.2); padding-top: 12px; margin-top: 16px;">
+				last updated at <code>2025年12月3日 05:27:32 utc+08:00</code> (philippines time)
 			</p>
 		</div>
 	</body>
 </html>
-
