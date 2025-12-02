@@ -11,7 +11,7 @@ setTimeout(function(){
 	document.querySelector("#video-title-desc").innerText = global_data.yt.videoTitle; // at the description page
 
 	// including the code in injecting the description text because why not? :D
-	document.querySelector("#description-text").innerText = ytInitialPlayerResponse.videoDetails.shortDescription;
+	document.querySelector("#description-text").innerText = global_data.yt.descriptionText;
 
 	// view counts at the description page
 	document.querySelector("#total-view-counts-renderer").innerText = global_data.yt.viewCount.toLocaleString();
@@ -20,3 +20,4 @@ setTimeout(function(){
 
 	document.querySelector("#upload-date-title").innerText = global_data.yt.uploadMonthDay;
 }, __faketube_stvwsndte);
+
