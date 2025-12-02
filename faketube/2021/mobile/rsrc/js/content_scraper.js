@@ -35,17 +35,12 @@ fetch(`https://www.youtube.com/watch?v=${global_data.v}&app=desktop`) // use the
 		}, 2100);
 
 		setTimeout(function() {
-			document.querySelector("#ytInitialPlayerResponse").remove();
 			var _ytInitialData = ythtml.querySelectorAll("html > body > script")[scriptindex.html[1].tag].innerHTML;
 			setyid = document.createElement("script");
 			setyid.setAttribute("id", "ytInitialData");
 			setyid.innerHTML = _ytInitialData;
 			document.head.insertBefore(setyid, document.head.children[0]);
 		}, 2200);
-
-		setTimeout(function() {
-			document.querySelector("#ytInitialData").remove();
-		}, 2260);
 
 		setTimeout(function() {
 			global_data.yt.viewCountFormatted = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[0].videoPrimaryInfoRenderer.viewCount.videoViewCountRenderer.shortViewCount.simpleText; // moving at the top because it seems delayed?
@@ -110,3 +105,4 @@ fetch(`https://www.youtube.com/watch?v=${global_data.v}&app=desktop`) // use the
 .catch(error => {
 	console.error(`Failed to fetch html from https://www.youtube.com/watch?v=${global_data.v}&app=desktop`);
 })
+
