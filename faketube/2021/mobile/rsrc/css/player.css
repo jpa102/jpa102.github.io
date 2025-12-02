@@ -1,0 +1,592 @@
+/*
+	this made my head hurt trying to mimic the way YouTube handles it
+*/
+
+:root {
+	--main-font-family: "Google Sans";
+	--arial-font-family: "Arial";
+	--main-background-color: rgb(249, 249, 249);
+	--video-player-config: 820px;
+	--video-player-minimum-width: ;
+	--left-gradient-color: #d7d6d6;
+	--right-gradient-color: #00f3ff;
+	--light-mode-dark-color: rgba(0, 0, 0, 0.1);
+	--aspect-ratio-for-player: 16 / 9;
+	--topbar-padding-bottom-space: 48px;
+	--video-player-video-title-size: 1em;
+	--video-player-views-and-date-size: 0.77em;
+	--video-player-menu-buttons-gap-size: 2.44em;
+	--video-player-menu-buttons-text-size: 0.74em;
+	--video-player-comment-caption-size: 0.91em;
+	--video-player-margin-left: 14px;
+	--video-player-yt-channel-name: 0.96em;
+	--video-player-yt-channel-sub-count: 0.8em;
+	--thumbnail-loading-skeleton: rgba(0, 0, 0, 0.05);
+	--call-to-action-color: #3ea6ff;
+	--subscribe-text-color: red;
+}
+
+.touch-by-touch {
+	transition: .16s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.touch-by-touch:active {
+	background-color: rgb(0, 0, 0, 0.1);
+	transition: .16s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+/*
+	media css
+
+	my attempt at making this page
+	"responsive" for the first time
+
+	it's gonna suck, but at least i tried
+*/
+@media (min-width:312px) and (min-width:442px) {
+	#menu {
+		justify-content: center !important;
+	}
+}
+
+@media (min-width:312px) and (min-width:675px) {
+	#menu {
+		justify-content: center !important;
+	}
+}
+
+@media (width:312px) and (width:675px) {
+	#video-metadata-and-yt-channel {
+		width: 312px !important;
+	}
+}
+
+/* hide the scrollbar (webkit based browsers) */
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, and Opera */
+}
+
+/* adjust the text size based on the specified language */
+html[lang='ja-JP'] #yt-channel-name-link {
+	font-size: 0.82rem;
+}
+
+html[lang='ja-JP'] .yt-channel-sub-count gray-text {
+	font-size: 0.77em;
+}
+
+html[lang='ja-JP'] .yt-channel-sub-count {
+	font-size: 0.7em;
+}
+
+html[lang='ja-JP'] #subscribe-text-link {
+	font-size: 0.9em;
+}
+
+.gray-text {
+	color: rgb(85, 85, 85) !important;
+}
+
+/*
+	++++++++++++++++ watch page and recommendations ++++++++++++++++
+*/
+#description-section-container {
+	background: black;
+}
+
+#description-section {
+	background: var(--main-background-color);
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+}
+
+#watch-page-and-recommendations-container {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+#recommendations-container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.margin-top-videos-skeleton {
+	margin-top: var(--video-player-margin-left);
+}
+
+.loading-video-skeleton {
+	display: flex;
+	flex-direction: column;
+	margin: 16px var(--video-player-margin-left) 0px;
+}
+
+.loading-video-thumbnails {
+	margin-bottom: 14px;
+	background: var(--thumbnail-loading-skeleton);
+	aspect-ratio: var(--aspect-ratio-for-player);
+}
+
+.author-image-and-video-details-skeleton {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.img-author-skeleton {
+	background: var(--thumbnail-loading-skeleton);
+	width: 32px;
+	height: 32px;
+	border-radius: 20px;
+}
+
+.video-details-skeleton {
+	padding-left: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.video-title-skeleton {
+	width: 169% !important;
+}
+
+.video-title-skeleton, .video-author-skeleton {
+	background: var(--thumbnail-loading-skeleton);
+	width: 169px;
+	height: 13px;
+	border-radius: 2px;
+}
+
+.shorts-skeleton-container-carousel {
+	display: flex;
+	margin: 16px var(--video-player-margin-left) 0px;
+	overflow-x: scroll;
+}
+
+.shorts-skeleton {
+	background: var(--thumbnail-loading-skeleton);
+	margin-right: var(--video-player-margin-left);
+	aspect-ratio: 9 / 16;
+	height: 296px;
+}
+
+/*
+	---------------- watch page and recommendations ----------------
+*/
+
+body {
+	margin: unset;
+	background: var(--main-background-color);
+}
+
+#topbar {
+	background: linear-gradient(to right, var(--left-gradient-color) , var(--right-gradient-color));
+	padding-bottom: var(--topbar-padding-bottom-space);
+}
+
+iframe {
+	width: -webkit-fill-available;
+	width: -moz-available;
+	aspect-ratio: var(--aspect-ratio-for-player);
+}
+
+#video.title, #video-title-failed.video-title-failed-to-load,
+#transcript-text-header, #more-from-author-text-header {
+	font-size: var(--video-player-video-title-size);
+	font-family: var(--arial-font-family);
+	margin: 14px 0px 0px var(--video-player-margin-left);
+	font-weight: 500;
+}
+
+#video-metadata.video-metadata-renderer, #failed-to-load-views-and-date,
+#follow-transcript-text {
+	font-family: var(--arial-font-family);
+	font-size: var(--video-player-views-and-date-size);
+	margin: 6px 16px 6px var(--video-player-margin-left);
+}
+
+#video-metadata-info {
+	text-align: right;
+	margin: 0px 20px 16px 20px;
+}
+
+#video-metadata-and-yt-channel {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#yt-channel-container {
+	margin: 12px 0px 12px var(--video-player-margin-left);
+}
+
+#yt-channel {
+	display: flex;
+	align-items: center;
+}
+
+#yt-channel-name-link {
+	font-family: var(--main-font-family);
+	font-size: var(--video-player-yt-channel-name);
+	text-decoration: none;
+	color: black;
+}
+
+#yt-channel-name-renderer {
+	display: flex;
+	flex-direction: column;
+}
+
+#yt-channel-name-renderer, #no-yt-channel-name-renderer, #comment-entrypoint {
+	padding-left: 12px;
+	width: -webkit-fill-available;
+	width: -moz-available;
+}
+
+#yt-channel-profile-picture, #comment-section-profile-picture {
+	width: 38px;
+	height: 38px;
+	border-radius: 40px;
+}
+
+#comment-section-profile-picture {
+	width: 29px;
+	height: 29px;
+}
+
+.yt-channel-sub-count {
+	margin: unset;
+	font-family: var(--main-font-family);
+	font-size: var(--video-player-yt-channel-sub-count);
+	text-decoration: none;
+	color: black;
+}
+
+#subscribe-text-container {
+	margin-right: var(--video-player-margin-left); /* despite being for left margin, it can be used for right margin as well */
+}
+
+#subscribe-text-link {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: var(--subscribe-text-color);
+	width: fit-content;
+	font-family: var(--main-font-family);
+}
+
+#comment-section {
+	font-family: var(--main-font-family);
+	padding: 0px var(--video-player-margin-left) 16px var(--video-player-margin-left);
+}
+
+#comment-caption-and-counts-container, #account-picture-and-comment-entrypoint {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+#comment-caption-and-counts-container > #comment-caption-and-counts {
+	display: flex;
+}
+
+#comment-caption-and-counts-container {
+	justify-content: space-between;
+}
+
+#comment-caption, #comment-counts {
+	font-size: var(--video-player-comment-caption-size);
+	margin: 0.8em 0em;
+}
+
+#comment-field {
+	border: 1px solid transparent;
+	background: var(--light-mode-dark-color);
+	/* background: transparent; */
+	padding: 7px 9px;
+	border-radius: 3px;
+	width: -webkit-fill-available;
+	width: -moz-available;
+}
+
+#description-caption-and-exit-button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#yt-channel-failed-to-load {
+	display: flex;
+	align-items: center;
+}
+
+#no-yt-channel-image {
+	width: 44px;
+	height: 37px;
+	border-radius: 40px;
+	background: lightgray;
+}
+
+#all-buttons-container {
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--video-player-menu-buttons-gap-size);
+}
+
+#menu {
+	display: flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	justify-content: center;
+	-webkit-box-pack: start;
+	-ma-overflow-style: none;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	justify-content: start;
+	white-space: nowrap;
+	padding: 8px 32.5px;
+	scrollbar-width: none;
+}
+
+.menu-buttons-actions {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	/* margin: 0px 18px; */
+}
+
+.menu-buttons {
+	padding: 5px 5px;
+	border: 1px solid rgb(0 0 0 / 0%);
+	border-radius: 20px;
+	background: none;
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	/* margin-bottom: 3px; */
+}
+
+.menu-buttons:hover {
+	cursor: pointer;
+}
+
+.menu-buttons:active {
+	border: 1px solid gray;
+	background-color: rgb(206, 206, 206);
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.button-icons {
+	margin-bottom: 6px;
+}
+
+.inner-button-icons {
+	width: 26px;
+	height: 26px;
+}
+
+.menu-buttons-text {
+	font-size: var(--video-player-menu-buttons-text-size);
+	color: #000;
+	font-family: Arial, sans-serif;
+	text-transform: capitalize;
+	min-width: 35px;
+	display: flex;
+	justify-content: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#like-button, #dislike-button {
+	background: none;
+	border: 1px solid transparent;
+}
+
+#like-button:hover, #dislike-button:hover {
+	cursor: pointer;
+}
+
+#like-button:active, #dislike-button:active {
+	border: 1px solid gray;
+	background-color: rgb(206, 206, 206);
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+#no-yt-channel-name {
+	margin: unset;
+	font-size: var(--video-player-yt-channel-name);
+	font-family: var(--main-font-family);
+}
+
+p.vote-count {
+	margin: unset;
+}
+
+#video-title-date-and-expand-description-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#video-info-and-author-container {
+	margin: 14px 14px 0px 14px;
+}
+
+#video-title-desc {
+	margin-bottom: 8px;
+}
+
+#yt-img-and-channel-name-desc {
+	display: flex;
+	align-items: center;
+}
+
+#yt-channel-profile-picture-desc {
+	width: 24px;
+	height: 24px;
+	border-radius: 20px;
+	margin-right: 8px;
+}
+
+#yt-channel-name-link-desc {
+	text-decoration: none;
+	color: black;
+	font-size: 14px;
+}
+
+.grouped-items-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 24px 0px 16px;
+	align-items: center;
+}
+
+.grouped-text-renderer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-weight: 600;
+	font-size: 14px;
+	width: -webkit-fill-available;
+}
+
+.grouped-text-renderer-title {
+	font-weight: 500;
+	font-size: 11px;
+}
+
+#channel-buttons-container {
+	display: flex;
+	margin: 6px 14px;
+	gap: 6px;
+}
+
+.transparent-button-with-border {
+	display: flex;
+	align-items: center;
+	padding: 10px 14px;
+	background: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 2px;
+	text-transform: uppercase;
+	justify-content: center;
+}
+
+a.transparent-button-with-border {
+	color: unset;
+	text-decoration: unset;
+	padding: 6px 14px;
+	width: -webkit-fill-available;
+	width: -moz-available;
+}
+
+a.transparent-button-with-border > span {
+	text-transform: uppercase;
+}
+
+.engagement-panel-drag-line-margin-top {
+	padding-bottom: 8px;
+}
+
+.engagement-panel-drag-line {
+	background: rgba(15, 15, 15, 0.15); /* originally #0f0f0f */
+	border-radius: 4px;
+	height: 4px;
+	margin: 0 auto;
+	width: 40px;
+}
+
+#transcript-container, #more-from-author-container {
+	display: flex;
+	flex-direction: column;
+	margin: 0px 4px;
+}
+
+#show-transcript-button {
+	border-color: var(--call-to-action-color);
+	color: var(--call-to-action-color);
+	margin: 14px;
+}
+
+#description-title {
+	margin-left: var(--video-player-margin-left) !important;
+	font-size: 20px;
+	margin: 0.5em 0em;
+}
+
+#description-text {
+	margin: 20px 14px;
+	white-space: pre-wrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 14px;
+}
+
+#description.content {
+	font-family: var(--main-font-family);
+}
+
+#expand-description-container > #display-secondary-description-button {
+	margin-top: 8px;
+}
+
+#display-secondary-description-button,
+#hide-secondary-description-button {
+	padding: 6px;
+	background: transparent;
+	border: 1px solid transparent;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+#display-sec-desc-button-icon,
+#hide-sec-desc-button-icon {
+	width: 24px;
+	height: 24px;
+}
+
+#border-top-metadata {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	/* margin: 4px 0px 4px 0px; */
+}
+
+#border-bottom-metadata {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	/* margin: 4px 0px 4px 0px; */
+}
+
+#thick-border {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+}
+
+.nullo {
+	padding: 32px 0px 32px 0px;
+}
