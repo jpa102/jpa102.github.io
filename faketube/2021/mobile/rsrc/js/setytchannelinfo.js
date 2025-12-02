@@ -16,7 +16,7 @@ if (http.status == 0) {
 // i have no idea why i have to set up setTimeout every fucking time
 setTimeout(function(){
 	// set up the channel with proper data
-	document.querySelector("#yt-channel-profile-picture").src = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.thumbnail.thumbnails[2].url; // the channel profile picture
+	document.querySelector("#yt-channel-profile-picture").src = global_data.yt.onlineProfilePicture; // the channel profile picture
 	document.querySelector("#yt-channel-name-link").href = global_data.yt.channelIdLink; // the link to the youtube channel
 	document.querySelector("#yt-channel-name-link").innerText = global_data.yt.channelName; // the name of the youtube channel
 	document.querySelector(".yt-channel-sub-count.gray-text").innerText = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.subscriberCountText.simpleText; // the subscriber counts, in your language
@@ -29,7 +29,7 @@ setTimeout(function(){
 	// at the description page
 	document.querySelector("#yt-channel-name-link-desc").href = global_data.yt.channelIdLink; // the link to the youtube channel
 	document.querySelector("#yt-channel-name-link-desc").innerText = global_data.yt.channelName; // the name of the youtube channel
-	document.querySelector("#yt-channel-profile-picture-desc").src = ytInitialData.contents.twoColumnWatchNextResults.results.results.contents[1].videoSecondaryInfoRenderer.owner.videoOwnerRenderer.thumbnail.thumbnails[2].url; // the channel profile picture
+	document.querySelector("#yt-channel-profile-picture-desc").src = global_data.yt.onlineProfilePicture; // the channel profile picture
 	document.querySelector("#channel-name-header-text-renderer").innerText = global_data.yt.channelName; // the name of the youtube channel
 	document.querySelector("#videos-button").href = global_data.yt.channelIdLink + "/videos";
 	document.querySelector("#about-button").href = global_data.yt.channelIdLink + "/about";
