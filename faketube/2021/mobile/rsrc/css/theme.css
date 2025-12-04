@@ -1,0 +1,214 @@
+/*
+	theme.css
+
+	migrating css code from theme.js, as it's hard to maintain it
+	on a javascript file than when it's inside a css file instead
+*/
+
+html[data-theme-display='blackhole'] {
+	--main-background-color: black;
+	--white-color: white;
+	--gray-color: #adadad;
+}
+
+html[data-theme-display='darkmode'] {
+	--main-background-color: #0f0f0f;
+	--white-color: white;
+	--gray-color: #adadad;
+}
+
+html[data-theme-display='darkerdarkmode'] {
+	--main-background-color: #212121;
+	--white-color: white;
+	--gray-color: #adadad;
+}
+
+
+
+/* share the same css selectors */
+html[data-theme-display='blackhole'] .touch-by-touch:active,
+html[data-theme-display='darkmode'] .touch-by-touch:active,
+html[data-theme-display='darkerdarkmode'] .touch-by-touch:active {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme-display='blackhole'] .themed-borders,
+html[data-theme-display='darkmode'] .themed-borders,
+html[data-theme-display='darkerdarkmode'] .themed-borders {
+	border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html[data-theme-display='blackhole'] .engagement-panel-drag-line,
+html[data-theme-display='darkmode'] .engagement-panel-drag-line,
+html[data-theme-display='darkerdarkmode'] .engagement-panel-drag-line {
+	background: rgba(255, 255, 255, 0.15);
+}
+
+html[data-theme-display='blackhole'] .general-skeleton,
+html[data-theme-display='darkmode'] .general-skeleton,
+html[data-theme-display='darkerdarkmode'] .general-skeleton {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+body {
+	background: var(--main-background-color) !important;
+}
+
+#topbar {
+	background: var(--main-bankground-color) !important;
+	border-bottom: 1px solid rgb(48, 48, 48);
+}
+
+#app-title-text {
+	color: var(--white-color);
+}
+
+.sidenav {
+	background: #161616;
+}
+
+.sidenav a:hover {
+	background: #262626;
+	color: var(--gray-color);
+}
+
+.sidenav a:active {
+	background: rgba(30, 124, 255, 0.15) !important;
+	color: dodgerblue;
+}
+
+#comment-expand-container, #videos-icon > div > svg, #about-icon > div > svg {
+	fill: var(--white-color);
+}
+
+#video-metadata.video-metadata-renderer, #follow-transcript-text {
+	color: var(--gray-color);
+}
+
+#video.title, #transcript-text-header, #more-from-author-text-header {
+	font-weight: 500;
+	color: var(--white-color);
+}
+
+#statistics {
+	color: var(--white-color);
+}
+
+.vote-count {
+	color: var(--gray-color);
+}
+
+#video-average-rating {
+	color: var(--gray-color);
+}
+
+#yt-channel-name-link {
+	color: var(--white-color);
+}
+
+a.yt-channel-sub-count {
+	color: var(--gray-color);
+}
+
+html[data-theme-display='blackhole'] #subscribe-text-link,
+html[data-theme-display='darkmode'] #subscribe-text-link,
+html[data-theme-display='darkerdarkmode'] #subscribe-text-link {
+	color: rgb(255, 84, 84);
+}
+
+html[data-theme-display='blackhole'] #comment-field,
+html[data-theme-display='darkmode'] #comment-field,
+html[data-theme-display='darkerdarkmode'] #comment-field {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme-display='blackhole'] #show-transcript-button,
+html[data-theme-display='darkmode'] #show-transcript-button,
+html[data-theme-display='darkerdarkmode'] #show-transcript-button {
+	border-color: var(--call-to-action-color-dark);
+	color: var(--call-to-action-color-dark);
+}
+
+.menu-buttons-text {
+	color: var(--white-color);
+}
+
+.menu-buttons:active {
+	border: 1px solid rgb(64, 64, 64) !important;
+	background-color: rgb(47, 47, 47) !important;
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+#like-button:active {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+#dislike-button:active {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.menu-buttons:active {
+	background-color: rgba(255, 255, 255, 0.3);
+	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+#display-sec-desc-button-icon,
+#hide-sec-desc-button-icon {
+	fill: var(--white-color);
+}
+
+#description-title {
+	color: var(--white-color);
+}
+
+#description-text {
+	color: var(--gray-color);
+}
+
+#comment-caption {
+	color: var(--white-color);
+}
+
+#comment-counts {
+	color: var(--gray-color);
+}
+
+input {
+	color: var(--white-color);
+}
+
+#video-title-desc {
+	color: var(--white-color);
+	font-weight: 500;
+}
+
+#yt-channel-name-link-desc {
+	color: var(--white-color);
+}
+
+#video-stats-desc, #ryd-data-estimated-container {
+	color: var(--white-color);
+	font-weight: 500 !important;
+}
+
+#more-button {
+	color: var(--white-color);
+}
+
+#thick-border {
+	border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme-display='blackhole'] .transparent-button-with-border,
+html[data-theme-display='darkmode'] .transparent-button-with-border,
+html[data-theme-display='darkerdarkmode'] .transparent-button-with-border {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loading-video-thumbnails,
+.img-author-skeleton,
+.video-title-skeleton,
+.video-author-skeleton,
+.shorts-skeleton {
+	background: rgba(255, 255, 255, 0.1);
+}
