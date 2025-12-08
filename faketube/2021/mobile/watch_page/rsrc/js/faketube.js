@@ -30,7 +30,7 @@ const faketube = {
 			display_dislike_pressed_popup: false, // display a popup every time you press the dislike button
 			forced_country_code_and_language: "", // input a country code and language (example: ja-JP for japanese - japan)
 			hide_public_dislike_counts_to_protect_creators: false, // don't display the dislike counts in the dislike button
-			match_older_15_xx_xx_version: true, // inject and style the action bar buttons from 15.xx.xx versions of youtube app
+			match_older_15_xx_xx_version: false, // inject and style the action bar buttons from 15.xx.xx versions of youtube app
 			match_older_16_xx_xx_version: false, // match the look of older 16.xx.xx versions
 			return_youtube_dislike_api: {
 				enable_real_time_data: false, // make the ryd data displayed on the page refresh itself
@@ -108,3 +108,4 @@ com = {
 		}
 	}
 }
+
