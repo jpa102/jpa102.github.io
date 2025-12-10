@@ -1,0 +1,322 @@
+/*
+	this made my head hurt trying to mimic the way YouTube handles it
+*/
+
+:root {
+	--main-font-family: "Google Sans";
+	--arial-font-family: "Arial";
+	--main-background-color: rgb(249, 249, 249);
+	--subpage-background-color: black;
+	--video-player-config: 820px;
+	--video-player-minimum-width: ;
+	--left-gradient-color: #d7d6d6;
+	--right-gradient-color: #00f3ff;
+	--light-mode-dark-color: rgba(0, 0, 0, 0.1);
+	--aspect-ratio-for-player: 16 / 9;
+	--topbar-padding-bottom-space: 48px;
+	--video-player-video-title-size: 1em;
+	--video-player-views-and-date-size: 0.77em;
+	--video-player-menu-buttons-gap-size: 0.5rem;
+	--video-player-menu-buttons-text-size: 0.75rem;
+	--video-player-comment-caption-size: 0.8em;
+	--video-player-margin-left: 14px;
+	--video-player-yt-channel-name: 0.96em;
+	--video-player-yt-channel-sub-count: 0.8em;
+	--thumbnail-loading-skeleton: rgba(0, 0, 0, 0.05);
+	--call-to-action-color-dark: #3ea6ff;
+	--call-to-action-color-light: #065fd4;
+	--subscribe-text-color: red;
+	--inner-button-icons-size: 1.5rem;
+}
+
+/*
+	media css
+
+	my attempt at making this page
+	"responsive" for the first time
+
+	it's gonna suck, but at least i tried
+*/
+@media (min-width:312px) and (min-width:442px) {
+	#menu {
+		justify-content: center !important;
+	}
+}
+
+@media (min-width:312px) and (min-width:850px) {
+	#menu {
+		justify-content: revert !important;
+	}
+}
+
+@media (width:312px) and (width:675px) {
+	#video-metadata-and-yt-channel {
+		width: 312px !important;
+	}
+}
+
+@media (orientation: portrait) {
+	#potential-landscape-or-tablet-layout {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media (orientation: landscape) {
+	#potential-landscape-or-tablet-layout {
+		width: 60%;
+		display: flex;
+		flex-direction: row;
+	}
+
+	iframe#yt-video-player {
+		width: 60%;
+	}
+
+	#metadata-and-recommendations-page > #video-metadata-info-and-recommendations-container > .recommendations-page {
+		display: none;
+	}
+
+	#potential-landscape-or-tablet-layout > .recommendations-page {
+		display: block;
+	}
+}
+
+/* hide the scrollbar (webkit based browsers) */
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, and Opera */
+}
+
+/* adjust the text size based on the specified language */
+html[lang='ja-JP'] #yt-channel-name-link {
+	font-size: 0.82rem;
+}
+
+html[lang='ja-JP'] .yt-channel-sub-count gray-text {
+	font-size: 0.77em;
+}
+
+html[lang='ja-JP'] .yt-channel-sub-count {
+	font-size: 0.7em;
+}
+
+html[lang='ja-JP'] #subscribe-text-link {
+	font-size: 0.9em;
+}
+
+.gray-text {
+	color: rgb(85, 85, 85) !important;
+}
+
+/*
+	++++++++++++++++ watch page and recommendations ++++++++++++++++
+*/
+#metadata-page-and-recommendations-container {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.recommendations-container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+/*
+	---------------- watch page and recommendations ----------------
+*/
+
+body {
+	margin: unset;
+	background: var(--main-background-color);
+}
+
+#topbar {
+	background: linear-gradient(to right, var(--left-gradient-color) , var(--right-gradient-color));
+	padding-bottom: var(--topbar-padding-bottom-space);
+}
+
+iframe#yt-video-player {
+	position: fixed;
+	z-index: 1;
+}
+
+#yt-video-player, .dummy-video-player {
+	width: -webkit-fill-available;
+	width: -moz-available;
+	aspect-ratio: var(--aspect-ratio-for-player);
+}
+
+#video.title, #video-title-failed.video-title-failed-to-load,
+#transcript-text-header, #more-from-author-text-header {
+	font-size: var(--video-player-video-title-size);
+	font-family: var(--arial-font-family);
+	margin: 20px 0px 0px var(--video-player-margin-left);
+	font-weight: 500;
+}
+
+#video-metadata.video-metadata-renderer, #failed-to-load-views-and-date,
+#follow-transcript-text {
+	font-family: var(--arial-font-family);
+	font-size: var(--video-player-views-and-date-size);
+	margin: 6px 16px 3px var(--video-player-margin-left);
+	color: #6a6a6a;
+}
+
+#video-metadata-info {
+	text-align: right;
+	margin: 0px 20px 16px 20px;
+}
+
+#video-metadata-and-yt-channel {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#yt-channel-container {
+	margin: 12px 0px 12px var(--video-player-margin-left);
+}
+
+#yt-channel {
+	display: flex;
+	align-items: center;
+}
+
+#yt-channel-name-link {
+	font-family: var(--main-font-family);
+	font-size: var(--video-player-yt-channel-name);
+	text-decoration: none;
+}
+
+#yt-channel-name-renderer {
+	display: flex;
+	flex-direction: column;
+}
+
+#yt-channel-name-renderer, #no-yt-channel-name-renderer, #comment-entrypoint {
+	padding-left: 12px;
+	width: -webkit-fill-available;
+	width: -moz-available;
+}
+
+#yt-channel-profile-picture, #comment-section-profile-picture {
+	width: 34px;
+	height: 34px;
+	border-radius: 40px;
+}
+
+#comment-section-profile-picture {
+	width: 24px;
+	height: 24px;
+}
+
+.yt-channel-sub-count {
+	margin: unset;
+	font-family: var(--main-font-family);
+	font-size: var(--video-player-yt-channel-sub-count);
+	text-decoration: none;
+	color: black;
+}
+
+#subscribe-text-container {
+	margin-right: var(--video-player-margin-left); /* despite being for left margin, it can be used for right margin as well */
+}
+
+#subscribe-text-link {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: var(--subscribe-text-color);
+	width: fit-content;
+	font-family: var(--main-font-family);
+}
+
+#comment-section {
+	font-family: var(--main-font-family);
+	padding: 0px var(--video-player-margin-left) 16px var(--video-player-margin-left);
+}
+
+#comment-caption-and-counts-container, #account-picture-and-comment-entrypoint {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+
+#comment-caption-and-counts-container > #comment-caption-and-counts {
+	display: flex;
+	align-items: center;
+}
+
+#comment-caption-and-counts-container {
+	justify-content: space-between;
+}
+
+#comment-caption, #comment-counts {
+	font-size: var(--video-player-comment-caption-size);
+	margin: 0.8em 0em;
+}
+
+#yt-channel-failed-to-load {
+	display: flex;
+	align-items: center;
+}
+
+#no-yt-channel-image {
+	width: 44px;
+	height: 37px;
+	border-radius: 40px;
+	background: lightgray;
+}
+
+#no-yt-channel-name {
+	margin: unset;
+	font-size: var(--video-player-yt-channel-name);
+	font-family: var(--main-font-family);
+}
+
+p.vote-count {
+	margin: unset;
+}
+
+#video-info-and-author-container {
+	margin: 14px 14px 0px 14px;
+}
+
+#video-title-desc {
+	margin-bottom: 8px;
+}
+
+#yt-img-and-channel-name-desc {
+	display: flex;
+	align-items: center;
+}
+
+#yt-channel-profile-picture-desc {
+	width: 24px;
+	height: 24px;
+	border-radius: 20px;
+	margin-right: 8px;
+}
+
+#yt-channel-name-link-desc {
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.subpage-title {
+	margin-left: 18px !important;
+	font-size: 20px;
+	margin: 0.6rem 0rem;
+}
+
+.content {
+	font-family: var(--main-font-family);
+}
