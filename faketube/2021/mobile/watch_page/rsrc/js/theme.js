@@ -17,7 +17,7 @@
 if (window.matchMedia) {
 	// Check if the dark-mode Media-Query matches
 	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		document.querySelector("html").setAttribute("data-theme-display", "dark");
+		document.querySelector("html").setAttribute("data-theme-display", "darkmode");
 	} else {
 		document.querySelector("html").setAttribute("data-theme-display", "light");
 	}
@@ -79,3 +79,4 @@ display = {
 function changeThemeDisplay(colorOption) {
 	console.log(`please refer to the new display.theme option as this has been reworked`);
 }
+
