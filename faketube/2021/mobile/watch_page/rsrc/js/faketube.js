@@ -1,4 +1,4 @@
-﻿/*
+/*
 	faketube.js
 	
 	a file where you can freely configure it at devtools (breakpoint)
@@ -107,4 +107,37 @@ var com = {
 			}
 		}
 	}
+}
+
+function localStorage_storeVideoId(videoId) {
+	if (videoId == "" || videoId == undefined || videoId == null) {
+		console.log(`there's no value provided\nvideoId: ${videoId}`);
+		return;
+	}
+
+	if (videoId.length < 11 || videoId.length > 11) {
+		console.log(`the video id provided is not exactly 11 characters\nlength: ${videoId.length}`);
+		return;
+	}
+
+	// ===== the main execution part =====
+
+	// check if the videoids key doesn't exist yet, then create it
+	if (localStorage.videoids === undefined) {
+		localStorage.setItem("videoids", JSON.stringify([]));
+	}
+
+
+	// perform a check if the video id is already inside the array to avoid duplicates
+	let v = JSON.parse(localStorage.videoids);
+
+	for (let i = 0; i < v.length; i++) {
+		if (v[i].includes(videoId) == true) {
+			return; // terminating because the video id is already present in the array
+		}
+	}
+
+	// actually store a video id in the array
+	v.push(videoId);
+	localStorage.setItem("videoids", JSON.stringify(v));
 }
