@@ -1,4 +1,4 @@
-﻿// globaldata_online.js
+// globaldata_online.js
 // this file contains code that requires internet connection
 
 //	INTERNAL VARIABLES
@@ -158,15 +158,17 @@ while (global_data.v.length > 11) {
 	getVideoIdFromUser();
 }
 
-if (global_data.v == null) {
+if (global_data.v == null || global_data.v == undefined || global_data.v == "") {
 	localStorage.setItem("lastVideoId", "aQvGIIdgFDM"); // store the video id
 	global_data.yt.videoId = localStorage.getItem("lastVideoId"); // store the video id
 	global_data.v = localStorage.getItem("lastVideoId"); // set the video id to "Video Not Available" by YouTube Viewers
+	localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
 }
 
 if (global_data.v != null) {
 	localStorage.setItem("lastVideoId", global_data.v); // store the video id
 	global_data.yt.videoId = global_data.v; // store the video id
+	localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
 }
 
 
@@ -273,6 +275,7 @@ if (http.status == 400) {
 }
 
 
+
 // !!! THIS IS A DEPRECATED CODE !!!
 // test the url for noembed
 // i got a reson to keep using noembed: to get non auto-translated video titles
@@ -339,4 +342,3 @@ if (faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching == true) {
 		global_data.yt.channelSubConfirmLink = "https://jpa102.github.com/faketube/2021/undefined/?sub_confirmation=1";
 	}
 }
-
