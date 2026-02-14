@@ -1,4 +1,4 @@
-﻿/*
+/*
 	operations.js
 	
 	this module contains code that makes the page interactive
@@ -395,6 +395,14 @@ function estimateLikeCountFromRYD() {
 }
 
 class onCreate {
+	static commentsSection() {
+		// save the last x position before hiding
+		lastYPos = window.scrollY;
+		
+		document.querySelector("#video-metadata-info-and-recommendations-container").hidden = true;
+		document.querySelector("#comments-section-container").hidden = false;
+	}
+
 	static secondaryDescription() {
 		// save the last x position before hiding
 		lastYPos = window.scrollY;
@@ -415,6 +423,11 @@ class onCreate {
 }
 
 class onDestroy {
+	static commentsSection() {
+		document.querySelector("#video-metadata-info-and-recommendations-container").hidden = false;
+		document.querySelector("#comments-section-container").hidden = true;
+	}
+
 	static secondaryDescription() {
 		document.querySelector("#video-metadata-info-and-recommendations-container").hidden = false;
 		document.querySelector("#description-section-container").hidden = true;
@@ -808,7 +821,6 @@ function __loadexpflags() {
 					#comment-section {
 						background: rgba(0, 0, 0, 0.1);
 						border-radius: 12px;
-						padding: 0px 14px 13px;
 						margin: 14px !important;
 					}
 
@@ -817,16 +829,18 @@ function __loadexpflags() {
 						height: 24px !important;
 					}
 
-					#comment-field {
+					.comment-field {
 						border-radius: 20px !important;
 						background: rgba(0, 0, 0, 0.1) !important;
-						padding: 3px 12px !important;
+						padding: 4px 12px !important;
 					}
 
 					#comment-expand-container { display: none; }
-
+					#comment-caption-and-counts-container { padding: 2px 0px; }
+					#comment-caption, #comment-counts { font-size: 0.92em !important; }
+					.account-picture-and-comment-entrypoint { padding-bottom: 6px !important; }
 					html:not([data-theme-display='light']) #comment-section { background: rgba(255, 255, 255, 0.1); }
-					html:not([data-theme-display='light']) #comment-field { background: rgba(255, 255, 255, 0.1) !important; }
+					html:not([data-theme-display='light']) .comment-field { background: rgba(255, 255, 255, 0.1) !important; }
 				</style>
 			`
 		);

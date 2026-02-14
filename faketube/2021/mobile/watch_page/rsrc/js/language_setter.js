@@ -30,12 +30,15 @@ switch (navigator.language.slice(0, 2)) {
 			document.querySelector("#report-text-renderer").innerText = global_data._watch_page_strings.ja.report_text;
 			document.querySelector("a#subscribe-text-link").innerText = global_data._watch_page_strings.ja.subscribe_text;
 			document.querySelector("#comment-caption").innerHTML = global_data._watch_page_strings.ja.comment_header_text + "&nbsp;&nbsp;";
-			document.querySelector("#comment-field").placeholder = global_data._watch_page_strings.ja.add_a_comment_text;
+			document.querySelector("#comments-title").innerHTML = global_data._watch_page_strings.ja.comment_header_text + "&nbsp;&nbsp;&nbsp;&nbsp;";
+			document.querySelector(".comment-field").placeholder = global_data._watch_page_strings.ja.add_a_comment_text;
+			document.querySelector("#comments-section-field").placeholder = global_data._watch_page_strings.ja.add_a_comment_text;
 			document.querySelector("#description-title").innerText = global_data._watch_page_strings.ja.description_header_text;
 			document.querySelector("#total-like-counts-title").innerText = global_data._watch_page_strings.ja.likes_title_text;
 			document.querySelector("#total-dislike-counts-title").innerText = global_data._watch_page_strings.ja.dislikes_title_text;
 			document.querySelector("#total-view-counts-title").innerText = global_data._watch_page_strings.ja.view_count_title_text;
 		}, 100);
+		break;
 	// the fallback is english, which is already stored inside global_data._watch_page_strings._stored_vars
 	default:
 		console.log(`${navigator.language} primary host language detected, not doing anything...`);

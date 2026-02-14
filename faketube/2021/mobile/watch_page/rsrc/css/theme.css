@@ -128,9 +128,9 @@ html[data-theme-display='darkerdarkmode'] #subscribe-text-link {
 	color: rgb(255, 84, 84);
 }
 
-html[data-theme-display='blackhole'] #comment-field,
-html[data-theme-display='darkmode'] #comment-field,
-html[data-theme-display='darkerdarkmode'] #comment-field {
+html[data-theme-display='blackhole'] .comment-field,
+html[data-theme-display='darkmode'] .comment-field,
+html[data-theme-display='darkerdarkmode'] .comment-field {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -151,6 +151,12 @@ html[data-theme-display='darkerdarkmode'] .menu-buttons:active {
 	border: 1px solid rgba(255, 255, 255, 0.15) !important;
 	background-color: rgba(255, 255, 255, 0.1) !important;
 	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+html[data-theme-display='blackhole'] #download-button.premium-needed-or-unavailable,
+html[data-theme-display='darkmode'] #download-button.premium-needed-or-unavailable,
+html[data-theme-display='darkerdarkmode'] #download-button.premium-needed-or-unavailable {
+	color: var(--gray-color);
 }
 
 .subpage-button-icon {
@@ -188,7 +194,6 @@ html[data-theme-display='blackhole'] #video-title-desc,
 html[data-theme-display='darkmode'] #video-title-desc,
 html[data-theme-display='darkerdarkmode'] #video-title-desc {
 	color: var(--white-color);
-	font-weight: 500;
 }
 
 #yt-channel-name-link-desc {

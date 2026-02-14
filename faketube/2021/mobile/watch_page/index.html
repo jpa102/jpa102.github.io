@@ -5,7 +5,9 @@
 		<link rel="stylesheet" href="rsrc/css/theme.css"/>
 		<link rel="stylesheet" href="rsrc/css/ui_components.css"/>
 		<link rel="stylesheet" href="rsrc/css/watch_page.css"/>
+		<link rel="stylesheet" href="rsrc/css/internet_status_styles.css"/>
 		<script>document.querySelector("html").setAttribute("data-theme-display", "light");</script>
+		<script>document.querySelector("html").setAttribute("data-online-status", "online");</script>
 		<script src="rsrc/js/faketube.js"></script>
 		<script src="rsrc/js/jsConsole.js"></script>
 		<script src="rsrc/js/debug.js"></script>
@@ -223,7 +225,7 @@
 								</div>
 							</div>
 							<div id="border-bottom-metadata" class="themed-borders"></div>
-							<div id="comment-section" class="touch-by-touch">
+							<div id="comment-section" class="touch-by-touch" onclick="onCreate.commentsSection()">
 								<div id="comment-caption-and-counts-container">
 									<span id="comment-caption-and-counts">
 										<p id="comment-caption">Comments &nbsp;&nbsp;</p>
@@ -235,10 +237,10 @@
 										</svg>
 									</span>
 								</div>
-								<div id="account-picture-and-comment-entrypoint">
-									<img id="comment-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj">
+								<div class="account-picture-and-comment-entrypoint">
+									<img class="comment-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj">
 									<form id="comment-entrypoint">
-										<input id="comment-field" placeholder="Add a comment..."></input>
+										<input class="comment-field" placeholder="Add a comment..." disabled></input>
 									</form>
 								</div>
 							</div>
@@ -477,6 +479,41 @@
 								</div>
 							</div>
 						</span>
+						<div id="comments-section-container" class="background-subpage-layer-one" hidden>
+							<div class="dummy-video-player"></div>
+							<div id="comments-section" class="background-subpage-layer-two" style="height: 100%; transform: translateY(0px);">
+								<div class="engagement-panel-drag-line-margin-top"></div>
+								<div class="engagement-panel-drag-line"></div>
+								<div id="comments" class="content">
+									<div id="comments-section-and-exit-button" class="caption-and-exit-button">
+										<p id="comments-title" class="subpage-title">Comments</p>
+										<span id="comments-section-buttons-container">
+											<button id="sort-comments-button" class="hide-button-style touch-by-touch">
+												<svg id="sort-comments-button-icon" class="subpage-button-icon">
+													<path d="M15 17h6v1h-6v-1zm-4 0H3v1h8v2h1v-5h-1v2zm3-9h1V3h-1v2H3v1h11v2zm4-3v1h3V5h-3zM6 14h1V9H6v2H3v1h3v2zm4-2h11v-1H10v1z"></path>
+												</svg>
+											</button>
+											<button id="hide-comments-section-button" class="hide-button-style touch-by-touch" onclick="onDestroy.commentsSection()">
+												<svg id="hide-comments-section-button-icon" class="subpage-button-icon">
+													<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
+												</svg>
+											</button>
+										</span>
+									</div>
+									<div id="border-bottom-metadata" class="themed-borders"></div>
+									<div id="commenting-container">
+										<div class="account-picture-and-comment-entrypoint">
+											<img class="commenting-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj">
+											<span id="comments-section-field-container">
+												<input id="comments-section-field" placeholder="Add a comment..."></input>
+											</span>
+										</div>
+									</div>
+									<div id="border-bottom-metadata" class="themed-borders"></div>
+									<div class="nullo"></div>
+								</div>
+							</div>
+						</div>
 						<div id="description-section-container" class="background-subpage-layer-one" hidden>
 							<div class="dummy-video-player"></div>
 							<div id="description-section" class="background-subpage-layer-two" style="height: 100%; transform: translateY(0px);">

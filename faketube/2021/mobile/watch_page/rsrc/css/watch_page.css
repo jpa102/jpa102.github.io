@@ -27,6 +27,7 @@
 	--call-to-action-color-light: #065fd4;
 	--subscribe-text-color: red;
 	--inner-button-icons-size: 1.5rem;
+	--gray-text-color: #6a6a6a;
 }
 
 /*
@@ -170,7 +171,7 @@ iframe#yt-video-player {
 	font-family: var(--arial-font-family);
 	font-size: var(--video-player-views-and-date-size);
 	margin: 6px 16px 3px var(--video-player-margin-left);
-	color: #6a6a6a;
+	color: var(--gray-text-color);
 }
 
 #video-metadata-info {
@@ -195,7 +196,7 @@ iframe#yt-video-player {
 }
 
 #yt-channel-name-link {
-	font-family: var(--main-font-family);
+	font-family: var(--arial-font-family);
 	font-size: var(--video-player-yt-channel-name);
 	text-decoration: none;
 }
@@ -205,29 +206,35 @@ iframe#yt-video-player {
 	flex-direction: column;
 }
 
-#yt-channel-name-renderer, #no-yt-channel-name-renderer, #comment-entrypoint {
+#yt-channel-name-renderer, #no-yt-channel-name-renderer, #comment-entrypoint, #comments-section-field-container {
 	padding-left: 12px;
 	width: -webkit-fill-available;
 	width: -moz-available;
 }
 
-#yt-channel-profile-picture, #comment-section-profile-picture {
+#yt-channel-profile-picture, .comment-section-profile-picture {
 	width: 34px;
 	height: 34px;
 	border-radius: 40px;
 }
 
-#comment-section-profile-picture {
+.comment-section-profile-picture {
 	width: 24px;
 	height: 24px;
 }
 
+.commenting-section-profile-picture {
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+}
+
 .yt-channel-sub-count {
 	margin: unset;
-	font-family: var(--main-font-family);
+	font-family: var(--arial-font-family);
 	font-size: var(--video-player-yt-channel-sub-count);
 	text-decoration: none;
-	color: black;
+	color: var(--gray-text-color);
 }
 
 #subscribe-text-container {
@@ -242,12 +249,12 @@ iframe#yt-video-player {
 	font-family: var(--main-font-family);
 }
 
-#comment-section {
-	font-family: var(--main-font-family);
-	padding: 0px var(--video-player-margin-left) 16px var(--video-player-margin-left);
+#comment-section, #commenting-container {
+	font-family: var(--arial-font-family);
+	padding: 12px var(--video-player-margin-left);
 }
 
-#comment-caption-and-counts-container, #account-picture-and-comment-entrypoint {
+#comment-caption-and-counts-container, .account-picture-and-comment-entrypoint {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
@@ -264,7 +271,11 @@ iframe#yt-video-player {
 
 #comment-caption, #comment-counts {
 	font-size: var(--video-player-comment-caption-size);
-	margin: 0.8em 0em;
+	margin: 0em 0em 1em 0em;
+}
+
+#comment-counts {
+	color: var(--gray-text-color);
 }
 
 #yt-channel-failed-to-load {

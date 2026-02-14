@@ -4,10 +4,18 @@
 	==========================================================
 */
 function likeButton() {
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
 	likebuttonpressedcheck();
 }
 
 function dislikeButton() {
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
 	dislikebuttonpressedcheck();
 }
 
@@ -19,22 +27,46 @@ function dislikeButton() {
 	==========================================================
 */
 function shareButton() {
-	console.log("function not implemented yet. [ln:21 buttonlistener.js]");
-}
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
 
-function liveChatButton() {
-	console.log("function not implemented yet. [ln:25 buttonlistener.js]");
-}
-
-function thanksButton() {
 	console.log("function not implemented yet. [ln:29 buttonlistener.js]");
 }
 
+function liveChatButton() {
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
+	console.log("function not implemented yet. [ln:37 buttonlistener.js]");
+}
+
+function thanksButton() {
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
+	console.log("function not implemented yet. [ln:45 buttonlistener.js]");
+}
+
 function createButton() {
-	console.log("function not implemented yet. [ln:33 buttonlistener.js]");
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
+	console.log("function not implemented yet. [ln:53 buttonlistener.js]");
 }
 
 function downloadButton() {
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
+	if (document.querySelector("#download-button").classList.contains("premium-needed-or-unavailable") == true) {
+		return;
+	}
+
 	if (document.querySelector("#download-button").ariaPressed == "false") {
 		document.querySelector("#downloadbutton-icon > div > svg").remove();
 
@@ -78,10 +110,18 @@ function downloadButton() {
 }
 
 function clipButton() {
-	console.log("function not implemented yet. [ln:41 buttonlistener.js]");
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
+	console.log("function not implemented yet. [ln:108 buttonlistener.js]");
 }
 
 function saveButton() {
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
 	if (document.querySelector("#save-button").ariaPressed == "false") {
 		document.querySelector("#savebutton-icon > div > svg").remove();
 
@@ -118,9 +158,13 @@ function saveButton() {
 }
 
 function reportButton() {
-	console.log("function not implemented yet. [ln:81 buttonlistener.js]");
+	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
+		return;
+	}
+
+	console.log("function not implemented yet. [ln:156 buttonlistener.js]");
 }
 
 function moreButton() {
-	console.log("function not implemented yet. [ln:85 buttonlistener.js]");
+	console.log("function not implemented yet. [ln:164 buttonlistener.js]");
 }

@@ -15,8 +15,8 @@ var __faketube_injtplyr = 3900;
 var __faketube_content_scraper_ytintlprms = 2100;
 var __faketube_content_scraper_ytintldatams = 2200;
 var __faketube_content_scraper_intlzedata = 2367;
-var __faketube_wtchpge_intrnt_btm_notif_apr_ms = 100;
-var __faketube_wtchpge_intrnt_btm_notif_clpse_ms = 5067;
+var __faketube_wtchpge_intrnt_btm_notif_apr_ms = 500;
+var __faketube_wtchpge_intrnt_btm_notif_clpse_ms = 3067;
 var __faketube_loadwatchpage = 5000; /* todo: make an actual loading page transition */
 
 /*
@@ -140,37 +140,33 @@ var _volatile_votes;
 
 
 function getVideoIdFromUser() {
-	global_data.v = prompt("Enter a 11-character long YouTube video id\nExample is dQw4w9WgXcQ");
+	global_data.v = prompt(`Enter a 11-character long YouTube video id\nExample is dQw4w9WgXcQ`);
 
-	if (global_data.v == "") {
+	if (global_data.v == null || global_data.v == undefined) {
 		alert("Please enter a video id first");
 		return;
 	}
 	if (global_data.v.length < 11) {
-		alert("The video id is too short\n\nCurrent character count: " + v.length + "\nCurrent input: " + v);
+		alert(`The video id is too short\n\nCurrent character count: ${global_data.v.length} \nCurrent input: ${global_data.v}`);
 		return;
 	}
 	if (global_data.v.length > 11) {
-		alert("The video id is too long\n\nCurrent character count: " + v.length + "\nCurrent input: " + v);
+		alert(`The video id is too long\n\nCurrent character count: ${global_data.v.length} \nCurrent input: ${global_data.v}`);
 		return;
 	}
 }
 
-while (global_data.v == null) {
-	getVideoIdFromUser();
-}
-while (global_data.v.length < 11) {
-	getVideoIdFromUser();
-}
-while (global_data.v.length > 11) {
+
+
+// the video id checker loop
+while (global_data.v == null || global_data.v.length < 11 || global_data.v.length > 11) {
 	getVideoIdFromUser();
 }
 
-if (global_data.v == null || global_data.v == undefined || global_data.v == "") {
+if (global_data.v == null || global_data.v == undefined) {
 	localStorage.setItem("lastVideoId", "aQvGIIdgFDM"); // store the video id
 	global_data.yt.videoId = localStorage.getItem("lastVideoId"); // store the video id
 	global_data.v = localStorage.getItem("lastVideoId"); // set the video id to "Video Not Available" by YouTube Viewers
-	localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
 }
 
 if (global_data.v != null) {
@@ -182,7 +178,7 @@ if (global_data.v != null) {
 
 
 // test the url for return youtube dislike api
-UrlExists("https://returnyoutubedislikeapi.com/votes?videoId=" + global_data.v);
+UrlExists(`https://returnyoutubedislikeapi.com/votes?videoId=${global_data.v}`);
 
 
 
@@ -192,8 +188,8 @@ fetch(
 	response.json().then((json) => {
 		if (json && !("traceId" in response) && !global_data.statsSet) {
 			let { id, dateCreated, likes, dislikes, rawLikes, rawDislikes, rating, viewCount, deleted } = json;
-			console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: " + id + "\nViews: " + viewCount + "\nAverage rating: " + rating + "\nLike count: " + likes + "\nDislike count: " + dislikes + "\nRaw like count: " + rawLikes + "\nRaw dislike count: " + rawDislikes + "\nDate created: " + dateCreated + "\nDeleted: " + deleted);
-			DebugJS.console.log("info", "[globaldata_online.js] Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: " + id + "\nViews: " + viewCount + "\nAverage rating: " + rating + "\nLike count: " + likes + "\nDislike count: " + dislikes + "\nRaw like count: " + rawLikes + "\nRaw dislike count: " + rawDislikes + "\nDate created: " + dateCreated + "\nDeleted: " + deleted);
+			console.log(`Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: ${id} \nViews: ${viewCount} \nAverage rating: ${rating} \nLike count: ${likes} \nDislike count: ${dislikes} \nRaw like count: ${rawLikes} \nRaw dislike count: ${rawDislikes} \nDate created: ${dateCreated} \nDeleted: ${deleted}`);
+			DebugJS.console.log("info", `Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: ${id} \nViews: ${viewCount} \nAverage rating: ${rating} \nLike count: ${likes} \nDislike count: ${dislikes} \nRaw like count: ${rawLikes} \nRaw dislike count: ${rawDislikes} \nDate created: ${dateCreated} \nDeleted: ${deleted}`);
 
 			//	i don't want the global_data.ryd_data to be directly edited by operations.js
 			//	so i'm assigning them to a separate object
@@ -249,7 +245,7 @@ fetch(
 }).catch(error => {
 	//	i don't even know what i am typing here but okay
 
-	console.log("[error] failed to contact returnyoutubedislikeapi.com, returning local values...", error);
+	console.log("[error] failed to contact https://returnyoutubedislikeapi.com, returning local values...", error);
 	console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: \"\"\nViews: 0\nAverage rating: 0\nLike count: 0\nDislike count: 0\nRaw like count: 0\nRaw dislike count: 0\nDate created: \"\"\nDeleted: null");
 	DebugJS.console.log("error", "[globaldata_online.js] failed to contact returnyoutubedislikeapi.com, returning local values...");
 	DebugJS.console.log("info", "[globaldata_online.js] Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: \"\"\nViews: 0\nAverage rating: 0\nLike count: 0\nDislike count: 0\nRaw like count: 0\nRaw dislike count: 0\nDate created: \"\"\nDeleted: null");
@@ -257,10 +253,10 @@ fetch(
 
 // if the http status code is 400 (bad request)
 if (http.status == 400) {
-	console.log("[http " + http.status + " error] return youtube dislike api - bad request\nsupplied video id: " + global_data.v);
+	console.log(`[http ${http.status} error] return youtube dislike api - bad request\nsupplied video id: ${global_data.v}`);
 // if the http status code is 0 (no internet connection)
 } else if (http.status == 0) {
-	console.log("[http " + http.status + " error] return youtube dislike api - no internet?");
+	console.log(`[http ${http.status} error] return youtube dislike api - no internet?`);
 
 	//	i don't want the global_data.ryd_data to be directly edited by operations.js
 	//	so i'm assigning them to a separate object
@@ -290,7 +286,7 @@ if (http.status == 400) {
 if (faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching == true) {
 	//console.log(`skipping noembed fetch code, reason: deprecate_noembed_fetching: ${faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching}`);
 } else {
-	UrlExists("https://noembed.com/embed?url=https://www.youtube.com/watch?v=" + global_data.v);
+	UrlExists(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${lobal_data.v}`);
 
 	if (http.status == 200) {
 		fetch(
@@ -306,27 +302,27 @@ if (faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching == true) {
 						if (error !== undefined) {
 							global_data.yt.videoTitle = `Video Unavailable`;
 							global_data.yt.channelName = `No Author`;
-							global_data.yt.channelIdLink = `https://jpa102.github.io/faketube/2021/undefined/`;
-							global_data.yt.channelSubConfirmLink = `https://jpa102.github.io/faketube/2021/undefined/?sub_confirmation=1`;
+							global_data.yt.channelIdLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/`;
+							global_data.yt.channelSubConfirmLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/?sub_confirmation=1`;
 
 							console.log(`YouTube video title: Video Unavailable`);
 							console.log(`Uploaded by: No Author`);
-							console.log(`No Author 's channel link: https://jpa102.github.io/faketube/2021/undefined/`);
+							console.log(`No Author 's channel link: https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/`);
 							DebugJS.console.log(`info`, `[globaldata_online.js] YouTube video title: title`);
 							DebugJS.console.log(`info`, `[globaldata_online.js] Uploaded by: No Author`);
-							DebugJS.console.log(`info`, `[globaldata_online.js] No Author's channel link: https://jpa102.github.io/faketube/2021/undefined/`);
+							DebugJS.console.log(`info`, `[globaldata_online.js] No Author's channel link: https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/`);
 						} else {
 							global_data.yt.videoTitle = title;
 							global_data.yt.channelName = author_name;
 							global_data.yt.channelIdLink = author_url;
-							global_data.yt.channelSubConfirmLink = author_url + "?sub_confirmation=1";
+							global_data.yt.channelSubConfirmLink = `${author_url}?sub_confirmation=1`;
 
-							console.log("YouTube video title: " + title);
-							console.log("Uploaded by: " + author_name);
-							console.log(author_name + "'s channel link: " + author_url);
-							DebugJS.console.log("info", "[globaldata_online.js] YouTube video title: " + title);
-							DebugJS.console.log("info", "[globaldata_online.js] Uploaded by: " + author_name);
-							DebugJS.console.log("info", "[globaldata_online.js] " + author_name + "'s channel link: " + author_url);
+							console.log(`YouTube video title: ${title}`);
+							console.log(`Uploaded by: ${author_name}`);
+							console.log(`${author_name}'s channel link: ${author_url}`);
+							DebugJS.console.log("info", `[globaldata_online.js] YouTube video title: ${title}`);
+							DebugJS.console.log("info", `[globaldata_online.js] Uploaded by: ${author_name}`);
+							DebugJS.console.log("info", `[globaldata_online.js] ${author_name}'s channel link: ${author_url}`);
 						}
 					}
 				})
@@ -334,19 +330,19 @@ if (faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching == true) {
 		);
 	// if the http status code is 400 (bad request)
 	} else if (http.status == 400) {
-		console.log("[http " + http.status + " error] noembed - bad request\nsupplied video id: " + global_data.v);
+		console.log(`[http ${http.status} error] noembed - bad request\nsupplied video id: ${global_data.v}`);
 
-		global_data.yt.videoTitle = "Failed to get video title [" + http.status + "]";
-		global_data.yt.channelName = "Failed to get channel name [" + http.status + "]";
-		global_data.yt.channelIdLink = "https://jpa102.github.com/faketube/2021/undefined/";
-		global_data.yt.channelSubConfirmLink = "https://jpa102.github.com/faketube/2021/undefined/?sub_confirmation=1";
+		global_data.yt.videoTitle = `Failed to get video title [ ${http.status} ]`;
+		global_data.yt.channelName = `Failed to get channel name [ ${http.status} ]`;
+		global_data.yt.channelIdLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/`;
+		global_data.yt.channelSubConfirmLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/?sub_confirmation=1`;
 	// if the http status code is 0 (no internet connection)
 	} else if (http.status == 0) {
-		console.log("[http " + http.status + " error] noembed - no internet?");
+		console.log(`[http ${http.status} error] noembed - no internet?`);
 
-		global_data.yt.videoTitle = "Failed to get video title [" + http.status + "]";
-		global_data.yt.channelName = "Failed to get channel name [" + http.status + "]";
-		global_data.yt.channelIdLink = "https://jpa102.github.com/faketube/2021/undefined/";
-		global_data.yt.channelSubConfirmLink = "https://jpa102.github.com/faketube/2021/undefined/?sub_confirmation=1";
+		global_data.yt.videoTitle = `Failed to get video title [ ${http.status} ]`;
+		global_data.yt.channelName = `Failed to get channel name [ ${http.status} ]`;
+		global_data.yt.channelIdLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/`;
+		global_data.yt.channelSubConfirmLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/?sub_confirmation=1`;
 	}
 }
