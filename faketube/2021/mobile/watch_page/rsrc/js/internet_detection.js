@@ -11,7 +11,7 @@ window.addEventListener('online', (event) => {
 	setTimeout(() => {
 		document.querySelector("#internet-status-bottom").style = "transform: translateY(32px);";
 		document.querySelector("#status-text").style = "background: #2ba640";
-	}, __faketube_wtchpge_intrnt_btm_notif_apr_ms);
+	}, __faketube_wtchpge_intrnt_btm_notif_clpse_ms);
 });
 
 window.addEventListener('offline', (event) => {
@@ -20,5 +20,5 @@ window.addEventListener('offline', (event) => {
 	setTimeout(() => {
 		document.querySelector("#internet-status-bottom").style = "transform: translateY(0px);";
 		document.querySelector("#status-text").removeAttribute("style");
-	}, __faketube_wtchpge_intrnt_btm_notif_clpse_ms);
+	}, __faketube_wtchpge_intrnt_btm_notif_apr_ms);
 });
