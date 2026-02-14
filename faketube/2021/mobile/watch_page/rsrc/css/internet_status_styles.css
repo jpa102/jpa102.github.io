@@ -6,7 +6,7 @@
 
 
 
-// ========== light mode ==========
+/* ========== light mode ========== */
 
 html[data-online-status='online'] #status-text {
 	background: #2ba640;
@@ -22,7 +22,7 @@ html[data-online-status='offline'] .inner-button-icons {
 
 
 
-// ========== dark mode ==========
+/* ========== dark mode ========== */
 
 html[data-online-status='offline'][data-theme-display='darkmode'] .menu-buttons-text {
 	color: var(--gray-color);
