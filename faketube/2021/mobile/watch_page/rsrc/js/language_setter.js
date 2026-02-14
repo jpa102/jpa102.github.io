@@ -14,6 +14,9 @@ switch (navigator.language.slice(0, 2)) {
 			global_data._watch_page_strings._stored_vars.download_text_inject = global_data._watch_page_strings.ja.download_text;
 			global_data._watch_page_strings._stored_vars.saved_text_inject = global_data._watch_page_strings.ja.saved_text;
 			global_data._watch_page_strings._stored_vars.save_text_inject = global_data._watch_page_strings.ja.save_text;
+			global_data._watch_page_strings._stored_vars.back_online_text_inject = global_data._watch_page_strings.ja.back_online_text;
+			global_data._watch_page_strings._stored_vars.no_internet_connection_text_inject = global_data._watch_page_strings.ja.no_internet_connection_text;
+			global_data._watch_page_strings._stored_vars.check_your_internet_connection_text_inject = global_data._watch_page_strings.ja.check_your_internet_connection_text;
 
 			document.querySelector("#like-count-renderer").innerText = global_data._watch_page_strings.ja.likes_text;
 			document.querySelector("#dislike-count-renderer").innerText = global_data._watch_page_strings.ja.dislikes_text;
@@ -33,13 +36,7 @@ switch (navigator.language.slice(0, 2)) {
 			document.querySelector("#total-dislike-counts-title").innerText = global_data._watch_page_strings.ja.dislikes_title_text;
 			document.querySelector("#total-view-counts-title").innerText = global_data._watch_page_strings.ja.view_count_title_text;
 		}, 100);
-	// set the strings to english as a fallback
+	// the fallback is english, which is already stored inside global_data._watch_page_strings._stored_vars
 	default:
-			console.log(`${navigator.language} primary host language detected, setting up fallback texts...`);
-
-			global_data._watch_page_strings._stored_vars.dislikes_text_inject = global_data._watch_page_strings.ja.dislikes_text;
-			global_data._watch_page_strings._stored_vars.downloaded_text_inject = global_data._watch_page_strings.ja.downloaded_text;
-			global_data._watch_page_strings._stored_vars.download_text_inject = global_data._watch_page_strings.ja.download_text;
-			global_data._watch_page_strings._stored_vars.saved_text_inject = global_data._watch_page_strings.ja.saved_text;
-			global_data._watch_page_strings._stored_vars.save_text_inject = global_data._watch_page_strings.ja.save_text;
+		console.log(`${navigator.language} primary host language detected, not doing anything...`);
 }

@@ -1,7 +1,7 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="">
 	<head>
-		<title>Basic HTML Player</title>
+		<title>FakeTube Watch page</title>
 		<link rel="stylesheet" href="rsrc/css/theme.css"/>
 		<link rel="stylesheet" href="rsrc/css/ui_components.css"/>
 		<link rel="stylesheet" href="rsrc/css/watch_page.css"/>
@@ -20,6 +20,7 @@
 		<script src="rsrc/js/setytchannelinfo.js"></script>
 		<script src="rsrc/js/buttonslistener.js"></script>
 		<script src="rsrc/js/likedislikebuttons.js"></script>
+		<script src="rsrc/js/internet_detection.js"></script>
 		<script id="set-language" type="text/javascript">document.querySelector("html").lang = navigator.language;</script>
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="theme-color" content="#36c8ff" media="(prefers-color-scheme:light)">
@@ -873,8 +874,11 @@
 					<div class="nullo"></div>
 				</div>
 			</div>
+			<div id="internet-status-bottom" style="transform: translateY(32px);">
+				<span id="status-text">
+					
+				</span>
+			</div>
 		</div>
 	</body>
 </html>
-
-
