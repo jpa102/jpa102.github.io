@@ -230,10 +230,6 @@ a.transparent-button-with-border > span {
 	margin: 14px;
 }
 
-#expand-description-container > #display-secondary-description-button {
-	margin-top: 12px;
-}
-
 .hide-button-style {
 	padding: 6px;
 	background: transparent;
@@ -250,8 +246,30 @@ a.transparent-button-with-border > span {
 
 .caption-and-exit-button {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: space-between;
+}
+
+#description-caption-and-exit-button.caption-and-exit-button,
+#transcripts-caption-and-exit-button.caption-and-exit-button,
+#internal-functions-caption-and-exit-button.caption-and-exit-button {
+	padding: 6px 0px;
+}
+
+#internet-status-bottom {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	transition: 0.5s ease-in-out;
+}
+
+#status-text {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	display: flex;
+	justify-content: center;
+	background: #171717;
+	color: white;
 }
 
 #border-top-metadata {
