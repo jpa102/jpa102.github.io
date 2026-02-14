@@ -270,6 +270,7 @@ a.transparent-button-with-border > span {
 	justify-content: center;
 	background: #171717;
 	color: white;
+	font-family: var(--main-font-family);
 }
 
 #border-top-metadata {
