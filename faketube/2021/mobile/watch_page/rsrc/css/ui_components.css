@@ -79,7 +79,7 @@
 	height: 296px;
 }
 
-#comment-field {
+.comment-field, #comments-section-field {
 	border: 1px solid transparent;
 	background: var(--light-mode-dark-color);
 	/* background: transparent; */
@@ -87,6 +87,11 @@
 	border-radius: 3px;
 	width: -webkit-fill-available;
 	width: -moz-available;
+}
+
+#comments-section-field {
+	padding: 10px 6px;
+	background: transparent;
 }
 
 #all-buttons-container {
@@ -134,6 +139,10 @@
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	background-color: rgba(0, 0, 0, 0.1);
 	transition: background .1s cubic-bezier(.4, 0, .2, 1);
+}
+
+#download-button.premium-needed-or-unavailable {
+	color: var(--gray-text-color);
 }
 
 .inner-button-icons {
@@ -250,6 +259,7 @@ a.transparent-button-with-border > span {
 	justify-content: space-between;
 }
 
+#comments-section-and-exit-button.caption-and-exit-button,
 #description-caption-and-exit-button.caption-and-exit-button,
 #transcripts-caption-and-exit-button.caption-and-exit-button,
 #internal-functions-caption-and-exit-button.caption-and-exit-button {
