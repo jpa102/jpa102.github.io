@@ -1,0 +1,33 @@
+/*
+	internet_status_styles.css
+
+	elements can change depending on the current internet connectivity state
+*/
+
+
+
+// ========== light mode ==========
+
+html[data-online-status='online'] #status-text {
+	background: #2ba640;
+}
+
+html[data-online-status='offline'] .menu-buttons-text {
+	color: var(--gray-text-color);
+}
+
+html[data-online-status='offline'] .inner-button-icons {
+	color: var(--gray-text-color);
+}
+
+
+
+// ========== dark mode ==========
+
+html[data-online-status='offline'][data-theme-display='darkmode'] .menu-buttons-text {
+	color: var(--gray-color);
+}
+
+html[data-online-status='offline'][data-theme-display='darkmode'] .inner-button-icons {
+	color: var(--gray-color);
+}
