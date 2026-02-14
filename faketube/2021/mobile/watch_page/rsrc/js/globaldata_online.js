@@ -15,6 +15,8 @@ var __faketube_injtplyr = 3900;
 var __faketube_content_scraper_ytintlprms = 2100;
 var __faketube_content_scraper_ytintldatams = 2200;
 var __faketube_content_scraper_intlzedata = 2367;
+var __faketube_wtchpge_intrnt_btm_notif_apr_ms = 100;
+var __faketube_wtchpge_intrnt_btm_notif_clpse_ms = 5067;
 var __faketube_loadwatchpage = 5000; /* todo: make an actual loading page transition */
 
 /*
@@ -29,8 +31,14 @@ var global_data = {
 			downloaded_text_inject: "Downloaded",
 			save_text_inject: "Save",
 			saved_text_inject: "Saved",
+			back_online_text_inject: "Back online",
+			no_internet_connection_text_inject: "No internet connection",
+			check_your_internet_connection_text_inject: "You're offline. Check your connection."
 		},
 		ja: {
+			back_online_text: "オンラインに復帰しました",
+			no_internet_connection_text: "インターネットに接続されていません",
+			check_your_internet_connection_text: "現在オフラインです。接続を確認してください。",
 			likes_text: "高評価",
 			dislikes_text: "低評価",
 			chat_text: "チャット",
