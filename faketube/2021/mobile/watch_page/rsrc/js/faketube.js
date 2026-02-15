@@ -28,8 +28,10 @@ var faketube = {
 			apply_debug_metadata_immediately: false, // fetch and inject the description data (if available) - now deprecated
 			deprecate_noembed_fetching: true, // deprecate the usage of noembed api
 			display_dislike_pressed_popup: false, // display a popup every time you press the dislike button
+			force_premium_needed_to_download_button: false, // make the download button non-functional because it either requires premium or it's unavailable for downloading offline
 			forced_country_code_and_language: "", // input a country code and language (example: ja-JP for japanese - japan)
 			hide_public_dislike_counts_to_protect_creators: false, // don't display the dislike counts in the dislike button
+			load_related_videos_in_feed: false, // load the related video infos and inject them in the related section
 			match_older_15_xx_xx_version: false, // inject and style the action bar buttons from 15.xx.xx versions of youtube app
 			match_older_16_xx_xx_version: true, // match the look of older 16.xx.xx versions
 			return_youtube_dislike_api: {
@@ -38,11 +40,11 @@ var faketube = {
 				ryd_request_loop_limit: 500 // 10000 is the limit per day, 100 per minute (source: their api docs)
 			},
 			third_party_downloader_test: false, // turn on or off the ability to download the video from a external site
-			load_related_videos_in_feed: false, // load the related video infos and inject them in the related section
+			unselectable_texts_in_page: false, // make all texts throughout the page unselectable
 			video_player_is_youtube_shorts: false, // make the embedded youtube player's aspect ratio look 9 / 16 for youtube shorts (it will fetch the video id's metadata)
 			watch_page_experimental_material_you_action_buttons: false, // enable the experimental material you buttons in the action bar
 			watch_page_experimental_material_you_comments_section: false, // enable the experimental material you comments section in the watch page
-			watch_page_experimental_material_you_comments_section_migration_phase: false, // enable the migration version of the material you comments section in the watch page
+			watch_page_experimental_material_you_comments_section_migration_phase: false // enable the migration version of the material you comments section in the watch page
 		}
 	}
 } // set a breakpoint here if you want to change flags client-side, then go to the console tab
