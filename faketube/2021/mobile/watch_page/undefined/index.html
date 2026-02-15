@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<title>error - FakeTube</title>
+		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
+		<style type="text/css">
+			@font-face {
+				font-family: "Google Sans";
+				src: url("https://jpa102.github.io/youkoso_rsrc/google-sans_regular.ttf");
+			}
+		</style>
+		<script id="get-channel-subscribe-attempt-javascript">
+			setTimeout(function() {
+				const queryString = window.location.search;
+				const urlParams = new URLSearchParams(queryString);
+				const sub_to_channel_is_true = urlParams.get('sub_confirmation');
+				
+				if (sub_to_channel_is_true === "1") {
+					document.querySelector("ul").insertAdjacentHTML(
+						"beforeend",
+						`
+							<li style="font-family: google sans;">you tried subscribing to a channel that doesn't exist</li>
+						`
+					);
+				}
+			}, 200);
+		</script>
+	</head>
+	<body>
+		<h2 style="font-family: google sans;">
+			hmm, it seems you landed on this page because:
+		</h2>
+		<ul>
+			<li style="font-family: google sans;">the channel doesn't exist</li>
+			<li style="font-family: google sans;">something went wrong</li>
+		</ul>
+	</body>
+</html>

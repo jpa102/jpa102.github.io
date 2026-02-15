@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="">
 	<head>
-		<title>FakeTube Watch page</title>
+		<title>FakeTube - Watch page</title>
 		<link rel="stylesheet" href="rsrc/css/theme.css"/>
 		<link rel="stylesheet" href="rsrc/css/ui_components.css"/>
 		<link rel="stylesheet" href="rsrc/css/watch_page.css"/>
@@ -226,8 +226,8 @@
 							</div>
 							<div id="border-bottom-metadata" class="themed-borders"></div>
 							<div id="comment-section" class="touch-by-touch" onclick="onCreate.commentsSection()">
-								<div id="comment-caption-and-counts-container">
-									<span id="comment-caption-and-counts">
+								<div class="comment-caption-and-counts-container">
+									<span class="comment-caption-and-counts">
 										<p id="comment-caption">Comments &nbsp;&nbsp;</p>
 										<p id="comment-counts" class="gray-text">NaN</p>
 									</span>
@@ -486,8 +486,13 @@
 								<div class="engagement-panel-drag-line"></div>
 								<div id="comments" class="content">
 									<div id="comments-section-and-exit-button" class="caption-and-exit-button">
-										<p id="comments-title" class="subpage-title">Comments</p>
-										<span id="comments-section-buttons-container">
+										<div class="comment-caption-and-counts-container">
+											<span class="comment-caption-and-counts">
+												<p id="comments-title" class="subpage-title">Comments &nbsp;&nbsp;</p>
+												<p id="comments-section-comment-counts" class="gray-text">NaN</p>
+											</span>
+										</div>
+										<span class="comments-section-buttons-container">
 											<button id="sort-comments-button" class="hide-button-style touch-by-touch">
 												<svg id="sort-comments-button-icon" class="subpage-button-icon">
 													<path d="M15 17h6v1h-6v-1zm-4 0H3v1h8v2h1v-5h-1v2zm3-9h1V3h-1v2H3v1h11v2zm4-3v1h3V5h-3zM6 14h1V9H6v2H3v1h3v2zm4-2h11v-1H10v1z"></path>
@@ -629,11 +634,18 @@
 								<div id="transcripts" class="content">
 									<div id="transcripts-caption-and-exit-button" class="caption-and-exit-button">
 										<p id="transcripts-title" class="subpage-title">Transcript</p>
-										<button id="hide-transcripts-button" class="hide-button-style touch-by-touch" onclick="onDestroy.transcriptPage()">
-											<svg id="hide-transcripts-button-icon" class="subpage-button-icon">
-												<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
-											</svg>
-										</button>
+										<span class="comments-section-buttons-container">
+											<button id="refetch-transcripts-button" class="hide-button-style touch-by-touch">
+												<svg id="refetch-transcripts-button-icon" class="subpage-button-icon">
+													<path d="M14.97,16.95L10,2.49L14.97,16.95z M22,12c0,5.51-4.49,10-10,10S2,17.51,2,12h1c0,4.96,4.04,9,9,9 s9-4.04,9-9s-4.04-9-9-9C8.81,3,5.92,4.64,4.28,7.38C4.17,7.56,4.06,7.75,3.97,7.94C3.96,7.96,3.95,7.98,3.94,8H8v1H1.96V3h1v4.74 C3,7.65,3.03,7.57,3.07,7.49C3.18,7.27,3.3,7.07,3.42,6.86C5.22,3.86,8.51,2,12,2C17.51,2,22,6.49,22,12z"></path>
+												</svg>
+											</button>
+											<button id="hide-transcripts-button" class="hide-button-style touch-by-touch" onclick="onDestroy.transcriptPage()">
+												<svg id="hide-transcripts-button-icon" class="subpage-button-icon">
+													<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
+												</svg>
+											</button>
+										</span>
 									</div>
 									<div id="border-bottom-metadata" class="themed-borders"></div>
 									<p id="transcript-text" class="subpage-text-container"> </p>

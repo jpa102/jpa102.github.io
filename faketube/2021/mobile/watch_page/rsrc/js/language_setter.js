@@ -18,6 +18,9 @@ switch (navigator.language.slice(0, 2)) {
 			global_data._watch_page_strings._stored_vars.no_internet_connection_text_inject = global_data._watch_page_strings.ja.no_internet_connection_text;
 			global_data._watch_page_strings._stored_vars.check_your_internet_connection_text_inject = global_data._watch_page_strings.ja.check_your_internet_connection_text;
 
+			document.querySelector("#video.title").innerText = global_data._watch_page_strings.ja.getting_video_title_text;
+			document.querySelector("#yt-channel-name-link").innerText = global_data._watch_page_strings.ja.getting_channel_name_text;
+			document.querySelector(".yt-channel-sub-count").innerText = global_data._watch_page_strings.ja.nan_subscribers_text;
 			document.querySelector("#like-count-renderer").innerText = global_data._watch_page_strings.ja.likes_text;
 			document.querySelector("#dislike-count-renderer").innerText = global_data._watch_page_strings.ja.dislikes_text;
 			document.querySelector("#share-text-renderer").innerText = global_data._watch_page_strings.ja.share_text;
@@ -37,6 +40,12 @@ switch (navigator.language.slice(0, 2)) {
 			document.querySelector("#total-like-counts-title").innerText = global_data._watch_page_strings.ja.likes_title_text;
 			document.querySelector("#total-dislike-counts-title").innerText = global_data._watch_page_strings.ja.dislikes_title_text;
 			document.querySelector("#total-view-counts-title").innerText = global_data._watch_page_strings.ja.view_count_title_text;
+			document.querySelector("#transcript-text-header").innerText = global_data._watch_page_strings.ja.transcript_text_header_text; // can be confused, ごめん！
+			document.querySelector("#follow-transcript-text").innerText = global_data._watch_page_strings.ja.transcript_description_text;
+			document.querySelector("#show-transcript-button").innerText = global_data._watch_page_strings.ja.show_transcripts_text;
+			document.querySelector("#transcripts-title").innerText = global_data._watch_page_strings.ja.transcripts_header_text; // can be confused, ごめん！
+			document.querySelector("#videos-text-renderer").innerText = global_data._watch_page_strings.ja.channel_videos_button_text;
+			document.querySelector("#about-text-renderer").innerText = global_data._watch_page_strings.ja.channel_about_button_text;
 		}, 100);
 		break;
 	// the fallback is english, which is already stored inside global_data._watch_page_strings._stored_vars

@@ -574,6 +574,27 @@ function __loadexpflags() {
 		document.designMode = "on";
 	}
 
+	//	make the download button non-functional because it either requires premium or it's unavailable for downloading offline
+	if (faketube.config_.EXPERIMENT_FLAGS.force_premium_needed_to_download_button == true) {
+		setTimeout(function() {
+			document.querySelector("#download-button").classList.add("premium-needed-or-unavailable");
+		}, 100);
+	}
+
+	//	make all texts throughout the page unselectable
+	if (faketube.config_.EXPERIMENT_FLAGS.unselectable_texts_in_page == true) {
+		document.head.insertAdjacentHTML(
+			"beforeend",
+			`
+				<style id="web-unselectable-texts-css">
+					* {
+						user-select: none !important;
+					}
+				</style>
+			`
+		);
+	}
+
 	//	
 	if (faketube.config_.display_intfuncs_button == true) {
 		setTimeout(function() { document.querySelector("#intfuncs-button").removeAttribute("style"); }, 50);
@@ -671,6 +692,7 @@ function __loadexpflags() {
 						.yt-channel-sub-count { display: block !important; }
 						#subscribe-text-container { display: flex; flex-direction: row; align-items: center; }
 						.button-renderer-icon { width: 17px; height: 17px; margin: 0 8px 0 0; }
+						.yt-channel-sub-count { display: none; }
 					</style>
 					`
 			);
@@ -763,7 +785,6 @@ function __loadexpflags() {
 					#all-buttons-container { gap: unset; justify-content: space-evenly; }
 					#menu { flex-direction: column; padding: 0px 12px 0px; }
 					.menu-buttons-actions { width: 3.8rem; }
-					.yt-channel-sub-count { display: none; }
 				</style>
 			`
 		);
@@ -850,7 +871,7 @@ function __loadexpflags() {
 	//	added a safeguard if the experimental material style comment section is set to false
 	if (faketube.config_.EXPERIMENT_FLAGS.watch_page_experimental_material_you_comments_section == false && faketube.config_.EXPERIMENT_FLAGS.watch_page_experimental_material_you_comments_section_migration_phase == true) {
 		setTimeout(function() {
-			document.querySelector("#account-picture-and-comment-entrypoint").insertAdjacentHTML(
+			document.querySelector(".account-picture-and-comment-entrypoint").insertAdjacentHTML(
 				"beforeend",
 				`
 					<div style="width: 17px; height: 17px; margin: 0px 0px 0px 14px;">

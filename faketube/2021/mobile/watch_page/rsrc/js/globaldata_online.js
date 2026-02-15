@@ -15,8 +15,8 @@ var __faketube_injtplyr = 3900;
 var __faketube_content_scraper_ytintlprms = 2100;
 var __faketube_content_scraper_ytintldatams = 2200;
 var __faketube_content_scraper_intlzedata = 2367;
-var __faketube_wtchpge_intrnt_btm_notif_apr_ms = 500;
-var __faketube_wtchpge_intrnt_btm_notif_clpse_ms = 3067;
+var __faketube_wtchpge_intrnt_btm_notif_apr_ms = 1000;
+var __faketube_wtchpge_intrnt_btm_notif_clpse_ms = 4067;
 var __faketube_loadwatchpage = 5000; /* todo: make an actual loading page transition */
 
 /*
@@ -39,6 +39,9 @@ var global_data = {
 			back_online_text: "オンラインに復帰しました",
 			no_internet_connection_text: "インターネットに接続されていません",
 			check_your_internet_connection_text: "現在オフラインです。接続を確認してください。",
+			getting_channel_name_text: "チャンネル名を取得しています。。。",
+			getting_video_title_text: "動画のタイトルを取得しています。。。",
+			nan_subscribers_text: "チャンネル登録者数 NaN人",
 			likes_text: "高評価",
 			dislikes_text: "低評価",
 			chat_text: "チャット",
@@ -58,7 +61,13 @@ var global_data = {
 			likes_title_text: "高評価数",
 			dislikes_title_text: "低評価数",
 			view_count_title_text: "回視聴数",
-			description_header_text: "概要"
+			description_header_text: "概要",
+			transcripts_header_text: "動画の関連情報",
+			show_transcripts_text: "文字起こしを表示",
+			transcript_text_header_text: "文字起こし",
+			transcript_description_text: "文字起こしを使って説明する",
+			channel_videos_button_text: "動画",
+			channel_about_button_text: "概要"
 		}
 	},
 	statsSet: false, // came from return youtube dislike's fetching code
