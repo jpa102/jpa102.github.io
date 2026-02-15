@@ -56,6 +56,14 @@ html[data-theme-display='darkerdarkmode'] body {
 	background: var(--main-background-color) !important;
 }
 
+html[data-theme-display='blackhole'] .gray-text,
+html[data-theme-display='darkmode'] .gray-text,
+html[data-theme-display='darkerdarkmode'] .gray-text {
+	color: var(--gray-color) !important;
+}
+
+
+
 #topbar {
 	background: var(--main-bankground-color) !important;
 	border-bottom: 1px solid rgb(48, 48, 48);
@@ -153,12 +161,6 @@ html[data-theme-display='darkerdarkmode'] .menu-buttons:active {
 	transition: .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
-html[data-theme-display='blackhole'] #download-button.premium-needed-or-unavailable,
-html[data-theme-display='darkmode'] #download-button.premium-needed-or-unavailable,
-html[data-theme-display='darkerdarkmode'] #download-button.premium-needed-or-unavailable {
-	color: var(--gray-color);
-}
-
 .subpage-button-icon {
 	fill: var(--white-color);
 }
@@ -180,9 +182,9 @@ html[data-theme-display='darkerdarkmode'] #download-button.premium-needed-or-una
 	color: var(--white-color);
 }
 
-html[data-theme-display='blackhole'] #comment-counts,
-html[data-theme-display='darkmode'] #comment-counts,
-html[data-theme-display='darkerdarkmode'] #comment-counts {
+html[data-theme-display='blackhole'] .comment-counts,
+html[data-theme-display='darkmode'] .comment-counts,
+html[data-theme-display='darkerdarkmode'] .comment-counts {
 	color: var(--gray-color) !important;
 }
 
