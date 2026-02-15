@@ -23,11 +23,3 @@ html[data-online-status='offline'] .inner-button-icons {
 
 
 /* ========== dark mode ========== */
-
-html[data-online-status='offline'][data-theme-display='darkmode'] .menu-buttons-text {
-	color: var(--gray-color);
-}
-
-html[data-online-status='offline'][data-theme-display='darkmode'] .inner-button-icons {
-	color: var(--gray-color);
-}
