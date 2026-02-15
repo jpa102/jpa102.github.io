@@ -141,7 +141,8 @@
 	transition: background .1s cubic-bezier(.4, 0, .2, 1);
 }
 
-#download-button.premium-needed-or-unavailable {
+#download-button.premium-needed-or-unavailable > div,
+#download-button.premium-needed-or-unavailable > span {
 	color: var(--gray-text-color);
 }
 
@@ -177,7 +178,7 @@
 	flex-direction: column;
 	align-items: center;
 	font-weight: 600;
-	font-size: 14px;
+	font-size: 16px;
 	width: -webkit-fill-available;
 }
 
@@ -317,7 +318,7 @@ a.transparent-button-with-border > span {
 
 .intfuncs-text-style {
 	white-space: unset;
-	gap: 12px;
+	gap: 20px;
 	display: flex;
 	flex-direction: column;
 }
