@@ -25,6 +25,7 @@ setTimeout(function(){
 	document.querySelector("#subscribe-text-link").title = "Subscribe to " + global_data.yt.channelName + " (YouTube)";
 
 	document.querySelector("#comment-counts.gray-text").innerText = global_data.yt.commentCount; // the comment counts
+	document.querySelector("#comments-section-comment-counts.gray-text").innerText = global_data.yt.commentCount; // the comment counts
 
 	// at the description page
 	document.querySelector("#yt-channel-name-link-desc").href = global_data.yt.channelLink; // the link to the youtube channel
