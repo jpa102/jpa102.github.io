@@ -18,7 +18,7 @@
 	--video-player-views-and-date-size: 0.77em;
 	--video-player-menu-buttons-gap-size: 0.5rem;
 	--video-player-menu-buttons-text-size: 0.75rem;
-	--video-player-comment-caption-size: 0.8em;
+	--video-player-comment-caption-size: 0.92em;
 	--video-player-margin-left: 14px;
 	--video-player-yt-channel-name: 0.96em;
 	--video-player-yt-channel-sub-count: 0.75em;
@@ -27,7 +27,7 @@
 	--call-to-action-color-light: #065fd4;
 	--subscribe-text-color: red;
 	--inner-button-icons-size: 1.5rem;
-	--gray-text-color: #6a6a6a;
+	--gray-text-color: #858585;
 }
 
 /*
@@ -91,6 +91,17 @@
 
 ::-webkit-scrollbar {
 	display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Remove blue highlight on click/tap for mobile/desktop */
+a, div, button, input, textarea, select {
+    -webkit-tap-highlight-color: transparent; /* Removes blue box on mobile */
+    outline: none; /* Removes outline in most browsers */
+}
+
+/* Remove border on focus */
+:focus {
+    outline: none !important;
 }
 
 /* adjust the text size based on the specified language */
@@ -246,7 +257,7 @@ iframe#yt-video-player {
 	text-transform: uppercase;
 	color: var(--subscribe-text-color);
 	width: fit-content;
-	font-family: var(--main-font-family);
+	font-family: var(--arial-font-family);
 }
 
 #comment-section, #commenting-container {
@@ -260,13 +271,14 @@ iframe#yt-video-player {
 	flex-direction: row;
 }
 
-#comment-caption-and-counts-container > #comment-caption-and-counts {
+.comment-caption-and-counts, .comment-caption-and-counts-container {
 	display: flex;
 	align-items: center;
 }
 
-#comment-caption-and-counts-container {
+.comment-caption-and-counts-container {
 	justify-content: space-between;
+	align-items: flex-start;
 }
 
 #comment-caption, #comment-counts {
@@ -274,7 +286,7 @@ iframe#yt-video-player {
 	margin: 0em 0em 1em 0em;
 }
 
-#comment-counts {
+#comment-counts, #comments-section-comment-counts {
 	color: var(--gray-text-color);
 }
 
@@ -306,6 +318,7 @@ p.vote-count {
 
 #video-title-desc {
 	margin-bottom: 8px;
+	font-size: 1.1em;
 }
 
 #yt-img-and-channel-name-desc {
