@@ -89,6 +89,16 @@
 				const queryString = window.location.search;
 				const urlParams = new URLSearchParams(queryString);
 				const body_background_color_value = urlParams.get('body_background_color');
+
+				// Only allow safe CSS color formats to prevent injection
+				if (body_background_color_value === null) {
+					return;
+				}
+				// Accept common CSS color syntaxes: named, hex, rgb/rgba, hsl/hsla
+				const safeColorPattern = /^(?:#[0-9a-fA-F]{3,8}|(?:rgb|hsl)a?\(\s*[0-9.%\s,]+\s*\)|[a-zA-Z]+)$/;
+				if (!safeColorPattern.test(body_background_color_value)) {
+					return;
+				}
 				
 				document.querySelector("head").insertAdjacentHTML(
 					"beforeend",
