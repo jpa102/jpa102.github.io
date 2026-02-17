@@ -167,22 +167,38 @@ function getVideoIdFromUser() {
 
 
 
-// the video id checker loop
-while (global_data.v == null || global_data.v.length < 11 || global_data.v.length > 11) {
-	getVideoIdFromUser();
-}
+//	the video id checker loop
+//	also include an anonymous function where it automatically gets the video id based on the ?v= query parameter provided
+//		if there is a valid video id in the ?v= query parameter, the checker loop will be bypassed entirely
+(() => {
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const video_id = urlParams.get('v');
+	if (video_id == null || '' || undefined) {
+		while (global_data.v == null || global_data.v.length < 11 || global_data.v.length > 11) {
+			getVideoIdFromUser();
+		}
 
-if (global_data.v == null || global_data.v == undefined) {
-	localStorage.setItem("lastVideoId", "aQvGIIdgFDM"); // store the video id
-	global_data.yt.videoId = localStorage.getItem("lastVideoId"); // store the video id
-	global_data.v = localStorage.getItem("lastVideoId"); // set the video id to "Video Not Available" by YouTube Viewers
-}
+		if (global_data.v == null || global_data.v == undefined) {
+			localStorage.setItem("lastVideoId", "aQvGIIdgFDM"); // store the video id
+			global_data.yt.videoId = localStorage.getItem("lastVideoId"); // store the video id
+			global_data.v = localStorage.getItem("lastVideoId"); // set the video id to "Video Not Available" by YouTube Viewers
+		}
 
-if (global_data.v != null) {
-	localStorage.setItem("lastVideoId", global_data.v); // store the video id
-	global_data.yt.videoId = global_data.v; // store the video id
-	localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
-}
+		if (global_data.v != null) {
+			localStorage.setItem("lastVideoId", global_data.v); // store the video id
+			global_data.yt.videoId = global_data.v; // store the video id
+			localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
+		}
+	} else {
+		global_data.v = video_id;
+		global_data.yt.videoId = video_id;
+		if (video_id.length == 11 || video_id != '' || video_id != undefined || video_id != null) {
+			localStorage.setItem("lastVideoId", global_data.v); // store the video id
+			localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
+		}
+	}
+})();
 
 
 
@@ -355,3 +371,4 @@ if (faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching == true) {
 		global_data.yt.channelSubConfirmLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/?sub_confirmation=1`;
 	}
 }
+
