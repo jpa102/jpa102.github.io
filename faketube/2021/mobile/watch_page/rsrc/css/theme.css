@@ -1,8 +1,8 @@
 /*
 	theme.css
 
-	migrating css code from theme.js, as it's hard to maintain it
-	on a javascript file than when it's inside a css file instead
+	this contains css code supporting 3 possible themes
+	syntax involves using html[data-theme-display='theme_type'] { css selector here }
 */
 
 html[data-theme-display='blackhole'] {
@@ -224,10 +224,46 @@ html[data-theme-display='darkerdarkmode'] .transparent-button-with-border {
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+html[data-theme-display='blackhole'] .loading-author-views-and-date.skeleton,
+html[data-theme-display='blackhole'] .ghost-action-button-skeleton > .icon-circle-face,
+html[data-theme-display='blackhole'] .ghost-action-button-skeleton > .text-label-face,
+html[data-theme-display='blackhole'] #channel-avatar-skeleton,
+html[data-theme-display='blackhole'] #channel-information-skeleton,
+html[data-theme-display='blackhole'] #published-on-date-or-comment-counts,
+html[data-theme-display='blackhole'] #video-description-or-comment-preview > .skeleton-bars,
+html[data-theme-display='darkmode'] .loading-author-views-and-date.skeleton,
+html[data-theme-display='darkmode'] .ghost-action-button-skeleton > .icon-circle-face,
+html[data-theme-display='darkmode'] .ghost-action-button-skeleton > .text-label-face,
+html[data-theme-display='darkmode'] #channel-avatar-skeleton,
+html[data-theme-display='darkmode'] #channel-information-skeleton,
+html[data-theme-display='darkmode'] #published-on-date-or-comment-counts,
+html[data-theme-display='darkmode'] #video-description-or-comment-preview > .skeleton-bars,
+html[data-theme-display='darkerdarkmode'] .loading-author-views-and-date.skeleton,
+html[data-theme-display='darkerdarkmode'] .ghost-action-button-skeleton > .icon-circle-face,
+html[data-theme-display='darkerdarkmode'] .ghost-action-button-skeleton > .text-label-face,
+html[data-theme-display='darkerdarkmode'] #channel-avatar-skeleton,
+html[data-theme-display='darkerdarkmode'] #channel-information-skeleton,
+html[data-theme-display='darkerdarkmode'] #published-on-date-or-comment-counts,
+html[data-theme-display='darkerdarkmode'] #video-description-or-comment-preview > .skeleton-bars {
+	background: rgba(255, 255, 255, 0.1);
+}
+
 .loading-video-thumbnails,
 .img-author-skeleton,
 .video-title-skeleton,
 .video-author-skeleton,
 .shorts-skeleton {
 	background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme-display='blackhole'] .loaded-video-title-renderer.general-feed,
+html[data-theme-display='darkmode'] .loaded-video-title-renderer.general-feed,
+html[data-theme-display='darkerdarkmode'] .loaded-video-title-renderer.general-feed {
+	color: var(--white-color);
+}
+
+html[data-theme-display='blackhole'] .loaded-video-author-skeleton-renderer.general-feed,
+html[data-theme-display='darkmode'] .loaded-video-author-skeleton-renderer.general-feed,
+html[data-theme-display='darkerdarkmode'] .loaded-video-author-skeleton-renderer.general-feed {
+	color: var(--gray-color);
 }
