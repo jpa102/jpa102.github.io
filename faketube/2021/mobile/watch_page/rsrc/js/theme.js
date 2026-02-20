@@ -1,4 +1,4 @@
-﻿/*
+/*
 	theme.js
 	
 	a javascript file that changes the page's theme
@@ -32,7 +32,7 @@ display = {
 			document.querySelector("html").setAttribute("data-theme-display", "light"); // shift to "light" mode
 		},
 		blackhole() {
-			if (document.querySelector("html").getAttribute("data-theme-mode") == "blackhole") {
+			if (document.querySelector("html").getAttribute("data-theme-display") == "blackhole") {
 				console.log("the blackhole theme is already applied");
 				DebugJS.console.log("info", "the blackhole theme is already applied");
 				return;
@@ -41,7 +41,7 @@ display = {
 			document.querySelector("html").setAttribute("data-theme-display", "blackhole");
 		},
 		darkerdarkmode() {
-			if (document.querySelector("html").getAttribute("data-theme-mode") == "darkerdarkmode") {
+			if (document.querySelector("html").getAttribute("data-theme-display") == "darkerdarkmode") {
 				console.log("the darker dark mode theme is already applied");
 				DebugJS.console.log("info", "the darker dark mode theme is already applied");
 				return;
@@ -50,7 +50,7 @@ display = {
 			document.querySelector("html").setAttribute("data-theme-display", "darkerdarkmode");
 		},
 		darkmode() {
-			if (document.querySelector("html").getAttribute("data-theme-mode") == "darkmode") {
+			if (document.querySelector("html").getAttribute("data-theme-display") == "darkmode") {
 				console.log("the dark mode theme is already applied");
 				DebugJS.console.log("info", "the dark mode theme is already applied");
 				return;

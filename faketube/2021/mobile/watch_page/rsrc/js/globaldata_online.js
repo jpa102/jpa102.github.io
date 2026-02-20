@@ -17,7 +17,7 @@ var __faketube_content_scraper_ytintldatams = 2200;
 var __faketube_content_scraper_intlzedata = 2367;
 var __faketube_wtchpge_intrnt_btm_notif_apr_ms = 1000;
 var __faketube_wtchpge_intrnt_btm_notif_clpse_ms = 4067;
-var __faketube_loadwatchpage = 5000; /* todo: make an actual loading page transition */
+var __faketube_loadwatchpage = 5000;
 
 /*
 	main object for global data
@@ -149,7 +149,7 @@ var _volatile_votes;
 
 
 function getVideoIdFromUser() {
-	global_data.v = prompt(`Enter a 11-character long YouTube video id\nExample is dQw4w9WgXcQ`);
+	global_data.v = prompt(`Enter a 11-character long YouTube video id\nExample is dQw4w9WgXcQ\n\nAlternatively, you can manually append ?v= in the URL so you don't have to paste in the video id every time`);
 
 	if (global_data.v == null || global_data.v == undefined) {
 		alert("Please enter a video id first");
@@ -188,19 +188,17 @@ function getVideoIdFromUser() {
 		if (global_data.v != null) {
 			localStorage.setItem("lastVideoId", global_data.v); // store the video id
 			global_data.yt.videoId = global_data.v; // store the video id
-			localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
+			com.faketube.web.localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
 		}
 	} else {
 		global_data.v = video_id;
 		global_data.yt.videoId = video_id;
 		if (video_id.length == 11 || video_id != '' || video_id != undefined || video_id != null) {
 			localStorage.setItem("lastVideoId", global_data.v); // store the video id
-			localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
+			com.faketube.web.localStorage_storeVideoId(global_data.v); // store the video id in the array inside localStorage
 		}
 	}
 })();
-
-
 
 // test the url for return youtube dislike api
 UrlExists(`https://returnyoutubedislikeapi.com/votes?videoId=${global_data.v}`);
@@ -371,4 +369,3 @@ if (faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching == true) {
 		global_data.yt.channelSubConfirmLink = `https://jpa102.github.io/faketube/2021/mobile/watch_page/undefined/?sub_confirmation=1`;
 	}
 }
-
