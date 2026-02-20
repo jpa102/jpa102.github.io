@@ -1,5 +1,7 @@
 /*
-	sets the YouTube channel info
+	setytchannelinfo.js
+
+	sets the YouTube channel info and handle the loading screen code for 5 seconds
 */
 
 
@@ -35,3 +37,13 @@ setTimeout(function(){
 	document.querySelector("#videos-button").href = global_data.yt.channelLink + "/videos";
 	document.querySelector("#about-button").href = global_data.yt.channelLink + "/about";
 }, __faketube_stytchnlifo);
+
+
+
+// place the loading screen code
+window.scrollTo({ top: 0 }); // in case the user reloaded the page but the page position is not at the very top
+setTimeout(function() {
+	document.querySelector("#video-metadata-info-and-recommendations-container-skeleton-model").hidden = true;
+	document.querySelector("#video-metadata-info-and-recommendations-container").hidden = false;
+	document.querySelector("body").setAttribute("data-page-scrolling", "true");
+}, __faketube_loadwatchpage);
