@@ -2,7 +2,7 @@
 	operations.js
 	
 	this module contains code that makes the page interactive
-	and some math too
+	also includes functions that can be seen in the intfuncs page (internal functions)
 */
 
 
@@ -308,20 +308,21 @@ function archiveSite_setData() {
 			document.querySelector("#upload-date-title").innerText = ReceivedVideoMetadata.desc_year;
 
 			// display an info box below the video player indicating that it's been sourced from https://web.archive.org/
-			document.querySelector("#video-metadata-info-container").insertAdjacentHTML(
-				"afterbegin",
-				`
-					<div id="archive-site-message-about-video-archive" style="padding: 10px 15px; background: #f5d562; font-family: 'Google Sans'; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-						<p style="margin: unset;">NOTE: This video was archived by someone using ${ArchivedData.sourcesite}. <a href="${ArchivedData.sourceurl}" title="the ${ArchivedData.sourcesite} source link used to get the archived data">Source link</a></p>
-						<button id="archive-site-info-box-button" style="cursor: pointer; padding: 6px; background: transparent; border: none;" class="close-info-button" title="Remove this information box.">
-							<svg id="hide-sec-desc-button-icon">
-								<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
-							</svg>
-						</button>
-					</div>
-				`
-			);
+			videoTitleAndDescriptionTrigger = document.querySelector("#video-metadata-info-and-recommendations-container");
 
+			archiveSiteContainer = document.createElement("div");
+			archiveSiteContainer.id = "archive-site-message-about-video-archive";
+			archiveSiteContainer.style = "padding: 10px 15px; background: #f5d562; font-family: 'Google Sans'; display: flex; flex-direction: row; justify-content: space-between; align-items: center;";
+			archiveSiteContainer.innerHTML = `
+				<p style="margin: unset;">NOTE: This video was archived by someone using ${ArchivedData.sourcesite}. <a href="${ArchivedData.sourceurl}" title="the ${ArchivedData.sourcesite} source link used to get the archived data">Source link</a></p>
+				<button id="archive-site-info-box-button" class="hide-button-style" title="Remove this information box." style="cursor: pointer; padding: 6px; background: transparent; border: none;">
+					<svg class="subpage-button-icon">
+						<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
+					</svg>
+				</button>
+			`;
+
+			videoTitleAndDescriptionTrigger.insertBefore(archiveSiteContainer, videoTitleAndDescriptionTrigger.children[1]);
 			document.querySelector("#archive-site-info-box-button").addEventListener("click", archiveSite_destroyYellowInfoBox);
 		}
 	}, 1000);
@@ -392,6 +393,28 @@ function estimateLikeCountFromRYD() {
 	} else {
 		return;
 	}
+}
+
+function displaySavedVideoIds() {
+	alert(`stored video ids:\n\n ${JSON.parse(localStorage.videoids).join('\n')}`);
+}
+
+const exportSavedVideoIds = () => {
+	setTimeout(function() {
+		// if there's nothing inside the localStorage.videoids
+		if (localStorage.videoids == null) {
+			return;
+		}
+
+		let datefile = new Date();
+		const link = document.createElement("a");
+		const content = localStorage.videoids;
+		const file = new Blob([content], { type: 'application/json' });
+		link.href = URL.createObjectURL(file);
+		link.download = `video-ids-history-faketube[${datefile.toISOString()}].txt`;
+		link.click();
+		URL.revokeObjectURL(link.href);
+	}, 1000);
 }
 
 class onCreate {
@@ -569,6 +592,109 @@ function __loadexpflags() {
 		}, __faketube_aplyfavstebgclr);
 	}
 
+	//	load the related video infos and inject them in the related section
+	if (faketube.config_.EXPERIMENT_FLAGS.load_related_videos_in_feed == true) {
+		setTimeout(function() {
+			for (let i = 0; i < document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails").length; i++) {
+				/*
+					3 checks:
+						- video thumbnail (lockupViewModel.metadata)
+						- video thumbnail (lockupViewModel.contentImage.collectionThumbnailViewModel)
+						- video thumbnail (lockupViewModel.contentImage.thumbnailViewModel)
+						- video thumbnail (compactVideoRenderer.thumbnail)
+						- channel avatar pfp (decoratedAvatarViewModel)
+						- channel avatar pfp (avatarStackViewModel)
+						- channel avatar pfp (compactVideoRenderer.channelThumbnail)
+						- video title for title attribute (lockupViewModel.metadata)
+						- video title for title attribute (compactVideoRenderer.channelThumbnail)
+				*/
+				// video thumbnail
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
+					console.log(`index ${i}: lockupViewModel.metadata success`);
+				} catch {
+					console.log(`index ${i}: expecting lockupViewModel.metadata but none was found`);
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.collectionThumbnailViewModel.primaryThumbnail.thumbnailViewModel.image.sources[1].url;
+					console.log(`index ${i}: lockupViewModel.contentImage.collectionThumbnailViewModel success`);
+				} catch {
+					console.log(`index ${i}: expecting lockupViewModel.contentImage.collectionThumbnailViewModel but none was found`);
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.thumbnailViewModel.image.sources[1].url;
+					console.log(`index ${i}: lockupViewModel.contentImage.thumbnailViewModel success`);
+				} catch {
+					console.log(`index ${i}: expecting lockupViewModel.contentImage.thumbnailViewModel but none was found`);
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.thumbnail.thumbnails[1].url;
+					console.log(`index ${i}: compactVideoRenderer.thumbnail success`);
+				} catch {
+					console.log(`index ${i}: expecting compactVideoRenderer.thumbnail but none was found`);
+				}
+
+
+
+				// avatar
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
+					console.log(`index ${i}: decoratedAvatarViewModel success`);
+				} catch {
+					console.log(`index ${i}: expecting decoratedAvatarViewModel but none was found`);
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.avatarStackViewModel.avatars[1].avatarViewModel.image.sources[0].url;
+					console.log(`index ${i}: avatarStackViewModel success`);
+				} catch {
+					console.log(`index ${i}: expecting avatarStackViewModel but none was found`);
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.channelThumbnail.thumbnails[0].url;
+					console.log(`index ${i}: compactVideoRenderer.channelThumbnail success`);
+				} catch {
+					console.log(`index ${i}: expecting compactVideoRenderer.channelThumbnail but none was found`);
+				}
+
+
+
+				// apply the video id in the blank href
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `/faketube/2021/mobile/watch_page/?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId}`;
+					console.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId} to index ${i} success`);
+				} catch {
+					
+				}
+
+
+
+				// apply the video title in the title attribute
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].title = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
+					console.log(`apply video title ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content} from lockupViewModel.metadata to index ${i} success`);
+				} catch {
+					console.log(`index ${i}: expecting lockupViewModel.metadata but none was found`);
+				}
+
+				// apply the video title and info in their respective containers
+				try {
+					// video title
+					document.querySelectorAll(".loaded-video-title-renderer.general-feed")[i].innerText = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
+
+					// video info
+					document.querySelectorAll(".loaded-video-author-skeleton-renderer.general-feed")[i].innerText = `${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[0].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[1].text.content}`;
+				} catch {
+					console.log(`index ${i}: failed to apply video title and video info`);
+				}
+			}
+		}, __faketube_stytchnlifo);
+	}
+
 	//	make the page editable
 	if (faketube.config_.web_page_editable == true) {
 		document.designMode = "on";
@@ -689,6 +815,7 @@ function __loadexpflags() {
 				"beforeend",
 				`
 					<style id="match-older-15xxxx-version" type="text/css">
+						.loading-video-thumbnails { margin: 0px var(--video-player-margin-left) 14px; }
 						.yt-channel-sub-count { display: block !important; }
 						#subscribe-text-container { display: flex; flex-direction: row; align-items: center; }
 						.button-renderer-icon { width: 17px; height: 17px; margin: 0 8px 0 0; }
@@ -780,7 +907,6 @@ function __loadexpflags() {
 			"beforeend",
 			`
 				<style id="match-older-16xxxx-version" type="text/css">
-					.loading-video-thumbnails { margin: 0px var(--video-player-margin-left) 14px; }
 					#live-chat-button, #remix-button, #stop-ads-button, #thanks-button, #clip-button, #report-button { display: none !important; }
 					#all-buttons-container { gap: unset; justify-content: space-evenly; }
 					#menu { flex-direction: column; padding: 0px 12px 0px; }
