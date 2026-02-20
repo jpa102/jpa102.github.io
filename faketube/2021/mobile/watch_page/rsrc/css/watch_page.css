@@ -104,6 +104,11 @@ a, div, button, input, textarea, select {
     outline: none !important;
 }
 
+/* if set to false, the page will not scroll */
+body[data-page-scrolling='false'] {
+	overflow: hidden;
+}
+
 /* adjust the text size based on the specified language */
 /* commented out for now */
 /*
@@ -141,7 +146,7 @@ html[lang='ja-JP'] #subscribe-text-link {
 .recommendations-container {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 12px;
 }
 
 /*
@@ -167,6 +172,7 @@ iframe#yt-video-player {
 	width: -webkit-fill-available;
 	width: -moz-available;
 	aspect-ratio: var(--aspect-ratio-for-player);
+	background: var(--subpage-background-color);
 }
 
 #video.title, #video-title-failed.video-title-failed-to-load,
@@ -210,6 +216,7 @@ iframe#yt-video-player {
 	font-family: var(--arial-font-family);
 	font-size: var(--video-player-yt-channel-name);
 	text-decoration: none;
+	width: fit-content;
 }
 
 #yt-channel-name-renderer {
@@ -223,7 +230,9 @@ iframe#yt-video-player {
 	width: -moz-available;
 }
 
-#yt-channel-profile-picture, .comment-section-profile-picture {
+#channel-avatar-skeleton,
+#yt-channel-profile-picture,
+.comment-section-profile-picture {
 	width: 34px;
 	height: 34px;
 	border-radius: 40px;
