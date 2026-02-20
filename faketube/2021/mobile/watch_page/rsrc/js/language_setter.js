@@ -32,7 +32,7 @@ switch (navigator.language.slice(0, 2)) {
 			document.querySelector("#save-text-renderer").innerText = global_data._watch_page_strings.ja.save_text;
 			document.querySelector("#report-text-renderer").innerText = global_data._watch_page_strings.ja.report_text;
 			document.querySelector("a#subscribe-text-link").innerText = global_data._watch_page_strings.ja.subscribe_text;
-			document.querySelector("#comment-caption").innerHTML = global_data._watch_page_strings.ja.comment_header_text + "&nbsp;&nbsp;";
+			document.querySelector("#comment-caption").innerHTML = global_data._watch_page_strings.ja.comment_header_text + "&nbsp;&nbsp;&nbsp;";
 			document.querySelector("#comments-title").innerHTML = global_data._watch_page_strings.ja.comment_header_text + "&nbsp;&nbsp;&nbsp;&nbsp;";
 			document.querySelector(".comment-field").placeholder = global_data._watch_page_strings.ja.add_a_comment_text;
 			document.querySelector("#comments-section-field").placeholder = global_data._watch_page_strings.ja.add_a_comment_text;
