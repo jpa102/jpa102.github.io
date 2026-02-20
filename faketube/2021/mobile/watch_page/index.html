@@ -37,7 +37,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body data-page-scrolling="false">
 		<header hidden="">
 			<div id="topbar"></div>
 		</header>
@@ -46,7 +46,70 @@
 				<iframe id="yt-video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 				<div id="metadata-page-and-recommendations-container">
 					<div id="metadata-and-recommendations-page" class="page-container">
-						<span id="video-metadata-info-and-recommendations-container">
+						<span id="video-metadata-info-and-recommendations-container-skeleton-model">
+							<div class="dummy-video-player"></div>
+							<div id="video-metadata-info-and-recommendations-container-skeleton-container" class="skeleton-container">
+								<div class="loading-author-views-and-date skeleton"></div>
+								<div class="loading-author-views-and-date skeleton" style="width: 75%"></div>
+								<div class="loading-author-views-and-date skeleton" style="width: 25%"></div>
+							</div>
+							<div id="ghost-action-buttons-skeleton-container" class="skeleton-container">
+								<div class="ghost-action-button-skeleton">
+									<span class="icon-circle-face"></span>
+									<span class="text-label-face"></span>
+								</div>
+								<div class="ghost-action-button-skeleton">
+									<span class="icon-circle-face"></span>
+									<span class="text-label-face"></span>
+								</div>
+								<div class="ghost-action-button-skeleton">
+									<span class="icon-circle-face"></span>
+									<span class="text-label-face"></span>
+								</div>
+								<div class="ghost-action-button-skeleton">
+									<span class="icon-circle-face"></span>
+									<span class="text-label-face"></span>
+								</div>
+								<div class="ghost-action-button-skeleton">
+									<span class="icon-circle-face"></span>
+									<span class="text-label-face"></span>
+								</div>
+							</div>
+							<div id="channel-info-skeleton-container" class="skeleton-container">
+								<div id="channel-avatar-skeleton"></div>
+								<div id="channel-information-skeleton" style="width: 35%; margin-left: 16px;"></div>
+							</div>
+							<div id="comment-box-skeleton-container" class="skeleton-container">
+								<div id="published-on-date-or-comment-counts"></div>
+								<div id="video-description-or-comment-preview">
+									<div class="skeleton-bars"></div>
+									<div class="skeleton-bars"></div>
+								</div>
+							</div>
+							<div class="recommendations-container-skeleton-container" class="skeleton-container">
+								<div class="loading-video-skeleton">
+									<div class="loading-video-thumbnails general-skeleton"></div>
+									<div class="author-image-and-video-details-skeleton">
+										<div class="img-author-skeleton general-skeleton"></div>
+										<div class="video-details-skeleton">
+											<div class="video-title-skeleton general-skeleton"></div>
+											<div class="video-author-skeleton general-skeleton"></div>
+										</div>
+									</div>
+								</div>
+								<div class="loading-video-skeleton">
+									<div class="loading-video-thumbnails general-skeleton"></div>
+									<div class="author-image-and-video-details-skeleton">
+										<div class="img-author-skeleton general-skeleton"></div>
+										<div class="video-details-skeleton">
+											<div class="video-title-skeleton general-skeleton"></div>
+											<div class="video-author-skeleton general-skeleton"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</span>
+						<span id="video-metadata-info-and-recommendations-container" hidden>
 							<div class="dummy-video-player"></div>
 							<div id="video-title-date-and-expand-description-container" class="touch-by-touch caption-and-exit-button"  onclick="onCreate.secondaryDescription()" aria-pressed="false">
 								<div id="video-title-and-date-published">
@@ -195,7 +258,7 @@
 							<div id="video-metadata-and-yt-channel" class="touch-by-touch">
 								<div id="yt-channel-container">
 									<div id="yt-channel">
-										<img id="yt-channel-profile-picture" src="rsrc/player/YourVideoId.jpg">
+										<img id="yt-channel-profile-picture" src="rsrc/player/YourVideoId.jpg" loading="lazy">
 										<div id="yt-channel-name-renderer">
 											<a id="yt-channel-name-link" href="https://www.youtube.com/channel/">Getting Channel name...</a>
 											<a class="yt-channel-sub-count gray-text">NaN subscribers</a>
@@ -229,7 +292,7 @@
 							<div id="comment-section" class="touch-by-touch" onclick="onCreate.commentsSection()">
 								<div class="comment-caption-and-counts-container">
 									<span class="comment-caption-and-counts">
-										<p id="comment-caption">Comments &nbsp;&nbsp;</p>
+										<p id="comment-caption">Comments &nbsp;&nbsp;&nbsp;</p>
 										<p id="comment-counts" class="gray-text">NaN</p>
 									</span>
 									<span id="comment-expand-container">
@@ -239,7 +302,7 @@
 									</span>
 								</div>
 								<div class="account-picture-and-comment-entrypoint">
-									<img class="comment-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj">
+									<img class="comment-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj" loading="lazy">
 									<form id="comment-entrypoint">
 										<input class="comment-field" placeholder="Add a comment..." disabled></input>
 									</form>
@@ -249,13 +312,13 @@
 							<div id="thick-border" class="themed-borders"></div>
 							<div class="recommendations-page">
 								<div class="recommendations-container">
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
@@ -273,43 +336,43 @@
 										<img class="shorts-skeleton general-skeleton" loading="lazy" src="">
 										<img class="shorts-skeleton general-skeleton" loading="lazy" src="">
 									</div>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
@@ -327,156 +390,157 @@
 										<img class="shorts-skeleton general-skeleton" loading="lazy" src="">
 										<img class="shorts-skeleton general-skeleton" loading="lazy" src="">
 									</div>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
-									<a href="" class="loading-video-skeleton">
-										<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
+										<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 										<div class="author-image-and-video-details-skeleton">
 											<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-											<div class="video-details-skeleton">
-												<div class="video-title-skeleton general-skeleton"></div>
-												<div class="video-author-skeleton general-skeleton"></div>
+											<div class="loaded-video-details">
+												<div class="loaded-video-title-renderer general-feed"></div>
+												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
 										</div>
 									</a>
+									<div class="nullo"></div>
 								</div>
 							</div>
 						</span>
@@ -509,7 +573,7 @@
 									<div id="border-bottom-metadata" class="themed-borders"></div>
 									<div id="commenting-container">
 										<div class="account-picture-and-comment-entrypoint">
-											<img class="commenting-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj">
+											<img class="commenting-section-profile-picture" src="https://yt3.googleusercontent.com/a/default-user=s176-c-k-c0x00ffffff-no-rj" loading="lazy">
 											<span id="comments-section-field-container">
 												<input id="comments-section-field" placeholder="Add a comment..."></input>
 											</span>
@@ -539,7 +603,7 @@
 										<div id="video-info-and-author-container">
 											<h4 id="video-title-desc">Getting video title...</h4>
 											<div id="yt-img-and-channel-name-desc">
-												<img id="yt-channel-profile-picture-desc" src="rsrc/player/YourVideoId.jpg">
+												<img id="yt-channel-profile-picture-desc" src="rsrc/player/YourVideoId.jpg" loading="lazy">
 												<div id="yt-channel-name-renderer-desc">
 													<a id="yt-channel-name-link-desc" href="https://www.youtube.com/channel/">Getting Channel name...</a>
 												</div>
@@ -694,10 +758,10 @@
 			<div class="recommendations-page" hidden="">
 				<div id="recommendations-container">
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
@@ -718,40 +782,40 @@
 						<img class="shorts-skeleton general-skeleton" loading="lazy" src="">
 					</div>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
@@ -772,150 +836,150 @@
 						<img class="shorts-skeleton general-skeleton" loading="lazy" src="">
 					</div>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
 						</div>
 					</a>
 					<a href="" class="loading-video-skeleton">
-						<img class="loading-video-thumbnails general-skeleton" loading="lazy" src="">
+						<img class="loaded-video-thumbnails general-feed" loading="lazy" src="">
 						<div class="author-image-and-video-details-skeleton">
 							<img class="img-author-skeleton general-skeleton" loading="lazy" src="">
-							<div class="video-details-skeleton">
+							<div class="loaded-video-details">
 								<div class="video-title-skeleton general-skeleton"></div>
 								<div class="video-author-skeleton general-skeleton"></div>
 							</div>
@@ -932,4 +996,3 @@
 		</div>
 	</body>
 </html>
-
