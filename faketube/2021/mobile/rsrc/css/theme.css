@@ -176,7 +176,7 @@ html[data-theme-display='darkerdarkmode'] #show-transcript-button {
 }
 
 #createbutton-icon {
-	border-color: var(--white-color);
+	border-color: var(--white-color) !important;
 }
 
 html[data-theme-display='blackhole'] .menu-buttons:active,
