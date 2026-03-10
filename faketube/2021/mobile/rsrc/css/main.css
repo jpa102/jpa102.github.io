@@ -14,13 +14,13 @@ body {
 
 /* Remove blue highlight on click/tap for mobile/desktop */
 a, div, button, input, textarea, select {
-    -webkit-tap-highlight-color: transparent; /* Removes blue box on mobile */
-    outline: none; /* Removes outline in most browsers */
+	-webkit-tap-highlight-color: transparent; /* Removes blue box on mobile */
+	outline: none; /* Removes outline in most browsers */
 }
 
 /* Remove border on focus */
 :focus {
-    outline: none !important;
+	outline: none !important;
 }
 
 /* if set to false, the page will not scroll */
@@ -31,7 +31,7 @@ body[data-page-scrolling='false'] {
 /* ========================== HEADER ========================== */
 
 header {
-	padding: 15px 0px 15px 0px;
+	padding: 12px 0px;
 	position: fixed;
 	top: 0;
 	z-index: 1;
@@ -55,7 +55,7 @@ h1 {
 	justify-content: center;
 	position: relative;
 	margin: 0px 20px 0px 20px;
-	padding: 68px 0px 56px 0px;
+	padding: 62px 0px 56px 0px;
 	font-family: Arial, Roboto;
 }
 
