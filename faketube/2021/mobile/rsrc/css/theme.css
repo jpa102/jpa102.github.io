@@ -75,6 +75,12 @@ html[data-theme-display='darkerdarkmode'] footer {
 	border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+html[data-theme-display='blackhole'] .section-renderer,
+html[data-theme-display='darkmode'] .section-renderer,
+html[data-theme-display='darkerdarkmode'] .section-renderer {
+	background: rgba(255, 255, 255, 0.1);
+}
+
 #app-title-text,
 #fallback-header-name,
 .heading-two-section-body-text {
@@ -164,8 +170,13 @@ html[data-theme-display='darkerdarkmode'] #show-transcript-button {
 	color: var(--call-to-action-color-dark);
 }
 
-.menu-buttons-text, .inner-button-icons {
+.menu-buttons-text,
+.inner-button-icons {
 	color: var(--white-color);
+}
+
+#createbutton-icon {
+	border-color: var(--white-color) !important;
 }
 
 html[data-theme-display='blackhole'] .menu-buttons:active,

@@ -13,11 +13,11 @@ html[data-online-status='online'] #status-text {
 }
 
 html[data-online-status='offline'] .menu-buttons-text {
-	color: var(--gray-text-color);
+	color: var(--gray-color);
 }
 
 html[data-online-status='offline'] .inner-button-icons {
-	color: var(--gray-text-color);
+	color: var(--gray-color);
 }
 
 
