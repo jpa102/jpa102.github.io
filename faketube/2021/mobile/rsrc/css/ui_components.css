@@ -95,7 +95,7 @@
 
 .video-id-input-field {
 	border: 1px solid transparent;
-	background: var(--light-mode-dark-color);
+	background: rgba(0, 0, 0, 0.1);
 	padding: 7px 9px;
 	border-radius: 3px;
 	width: 50%;
@@ -132,14 +132,14 @@
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	padding: 10px 3px;
+	padding: 4px 0px;
 }
 
 .menu-buttons {
 	border: 1px solid rgb(0 0 0 / 0%);
 	border-radius: 100px;
 	background: none;
-	width: 3.8rem;
+	width: 3.2rem;
 	transition: border .25s cubic-bezier(.4, 0, .2, 1);
 }
 
@@ -159,9 +159,14 @@
 }
 
 .inner-button-icons {
-	width: 1.6rem;
-	height: 1.6rem;
-	margin-bottom: 2px;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+#createbutton-icon {
+	padding: 4px 3px 3px 4px;
+	border: 1px solid black;
+	border-radius: 20px;
 }
 
 .menu-buttons-text {
@@ -173,6 +178,10 @@
 	justify-content: center;
 	align-items: center;
 	white-space: nowrap;
+}
+
+.navbar-text {
+	margin-top: 2px;
 }
 
 .grouped-items-container {
@@ -275,9 +284,7 @@ a.transparent-button-with-border > span {
 	padding: 6px 0px;
 }
 
-#internet-status-bottom {
-	position: fixed;
-	bottom: 0;
+#internet-status-bottom, footer {
 	width: 100%;
 	transition: 0.5s ease-in-out;
 }
@@ -289,7 +296,9 @@ a.transparent-button-with-border > span {
 	justify-content: center;
 	background: #171717;
 	color: white;
-	font-family: var(--main-font-family);
+	font-family: Arial, Meiryo, Verdana;
+	max-height: 18px;
+	line-height: 18px;
 }
 
 #border-top-metadata {
