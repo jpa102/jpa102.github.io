@@ -10,15 +10,15 @@
 var faketube = {
 	config_: {
 		apply_favorite_site_authors_background_color: false, // apply my favorite light theme color in the page
-		display_intfuncs_button: false, // display the 'intfuncs' (internal functions) button in the action bar at watch page
-		unhide_gradient_header: false, // this header is for mimicking the m.youtube.com style, it will be hidden for now because things like search aren't implemented yet
-		web_download_button_hidden: false, // hide the download button in the actions container
+		display_intfuncs_button: false, // display the 'intfuncs' (internal functions) button
 		web_page_editable: false, // no need to do the document.designMode trick in devtools
 		web_stop_ads_button_hidden: false, // hide the stop ads button
 		EXPERIMENT_FLAGS: {
 			forced_country_code_and_language: "", // input a country code and language (example: ja-JP for japanese - japan)
 			match_older_15_xx_xx_version: false, // inject and style the page from 15.xx.xx versions of youtube app
-			match_older_16_xx_xx_version: false // inject and style the page from older 16.xx.xx versions of youtube app
+			match_older_16_xx_xx_version: false, // inject and style the page from older 16.xx.xx versions of youtube app
+			try_searching_upper_style_type_a: false, // 
+			try_searching_upper_style_type_b: false // 
 		}
 	}
 } // set a breakpoint here if you want to change flags client-side, then go to the console tab
@@ -79,39 +79,6 @@ var com = {
 				if (themeIndex == undefined || themeIndex == "" || themeIndex == null) {
 					console.log(`please provide an index number\n\n\t0 - clear out the theme\n\t1 - dark mode\n\t2 - darker dark mode\n\t3 - black hole`);
 				}
-				
-			},
-			localStorage_storeVideoId(videoId) {
-				if (videoId == "" || videoId == undefined || videoId == null) {
-					console.log(`there's no value provided\nvideoId: ${videoId}`);
-					return;
-				}
-
-				if (videoId.length < 11 || videoId.length > 11) {
-					console.log(`the video id provided is not exactly 11 characters\nlength: ${videoId.length}`);
-					return;
-				}
-
-				// ===== the main execution part =====
-
-				// check if the videoids key doesn't exist yet, then create it
-				if (localStorage.videoids === undefined) {
-					localStorage.setItem("videoids", JSON.stringify([]));
-				}
-
-
-				// perform a check if the video id is already inside the array to avoid duplicates
-				let v = JSON.parse(localStorage.videoids);
-
-				for (let i = 0; i < v.length; i++) {
-					if (v[i].includes(videoId) == true) {
-						return; // terminating because the video id is already present in the array
-					}
-				}
-
-				// actually store a video id in the array
-				v.push(videoId);
-				localStorage.setItem("videoids", JSON.stringify(v));
 			}
 		}
 	}
