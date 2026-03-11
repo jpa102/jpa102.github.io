@@ -7,7 +7,7 @@
 
 
 function displaySavedVideoIds() {
-	alert(`stored video ids:\n\n ${JSON.parse(localStorage.videoids).join('\n')}`);
+	alert(`stored video ids:\n\n${JSON.parse(localStorage.videoids).join('\n')}`);
 }
 
 const exportSavedVideoIds = () => {
@@ -30,25 +30,33 @@ const exportSavedVideoIds = () => {
 
 class onCreate {
 	static intFuncsPage() {
-		document.querySelector("#video-metadata-info-and-recommendations-container").hidden = true;
 		document.querySelector("#internal-functions-section-container").hidden = false;
 	}
 
+	static profilePage() {
+		document.querySelector("#home-page").hidden = true;
+		document.querySelector("#native-profile-page").hidden = false;
+	}
+
 	static settingsPage() {
-		document.querySelector("#description-section-container").hidden = true;
-		document.querySelector("#transcripts-section-container").hidden = false;
+		document.querySelector("#native-profile-page").hidden = true;
+		document.querySelector("#main-settings-page").hidden = false;
 	}
 }
 
 class onDestroy {
 	static intFuncsPage() {
-		document.querySelector("#video-metadata-info-and-recommendations-container").hidden = false;
 		document.querySelector("#internal-functions-section-container").hidden = true;
 	}
 
+	static profilePage() {
+		document.querySelector("#home-page").hidden = false;
+		document.querySelector("#native-profile-page").hidden = true;
+	}
+
 	static settingsPage() {
-		document.querySelector("#description-section-container").hidden = false;
-		document.querySelector("#transcripts-section-container").hidden = true;
+		document.querySelector("#main-settings-page").hidden = true;
+		document.querySelector("#home-page").hidden = false;
 	}
 }
 
@@ -58,17 +66,7 @@ class onDestroy {
 	faketube's EXPERIMENT FLAGS functions
 	also serves as a default settings initializer
 */
-function __loadexpflags() {
-
-	//	make the page display a popup whenever the dislike button is pressed (likedislikebutton.js - dislikebuttonpressedcheck() function)
-
-	//	unhide the gradient header
-	if (faketube.config_.unhide_gradient_header == true) {
-		setTimeout(function() {
-			document.querySelector("header").hidden = false;
-		}, 50);
-	}
-
+function __loadcfgs() {
 	//	apply my favorite background color to the page
 	if (faketube.config_.apply_favorite_site_authors_background_color == true) {
 		setTimeout(function() {
@@ -167,5 +165,5 @@ function __loadexpflags() {
 	}
 }
 
-// execute the experiment flags loader function
-__loadexpflags();
+// execute the flags loader function
+__loadcfgs();
