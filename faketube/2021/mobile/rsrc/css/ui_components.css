@@ -169,6 +169,10 @@
 	border-radius: 20px;
 }
 
+#login-button-icon {
+	fill: #909090;
+}
+
 .menu-buttons-text {
 	font-size: 0.7rem;
 	font-family: Arial, sans-serif;
@@ -256,11 +260,16 @@ a.transparent-button-with-border > span {
 	margin: 14px;
 }
 
+#sign-in-button {
+	background: var(--call-to-action-color-light);
+	color: white;
+}
+
 .top-toolbar-button-style {
 	padding: 6px;
 	background: transparent;
 	border: 1px solid transparent;
-	margin-right: 8px;
+	margin-right: 12px;
 	cursor: pointer;
 	border-radius: 100px;
 	height: 38px;
@@ -289,7 +298,7 @@ a.transparent-button-with-border > span {
 	transition: 0.5s ease-in-out;
 }
 
-#status-text {
+#status-text, #privacy-policy-footer-text {
 	padding-top: 4px;
 	padding-bottom: 4px;
 	display: flex;
@@ -301,12 +310,74 @@ a.transparent-button-with-border > span {
 	line-height: 18px;
 }
 
-#border-top-metadata {
+#privacy-policy-footer-text {
+	font-size: 0.7rem;
+	max-height: 15px;
+	line-height: 15px;
+	background: unset;
+	color: black;
+	color: var(--gray-color);
+}
+
+#sign-in-promotion {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 0px;
+}
+
+#sign-in-promotional-text-container {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: Arial, Roboto;
+	padding: 12px 0px;
+}
+
+#native-profile-page > footer {
+	border-top: unset;
+}
+
+.signed-out-items-container {
+	padding: 6px 0px;
+}
+
+.native-profile-item-renderer {
+	display: flex;
+	align-items: center;
+	padding: 6px 0px;
+	color: black;
+	color: var(--white-color);
+	text-decoration: unset;
+}
+
+.inner-subpage-item-renderer {
+	padding: 12px 0px;
+}
+
+.inner-subpage-item-renderer-spacer {
+	margin: 0px 10px !important;
+}
+
+.native-profile-item-icon-container {
+	margin: 0px 20px;
+}
+
+.native-profile-item-text-container {
+	font-family: Arial;
+}
+
+#main-settings-page > header {
+	justify-content: flex-start;
+}
+
+.border-top-metadata {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	/* margin: 4px 0px 4px 0px; */
 }
 
-#border-bottom-metadata {
+.border-bottom-metadata {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	/* margin: 4px 0px 4px 0px; */
 }
