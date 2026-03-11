@@ -54,9 +54,13 @@ h1 {
 	display: flex;
 	justify-content: center;
 	position: relative;
-	margin: 0px 20px 0px 20px;
+	margin: 0px 20px;
 	padding: 62px 0px 56px 0px;
 	font-family: Arial, Roboto;
+}
+
+.subpage-area {
+	padding: 62px 0px 56px;
 }
 
 /* ========================== ARTICLE ========================== */
