@@ -324,7 +324,7 @@ a.transparent-button-with-border > span {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px 0px;
+	padding: 20px;
 }
 
 #sign-in-promotional-text-container {
@@ -346,14 +346,14 @@ a.transparent-button-with-border > span {
 .native-profile-item-renderer {
 	display: flex;
 	align-items: center;
-	padding: 6px 0px;
+	padding: 10px 0px;
 	color: black;
 	color: var(--white-color);
 	text-decoration: unset;
 }
 
 .inner-subpage-item-renderer {
-	padding: 12px 0px;
+	padding: 14px 0px;
 }
 
 .inner-subpage-item-renderer-spacer {
