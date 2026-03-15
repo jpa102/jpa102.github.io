@@ -9,22 +9,6 @@
 
 
 
-/*
-	automatically set the theme (system light or dark mode)
-	source: https://stackoverflow.com/a/60971231
-*/
-// Check to see if Media-Queries are supported
-if (window.matchMedia) {
-	// Check if the dark-mode Media-Query matches
-	if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		document.querySelector("html").setAttribute("data-theme-display", "darkmode");
-	} else {
-		document.querySelector("html").setAttribute("data-theme-display", "light");
-	}
-} else {
-	document.querySelector("html").setAttribute("data-theme-display", "light");
-}
-
 // looks like a class, amirite?
 display = {
 	theme: {
@@ -78,4 +62,30 @@ display = {
 // for those who still call this function
 function changeThemeDisplay(colorOption) {
 	console.log(`please refer to the new display.theme option as this has been reworked`);
+}
+
+
+
+// set the theme_type inside localStorage if it's not present
+if (localStorage.getItem("theme_type") == null) {
+	/*
+		automatically set the theme (system light or dark mode)
+		source: https://stackoverflow.com/a/60971231
+	*/
+	// Check to see if Media-Queries are supported
+	if (window.matchMedia) {
+		// Check if the dark-mode Media-Query matches
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			localStorage.setItem("theme_type", "darkmode"); // default value
+			document.querySelector("html").setAttribute("data-theme-display", localStorage.getItem("theme_type"));
+		} else {
+			localStorage.setItem("theme_type", "light"); // default value
+			document.querySelector("html").setAttribute("data-theme-display", localStorage.getItem("theme_type"));
+		}
+	} else {
+		localStorage.setItem("theme_type", "light"); // default value
+		document.querySelector("html").setAttribute("data-theme-display", localStorage.getItem("theme_type"));
+	}
+} else {
+	document.querySelector("html").setAttribute("data-theme-display", localStorage.getItem("theme_type"));
 }
