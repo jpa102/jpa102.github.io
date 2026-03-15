@@ -24,6 +24,7 @@ switch (navigator.language.slice(0, 2)) {
 			document.querySelector("#like-count-renderer").innerText = global_data._watch_page_strings.ja.likes_text;
 			document.querySelector("#dislike-count-renderer").innerText = global_data._watch_page_strings.ja.dislikes_text;
 			document.querySelector("#share-text-renderer").innerText = global_data._watch_page_strings.ja.share_text;
+			document.querySelector("#open-app-text-renderer").innerText = global_data._watch_page_strings.ja.open_app_text;
 			document.querySelector("#live-chat-text-renderer").innerText = global_data._watch_page_strings.ja.chat_text;
 			document.querySelector("#remix-text-renderer").innerText = global_data._watch_page_strings.ja.create_text;
 			document.querySelector("#stop-ads-text-renderer").innerText = global_data._watch_page_strings.ja.stop_ads_text;
