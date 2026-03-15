@@ -44,8 +44,9 @@ var global_data = {
 			nan_subscribers_text: "チャンネル登録者数 NaN人",
 			likes_text: "高評価",
 			dislikes_text: "低評価",
-			chat_text: "チャット",
 			share_text: "共有",
+			open_app_text: "アプリを開く",
+			chat_text: "チャット",
 			create_text: "作成",
 			remix_text: "リミックス",
 			stop_ads_text: "広告の停止",
@@ -211,8 +212,8 @@ fetch(
 	response.json().then((json) => {
 		if (json && !("traceId" in response) && !global_data.statsSet) {
 			let { id, dateCreated, likes, dislikes, rawLikes, rawDislikes, rating, viewCount, deleted } = json;
-			console.log(`Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: ${id} \nViews: ${viewCount} \nAverage rating: ${rating} \nLike count: ${likes} \nDislike count: ${dislikes} \nRaw like count: ${rawLikes} \nRaw dislike count: ${rawDislikes} \nDate created: ${dateCreated} \nDeleted: ${deleted}`);
-			DebugJS.console.log("info", `Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: ${id} \nViews: ${viewCount} \nAverage rating: ${rating} \nLike count: ${likes} \nDislike count: ${dislikes} \nRaw like count: ${rawLikes} \nRaw dislike count: ${rawDislikes} \nDate created: ${dateCreated} \nDeleted: ${deleted}`);
+			if (faketube.config_.debug_logging == true) { console.info(`Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: ${id} \nViews: ${viewCount} \nAverage rating: ${rating} \nLike count: ${likes} \nDislike count: ${dislikes} \nRaw like count: ${rawLikes} \nRaw dislike count: ${rawDislikes} \nDate created: ${dateCreated} \nDeleted: ${deleted}`); }
+			if (faketube.config_.debug_logging == true) { DebugJS.console.log("info", `Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: ${id} \nViews: ${viewCount} \nAverage rating: ${rating} \nLike count: ${likes} \nDislike count: ${dislikes} \nRaw like count: ${rawLikes} \nRaw dislike count: ${rawDislikes} \nDate created: ${dateCreated} \nDeleted: ${deleted}`); }
 
 			//	i don't want the global_data.ryd_data to be directly edited by operations.js
 			//	so i'm assigning them to a separate object
@@ -268,10 +269,10 @@ fetch(
 }).catch(error => {
 	//	i don't even know what i am typing here but okay
 
-	console.log("[error] failed to contact https://returnyoutubedislikeapi.com, returning local values...", error);
-	console.log("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: \"\"\nViews: 0\nAverage rating: 0\nLike count: 0\nDislike count: 0\nRaw like count: 0\nRaw dislike count: 0\nDate created: \"\"\nDeleted: null");
-	DebugJS.console.log("error", "[globaldata_online.js] failed to contact returnyoutubedislikeapi.com, returning local values...");
-	DebugJS.console.log("info", "[globaldata_online.js] Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: \"\"\nViews: 0\nAverage rating: 0\nLike count: 0\nDislike count: 0\nRaw like count: 0\nRaw dislike count: 0\nDate created: \"\"\nDeleted: null");
+	if (faketube.config_.debug_logging == true) { console.warn("[error] failed to contact https://returnyoutubedislikeapi.com, returning local values...", error); }
+	if (faketube.config_.debug_logging == true) { console.warn("Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: \"\"\nViews: 0\nAverage rating: 0\nLike count: 0\nDislike count: 0\nRaw like count: 0\nRaw dislike count: 0\nDate created: \"\"\nDeleted: null"); }
+	if (faketube.config_.debug_logging == true) { DebugJS.console.log("error", "[globaldata_online.js] failed to contact returnyoutubedislikeapi.com, returning local values..."); }
+	if (faketube.config_.debug_logging == true) { DebugJS.console.log("info", "[globaldata_online.js] Data provided by Return YouTube Dislike API\nLink to the API: https://returnyoutubedislikeapi.com\n\nVideo ID: \"\"\nViews: 0\nAverage rating: 0\nLike count: 0\nDislike count: 0\nRaw like count: 0\nRaw dislike count: 0\nDate created: \"\"\nDeleted: null"); }
 });
 
 // if the http status code is 400 (bad request)

@@ -1,4 +1,5 @@
 /*
+	watch_page.css
 	this made my head hurt trying to mimic the way YouTube handles it
 */
 
@@ -146,7 +147,7 @@ html[lang='ja-JP'] #subscribe-text-link {
 .recommendations-container {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
+	/* gap: 12px; */
 }
 
 /*

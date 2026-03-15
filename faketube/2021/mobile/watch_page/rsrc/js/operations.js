@@ -395,8 +395,12 @@ function estimateLikeCountFromRYD() {
 	}
 }
 
+function setIntentLinkOpenApp(video_id = global_data.yt.videoId, app_type = faketube.config_.app_redirect_function.app_type, int_pkg_nme = faketube.config_.app_redirect_function.intent_package_name, lnch_flgs_int = faketube.config_.app_redirect_function.launch_flags_int, opn_app_value = faketube.config_.app_redirect_function.mweb_c3_open_app_value, redir_app_stre_int = faketube.config_.app_redirect_function.redirect_app_store_ios_int, scheme = faketube.config_.app_redirect_function.scheme) {
+	return `intent://m.youtube.com/watch?v=${video_id}&feature=${opn_app_value}&itc_campaign=${opn_app_value}&redirect_app_store_ios=${redir_app_stre_int}&app=${app_type}#Intent;package=${int_pkg_nme};scheme=${scheme};launchFlags=${lnch_flgs_int};end`
+}
+
 function displaySavedVideoIds() {
-	alert(`stored video ids:\n\n ${JSON.parse(localStorage.videoids).join('\n')}`);
+	alert(`stored video ids:\n\n${JSON.parse(localStorage.videoids).join('\n')}`);
 }
 
 const exportSavedVideoIds = () => {
@@ -559,7 +563,7 @@ function numberFormat(numberState) {
 /*
 	faketube's EXPERIMENT FLAGS functions
 */
-function __loadexpflags() {
+function __loadcfgs() {
 
 	//	make the page display a popup whenever the dislike button is pressed (likedislikebutton.js - dislikebuttonpressedcheck() function)
 
@@ -611,30 +615,30 @@ function __loadexpflags() {
 				// video thumbnail
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
-					console.log(`index ${i}: lockupViewModel.metadata success`);
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.metadata success`); }
 				} catch {
-					console.log(`index ${i}: expecting lockupViewModel.metadata but none was found`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.metadata but none was found`); }
 				}
 
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.collectionThumbnailViewModel.primaryThumbnail.thumbnailViewModel.image.sources[1].url;
-					console.log(`index ${i}: lockupViewModel.contentImage.collectionThumbnailViewModel success`);
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.contentImage.collectionThumbnailViewModel success`); }
 				} catch {
-					console.log(`index ${i}: expecting lockupViewModel.contentImage.collectionThumbnailViewModel but none was found`);
+					console.warn(`index ${i}: expecting lockupViewModel.contentImage.collectionThumbnailViewModel but none was found`);
 				}
 
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.thumbnailViewModel.image.sources[1].url;
-					console.log(`index ${i}: lockupViewModel.contentImage.thumbnailViewModel success`);
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.contentImage.thumbnailViewModel success`); }
 				} catch {
-					console.log(`index ${i}: expecting lockupViewModel.contentImage.thumbnailViewModel but none was found`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.contentImage.thumbnailViewModel but none was found`); }
 				}
 
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.thumbnail.thumbnails[1].url;
-					console.log(`index ${i}: compactVideoRenderer.thumbnail success`);
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: compactVideoRenderer.thumbnail success`); }
 				} catch {
-					console.log(`index ${i}: expecting compactVideoRenderer.thumbnail but none was found`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting compactVideoRenderer.thumbnail but none was found`); }
 				}
 
 
@@ -642,23 +646,23 @@ function __loadexpflags() {
 				// avatar
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
-					console.log(`index ${i}: decoratedAvatarViewModel success`);
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: decoratedAvatarViewModel success`); }
 				} catch {
-					console.log(`index ${i}: expecting decoratedAvatarViewModel but none was found`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting decoratedAvatarViewModel but none was found`); }
 				}
 
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.avatarStackViewModel.avatars[1].avatarViewModel.image.sources[0].url;
-					console.log(`index ${i}: avatarStackViewModel success`);
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: avatarStackViewModel success`); }
 				} catch {
-					console.log(`index ${i}: expecting avatarStackViewModel but none was found`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting avatarStackViewModel but none was found`); }
 				}
 
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.channelThumbnail.thumbnails[0].url;
-					console.log(`index ${i}: compactVideoRenderer.channelThumbnail success`);
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: compactVideoRenderer.channelThumbnail success`); }
 				} catch {
-					console.log(`index ${i}: expecting compactVideoRenderer.channelThumbnail but none was found`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting compactVideoRenderer.channelThumbnail but none was found`); }
 				}
 
 
@@ -668,7 +672,7 @@ function __loadexpflags() {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `/faketube/2021/mobile/watch_page/?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId}`;
 					console.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId} to index ${i} success`);
 				} catch {
-					
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: apply video id failed`); }
 				}
 
 
@@ -676,9 +680,9 @@ function __loadexpflags() {
 				// apply the video title in the title attribute
 				try {
 					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].title = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
-					console.log(`apply video title ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content} from lockupViewModel.metadata to index ${i} success`);
+					if (faketube.config_.debug_logging == true) { console.log(`apply video title ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content} from lockupViewModel.metadata to index ${i} success`); }
 				} catch {
-					console.log(`index ${i}: expecting lockupViewModel.metadata but none was found`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.metadata but none was found`); }
 				}
 
 				// apply the video title and info in their respective containers
@@ -689,9 +693,10 @@ function __loadexpflags() {
 					// video info
 					document.querySelectorAll(".loaded-video-author-skeleton-renderer.general-feed")[i].innerText = `${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[0].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[1].text.content}`;
 				} catch {
-					console.log(`index ${i}: failed to apply video title and video info`);
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: failed to apply video title and video info`); }
 				}
 			}
+			document.querySelectorAll(".recommendations-page")[0].hidden = false;
 		}, __faketube_stytchnlifo);
 	}
 
@@ -727,7 +732,7 @@ function __loadexpflags() {
 	}
 
 	//	third party website video downloader (y2mate.is)
-	var DownloaderSite = faketube.config_.downloader_site_urls.urls[0].url; // redirects to y2mate.is
+	var DownloaderSite = faketube.config_.downloader_site_urls.urls[faketube.config_.EXPERIMENT_FLAGS.third_party_downloader_test_index].url; // redirects to y2mate.is
 	function newDownloadButton() { window.open(DownloaderSite + global_data.yt.videoId); }
 
 	if (faketube.config_.EXPERIMENT_FLAGS.third_party_downloader_test == true) {
@@ -752,6 +757,14 @@ function __loadexpflags() {
 				console.log("[return youtube dislike] loop limit reached: " + ryd_i + " / " + faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.ryd_request_loop_limit);
 			}
 		}, faketube.config_.EXPERIMENT_FLAGS.return_youtube_dislike_api.real_time_data_timer);
+	}
+
+	//	app redirect button function (Open app from m.youtube.com)
+	if (faketube.config_.app_redirect_function.app_redirect_enabled == true) {
+		setTimeout(() => {
+			document.querySelector("#open-app-button").href = setIntentLinkOpenApp();
+			document.querySelector("#open-app-button").removeAttribute("style");
+		}, 100);
 	}
 
 	//	hide the dislike counts in the watch page and description
@@ -1175,4 +1188,4 @@ function __loadexpflags() {
 }
 
 // execute the experiment flags loader function
-__loadexpflags();
+__loadcfgs();
