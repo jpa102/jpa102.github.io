@@ -10,6 +10,17 @@
 var faketube = {
 	config_: {
 		apply_favorite_site_authors_background_color: false, // apply my favorite light theme color in the page
+		app_redirect_function: {
+			_note: "this intent link has multiple query parameters used. 1 is v for video id, 2 is feature, 3 is itc_campaign, 4 is redirect_app_store_ios, 5 is app, 6 is package, 7 is scheme, and 8 is launchFlags",
+			app_redirect_enabled: false, // the main feature switch. if set to true, an "Open app" button will appear besides Share button
+			app_type: "desktop",
+			intent_package_name: "com.google.android.youtube", // the package name of the app, defaults to original youtube
+			launch_flags_int: 268435456, // i don't know if this int value changes, so for now it will be hardcoded
+			mweb_c3_open_app_value: "mweb_c3_open_app_11268432", // i don't know if this string value changes, so for now it will be hardcoded
+			redirect_app_store_ios_int: 1,
+			scheme: "vnd.youtube"
+		},
+		debug_logging: false, // option to either enable or disable debug logging
 		display_intfuncs_button: false, // display the 'intfuncs' (internal functions) button in the action bar at watch page
 		downloader_site_urls: {
 			note: "you need ublock origin as most downloader sites can redirect you to unwanted site(s)",
@@ -33,15 +44,16 @@ var faketube = {
 			force_premium_needed_to_download_button: false, // make the download button non-functional because it either requires premium or it's unavailable for downloading offline
 			forced_country_code_and_language: "", // input a country code and language (example: ja-JP for japanese - japan)
 			hide_public_dislike_counts_to_protect_creators: false, // don't display the dislike counts in the dislike button
-			load_related_videos_in_feed: true, // load the related video infos and inject them in the related section
+			load_related_videos_in_feed: false, // load the related video infos and inject them in the related section
 			match_older_15_xx_xx_version: false, // inject and style the action bar buttons from 15.xx.xx versions of youtube app
-			match_older_16_xx_xx_version: true, // match the look of older 16.xx.xx versions
+			match_older_16_xx_xx_version: false, // match the look of older 16.xx.xx versions
 			return_youtube_dislike_api: {
 				enable_real_time_data: false, // make the ryd data displayed on the watch page refresh itself
 				real_time_data_timer: 60000, // the time to refresh the ryd data displayed (60000 = 1 minute in milliseconds)
 				ryd_request_loop_limit: 500 // 10000 is the limit per day, 100 per minute (source: their api docs)
 			},
 			third_party_downloader_test: false, // turn on or off the ability to download the video from a external site
+			third_party_downloader_test_index: 0, // the index for the downloader
 			unselectable_texts_in_page: false, // make all texts throughout the page unselectable
 			video_player_is_youtube_shorts: false, // make the embedded youtube player's aspect ratio look 9 / 16 for youtube shorts (it will fetch the video id's metadata)
 			watch_page_experimental_material_you_action_buttons: false, // enable the experimental material you buttons in the action bar
