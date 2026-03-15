@@ -1,7 +1,7 @@
 /*
 	base code source: https://stackoverflow.com/a/50812705
 
-	content_scraper.js v1.2
+	content_scraper.js v1.3
 	my first take at scraping youtube's desktop html hehe
 
 	todo: don't rely on a browser extension to remedy the CORS issues
@@ -137,6 +137,7 @@ async function _content_scraper(videoId) {
 				*/
 
 				// sometimes, certain content like music tracks don't have comment sections
+				// to work around this issue, perform a check inside try catch
 				try {
 					global_data.yt.commentCount = ytInitialData.engagementPanels[0].engagementPanelSectionListRenderer.header.engagementPanelTitleHeaderRenderer.contextualInfo.runs[0].text;
 				} catch {
@@ -144,7 +145,7 @@ async function _content_scraper(videoId) {
 					global_data.yt.commentCount = 0; // comment are disabled, return 0
 				}
 
-				// attempt to get upload month and day text from 3 types of videos (regular, music, shorts)
+				// attempt to get upload month and day text from 5 types of videos (regular, music, shorts, music - 2nd variant? [topic, no comment section], undefined for now)
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
@@ -160,10 +161,20 @@ async function _content_scraper(videoId) {
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[3]`); }
 				}
+				try {
+					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[2].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[2]`); }
+				}
+				try {
+					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[1].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[1]`); }
+				}
 
 
 
-				// attempt to get upload year text from 3 types of videos (regular, music, shorts)
+				// attempt to get upload year text from 5 types of videos (regular, music, shorts, music - 2nd variant? [topic, no comment section], undefined for now)
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
@@ -178,6 +189,16 @@ async function _content_scraper(videoId) {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.log(`failed to get year text from ytInitialData.engagementPanels[3]`); }
+				}
+				try {
+					global_data.yt.uploadYear = ytInitialData.engagementPanels[2].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.log(`failed to get year text from ytInitialData.engagementPanels[2]`); }
+				}
+				try {
+					global_data.yt.uploadYear = ytInitialData.engagementPanels[1].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.log(`failed to get year text from ytInitialData.engagementPanels[1]`); }
 				}
 
 				global_data.uploaddate = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.uploadDate.slice(0, 10);
