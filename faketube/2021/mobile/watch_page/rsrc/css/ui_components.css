@@ -121,7 +121,7 @@
 	overflow-y: hidden;
 	justify-content: start;
 	white-space: nowrap;
-	padding: 0px 15px 0px;
+	padding: 0rem 1.1rem 0rem;
 	scrollbar-width: none;
 }
 
@@ -131,6 +131,8 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 10px 3px;
+	text-decoration: none;
+	color: black;
 }
 
 .menu-buttons {
