@@ -1,14 +1,16 @@
 /*
 	base code source: https://stackoverflow.com/a/50812705
 
-	content_scraper.js v1.0
+	content_scraper.js v1.2
 	my first take at scraping youtube's desktop html hehe
+
+	todo: don't rely on a browser extension to remedy the CORS issues
 */
 
 
 
 var downloaded_youtube_html;
-var scriptindex = {
+var anyaindex = {
 	html: [
 		{
 			tagPositionIndex: 0,
@@ -36,7 +38,7 @@ var scriptindex = {
 async function _content_scraper(videoId) {
 	// if a user calls this function without inputting a valid video id
 	if (videoId == null) {
-		console.log(`no video id provided, terminating...`);
+		console.info(`no video id provided, terminating...`);
 		return;
 	}
 
@@ -83,13 +85,13 @@ async function _content_scraper(videoId) {
 			//console.log(ythtml); // uncomment for quick inspecting
 
 			setTimeout(function() {
-				var _ytInitialPlayerResponse = ythtml.querySelectorAll("html > body > script")[scriptindex.html[0].tagPositionIndex].innerHTML;
+				var _ytInitialPlayerResponse = ythtml.querySelectorAll("html > body > script")[anyaindex.html[0].tagPositionIndex].innerHTML;
 				var setyipr = document.createElement("script");
 				setyipr.setAttribute("id", "ytInitialPlayerResponse");
 				setyipr.innerHTML = _ytInitialPlayerResponse;
 				document.head.insertBefore(setyipr, document.head.children[0]);
 	
-				var _ytcfg = ythtml.querySelectorAll("html > head > script")[scriptindex.html[1].tagPositionIndex].innerHTML;
+				var _ytcfg = ythtml.querySelectorAll("html > head > script")[anyaindex.html[1].tagPositionIndex].innerHTML;
 				var setcfg = document.createElement("script");
 				setcfg.setAttribute("id", "ytcfg");
 				setcfg.innerHTML = _ytcfg;
@@ -97,13 +99,13 @@ async function _content_scraper(videoId) {
 			}, __faketube_content_scraper_ytintlprms);
 
 			setTimeout(function() {
-				var _ytInitialData = ythtml.querySelectorAll("html > body > script")[scriptindex.html[3].tagPositionIndex].innerHTML;
+				var _ytInitialData = ythtml.querySelectorAll("html > body > script")[anyaindex.html[3].tagPositionIndex].innerHTML;
 				var setyid = document.createElement("script");
 				setyid.setAttribute("id", "ytInitialData");
 				setyid.innerHTML = _ytInitialData;
 				document.head.insertBefore(setyid, document.head.children[0]);
 
-				var __ytcfg = ythtml.querySelectorAll("html > head > script")[scriptindex.html[2].tagPositionIndex].innerText;
+				var __ytcfg = ythtml.querySelectorAll("html > head > script")[anyaindex.html[2].tagPositionIndex].innerText;
 				var _setcfg = document.createElement("script");
 				_setcfg.setAttribute("id", "data_ytcfg");
 				_setcfg.innerHTML = __ytcfg;
@@ -118,7 +120,6 @@ async function _content_scraper(videoId) {
 				global_data.yt.channelId = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.externalChannelId;
 				global_data.yt.channelLink = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.ownerProfileUrl;
 				global_data.yt.channelSubConfirmLink = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.ownerProfileUrl + "?sub_confirmation=1";
-				global_data.yt.commentCount = ytInitialData.engagementPanels[0].engagementPanelSectionListRenderer.header.engagementPanelTitleHeaderRenderer.contextualInfo.runs[0].text;
 				global_data.yt.likeCount = parseInt(ytInitialPlayerResponse.microformat.playerMicroformatRenderer.likeCount);
 				global_data.yt.channelName = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.ownerChannelName;
 				global_data.yt.videoTitle = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.title.simpleText;
@@ -135,21 +136,29 @@ async function _content_scraper(videoId) {
 					the reason for this great wall is because the upload year, month and day are in 3 different sections depending on the type of video
 				*/
 
+				// sometimes, certain content like music tracks don't have comment sections
+				try {
+					global_data.yt.commentCount = ytInitialData.engagementPanels[0].engagementPanelSectionListRenderer.header.engagementPanelTitleHeaderRenderer.contextualInfo.runs[0].text;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`either there was an error getting the comment counts, or the comment section itself is disabled like in certain music tracks`); }
+					global_data.yt.commentCount = 0; // comment are disabled, return 0
+				}
+
 				// attempt to get upload month and day text from 3 types of videos (regular, music, shorts)
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
-					// console.log(`failed to get month and day text from ytInitialData.engagementPanels[5]`);
+					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[5]`); }
 				}
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[4].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
-					// console.log(`failed to get month and day text from ytInitialData.engagementPanels[4]`);
+					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[4]`); }
 				}
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
-					// console.log(`failed to get month and day text from ytInitialData.engagementPanels[3]`);
+					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[3]`); }
 				}
 
 
@@ -158,17 +167,17 @@ async function _content_scraper(videoId) {
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
-					// console.log(`failed to get year text from ytInitialData.engagementPanels[5]`);
+					if (faketube.config_.debug_logging == true) { console.log(`failed to get year text from ytInitialData.engagementPanels[5]`); }
 				}
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[4].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
-					// console.log(`failed to get year text from ytInitialData.engagementPanels[4]`);
+					if (faketube.config_.debug_logging == true) { console.log(`failed to get year text from ytInitialData.engagementPanels[4]`); }
 				}
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
-					// console.log(`failed to get year text from ytInitialData.engagementPanels[3]`);
+					if (faketube.config_.debug_logging == true) { console.log(`failed to get year text from ytInitialData.engagementPanels[3]`); }
 				}
 
 				global_data.uploaddate = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.uploadDate.slice(0, 10);
@@ -197,7 +206,7 @@ async function _content_scraper(videoId) {
 			}, __faketube_content_scraper_intlzedata);
 		})
 	.catch(error => {
-		console.error(`Failed to fetch html from https://www.youtube.com/watch?v=${global_data.v}&app=desktop\nReason:`, error);
+		if (faketube.config_.debug_logging == true) { console.error(`Failed to fetch html from https://www.youtube.com/watch?v=${global_data.v}&app=desktop\nReason:`, error); }
 	})
 }
 
