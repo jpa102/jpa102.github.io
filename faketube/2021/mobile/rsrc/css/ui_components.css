@@ -98,7 +98,7 @@
 	background: rgba(0, 0, 0, 0.1);
 	padding: 7px 9px;
 	border-radius: 3px;
-	width: 50%;
+	width: 60%;
 }
 
 #comments-section-field {
@@ -170,7 +170,7 @@
 }
 
 #login-button-icon {
-	fill: #909090;
+	/* fill: #909090; */
 }
 
 .menu-buttons-text {
@@ -273,6 +273,7 @@ a.transparent-button-with-border > span {
 	cursor: pointer;
 	border-radius: 100px;
 	height: 38px;
+	width: unset;
 }
 
 .button-icon {
@@ -366,6 +367,18 @@ a.transparent-button-with-border > span {
 
 .native-profile-item-text-container {
 	font-family: Arial;
+}
+
+.items-text-container-flexed {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.items-text-container-flexed > .native-profile-item-text-container-subtext-gray {
+	color: var(--gray-text-color);
+	color: var(--gray-color);
+	font-size: 0.9rem;
 }
 
 #main-settings-page > header {
@@ -504,4 +517,112 @@ a.transparent-button-with-border > span {
 .loading-video-thumbnails.general-skeleton {
 	margin-left: 16px;
 	margin-right: 16px;
+}
+
+
+#cast-button-topbar:not([cast-button-connection-state=CONNECTING]) .chromecast-animate {
+	display: none;
+}
+
+html:not([data-theme-display=light]) #cast-button-topbar[cast-button-connection-state=CONNECTING] .chromecast-animate {
+	fill: var(--call-to-action-color-dark) !important;
+}
+
+html[data-theme-display=light] #cast-button-topbar[cast-button-connection-state=CONNECTING] .chromecast-animate {
+	fill: var(--call-to-action-color-light) !important;
+}
+
+#cast-button-topbar[cast-button-connection-state=CONNECTING] { display: flex; }
+#cast-button-topbar[cast-button-connection-state=CONNECTING] #cast-button-icon { opacity: .3; }
+
+html:not([data-theme-display=light]) #cast-button-topbar[cast-button-connection-state=CONNECTING] #cast-button-icon { opacity: .3; }
+
+#cast-button-topbar:not([cast-button-connection-state=CONNECTED]) #cast-button-svg-path-connected { display: none; }
+
+#cast-button-topbar[cast-button-connection-state=CONNECTED] #cast-button-svg-path-connected { display: block; }
+#cast-button-topbar[cast-button-connection-state=CONNECTED] #cast-button-svg-path-disconnected { display: none; }
+
+.chromecast-animate {
+	position: absolute;
+}
+
+.chromecast-animate-1 {
+	animation: chromecast-animate-1-opacity 2s infinite;
+	opacity: 0
+}
+
+@keyframes chromecast-animate-1-opacity {
+	0% {
+		opacity: 0
+	}
+
+	25% {
+		opacity: 1
+	}
+
+	50% {
+		opacity: 0
+	}
+
+	75% {
+		opacity: 0
+	}
+
+	100% {
+		opacity: 0
+	}
+}
+
+.chromecast-animate-2 {
+	animation: chromecast-animate-2-opacity 2s infinite;
+	opacity: 0
+}
+
+@keyframes chromecast-animate-2-opacity {
+	0% {
+		opacity: 0
+	}
+
+	25% {
+		opacity: 0
+	}
+
+	50% {
+		opacity: 1
+	}
+
+	75% {
+		opacity: 0
+	}
+
+	100% {
+		opacity: 1
+	}
+}
+
+.chromecast-animate-3 {
+	animation: chromecast-animate-3-opacity 2s infinite;
+	opacity: 0
+}
+
+@keyframes chromecast-animate-3-opacity {
+	0% {
+		opacity: 0
+	}
+
+	25% {
+		opacity: 0
+	}
+
+	50% {
+		opacity: 0
+	}
+
+	75% {
+		opacity: 1
+	}
+
+	100% {
+		opacity: 0
+	}
 }
