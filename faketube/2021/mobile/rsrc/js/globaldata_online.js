@@ -1,10 +1,14 @@
 // globaldata_online.js
-// this file contains code that requires internet connection
+// this file just hosts the translation texts, variables for things like waiting times, and others
 
 //	INTERNAL VARIABLES
 //	numbers are in milliseconds, these are for waiting times
 var __faketube_delaypagems = 180;
 var __faketube_delaytrnsltnsms = 50;
+var __faketube_intrnt_btm_notif_apr_ms = 1000;
+var __faketube_intrnt_btm_notif_clpse_ms = 4067;
+
+
 
 /*
 	main object for global data
