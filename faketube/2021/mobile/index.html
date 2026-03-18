@@ -29,29 +29,47 @@
 	<body data-page-scrolling="true">
 		<div id="home-page" class="page-body-content">
 			<header>
-				<h1 id="fallback-header-name">FakeTube</h1>
+				<div id="go-back-and-fallback-name-container">
+					<button class="top-toolbar-button-style menu-buttons" style="margin-left: 12px;" onclick="" hidden="">
+						<svg id="go-back-button-icon" class="button-icon">
+							<path d="M21 11v1H5.64l6.72 6.72-.71.71-7.93-7.93 7.92-7.92.71.71L5.64 11H21z"></path>
+						</svg>
+					</button>
+					<h1 id="fallback-header-name">FakeTube</h1>
+				</div>
 				<div id="header-toolbar-buttons">
-					<button class="top-toolbar-button-style touch-by-touch" style="margin-right: 4px;">
-						<svg id="cast-button-icon" class="button-icon">
-							<path d="M22 20h-8v-1h7V5H3v3H2V4h20v16zM2 17.32V20h2.73c0-1.48-1.22-2.68-2.73-2.68zm0-3.57v1.79c2.51 0 4.55 2 4.55 4.46h1.82c-.01-3.45-2.85-6.25-6.37-6.25zm0-3.57v1.79c4.52 0 8.18 3.6 8.18 8.03H12c0-5.43-4.48-9.82-10-9.82z"></path>
+					<button id="cast-button-topbar" class="top-toolbar-button-style menu-buttons" aria-pressed="false" cast-button-connection-state="DISCONNECTED" onclick="castButton()" style="margin-left: -50px; position: absolute;">
+						<svg id="cast-button-icon" class="chromecast button-icon">
+							<path id="cast-button-svg-path-disconnected" d="M22 20h-8v-1h7V5H3v3H2V4h20v16zM2 17.32V20h2.73c0-1.48-1.22-2.68-2.73-2.68zm0-3.57v1.79c2.51 0 4.55 2 4.55 4.46h1.82c-.01-3.45-2.85-6.25-6.37-6.25zm0-3.57v1.79c4.52 0 8.18 3.6 8.18 8.03H12c0-5.43-4.48-9.82-10-9.82z"></path>
+							<path id="cast-button-svg-path-connected" d="m22 20-8-.04V19l7 .04V5H3l-.01 3H2l.02-4H22v16zM2 17.32V20h2.73c0-1.48-1.22-2.68-2.73-2.68zm0-3.57v1.79c2.51 0 4.55 2 4.55 4.46h1.82c-.01-3.45-2.85-6.25-6.37-6.25zm0-3.57v1.79c4.52 0 8.18 3.6 8.18 8.03H12c0-5.43-4.48-9.82-10-9.82zM5 7v1.39c4.21 1.09 7.52 4.39 8.61 8.61H19V7H5z"></path>
+						</svg>
+						<svg class="chromecast chromecast-animate chromecast-animate-1 button-icon">
+							<path d="M2 17.32V20h2.73c0-1.48-1.22-2.68-2.73-2.68z"></path>
+						</svg>
+						<svg class="chromecast chromecast-animate chromecast-animate-2 button-icon">
+							<path d="M2 13.75v1.79c2.51 0 4.55 2 4.55 4.46h1.82c-.01-3.45-2.85-6.25-6.37-6.25z"></path>
+						</svg>
+						<svg class="chromecast chromecast-animate chromecast-animate-3 button-icon">
+							<path d="M2 10.18v1.79c4.52 0 8.18 3.6 8.18 8.03H12c0-5.43-4.48-9.82-10-9.82z"></path>
 						</svg>
 					</button>
-					<button class="top-toolbar-button-style touch-by-touch" style="margin-right: 4px;"  hidden="">
+					<button id="create-button-topbar" class="top-toolbar-button-style menu-buttons" aria-pressed="false" style="margin-right: 4px;"  hidden="">
 						<svg id="create-button-icon" class="button-icon">
-							<path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path>
+							<!--<path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path>-->
+							<path d="M14 13h-3v3-3H24V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path>
 						</svg>
 					</button>
-					<button class="top-toolbar-button-style touch-by-touch" style="margin-right: 4px;">
+					<button id="notifications-button-topbar" class="top-toolbar-button-style menu-buttons" aria-pressed="false" onclick="oc_subpage.show(`notifs`)" style="margin-right: 4px;">
 						<svg id="notifications-button-icon" class="button-icon">
 							<path d="M10,20h4c0,1.1-0.9,2-2,2S10,21.1,10,20z M20,17.35V19H4v-1.65l2-1.88v-5.15c0-2.92,1.56-5.22,4-5.98V3.96 c0-1.42,1.49-2.5,2.99-1.76C13.64,2.52,14,3.23,14,3.96l0,0.39c2.44,0.75,4,3.06,4,5.98v5.15L20,17.35z M19,17.77l-2-1.88v-5.47 c0-2.47-1.19-4.36-3.13-5.1c-1.26-0.53-2.64-0.5-3.84,0.03C8.15,6.11,7,7.99,7,10.42v5.47l-2,1.88V18h14V17.77z"></path>
 						</svg>
 					</button>
-					<button class="top-toolbar-button-style touch-by-touch" style="margin-right: 4px;">
+					<button id="search-button-topbar" class="top-toolbar-button-style menu-buttons" aria-pressed="false" style="margin-right: 4px;">
 						<svg id="search-button-icon" class="button-icon">
 							<path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></path>
 						</svg>
 					</button>
-					<button class="top-toolbar-button-style touch-by-touch" onclick="onCreate.profilePage()">
+					<button id="login-button-topbar" class="top-toolbar-button-style menu-buttons" aria-pressed="false" onclick="onCreate.profilePage()">
 						<svg id="login-button-icon" class="button-icon">
 							<!--<path d="M12,0 C18.62375,0 24,5.37625 24,12 C24,18.62375 18.62375,24 12,24 C5.37625,24 0,18.62375 0,12 C0,5.37625 5.37625,0 12,0 Z M12,10.63625 C13.66,10.63625 15,9.29625 15,7.63625 C15,5.97625 13.66,4.63625 12,4.63625 C10.34,4.63625 9,5.97625 9,7.63625 C9,9.29625 10.34,10.63625 12,10.63625 Z M12,12.40875 C8.33375,12.40875 5.455,14.18125 5.455,15.8175 C6.84125,17.95 9.26875,19.3625 12,19.3625 C14.73125,19.3625 17.15875,17.95 18.545,15.8175 C18.545,14.18125 15.66625,12.40875 12,12.40875 Z"></path>-->
 							<path d="M12 1C5.925 1 1 5.925 1 12a10.98 10.98 0 004.68 9c1.788 1.258 3.967 2 6.32 2s4.532-.742 6.32-2c.227-.159.447-.325.66-.499v.001A10.98 10.98 0 0023 12c0-6.075-4.925-11-11-11Zm0 4a3.5 3.5 0 110 7 3.5 3.5 0 010-7Zm0 9a7 7 0 016.446 4.276A8.97 8.97 0 0112 21a8.97 8.97 0 01-6.447-2.724 7 7 0 013.768-3.743A6.998 6.998 0 0112 14Z"></path>
@@ -63,16 +81,16 @@
 				<article id="home-page-content">
 					<section class="section-body section-renderer">
 						<span class="section-body-content">
-							<h2 class="heading-two-section-body-text">Try searching to get started</h2>
-							<h4 class="heading-four-section-body-text">Start watching videos to help us build a feed of videos you'll love.</h4>
+							<h2 id="try-searching-h2-main-text" class="heading-two-section-body-text">Try searching to get started</h2>
+							<h4 id="try-searching-h4-body-text" class="heading-four-section-body-text">Start watching videos to help us build a feed of videos you'll love.</h4>
 						</span>
 					</section>
 					<section class="section-body section-renderer">
 						<span class="section-body-content">
-							<h2 class="heading-two-section-body-text">Or input a Video ID here</h2>
-							<h4 class="heading-four-section-body-text">Get a Video ID from a YouTube link (the one after <code><u>?v=</u></code>)</h4>
+							<h2 id="input-video-id-h2-main-text" class="heading-two-section-body-text">Or input a Video ID here</h2>
+							<h4 id="input-video-id-h4-body-text" class="heading-four-section-body-text">Get a Video ID from a YouTube link (the one after <code><u>?v=</u></code>)</h4>
 							<form id="video-id-form" action="/faketube/2021/mobile/watch_page/">
-								<input class="video-id-input-field" required placeholder="example id is dQw4w9WgXcQ" name="v" maxlength="11">
+								<input class="video-id-input-field" required placeholder="example id is dQw4w9WgXcQ" name="v" maxlength="11" type="search">
 								<input class="transparent-button-with-border touch-by-touch" type="submit" value="Watch">
 							</form>
 						</span>
@@ -141,7 +159,7 @@
 		<!-- native profile section -->
 		<div id="native-profile-page" class="page-body-content" hidden="">
 			<header>
-				<button class="top-toolbar-button-style touch-by-touch" style="margin-left: 12px;" onclick="onDestroy.profilePage()">
+				<button class="top-toolbar-button-style menu-buttons" style="margin-left: 12px;" onclick="onDestroy.profilePage()">
 					<svg id="close-native-profile-button-icon" class="button-icon">
 						<path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path>
 					</svg>
@@ -158,7 +176,7 @@
 					</div>
 					<button id="sign-in-button" class="transparent-button-with-border" onclick="alert(`Sign in functionality not implemented yet`)">Sign in</button>
 				</div>
-				<div class="border-bottom-metadata themed-borders"></div>
+				<div class="border-top-metadata themed-borders"></div>
 				<div id="settings-and-help-feedback" class="signed-out-items-container">
 					<div id="settings-page-redirect" class="native-profile-item-renderer touch-by-touch" onclick="onCreate.settingsPage()">
 						<div class="native-profile-item-icon-container button-icon">
@@ -220,73 +238,91 @@
 				<h1 id="main-settings-title">Settings</h1>
 			</header>
 			<div id="settings-options" class="subpage-area">
-				<div id="family-center-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Family center</div>
+				<div id="settings-options-list" class="general-content-area">
+					<div id="family-center-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Family center</div>
+					</div>
+					<div id="general-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">General</div>
+					</div>
+					<div id="data-saving-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Data saving</div>
+					</div>
+					<div id="video-quality-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Video quality preferences</div>
+					</div>
+					<div id="background-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Background & downloads</div>
+					</div>
+					<div id="watch-on-tv-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Watch on TV</div>
+					</div>
+					<div id="manage-all-history-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Manage all history</div>
+					</div>
+					<div id="privacy-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Privacy</div>
+					</div>
+					<div id="try-new-experimental-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Try experimental new features</div>
+					</div>
+					<div id="purchases-and-memberships-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Payments and memberships</div>
+					</div>
+					<div id="billing-and-payments-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Billing & payments</div>
+					</div>
+					<div id="notifications-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Notifications</div>
+					</div>
+					<div id="connected-apps-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Connected apps</div>
+					</div>
+					<div id="live-chat-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Live chat</div>
+					</div>
+					<div id="captions-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Captions</div>
+					</div>
+					<div id="accessibility-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">Accessibility</div>
+					</div>
+					<div id="about-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch" onclick="oc_subpage.show(`about`)">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">About</div>
+					</div>
 				</div>
-				<div id="general-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">General</div>
+				<div id="general-page-list" class="general-content-area" hidden="">
+					
 				</div>
-				<div id="data-saving-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Data saving</div>
-				</div>
-				<div id="video-quality-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Video quality preferences</div>
-				</div>
-				<div id="background-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Background & downloads</div>
-				</div>
-				<div id="watch-on-tv-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Watch on TV</div>
-				</div>
-				<div id="manage-all-history-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Manage all history</div>
-				</div>
-				<div id="privacy-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Privacy</div>
-				</div>
-				<div id="try-new-experimental-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Try experimental new features</div>
-				</div>
-				<div id="purchases-and-memberships-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Payments and memberships</div>
-				</div>
-				<div id="billing-and-payments-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Billing & payments</div>
-				</div>
-				<div id="notifications-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Notifications</div>
-				</div>
-				<div id="connected-apps-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Connected apps</div>
-				</div>
-				<div id="live-chat-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Live chat</div>
-				</div>
-				<div id="captions-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Captions</div>
-				</div>
-				<div id="accessibility-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">Accessibility</div>
-				</div>
-				<div id="about-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
-					<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-					<div class="native-profile-item-text-container">About</div>
+				<div id="about-page-list" class="general-content-area" hidden="">
+					<div id="app-version-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed">
+							<div class="native-profile-item-text-container">App version</div>
+							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">17.03.38</div>
+						</div>
+					</div>
+					<div id="faketube-author-brief-desc" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">FakeTube, a hobby project by @jpa102</div>
+					</div>
 				</div>
 			</div>
 		</div>
