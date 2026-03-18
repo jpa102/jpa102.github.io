@@ -3,21 +3,8 @@
 
 //	INTERNAL VARIABLES
 //	numbers are in milliseconds, these are for waiting times
-var __faketube_asnvltleryddta = 101;
-var __faketube_aplydbgimdtly = 4500;
-var __faketube_aplyfavstebgclr = 301;
-var __faketube_sttrdptydwnldr = 4500;
-var __faketube_stlkedlkecnts = 4400;
-var __faketube_stvwsndte = 4377;
-var __faketube_stvtecnts = 4350;
-var __faketube_stytchnlifo = 5400;
-var __faketube_injtplyr = 3900;
-var __faketube_content_scraper_ytintlprms = 2100;
-var __faketube_content_scraper_ytintldatams = 2200;
-var __faketube_content_scraper_intlzedata = 2367;
-var __faketube_wtchpge_intrnt_btm_notif_apr_ms = 1000;
-var __faketube_wtchpge_intrnt_btm_notif_clpse_ms = 4067;
-var __faketube_loadwatchpage = 5000;
+var __faketube_delaypagems = 180;
+var __faketube_delaytrnsltnsms = 50;
 
 /*
 	main object for global data
@@ -25,12 +12,16 @@ var __faketube_loadwatchpage = 5000;
 */
 var global_data = {
 	_watch_page_strings: {
+		_standard: {
+			faketube_title_text: "FakeTube"
+		},
 		_stored_vars: {
 			dislikes_text_inject: "Dislike",
 			download_text_inject: "Download",
 			downloaded_text_inject: "Downloaded",
 			save_text_inject: "Save",
 			saved_text_inject: "Saved",
+			notifications_text_inject: "Notifications",
 			back_online_text_inject: "Back online",
 			no_internet_connection_text_inject: "No internet connection",
 			check_your_internet_connection_text_inject: "You're offline. Check your connection."
@@ -72,7 +63,26 @@ var global_data = {
 			transcript_text_header_text: "文字起こし",
 			transcript_description_text: "文字起こしを使って説明する",
 			channel_videos_button_text: "動画",
-			channel_about_button_text: "概要"
+			channel_about_button_text: "概要",
+			try_searching_h2_text: "まずは検索してみましょう",
+			try_searching_h4_parag_text: "おすすめ動画を表示するには、まず動画を視聴しましょう。",
+			input_video_id_h2_text: "または、ここに動画のIDを入力してください",
+			input_video_id_h4_parag_text: `YouTubeリンクから動画IDを取得する(次のリンク<code><u>?v=</u></code>)`,
+			input_video_id_box_hint_text: "例のIDはdQw4w9WgXcQです",
+			input_video_id_button_gotowatch_text: "見る",
+			sign_in_promotion_header_text: "FakeTube をもっと楽しもう",
+			sign_in_promotion_body_text: "ログインすると、動画のアップロードや保存、コメントの投稿などができるようになります",
+			login_text: "ログイン",
+			settings_text: "設定",
+			help_and_feedback_text: "ヘルプとフィードバック",
+			privacy_policy_and_tos_text: "プライバシー ポリシー • 利用規約",
+			notifications_text: "通知",
+			connected_apps_text: "接続済みのアプリ",
+			captions_text: "字幕",
+			accessibility_text: "ユーザー補助",
+			about_text: "アプリに関する情報", // in the original youtube set to japanese, it roughly says "app and info"
+			app_version_text: "アプリのバージョン",
+			faketube_author_info_text: "FakeTube は @jpa102 のプロジェクトです"
 		}
 	}
 }

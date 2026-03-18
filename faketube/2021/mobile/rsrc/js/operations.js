@@ -28,19 +28,42 @@ const exportSavedVideoIds = () => {
 	}, 1000);
 }
 
+// todo: make a cast dialog
+//       for now, make it change states when pressed
+function castButton() {
+	if (document.querySelector("#cast-button-topbar").getAttribute("cast-button-connection-state") == "DISCONNECTED") {
+		document.querySelector("#cast-button-topbar").setAttribute("cast-button-connection-state", "CONNECTING");
+		return;
+	}
+
+	if (document.querySelector("#cast-button-topbar").getAttribute("cast-button-connection-state") == "CONNECTING") {
+		document.querySelector("#cast-button-topbar").setAttribute("cast-button-connection-state", "CONNECTED");
+		return;
+	}
+
+	if (document.querySelector("#cast-button-topbar").getAttribute("cast-button-connection-state") == "CONNECTED") {
+		document.querySelector("#cast-button-topbar").setAttribute("cast-button-connection-state", "DISCONNECTED");
+		return;
+	}
+}
+
 class onCreate {
 	static intFuncsPage() {
 		document.querySelector("#internal-functions-section-container").hidden = false;
 	}
 
 	static profilePage() {
-		document.querySelector("#home-page").hidden = true;
-		document.querySelector("#native-profile-page").hidden = false;
+		setTimeout(() => {
+			document.querySelector("#home-page").hidden = true;
+			document.querySelector("#native-profile-page").hidden = false;
+		}, __faketube_delaypagems);
 	}
 
 	static settingsPage() {
-		document.querySelector("#native-profile-page").hidden = true;
-		document.querySelector("#main-settings-page").hidden = false;
+		setTimeout(() => {
+			document.querySelector("#native-profile-page").hidden = true;
+			document.querySelector("#main-settings-page").hidden = false;
+		}, __faketube_delaypagems);
 	}
 }
 
@@ -50,13 +73,65 @@ class onDestroy {
 	}
 
 	static profilePage() {
-		document.querySelector("#home-page").hidden = false;
-		document.querySelector("#native-profile-page").hidden = true;
+		setTimeout(() => {
+			document.querySelector("#home-page").hidden = false;
+			document.querySelector("#native-profile-page").hidden = true;
+		}, __faketube_delaypagems);
 	}
 
 	static settingsPage() {
-		document.querySelector("#main-settings-page").hidden = true;
-		document.querySelector("#home-page").hidden = false;
+		setTimeout(() => {
+			document.querySelector("#main-settings-page").hidden = true;
+			document.querySelector("#home-page").hidden = false;
+		}, __faketube_delaypagems);
+	}
+}
+
+class oc_subpage {
+	static show(pageType) {
+		if (pageType == "notifs") {
+			document.querySelector("#notifications-button-topbar").ariaPressed = "true";
+			document.querySelector("#notifications-button-icon > path").setAttribute("d", "M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87z");
+			document.querySelector("#notifications-button-topbar").setAttribute("onclick", "");
+			document.querySelector("#go-back-and-fallback-name-container > button").setAttribute("onclick", "od_subpage.hide(`notifs`)");
+			document.querySelector("#go-back-and-fallback-name-container > button").hidden = false;
+			document.querySelector("#go-back-and-fallback-name-container > #fallback-header-name").innerText = global_data._watch_page_strings._stored_vars.notifications_text_inject;
+			document.querySelector("#home-page-content").hidden = true;
+			document.querySelector("#notifications-button-topbar").hidden = true;
+		}
+
+		if (pageType == "about") {
+			setTimeout(() => {
+				document.querySelector("#main-settings-page > header > button").removeAttribute("onclick");
+				document.querySelector("#main-settings-page > header > button").setAttribute("onclick", "od_subpage.hide(`about`)");
+				document.querySelector("#main-settings-title").innerText = global_data._watch_page_strings._stored_vars.about_text_inject;
+				document.querySelector("#settings-options-list").hidden = true;
+				document.querySelector("#about-page-list").hidden = false;
+			}, __faketube_delaypagems);
+		}
+	}
+}
+
+class od_subpage {
+	static hide(pageType) {
+		if (pageType == "notifs") {
+			document.querySelector("#notifications-button-topbar").ariaPressed = "false";
+			document.querySelector("#notifications-button-icon > path").setAttribute("d", "M10,20h4c0,1.1-0.9,2-2,2S10,21.1,10,20z M20,17.35V19H4v-1.65l2-1.88v-5.15c0-2.92,1.56-5.22,4-5.98V3.96 c0-1.42,1.49-2.5,2.99-1.76C13.64,2.52,14,3.23,14,3.96l0,0.39c2.44,0.75,4,3.06,4,5.98v5.15L20,17.35z M19,17.77l-2-1.88v-5.47 c0-2.47-1.19-4.36-3.13-5.1c-1.26-0.53-2.64-0.5-3.84,0.03C8.15,6.11,7,7.99,7,10.42v5.47l-2,1.88V18h14V17.77z");
+			document.querySelector("#notifications-button-topbar").setAttribute("onclick", "oc_subpage.show(`notifs`)");
+			document.querySelector("#go-back-and-fallback-name-container > button").setAttribute("onclick", "");
+			document.querySelector("#go-back-and-fallback-name-container > button").hidden = true;
+			document.querySelector("#go-back-and-fallback-name-container > #fallback-header-name").innerText = global_data._watch_page_strings._standard.faketube_title_text;
+			document.querySelector("#home-page-content").hidden = false;
+			document.querySelector("#notifications-button-topbar").hidden = false;
+		}
+
+		if (pageType == "about") {
+			document.querySelector("#main-settings-page > header > button").removeAttribute("onclick");
+			document.querySelector("#main-settings-page > header > button").setAttribute("onclick", "onDestroy.settingsPage()");
+			document.querySelector("#main-settings-title").innerText = global_data._watch_page_strings._stored_vars.settings_text_inject;
+			document.querySelector("#settings-options-list").hidden = false;
+			document.querySelector("#about-page-list").hidden = true;
+		}
 	}
 }
 

@@ -31,6 +31,7 @@ body[data-page-scrolling='false'] {
 /* ========================== HEADER ========================== */
 
 header {
+	background: var(--main-background-color);
 	padding: 12px 0px;
 	position: fixed;
 	top: 0;
@@ -47,6 +48,12 @@ h1 {
 	font-weight: 500;
 	font-size: 1.4rem;
 	font-family: "Arial";
+}
+
+#go-back-and-fallback-name-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 /* ========================== ARTICLE AND ASIDE ========================== */
@@ -201,10 +208,12 @@ h2.title-header {
 
 /* ========================== FOOTER ========================== */
 footer {
+	background: var(--main-background-color);
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
 	position: fixed;
 	bottom: 0;
 	width: -webkit-fill-available;
+	width: -moz-available; /* looks weird on firefox 143.0.4 mobile */
 }
 
 #footer.footer-main-body {
