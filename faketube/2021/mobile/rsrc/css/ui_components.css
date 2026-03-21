@@ -345,7 +345,7 @@ a.transparent-button-with-border > span {
 }
 
 .signed-out-items-container {
-	padding: 6px 0px;
+	padding: 8px 0px;
 }
 
 .native-profile-item-renderer {
@@ -530,6 +530,32 @@ a.transparent-button-with-border > span {
 
 dialog {
 	border: unset;
+	border-radius: 2px;
+	padding: 1rem 1.4rem;
+}
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+	transition: .25s ease-in-out;
+	background-color: rgba(0, 0, 0, 0.42);
+}
+
+.dialog-flexed-buttons-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+label[for], dialog input[type='radio'] {
+	margin: 0.7rem 0.5rem;
+}
+
+#radio-dialog-container {
+	margin: 0.5rem 0rem;
+}
+
+.button-dialog {
+	width: unset;
+	padding: 10px 14px;
 	border-radius: 2px;
 }
 
