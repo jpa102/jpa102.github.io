@@ -7,6 +7,7 @@ var __faketube_delaypagems = 180;
 var __faketube_delaytrnsltnsms = 50;
 var __faketube_intrnt_btm_notif_apr_ms = 1000;
 var __faketube_intrnt_btm_notif_clpse_ms = 4067;
+var __faketube_page_location = "HOME_PAGE";
 
 
 
@@ -20,12 +21,11 @@ var global_data = {
 			faketube_title_text: "FakeTube"
 		},
 		_stored_vars: {
-			dislikes_text_inject: "Dislike",
-			download_text_inject: "Download",
-			downloaded_text_inject: "Downloaded",
-			save_text_inject: "Save",
-			saved_text_inject: "Saved",
+			about_text_inject: "About",
+			general_text_inject: "General",
+			family_center_text_inject: "Family center",
 			notifications_text_inject: "Notifications",
+			settings_text_inject: "Settings",
 			back_online_text_inject: "Back online",
 			no_internet_connection_text_inject: "No internet connection",
 			check_your_internet_connection_text_inject: "You're offline. Check your connection."
@@ -80,11 +80,25 @@ var global_data = {
 			settings_text: "設定",
 			help_and_feedback_text: "ヘルプとフィードバック",
 			privacy_policy_and_tos_text: "プライバシー ポリシー • 利用規約",
+			family_center_text: "ファミリー センター",
+			general_text: "全般",
+			data_saving_text: "データの節約",
+			autoplay_text: "自動再生",
+			video_quality_prefs_text: "動画の画質設定",
+			background_and_downloads_text: "バックグラウンドとオフライン",
+			manage_all_history_text: "すべての履歴を管理",
+			privacy_text: "プライバシー",
+			try_experimental_new_features_text: "試験運用版の新機能を試す",
+			payments_and_memberships_text: "購入とメンバシップ",
+			billing_and_payments_text: "請求とお支払い",
+			watch_on_tv_text: "テレビで見る",
 			notifications_text: "通知",
 			connected_apps_text: "接続済みのアプリ",
 			captions_text: "字幕",
 			accessibility_text: "ユーザー補助",
 			about_text: "アプリに関する情報", // in the original youtube set to japanese, it roughly says "app and info"
+			appearance_text: "デザイン",
+			appearance_desc_text: "ライト / ダーク モードの設定を選択します",
 			app_version_text: "アプリのバージョン",
 			faketube_author_info_text: "FakeTube は @jpa102 のプロジェクトです"
 		}
