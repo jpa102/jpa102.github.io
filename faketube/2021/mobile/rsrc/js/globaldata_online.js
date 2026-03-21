@@ -3,6 +3,7 @@
 
 //	INTERNAL VARIABLES
 //	numbers are in milliseconds, these are for waiting times
+var __faketube_aplyfavstebgclr = 301;
 var __faketube_delaypagems = 180;
 var __faketube_delaytrnsltnsms = 50;
 var __faketube_intrnt_btm_notif_apr_ms = 1000;
@@ -26,6 +27,12 @@ var global_data = {
 			family_center_text_inject: "Family center",
 			notifications_text_inject: "Notifications",
 			settings_text_inject: "Settings",
+			appearance_text_inject: "Appearance",
+			light_mode_text_inject: "Light theme",
+			dark_mode_text_inject: "Dark theme",
+			darker_dark_mode_text_inject: "Dark theme (darker)",
+			black_hole_theme_text_inject: "Black hole theme",
+			cancel_text_inject: "Cancel",
 			back_online_text_inject: "Back online",
 			no_internet_connection_text_inject: "No internet connection",
 			check_your_internet_connection_text_inject: "You're offline. Check your connection."
@@ -34,6 +41,7 @@ var global_data = {
 			back_online_text: "オンラインに復帰しました",
 			no_internet_connection_text: "インターネットに接続されていません",
 			check_your_internet_connection_text: "現在オフラインです。接続を確認してください。",
+			cancel_text: "キャンセル",
 			home_text: "ホーム",
 			explore_text: "探索",
 			shorts_text: "ショート",
