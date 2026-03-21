@@ -8,16 +8,13 @@
 		<link rel="stylesheet" href="rsrc/css/theme.css"/>
 		<link rel="stylesheet" href="rsrc/css/ui_components.css"/>
 		<link rel="stylesheet" href="rsrc/css/watch_page.css"/>
-		<script>document.querySelector("html").setAttribute("data-theme-display", "light");</script>
-		<script>document.querySelector("html").setAttribute("data-online-status", "online");</script>
-		<script id="set-language" type="text/javascript">document.querySelector("html").lang = navigator.language;</script>
-		<script src="rsrc/js/main.js"></script>
+		<script src="rsrc/js/faketube.js"></script>
 		<script src="rsrc/js/globaldata_online.js"></script>
 		<script src="rsrc/js/buttonslistener.js"></script>
-		<script src="rsrc/js/faketube.js"></script>
 		<script src="rsrc/js/internet_detection.js"></script>
 		<script src="rsrc/js/jsConsole.js"></script>
 		<script src="rsrc/js/language_setter.js"></script>
+		<script src="rsrc/js/main.js"></script>
 		<script src="rsrc/js/operations.js"></script>
 		<script src="rsrc/js/theme.js"></script>
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
@@ -79,6 +76,9 @@
 			</header>
 			<div id="article-and-aside-container" class="two-content-renderer">
 				<article id="home-page-content">
+					<div id="app-logo-and-try-searching-tools-container">
+						
+					</div>
 					<section class="section-body section-renderer">
 						<span class="section-body-content">
 							<h2 id="try-searching-h2-main-text" class="heading-two-section-body-text">Try searching to get started</h2>
@@ -95,6 +95,18 @@
 							</form>
 						</span>
 					</section>
+				</article>
+				<article id="explore-or-shorts-page-content" hidden="">
+					
+				</article>
+				<article id="subscriptions-page-content" hidden="">
+					
+				</article>
+				<article id="library-page-content" hidden="">
+					
+				</article>
+				<article id="notifications-page-content" hidden="">
+					
 				</article>
 			</div>
 			<footer style="transform: translateY(25px);">
@@ -243,23 +255,23 @@
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Family center</div>
 					</div>
-					<div id="general-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="general-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item" onclick="oc_subpage.show(`s_general`)">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">General</div>
 					</div>
-					<div id="data-saving-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="data-saving-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Data saving</div>
 					</div>
-					<div id="video-quality-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="video-quality-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Video quality preferences</div>
 					</div>
-					<div id="background-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="background-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Background & downloads</div>
 					</div>
-					<div id="watch-on-tv-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="watch-on-tv-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Watch on TV</div>
 					</div>
@@ -295,28 +307,124 @@
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Live chat</div>
 					</div>
-					<div id="captions-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="captions-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Captions</div>
 					</div>
-					<div id="accessibility-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="accessibility-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">Accessibility</div>
 					</div>
-					<div id="about-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch" onclick="oc_subpage.show(`about`)">
+					<div id="about-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item" onclick="oc_subpage.show(`s_about`)">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">About</div>
 					</div>
 				</div>
 				<div id="general-page-list" class="general-content-area" hidden="">
-					
+					<div id="remind-me-to-take-a-break-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Remind me to take a break</div>
+							<div class="items-text-container-flexed-rowstyle">
+								<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Off</div>
+								<label class="switch" style="display: none !important;">
+									<input type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div id="remind-me-when-its-bedtime-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Remind me when it's bedtime</div>
+							<div class="items-text-container-flexed-rowstyle">
+								<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Off</div>
+								<label class="switch" style="display: none !important;">
+									<input type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div id="appearance-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item" onclick="onCreate.chooseThemeDialogPopup()">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Appearance</div>
+							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Choose your light or dark theme preference</div>
+						</div>
+					</div>
+					<div id="app-language-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">App language</div>
+							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">&nbsp;</div>
+						</div>
+					</div>
+					<div id="playback-in-feeds-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Playback in feeds</div>
+							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Choose whether videos play as you browse</div>
+						</div>
+					</div>
+					<div id="voice-search-language-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Voice search language</div>
+							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">&nbsp;</div>
+						</div>
+					</div>
+					<div id="location-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Location</div>
+							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Change content shown to you based on your country</div>
+						</div>
+					</div>
+					<div id="restricted-mode-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Restricted mode</div>
+							<div class="items-text-container-flexed-rowstyle">
+								<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">This helps hide potentially mature videos. No filter is 100% accurate. This setting only applies to this app on this device</div>
+								<label class="switch" style="display: none !important;">
+									<input type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div id="stats-for-nerds-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-rowstyle">
+							<div class="native-profile-item-text-container">Enable stats for nerds</div>
+							<label class="switch" style="display: none !important;">
+								<input type="checkbox">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div id="earn-badges-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="items-text-container-flexed-columnstyle">
+							<div class="native-profile-item-text-container">Earn badges</div>
+							<div class="items-text-container-flexed-rowstyle">
+								<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Receive badges across all YouTube apps</div>
+								<label class="switch" style="display: none !important;">
+									<input type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div id="about-page-list" class="general-content-area" hidden="">
 					<div id="app-version-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
-						<div class="items-text-container-flexed">
+						<div class="items-text-container-flexed-columnstyle">
 							<div class="native-profile-item-text-container">App version</div>
-							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">17.03.38</div>
+							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray"></div>
 						</div>
 					</div>
 					<div id="faketube-author-brief-desc" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
@@ -326,12 +434,16 @@
 				</div>
 			</div>
 		</div>
-		<!-- dialog section -->
+		<!-- dialog section
 		<button id="open-dialog" hidden="">Open Dialog</button>
 		<dialog id="my-dialog">
 			<h2>Dialog Title</h2>
 			<p>This is the content of my dialog box.</p>
 			<button id="close-dialog">Close Dialog</button>
+		</dialog>
+		-->
+		<dialog id="faketube-dialog">
+			
 		</dialog>
 	</body>
 </html>
