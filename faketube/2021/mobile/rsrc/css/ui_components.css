@@ -224,6 +224,10 @@
 	text-transform: uppercase;
 }
 
+.transparent-button-without-border {
+	border: unset !important;
+}
+
 a.transparent-button-with-border {
 	color: unset;
 	text-decoration: unset;
@@ -369,15 +373,20 @@ a.transparent-button-with-border > span {
 	font-family: Arial;
 }
 
-.items-text-container-flexed {
+.items-text-container-flexed-columnstyle {
 	display: flex;
 	flex-direction: column;
 	gap: 0.2rem;
 }
 
-.items-text-container-flexed > .native-profile-item-text-container-subtext-gray {
+.items-text-container-flexed-rowstyle {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.native-profile-item-text-container-subtext-gray {
 	color: var(--gray-text-color);
-	color: var(--gray-color);
 	font-size: 0.9rem;
 }
 
@@ -519,6 +528,12 @@ a.transparent-button-with-border > span {
 	margin-right: 16px;
 }
 
+dialog {
+	border: unset;
+	border-radius: 2px;
+}
+
+
 
 #cast-button-topbar:not([cast-button-connection-state=CONNECTING]) .chromecast-animate {
 	display: none;
@@ -625,4 +640,68 @@ html:not([data-theme-display=light]) #cast-button-topbar[cast-button-connection-
 	100% {
 		opacity: 0
 	}
+}
+
+/*
+	code source: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
+*/
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.switch input { 
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+input:checked + .slider {
+	background-color: #2196F3;
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
 }
