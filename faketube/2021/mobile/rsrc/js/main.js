@@ -19,6 +19,16 @@ function HomeTabButton(buttonState) {
 		} else {
 			document.querySelector("#home-button").ariaPressed = "true";
 			document.querySelector("#homebutton-icon > div > svg > path").setAttribute("d", "M4,10V21h6V15h4v6h6V10L12,3Z");
+
+			// hide all except from home
+			document.querySelector("#home-page-content").hidden = false;
+			document.querySelector("#explore-or-shorts-page-content").hidden = true;
+			document.querySelector("#subscriptions-page-content").hidden = true;
+			document.querySelector("#library-page-content").hidden = true;
+			document.querySelector("#notifications-page-content").hidden = true;
+			
+			// set the page Location
+			__faketube_page_location = "HOME_PAGE";
 			return;
 		}
 	}
@@ -41,6 +51,16 @@ function ExploreOrShortsTabButton(buttonState) {
 		} else {
 			document.querySelector("#explore-and-shorts-button").ariaPressed = "true";
 			document.querySelector("#exploreshortsbutton-icon > div > svg > path").setAttribute("d", "m13.974 2.052-8 4.7a4 4 0 00.385 7.097l.942.423-1.327.78a4 4 0 004.052 6.897l8-4.7a4.001 4.001 0 00-.384-7.096L16.7 9.73l1.326-.78a4 4 0 10-4.052-6.897ZM10 15V9l5 3-5 3Z");
+
+			// hide all except from explore (or shorts)
+			document.querySelector("#home-page-content").hidden = true;
+			document.querySelector("#explore-or-shorts-page-content").hidden = false;
+			document.querySelector("#subscriptions-page-content").hidden = true;
+			document.querySelector("#library-page-content").hidden = true;
+			document.querySelector("#notifications-page-content").hidden = true;
+			
+			// set the page Location
+			__faketube_page_location = "EXPLORE_OR_SHORTS_PAGE";
 			return;
 		}
 	}
@@ -63,6 +83,16 @@ function SubscriptionsTabButton(buttonState) {
 		} else {
 			document.querySelector("#subscriptions-button").ariaPressed = "true";
 			document.querySelector("#subscriptionsbutton-icon > div > svg > path").setAttribute("d", "M20,7H4V6h16V7z M22,9v12H2V9H22z M15,15l-5-3v6L15,15z M17,3H7v1h10V3z");
+
+			// hide all except from subscriptions
+			document.querySelector("#home-page-content").hidden = true;
+			document.querySelector("#explore-or-shorts-page-content").hidden = true;
+			document.querySelector("#subscriptions-page-content").hidden = false;
+			document.querySelector("#library-page-content").hidden = true;
+			document.querySelector("#notifications-page-content").hidden = true;
+			
+			// set the page Location
+			__faketube_page_location = "SUBSCRIPTIONS_PAGE";
 			return;
 		}
 	}
@@ -85,6 +115,16 @@ function LibraryOrYouTabButton(buttonState) {
 		} else {
 			document.querySelector("#library-or-you-tab-button").ariaPressed = "true";
 			document.querySelector("#libraryyoutabbutton-icon > div > svg > path").setAttribute("d", "M4,20h14v1H3V6h1V20z M21,3v15H6V3H21z M17,10.5L11,7v7L17,10.5z");
+
+			// hide all except from explore (or shorts)
+			document.querySelector("#home-page-content").hidden = true;
+			document.querySelector("#explore-or-shorts-page-content").hidden = true;
+			document.querySelector("#subscriptions-page-content").hidden = true;
+			document.querySelector("#library-page-content").hidden = false;
+			document.querySelector("#notifications-page-content").hidden = true;
+			
+			// set the page Location
+			__faketube_page_location = "LIBRARY_OR_YOU_PAGE";
 			return;
 		}
 	}
@@ -92,19 +132,32 @@ function LibraryOrYouTabButton(buttonState) {
 
 
 
-//	obtained from google search's AI Overview preview window
+document.querySelector("html").setAttribute("data-theme-display", "light");
+document.querySelector("html").setAttribute("data-online-status", "online");
+document.querySelector("html").lang = navigator.language;
+
 setTimeout(function() {
-	//const openButton = document.getElementById('open-dialog');
+	/*
+		obtained from google search's AI Overview preview window
+	const openButton = document.getElementById('open-dialog');
 	const closeButton = document.getElementById('close-dialog');
 	const dialog = document.getElementById('my-dialog');
 
 	// Open the dialog as a modal (with a backdrop)
-	//openButton.addEventListener('click', () => {
-	//	dialog.showModal();
-	//});
+	openButton.addEventListener('click', () => {
+		dialog.showModal();
+	});
 
 	// Close the dialog
 	closeButton.addEventListener('click', () => {
 		dialog.close();
 	});
-}, 10);
+	*/
+	
+	/*
+		app version injector
+		ah yes, just like in the android app of youtube where it displays the app version
+	*/
+	document.querySelector("#app-version-container > .items-text-container-flexed-columnstyle > .native-profile-item-text-container-subtext-gray").innerText = com.faketube.web.origAndroidClientVer;
+}, 25);
+
