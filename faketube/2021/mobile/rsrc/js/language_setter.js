@@ -10,10 +10,8 @@ switch (navigator.language.slice(0, 2)) {
 		setTimeout(function() {
 			if (faketube.config_.debug_logging == true) { console.log(`${navigator.language} primary host language detected, setting up local texts...`); }
 
-			global_data._watch_page_strings._stored_vars.downloaded_text_inject = global_data._watch_page_strings.ja.downloaded_text;
-			global_data._watch_page_strings._stored_vars.download_text_inject = global_data._watch_page_strings.ja.download_text;
-			global_data._watch_page_strings._stored_vars.saved_text_inject = global_data._watch_page_strings.ja.saved_text;
-			global_data._watch_page_strings._stored_vars.save_text_inject = global_data._watch_page_strings.ja.save_text;
+			global_data._watch_page_strings._stored_vars.appearance_text_inject = global_data._watch_page_strings.ja.appearance_text;
+			global_data._watch_page_strings._stored_vars.cancel_text_inject = global_data._watch_page_strings.ja.cancel_text;
 			global_data._watch_page_strings._stored_vars.back_online_text_inject = global_data._watch_page_strings.ja.back_online_text;
 			global_data._watch_page_strings._stored_vars.no_internet_connection_text_inject = global_data._watch_page_strings.ja.no_internet_connection_text;
 			global_data._watch_page_strings._stored_vars.check_your_internet_connection_text_inject = global_data._watch_page_strings.ja.check_your_internet_connection_text;

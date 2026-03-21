@@ -25,6 +25,15 @@ html[data-theme-display='darkmode'] {
 
 
 
+/* dialog box, it uses the color from --main-background-color */
+html:not([data-theme-display='light']) #faketube-dialog {
+	background: var(--main-background-color);
+}
+
+html:not([data-theme-display='light']) .faketube-dialog-text {
+	color: var(--white-color);
+}
+
 /* share the same css selectors */
 html[data-theme-display='blackhole'] .touch-by-touch:active,
 html[data-theme-display='darkmode'] .touch-by-touch:active,
