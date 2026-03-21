@@ -1,7 +1,8 @@
 /*
 	operations.js
 	
-	this module contains code that makes the page interactive
+	contains code that makes the page interactive
+	like changing the state of the navbar buttons
 */
 
 
@@ -65,6 +66,25 @@ class onCreate {
 			document.querySelector("#main-settings-page").hidden = false;
 		}, __faketube_delaypagems);
 	}
+
+	static chooseThemeDialogPopup() {
+		document.querySelector("#faketube-dialog").innerHTML = `
+			<h1>Appearance</h1>
+			<form>
+				<input type="radio" id="theme-light" name="theme_type" value="light" onclick="com.faketube.web.display_theme(0)">
+				<label for="theme-light">Light theme</label><br>
+				<input type="radio" id="theme-dark" name="theme_type" value="darkmode" onclick="com.faketube.web.display_theme(1)">
+				<label for="theme-dark">Dark theme</label><br>
+				<input type="radio" id="theme-darkerdarkmode" name="theme_type" value="darkerdarkmode" onclick="com.faketube.web.display_theme(2)">
+				<label for="theme-darkerdarkmode">Dark theme (darker)</label><br>
+				<input type="radio" id="theme-blackhole" name="theme_type" value="blackhole" onclick="com.faketube.web.display_theme(3)" checked="">
+				<label for="theme-blackhole">Black hole theme</label>
+			</form>
+			<button id="theme-dialog-cancel-button" class="cancel-button-dialog transparent-button-with-border transparent-button-without-border">CANCEL</button>
+		`;
+		document.querySelector("#faketube-dialog").showModal();
+		document.querySelector("#theme-dialog-cancel-button").addEventListener("click", onDestroy.chooseThemeDialogPopup);
+	}
 }
 
 class onDestroy {
@@ -85,6 +105,12 @@ class onDestroy {
 			document.querySelector("#home-page").hidden = false;
 		}, __faketube_delaypagems);
 	}
+
+	static chooseThemeDialogPopup() {
+		document.querySelector("#faketube-dialog").close();
+		document.querySelector("#theme-dialog-cancel-button").removeEventListener("click", onDestroy.chooseThemeDialogPopup);
+		document.querySelector("#faketube-dialog").innerHTML = ``;
+	}
 }
 
 class oc_subpage {
@@ -97,13 +123,33 @@ class oc_subpage {
 			document.querySelector("#go-back-and-fallback-name-container > button").hidden = false;
 			document.querySelector("#go-back-and-fallback-name-container > #fallback-header-name").innerText = global_data._watch_page_strings._stored_vars.notifications_text_inject;
 			document.querySelector("#home-page-content").hidden = true;
+			document.querySelector("#notifications-page-content").hidden = false;
 			document.querySelector("#notifications-button-topbar").hidden = true;
+
+			// set all bottom navbar buttons states to false
+			HomeTabButton(false);
+			ExploreOrShortsTabButton(false);
+			SubscriptionsTabButton(false);
+			LibraryOrYouTabButton(false);
+			
+			// set the page Location
+			__faketube_page_location = "SUB_NOTIFICATIONS_PAGE";
 		}
 
-		if (pageType == "about") {
+		if (pageType == "s_general") {
 			setTimeout(() => {
 				document.querySelector("#main-settings-page > header > button").removeAttribute("onclick");
-				document.querySelector("#main-settings-page > header > button").setAttribute("onclick", "od_subpage.hide(`about`)");
+				document.querySelector("#main-settings-page > header > button").setAttribute("onclick", "od_subpage.hide(`s_general`)");
+				document.querySelector("#main-settings-title").innerText = global_data._watch_page_strings._stored_vars.general_text_inject;
+				document.querySelector("#settings-options-list").hidden = true;
+				document.querySelector("#general-page-list").hidden = false;
+			}, __faketube_delaypagems);
+		}
+
+		if (pageType == "s_about") {
+			setTimeout(() => {
+				document.querySelector("#main-settings-page > header > button").removeAttribute("onclick");
+				document.querySelector("#main-settings-page > header > button").setAttribute("onclick", "od_subpage.hide(`s_about`)");
 				document.querySelector("#main-settings-title").innerText = global_data._watch_page_strings._stored_vars.about_text_inject;
 				document.querySelector("#settings-options-list").hidden = true;
 				document.querySelector("#about-page-list").hidden = false;
@@ -122,10 +168,21 @@ class od_subpage {
 			document.querySelector("#go-back-and-fallback-name-container > button").hidden = true;
 			document.querySelector("#go-back-and-fallback-name-container > #fallback-header-name").innerText = global_data._watch_page_strings._standard.faketube_title_text;
 			document.querySelector("#home-page-content").hidden = false;
+			document.querySelector("#notifications-page-content").hidden = true;
 			document.querySelector("#notifications-button-topbar").hidden = false;
 		}
 
-		if (pageType == "about") {
+		if (pageType == "s_general") {
+			setTimeout(() => {
+				document.querySelector("#main-settings-page > header > button").removeAttribute("onclick");
+				document.querySelector("#main-settings-page > header > button").setAttribute("onclick", "onDestroy.settingsPage()");
+				document.querySelector("#main-settings-title").innerText = global_data._watch_page_strings._stored_vars.settings_text_inject;
+				document.querySelector("#settings-options-list").hidden = false;
+				document.querySelector("#general-page-list").hidden = true;
+			}, __faketube_delaypagems);
+		}
+
+		if (pageType == "s_about") {
 			document.querySelector("#main-settings-page > header > button").removeAttribute("onclick");
 			document.querySelector("#main-settings-page > header > button").setAttribute("onclick", "onDestroy.settingsPage()");
 			document.querySelector("#main-settings-title").innerText = global_data._watch_page_strings._stored_vars.settings_text_inject;
