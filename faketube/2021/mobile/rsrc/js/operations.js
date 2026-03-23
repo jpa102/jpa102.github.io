@@ -370,6 +370,12 @@ function __loadcfgs() {
 		}
 
 		setTimeout(function() {
+			let cairoStyleCSS = document.createElement("style");
+			cairoStyleCSS.type = "text/css";
+			cairoStyleCSS.id = "cairo-style-css-experiment";
+			cairoStyleCSS.innerText = `input.transparent-button-with-border, button#sign-in-button { text-transform: capitalize; } `;
+			document.querySelector("html").insertBefore(cairoStyleCSS, document.head);
+
 			document.querySelector("#cast-button-svg-path-disconnected").setAttribute("d", "M21 3H3a2 2 0 00-2 2v3c.67 0 1.337.051 2 .153V5h18v14h-7.153c.1.653.152 1.32.153 2h7a2 2 0 002-2V5a2 2 0 00-2-2ZM1 10v2a9 9 0 019 9h2A11 11 0 001 10Zm0 4v2a5 5 0 015 5h2a7 7 0 00-7-7Zm0 4v3h3a3.003 3.003 0 00-3-3Z");
 			document.querySelector("#cast-button-svg-path-connected").setAttribute("d", "M21 3a2 2 0 012 2v14a2 2 0 01-2 2h-7a13.265 13.265 0 00-.153-2H21V5H3v3.153A13 13 0 001 8V5a2 2 0 012-2h18Zm-2 14V7H5v1.627A13.031 13.031 0 0113.373 17H19ZM1 10v2a9 9 0 019 9h2A11 11 0 001 10Zm0 4v2a5 5 0 015 5h2a7 7 0 00-7-7Zm0 4v3h3a3.003 3.003 0 00-3-3Z");
 			document.querySelector("#notifications-button-icon > path").setAttribute("d", "m13.497 4.898.053.8.694.4C15.596 6.878 16.5 8.334 16.5 10v2.892c0 .997.27 1.975.784 2.83L18.35 17.5H5.649l1.067-1.778c.513-.855.784-1.833.784-2.83V10c0-1.666.904-3.122 2.256-3.902l.694-.4.053-.8c.052-.78.703-1.398 1.497-1.398.794 0 1.445.618 1.497 1.398ZM6 10c0-2.224 1.21-4.165 3.007-5.201C9.11 3.236 10.41 2 12 2c1.59 0 2.89 1.236 2.993 2.799C16.79 5.835 18 7.776 18 10v2.892c0 .725.197 1.436.57 2.058l1.521 2.535c.4.667-.08 1.515-.857 1.515H15c0 .796-.316 1.559-.879 2.121-.562.563-1.325.879-2.121.879s-1.559-.316-2.121-.879C9.316 20.56 9 19.796 9 19H4.766c-.777 0-1.257-.848-.857-1.515L5.43 14.95c.373-.622.57-1.333.57-2.058V10Zm4.5 9c0 .398.158.78.44 1.06.28.282.662.44 1.06.44s.78-.158 1.06-.44c.282-.28.44-.662.44-1.06h-3Z");
@@ -552,7 +558,7 @@ function __loadcfgs() {
 			let delhiStyleCSS = document.createElement("style");
 			delhiStyleCSS.type = "text/css";
 			delhiStyleCSS.id = "delhi-style-css-experiment";
-			delhiStyleCSS.innerText = `input.transparent-button-with-border, input.video-id-input-field, button#sign-in-button  { border-radius: 100px; } `;
+			delhiStyleCSS.innerText = `input.transparent-button-with-border, input.video-id-input-field, button#sign-in-button  { border-radius: 100px; } input.transparent-button-with-border, button#sign-in-button { text-transform: capitalize; } `;
 			document.querySelector("html").insertBefore(delhiStyleCSS, document.head);
 
 			document.querySelector("#cast-button-svg-path-disconnected").setAttribute("d", "M21 3H3a2 2 0 00-2 2v3c.67 0 1.337.051 2 .153V5h18v14h-7.153c.1.653.152 1.32.153 2h7a2 2 0 002-2V5a2 2 0 00-2-2ZM1 10v2a9 9 0 019 9h2A11 11 0 001 10Zm0 4v2a5 5 0 015 5h2a7 7 0 00-7-7Zm0 4v3h3a3.003 3.003 0 00-3-3Z");
