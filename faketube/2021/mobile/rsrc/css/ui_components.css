@@ -6,6 +6,10 @@
 
 
 
+body[data-laidback-transition] {
+	transition: 0.5s ease-in-out;
+}
+
 .touch-by-touch {
 	background-color: transparent;
 	border: 1px solid transparent;
@@ -534,9 +538,21 @@ dialog {
 	padding: 1rem 1.4rem;
 }
 
-dialog:-internal-dialog-in-top-layer::backdrop {
+dialog::backdrop {
 	transition: .25s ease-in-out;
 	background-color: rgba(0, 0, 0, 0.42);
+}
+
+@media (orientation: portrait) {
+	dialog {
+		max-width: 350px;
+	}
+}
+
+@media (orientation: landscape) {
+	dialog {
+		max-width: 420px;
+	}
 }
 
 .dialog-flexed-buttons-container {
@@ -557,6 +573,13 @@ label[for], dialog input[type='radio'] {
 	width: unset;
 	padding: 10px 14px;
 	border-radius: 2px;
+	text-transform: uppercase;
+}
+
+.input-radio-option-dialog {
+	width: unset;
+    padding: unset;
+    border-radius: unset;
 }
 
 
