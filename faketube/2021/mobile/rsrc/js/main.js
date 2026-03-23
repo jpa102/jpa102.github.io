@@ -2,6 +2,20 @@
 	main.js
 */
 
+
+
+// topbar
+function NotificationsButton(buttonState) {
+	if (buttonState == false) {
+		document.querySelector("#notifications-button-icon > path").setAttribute("d", "M10,20h4c0,1.1-0.9,2-2,2S10,21.1,10,20z M20,17.35V19H4v-1.65l2-1.88v-5.15c0-2.92,1.56-5.22,4-5.98V3.96 c0-1.42,1.49-2.5,2.99-1.76C13.64,2.52,14,3.23,14,3.96l0,0.39c2.44,0.75,4,3.06,4,5.98v5.15L20,17.35z M19,17.77l-2-1.88v-5.47 c0-2.47-1.19-4.36-3.13-5.1c-1.26-0.53-2.64-0.5-3.84,0.03C8.15,6.11,7,7.99,7,10.42v5.47l-2,1.88V18h14V17.77z");
+	}
+
+	if (buttonState == true) {
+		document.querySelector("#notifications-button-icon > path").setAttribute("d", "M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87z");
+	}
+}
+
+// bottom navbar
 function HomeTabButton(buttonState) {
 	if (buttonState == false) {
 		if (document.querySelector("#home-button").ariaPressed == "false") {
