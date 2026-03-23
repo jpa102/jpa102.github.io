@@ -582,6 +582,10 @@ label[for], dialog input[type='radio'] {
     border-radius: unset;
 }
 
+.faketube-dialog-text {
+	font-family: Arial, Roboto, system-ui;
+}
+
 
 
 #cast-button-topbar:not([cast-button-connection-state=CONNECTING]) .chromecast-animate {
