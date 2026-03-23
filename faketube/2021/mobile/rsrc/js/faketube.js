@@ -15,6 +15,8 @@ var faketube = {
 		web_page_editable: false, // no need to do the document.designMode trick in devtools
 		web_stop_ads_button_hidden: false, // hide the stop ads button
 		EXPERIMENT_FLAGS: {
+			cairo_style_design: false, // upcoming cairo style design throughout the page
+			delhi_style_design: false, // upcoming (new) delhi style design throughout the page
 			forced_country_code_and_language: "", // input a country code and language (example: ja-JP for japanese - japan)
 			match_older_15_xx_xx_version: false, // inject and style the page from 15.xx.xx versions of youtube app
 			match_older_16_xx_xx_version: false, // inject and style the page from older 16.xx.xx versions of youtube app
@@ -30,6 +32,45 @@ var com = {
 	faketube: {
 		web: {
 			debug: {
+				displayAlertDialog(type = `OK_TYPE`, title = `test`, bodyText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit`) {
+					function closeDialog() {
+						setTimeout(function() {
+							document.querySelector("#faketube-dialog").close();
+							document.querySelector("#faketube-dialog").innerHTML = ``;
+						}, 200);
+					}
+
+					switch (type) {
+						case `OK_TYPE`:
+							document.querySelector("#faketube-dialog").innerHTML = `
+								<h1 id="h1-text-dialog" class="faketube-dialog-text">${title}</h1>
+								<p id="p-text-dialog" class="faketube-dialog-text">${bodyText}</p>
+								<div class="dialog-flexed-buttons-container">
+									<div class="dialog-dummy-element"></div>
+									<button id="dialog-ok-button" class="button-dialog menu-buttons faketube-dialog-text">OK</button>
+								</div>
+							`;
+							document.querySelector("#faketube-dialog").showModal();
+							document.querySelector("#dialog-ok-button").addEventListener("click", closeDialog);
+							break;
+
+						case `CANCEL_AND_OK_TYPE`:
+							document.querySelector("#faketube-dialog").innerHTML = `
+								<h1 id="h1-text-dialog" class="faketube-dialog-text">${title}</h1>
+								<p id="p-text-dialog" class="faketube-dialog-text">${bodyText}</p>
+								<div class="dialog-flexed-buttons-container">
+									<div class="dialog-dummy-element"></div>
+									<div>
+										<button id="dialog-cancel-button" class="button-dialog menu-buttons faketube-dialog-text">CANCEL</button>
+										<button id="dialog-ok-button" class="button-dialog menu-buttons faketube-dialog-text">OK</button>
+								</div>
+							`;
+							document.querySelector("#faketube-dialog").showModal();
+							document.querySelector("#dialog-cancel-button").addEventListener("click", closeDialog);
+							document.querySelector("#dialog-ok-button").addEventListener("click", closeDialog);
+							break;
+					}
+				},
 				displayhtml() {
 					document.querySelector("html").hidden = false;
 				},
