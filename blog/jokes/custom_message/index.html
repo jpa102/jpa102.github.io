@@ -25,6 +25,16 @@
 				const queryString = window.location.search;
 				const urlParams = new URLSearchParams(queryString);
 				const hone_text_color_value = urlParams.get('hone_text_color');
+
+				// Only allow safe CSS color formats to prevent injection
+				if (hone_text_color_value === null) {
+					return;
+				}
+				// Accept common CSS color syntaxes: named, hex, rgb/rgba, hsl/hsla
+				const safeColorPattern = /^(?:#[0-9a-fA-F]{3,8}|(?:rgb|hsl)a?\(\s*[0-9.%\s,]+\s*\)|[a-zA-Z]+)$/;
+				if (!safeColorPattern.test(hone_text_color_value)) {
+					return;
+				}
 				
 				document.querySelector("head").insertAdjacentHTML(
 					"beforeend",
@@ -43,6 +53,16 @@
 				const queryString = window.location.search;
 				const urlParams = new URLSearchParams(queryString);
 				const p_text_color_value = urlParams.get('p_text_color');
+
+				// Only allow safe CSS color formats to prevent injection
+				if (p_text_color_value === null) {
+					return;
+				}
+				// Accept common CSS color syntaxes: named, hex, rgb/rgba, hsl/hsla
+				const safeColorPattern = /^(?:#[0-9a-fA-F]{3,8}|(?:rgb|hsl)a?\(\s*[0-9.%\s,]+\s*\)|[a-zA-Z]+)$/;
+				if (!safeColorPattern.test(p_text_color_value)) {
+					return;
+				}
 				
 				document.querySelector("head").insertAdjacentHTML(
 					"beforeend",
@@ -150,8 +170,6 @@
 						<div id="paragraph-text" class="info">
 							<p style="margin-bottom: unset; text-align: right;">
 								posted at 2024年9月5日 17:07:28
-								<br>
-								edited at 2026年2月17日 23:07:27
 							</p>
 						</div>
 					</div>
@@ -172,5 +190,3 @@
 		</div>
 	</body>
 </html>
-
-
