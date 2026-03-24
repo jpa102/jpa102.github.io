@@ -6,31 +6,12 @@
 		<link rel="alternate stylesheet" style="text/css" title="alternate css file" href="rsrc/style.css">
 		<script src="rsrc/main.js"></script>
 		<script src="rsrc/navigation.js"></script>
-		<meta name="robots" content="noindex,nofollow,noarchive">
+		<script src="rsrc/theme.js"></script>
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
-		<meta name="theme-color" content="#36c8ff">
-		<script id="manual-theme-setter">
-			function lightTheme() { document.querySelector("html").setAttribute("data-theme-display", "light"); }
-			function darkTheme() { document.querySelector("html").setAttribute("data-theme-display", "dark"); }
-			function blackhole() { document.querySelector("html").setAttribute("data-theme-display", "blackhole"); }
-		</script>
-		<script id="automatic-theme-setter">
-			/*
-				automatically set the theme (system light or dark mode)
-				source: https://stackoverflow.com/a/60971231
-			*/
-			// Check to see if Media-Queries are supported
-			if (window.matchMedia) {
-				// Check if the dark-mode Media-Query matches
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					document.querySelector("html").setAttribute("data-theme-display", "dark");
-				} else {
-					document.querySelector("html").setAttribute("data-theme-display", "light");
-				}
-			} else {
-				document.querySelector("html").setAttribute("data-theme-display", "light");
-			}
-		</script>
+		<meta name="theme-color" content="#36c8ff" media="(prefers-color-scheme:light)">
+		<meta name="theme-color" content="#5a1288" media="(prefers-color-scheme:dark)">
+		<meta name="robots" content="noindex,nofollow,noarchive">
+		<meta charset="UTF-8">
 	</head>
 	<body>
 		<header>
@@ -41,9 +22,9 @@
 				<a href="/faketube">FakeTube</a>
 				<a href="/rydfetch/mobile/">RYD Frontend</a>
 				<div class="border-bottom"></div>
-				<a href="javascript:void(0)" onclick="lightTheme()">Light mode</a>
-				<a href="javascript:void(0)" onclick="darkTheme()">Dark mode</a>
-				<a href="javascript:void(0)" onclick="blackhole()">暗闇</a>
+				<a href="javascript:void(0)" onclick="display.theme._clear()">Light mode</a>
+				<a href="javascript:void(0)" onclick="display.theme.darkmode()">Dark mode</a>
+				<a href="javascript:void(0)" onclick="display.theme.blackhole()">暗闇</a>
 			</div>
 			<div id="topbar">
 				<div id="sidebar-button-and-app-name-title">

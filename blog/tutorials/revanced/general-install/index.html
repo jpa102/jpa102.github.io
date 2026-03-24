@@ -1,52 +1,33 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 	<head>
 		<title>ReVanced - General installation & setup</title>
-		<script>document.querySelector("html").setAttribute("data-theme-display", "light");</script>
-		<link rel="stylesheet" style="text/css" title="default css file" href="rsrc/style.css">
+		<meta name="referrer" content="origin-when-cross-origin">
+		<link rel="stylesheet" type="text/css" title="default css file" href="rsrc/style.css">
 		<link rel="alternate stylesheet" style="text/css" title="alternate css file" href="rsrc/style.css">
 		<script src="rsrc/main.js"></script>
 		<script src="rsrc/navigation.js"></script>
-		<meta name="robots" content="noindex,nofollow,noarchive">
+		<script src="rsrc/theme.js"></script>
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
-		<meta name="theme-color" content="#36c8ff">
-		<script id="manual-theme-setter">
-			function lightTheme() { document.querySelector("html").setAttribute("data-theme-display", "light"); }
-			function darkTheme() { document.querySelector("html").setAttribute("data-theme-display", "dark"); }
-			function blackhole() { document.querySelector("html").setAttribute("data-theme-display", "blackhole"); }
-		</script>
-		<script id="automatic-theme-setter">
-			/*
-				automatically set the theme (system light or dark mode)
-				source: https://stackoverflow.com/a/60971231
-			*/
-			// Check to see if Media-Queries are supported
-			if (window.matchMedia) {
-				// Check if the dark-mode Media-Query matches
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					document.querySelector("html").setAttribute("data-theme-display", "dark");
-				} else {
-					document.querySelector("html").setAttribute("data-theme-display", "light");
-				}
-			} else {
-				document.querySelector("html").setAttribute("data-theme-display", "light");
-			}
-		</script>
+		<meta name="theme-color" content="#36c8ff" media="(prefers-color-scheme:light)">
+		<meta name="theme-color" content="#5a1288" media="(prefers-color-scheme:dark)">
+		<meta name="robots" content="noindex,nofollow,noarchive">
+		<meta charset="UTF-8">
 	</head>
 	<body>
 		<header>
 			<div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				<a href="/blog/tutorials/revanced/">&lt;-- back</a>
+				<a href="/blog/tutorials/revanced/">← &nbsp; back</a>
 				<div class="border-bottom"></div>
 				<a href="/">Home</a>
 				<a href="/blog">Blogs</a>
 				<a href="/faketube" class="notranslate">FakeTube</a>
 				<a href="/rydfetch/mobile/" class="notranslate">RYD Frontend</a>
 				<div class="border-bottom"></div>
-				<a href="javascript:void(0)" onclick="lightTheme()">Light mode</a>
-				<a href="javascript:void(0)" onclick="darkTheme()">Dark mode</a>
-				<a href="javascript:void(0)" onclick="blackhole()">暗闇</a>
+				<a href="javascript:void(0)" onclick="display.theme._clear()">Light mode</a>
+				<a href="javascript:void(0)" onclick="display.theme.darkmode()">Dark mode</a>
+				<a href="javascript:void(0)" onclick="display.theme.blackhole()">暗闇</a>
 			</div>
 			<div id="topbar">
 				<div id="sidebar-button-and-app-name-title">
@@ -61,7 +42,7 @@
 		</header>
 		<div id="post" class="page">
 			<div id="body-container" class="info">
-				<span class="paragraph-text" style="margin-bottom: 24px; margin-left: 0px !important;">revision: <code>2025年11月11日 12:44:11</code></span>
+				<span class="paragraph-text" style="margin-bottom: 24px; margin-left: 0px !important;">revision: <code>2026年3月25日 6:01:23</code></span>
 				<div class="header-text headline-text">Welcome to the world of ReVanced! Here are the steps for Mobile and PC <i>(guide with images coming soon)</i></div>
 				<div class="header-text headline-text">Since this is a general guide for ReVanced, navigate back to see specific guides</i></div>
 				<div class="border-bottom"></div>
@@ -69,35 +50,39 @@
 				<ul>
 					<li>Go to <a href="https://revanced.app/download">https://revanced.app/download</a> and tap the download button</li>
 					<li>Install the ReVanced Manager APK file <i>(Some Android versions may need additional steps in order to install APKs from unknown sources)</i></li>
-					<li>Once done, now you can start patching apps</li>
+					<li>Grant all necessary permissions for it to work properly</li>
 				</ul>
 				<div class="header-text headline-text">The patching process...</div>
 				<ul>
-					<li>Go to ReVanced Manager, tap the Patcher tab, then the Select an app box <i>(If the app that you want to patch isn't installed, it will show up as package names)</i></li>
-					<li>Always patch using APK Files matching the suggested version from your local storage. Patching a Split APK directly from ReVanced Manager <i>(when you tap from the app list)</i> is currently reserved for rooted users, in which you have to use an app called <a href="https://github.com/AbdurazaaqMohammed/AntiSplit-M">Antisplit-M</a> to convert a <code>BUNDLE</code> file into a patchable APK file</li>
-					<li>Providing an APK file is as follows: Dashboard =&gt; Patcher tab =&gt; Select an app =&gt; Storage button =&gt; Downloads folder =&gt; appname.apk file</li>
-					<li>Tap the "Patch" button and wait / watch the patching process <i>(You can review the patches selection by tapping the Selected patches box, unchecking & checking / patches before patching the app requires enabling <code>Allow changing patch selection</code> at Settings)</i></li>
+					<li>If you didn't press the "Skip for now", you can proceed with patching what app you want</li>
+					<li>Go to ReVanced Manager, then tap the app you want to patch from the list
+						<ul>
+							<li>NOTE: The "Select APK source" can either be from a downloader, or from your storage (if you did download the APK file just like what in the previous versions of ReVanced Manager)</li>
+						</ul>
+					</li>
+					<li>Always patch using APK Files matching the suggested version if possible. Patching a Split APK however, you need to use an app called <a href="https://github.com/AbdurazaaqMohammed/AntiSplit-M">AntiSplit M</a> to convert a <code>BUNDLE</code> file into an APK file that can be patched</li>
+					<li>Tap the "Patch" button and wait / watch the patching process <i>(You can review the patches selection by tapping the "Selected patches", unchecking & checking / patches before patching the app requires enabling <code>Allow changing patch selection</code> at Settings)</i></li>
 					<li>If the patching process is successful, you can now install the patched app</li>
-					<li>Sharing the patched APK file is easy, just tap the 💾 save icon at the bottom left corner, then save it to a folder and you can now share it to anyone</li>
+					<li>Sharing the patched APK file is easy, just tap the 💾 save button, then save it to a folder and you can now share it to anyone <i>(heads-up: there will be a warning pop up that will appear when it's shared to anyone because it's not patched and installed from the same device)</i></li>
 				</ul>
 				<div class="border-bottom"></div>
 				<div class="header-text headline-text">PC</div>
 				<ul>
-					<li><a href="https://github.com/ReVanced/revanced-cli/blob/main/docs/0_prerequisites.md">Head to this link</a> and set up the Java Runtime Environment <i>(I personally use the Azul one)</i>. This can vary on different operating systems whether you're using a Windows, Linux, or macOS</li>
-					<li>Go to <a href="https://github.com/ReVanced/revanced-cli/releases">https://github.com/ReVanced/revanced-cli/releases</a> and find the one that doesn't say <code title="this is called the pre-release dev patches, which is used by testers and developers">dev</code> in it <i>(Download the <code>jar</code> file inside Assets)</i></li>
+					<li><a href="https://github.com/ReVanced/revanced-cli/blob/main/docs/0_prerequisites.md">Head to this link</a> and set up the Java Runtime Environment <i>(I personally use the Azul one on Windows)</i>. This can vary on different operating systems whether you're using a Windows, Linux, or macOS</li>
+					<li>Go to <a href="https://github.com/ReVanced/revanced-cli/releases/latest">https://github.com/ReVanced/revanced-cli/releases/latest</a> and download the <code>jar</code> file inside the Assets <i>(if you're looking for a specific version, remove the <code>latest</code> in the URL and get the one that either doesn't say or does say <code title="this is called the pre-release dev patches, which is used by testers and developers">dev</code> in it)</i></li>
 					<li>Now go to <a href="https://github.com/ReVanced/revanced-patches/releases">https://github.com/ReVanced/revanced-patches/releases</a> and find the one that doesn't say <code title="this is called the pre-release dev patches, which is used by testers and developers">dev</code> in it <i>(Download the <code title="this is revanced's file name extension for 'ReVanced Patches'">rvp</code> file inside Assets)</i></li>
 					<li>Place the jar and rvp files in a folder which you can easily access via your terminal <i>(In my case, it's at <code>E:\revanced</code>)</i></li>
 					<li>Verify that the Java components work and once done, now you can start patching apps</li>
 				</ul>
 				<div class="header-text headline-text">The patching process...</div>
-				<span class="paragraph-text">NOTE: I have changed the file names to avoid confusion. Tools and patches change their version numbers whenever they get updated</span>
+				<span class="paragraph-text">NOTE: I have changed the file names to avoid confusion. Tools and patches change their version numbers whenever they get updated, and may even change the command arguments usage</span>
 				<ul>
-					<li>Source out an APK file that you want to patch like from <a href="https://www.apkmirror.com">APKMirror</a> <i>(Split APKs have to be converted into a proper APK file first)</i>
+					<li>Source out an APK file that you want to patch like from <a href="https://www.apkmirror.com">APKMirror</a> <i>(Split APKs have to be converted into a fully merged APK file first)</i>
 						<ul class="nested-ul">
 							<li>use <a href="https://github.com/AbdurazaaqMohammed/AntiSplit-M">Antisplit-M</a> if you usually do it on mobile then transfer it to your PC</li>
 							<li>use a similar tool for PC <i>(more convenient, i guess?)</i></li>
 						</ul>
-						then place it into your <code>revanced</code> directory
+						then place it into your <code>revanced</code>  or wherever
 					</li>
 					<li>Open up a terminal, then navigate to the directory where your revanced-cli is <i title="this is from windows">(Example: <code>C:\Users\jpa102&gt; E:</code> | <code>E:\&gt;cd revanced</code>)"</i></li>
 					<li>To see patches information for an app, run this command: <code title="it's important to read the text file you just generated from this command so you can know exactly what to include and exclude">java -jar revanced-cli.jar list-patches --with-packages --with-versions --with-options patches.rvp > patches_info.txt</code> <i>(command may differ)</i></li>
@@ -122,26 +107,21 @@
 				<div class="header-text headline-text">Questions and Answers</div>
 				<span class="paragraph-text">&gt; Are there any apps that I can patch with ReVanced?</span>
 				<ul>
-					<li>See the comprehensive list at <a href="https://revanced.app/patches">https://revanced.app/patches</a></li>
-					<li>You can research them by tapping the package names at the sidebar, then tap the package name besides the version numbers to redirect you to Google Play Store)</li>
+					<li><s>See the comprehensive list at <a href="https://revanced.app/patches">https://revanced.app/patches</a></s> <i>(it looks unavailable as of 2026年03月25日 5:41:25)</i></li>
+					<li>Looks like the best thing you can do is search the package name on Google or similar</li>
 				</ul>
-				<span class="paragraph-text">&gt; I saw in ReVanced Manager settings that there's "Show universal patches", should I enable it?</span>
+				<span class="paragraph-text">&gt; I saw in ReVanced Manager settings that there's "Allow using universal patches", should I enable it?</span>
 				<ul>
 					<li>You can enable it, but there's no guarantee that all apps can be patched and will work with them. It will however depend from app to app and may have different side effects</li>
 				</ul>
-				<span class="paragraph-text">&gt; I saw at <a href="https://revanced.app/patches">https://revanced.app/patches</a> that there's lots of compatible app versions outside of the suggested version, but it's preventing me from patching them</span>
+				<span class="paragraph-text">&gt; I saw that there's lots of compatible app versions outside of the suggested version, but it's preventing me from patching them</span>
 				<ul>
-					<li>Disable the <code>Require suggested app version</code> and <code>Version compatibility check</code> in ReVanced Manager settings</li>
+					<li>Disable the <code>Require suggested app version</code> and enable <code>Turn off version compatibility check</code> in ReVanced Manager settings</li>
 					<li>But take note: The patching process may produce different results, such as a certain patch failing for that version</li>
 				</ul>
 				<span class="paragraph-text">&gt; I can't find any APK files for the app I want to patch</span>
 				<ul>
-					<li>If for example is only available on let's say Google Play Store, download it from there, then extract it into a patchable APK file using <a href="https://github.com/AbdurazaaqMohammed/AntiSplit-M">Antisplit-M</a></li>
-				</ul>
-				<span class="paragraph-text">&gt; Why do I have to provide an APK file from storage when I can just select it from the app list instead?</span>
-				<ul>
-					<li>The thing is, some apps are installed as Split APKs. If your device is not rooted, you will have to provide an APK file from storage</li>
-					<li>Even if you can, the version installed may not be patchable at all</li>
+					<li>If for example is only available on let's say Google Play Store, download it from there, then extract and merge it into a full APK file using <a href="https://github.com/AbdurazaaqMohammed/AntiSplit-M">AntiSplit M</a></li>
 				</ul>
 				<span class="paragraph-text">&gt; Why does it say that I have to disable auto updates?</span>
 				<ul>
@@ -153,7 +133,7 @@
 						<ul class="nested-ul">
 							<li>Did you just recently uninstalled and reinstalled / cleared the app data of ReVanced Manager? If so, then the keystore being used is now different from the last time the app was patched & installed <i>(The root problem: Signature mismatch)</i></li>
 							<li>Did you use the universal <code>Change package name</code> patch? The package name has to be unique and do not rely on the <code>Default</code> preset <i>(Example: <code>app.patched.with.revanced.by.jpa102</code>)</i></li>
-							<li>Some apps have this thing called "Shared permissions", which if one app has a different signature but shares the same permission as the other app, it will throw an error called <code>INSTALL_FAILED_DUPLICATE_PERMISSION</code> <i>(there are 2 settings inside the <code>Change package name</code> patch which you can try and use, <a href="">this is not the case with meta apps though</a>)</i></li>
+							<li>Some apps have this thing called <code>Shared permissions</code>, which if one app has a different signature but shares the same permission as the other app, it will throw an error called <code>INSTALL_FAILED_DUPLICATE_PERMISSION</code> <i>(there are 2 settings inside the <code>Change package name</code> patch which you can try and use, <a href="javascript:void(0)">this is not the case with meta apps though</a>)</i></li>
 						</ul>
 					</li>
 				</ul>
@@ -163,18 +143,18 @@
 				</ul>
 				<span class="paragraph-text">&gt; It says "Installation incompatible"</span>
 				<ul>
-					<li>Check your device's architecture at ReVanced Manager's About section, you should see the <code>Supported Archs</code>. Then patch an apk that corresponds to your device's architecture</li>
+					<li>Check your device's architecture at ReVanced Manager's Advanced section in Settings, you should see the <code>Supported Archs</code>. Then patch an apk that corresponds to your device's architecture <i>(read the first entry)</i></li>
 				</ul>
 				<span class="paragraph-text">&gt; Why does the patching process immediately fail after pressing the Patch button?</span>
 				<ul>
 					<li>There are multiple possible scenarios with this one:
 						<ul class="nested-ul">
 							<li>Your device has ran out of available RAM, if you're seeing the <code>OutOfMemoryError</code> text</li>
-							<li>Your device is running low on internal storage, give it at least 5gb of free space</li>
-							<li>In rare cases, the app is not fully decompilable</li>
+							<li>Your device is running low on internal storage, give it at least some free space like 6gb</li>
+							<li>In rare cases, the app is not fully decompilable and patchable</li>
 						</ul>
 					</li>
-					<li>You can try decreasing the amount of included patches and try patching again</li>
+					<li>You can also try decreasing the amount of included patches and try patching again</li>
 				</ul>
 				<span class="paragraph-text">&gt; Why does it say that I have no root access when i try to install the patched app?</span>
 				<ul>
@@ -186,7 +166,8 @@
 					<li>Try these options:
 						<ul class="nested-ul">
 							<li>Clear ReVanced Manager's app cache and force stopping it</li>
-							<li>Disable and reenable the <code>Auto update patches</code></li>
+							<li>Disable and re-enable the <code>Auto update patches</code></li>
+							<li>Check if you're using alternative patches, they may be the reason why it's behaving like that <i>(repository being unavailable or something)</i></li>
 							<li>Check your Internet connection config, it may be that you're using a DNS / VPN / something that blocks certain domains</li>
 						</ul>
 					</li>
@@ -200,18 +181,20 @@
 				<span class="paragraph-text">&gt; Why I can't patch an app with any Universal patches?</span>
 				<ul>
 					<li>It may be the <code>androlib</code> issue that's present on apps like Facebook: <a href="https://github.com/ReVanced/revanced-patches/issues/?q=is%3Aissue%20androlib">https://github.com/ReVanced/revanced-patches/issues/?q=is%3Aissue%20androlib</a></li>
+					<li>Until they fix this issue, don't include said Universal patches for now</ili>
 				</ul>
 				<span class="paragraph-text">&gt; I was told to repatch after posting a question to my problem but I still experience it, what can I do?</span>
 				<ul>
 					<li>You can open a bug report at <a href="https://github.com/ReVanced/revanced-patches/issues">https://github.com/ReVanced/revanced-patches/issues</a> <i>(if you haven't already)</i></li>
-					<li>Or open an issue / discussion at my repository so we can have a nice little chat: <a href="https://github.com/jpa102/revanced-discussions">https://github.com/jpa102/revanced-discussions</a> <i>(i may not be able to see your discussion immediately though as i tend to be offline at some times)</i></li>
+					<li>Or open an issue / discussion at my repository so we can have a nice little chat: <a href="https://github.com/jpa102/android_patches_chats">https://github.com/jpa102/android_patches_chats</a> <i>(i may not be able to see your discussion immediately though as i tend to be offline at some times)</i></li>
 				</ul>
 				<span class="paragraph-text">&gt; I can't successfully patch using ReVanced Manager on my device, but I don't have a PC. So what can I do?</span>
 				<ul>
-					<li>You have 2 options:
+					<li>You have other options:
 						<ul class="nested-ul">
 							<li>if you have a secondary device or someone else's device that you can borrow, you can try patching from there and export the patched apk to your device afterwards</li>
-							<li>trust a internet stranger like me to give you a patched apk with options that you want</li>
+							<li>make revanced cli work in termux</li>
+							<li>trust an internet stranger like me to give you a patched apk with options that you want</li>
 						</ul>
 					</li>
 				</ul>
