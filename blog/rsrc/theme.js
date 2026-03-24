@@ -1,4 +1,4 @@
-﻿/*
+/*
 	theme.js
 	
 	a javascript file that changes the page's theme
@@ -14,6 +14,7 @@ display = {
 	theme: {
 		_clear() {
 			document.querySelector("html").setAttribute("data-theme-display", "light"); // shift to "light" mode
+			localStorage.setItem("theme_type", "light");
 		},
 		blackhole() {
 			if (document.querySelector("html").getAttribute("data-theme-display") == "blackhole") {
@@ -22,6 +23,7 @@ display = {
 			}
 
 			document.querySelector("html").setAttribute("data-theme-display", "blackhole");
+			localStorage.setItem("theme_type", "blackhole")
 		},
 		darkmode() {
 			if (document.querySelector("html").getAttribute("data-theme-display") == "darkmode") {
@@ -30,6 +32,7 @@ display = {
 			}
 
 			document.querySelector("html").setAttribute("data-theme-display", "darkmode");
+			localStorage.setItem("theme_type", "darkmode");
 		},
 		custom(backgroundcolor, themetype) {
 			// default option when no string values are provided
