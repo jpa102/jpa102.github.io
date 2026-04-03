@@ -403,6 +403,186 @@ function displaySavedVideoIds() {
 	alert(`stored video ids:\n\n${JSON.parse(localStorage.videoids).join('\n')}`);
 }
 
+function loadRelatedVideos(shouldLoad, loadtime = 1500) {
+	//	load the related video infos and inject them in the related section
+	if (shouldLoad == true) {
+		document.querySelector("#show-related-videos-button-container").style = "display: none;";
+		setTimeout(() => {
+			for (let i = 0; i < document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails").length; i++) {
+				/*
+					4 checks:
+						- video thumbnail (lockupViewModel.metadata)
+						- video thumbnail (lockupViewModel.contentImage.collectionThumbnailViewModel)
+						- video thumbnail (lockupViewModel.contentImage.thumbnailViewModel)
+						- video thumbnail (compactVideoRenderer.thumbnail)
+						- video thumbnail (itemSectionRenderer.contents[${i}].lockupViewModel.contentImage)
+						- channel avatar pfp (decoratedAvatarViewModel)
+						- channel avatar pfp (avatarStackViewModel)
+						- channel avatar pfp (compactVideoRenderer.channelThumbnail)
+						- channel avatar pfp (itemSectionRenderer.contents[${i}].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel)
+						- video title for title attribute (lockupViewModel.metadata)
+						- video title for title attribute (compactVideoRenderer.channelThumbnail)
+						- LOCKUP_CONTENT_TYPE_PLAYLIST
+				*/
+
+				/*
+					here comes the great wall of try catch blocks!
+					yes, i know it's messy, but this should do for now (as if the raw data from youtube isn't messy enough already)
+
+					the reason for this great wall is because the upload year, month and day are in 3 different sections depending on the type of video
+				*/
+
+				// video thumbnail
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.metadata success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.metadata but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.collectionThumbnailViewModel.primaryThumbnail.thumbnailViewModel.image.sources[1].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.contentImage.collectionThumbnailViewModel success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.contentImage.collectionThumbnailViewModel but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.thumbnailViewModel.image.sources[1].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.contentImage.thumbnailViewModel success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.contentImage.thumbnailViewModel but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.thumbnail.thumbnails[1].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: compactVideoRenderer.thumbnail success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting compactVideoRenderer.thumbnail but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentImage.thumbnailViewModel.image.sources[1].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: itemSectionRenderer.contents[${i}].lockupViewModel.contentImage.thumbnailViewModel.image success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting itemSectionRenderer.contents[${i}].lockupViewModel.contentImage.thumbnailViewModel.image but none was found`); }
+				}
+
+
+
+				// avatar
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: decoratedAvatarViewModel success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting decoratedAvatarViewModel but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.avatarStackViewModel.avatars[1].avatarViewModel.image.sources[0].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: avatarStackViewModel success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting avatarStackViewModel but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.image.avatarStackViewModel.avatars[1].avatarViewModel.image.sources[0].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: itemSectionRenderer.contents[${i}].lockupViewModel.metadata.lockupMetadataViewModel.image.avatarStackViewModel.avatars`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting itemSectionRenderer.contents[${i}].lockupViewModel.metadata.lockupMetadataViewModel.image.avatarStackViewModel.avatars but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.channelThumbnail.thumbnails[0].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: compactVideoRenderer.channelThumbnail success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting compactVideoRenderer.channelThumbnail but none was found`); }
+				}
+
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
+					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: compactVideoRenderer.channelThumbnail success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting itemSectionRenderer.contents[${i}].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel but none was found`); }
+				}
+
+
+
+				// apply the video id in the blank href (1)
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `/faketube/2021/mobile/watch_page/?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId}`;
+					console.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId} to index ${i} success`);
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: apply video id failed`); }
+				}
+
+				// apply the video id in the blank href (2)
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `/faketube/2021/mobile/watch_page/?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentId}`;
+					console.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentId} to index ${i} using itemSectionRenderer.contents[${i}].lockupViewModel.contentId success`);
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: apply video id using itemSectionRenderer.contents[${i}].lockupViewModel.contentId failed`); }
+				}
+
+
+
+				/* PART 1 */
+				// apply the video title in the title attribute
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].title = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
+					if (faketube.config_.debug_logging == true) { console.log(`apply video title ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content} from lockupViewModel.metadata to index ${i} success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.metadata but none was found`); }
+				}
+
+				// apply the video title and info in their respective containers
+				try {
+					// video title
+					document.querySelectorAll(".loaded-video-title-renderer.general-feed")[i].innerText = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
+
+					// video info
+					document.querySelectorAll(".loaded-video-author-skeleton-renderer.general-feed")[i].innerText = `${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[0].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[1].text.content}`;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: failed to apply video title and video info`); }
+				}
+
+				/* PART 2 */
+				// apply the video title in the title attribute
+				try {
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].title = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
+					if (faketube.config_.debug_logging == true) { console.log(`apply video title ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content} from lockupViewModel.metadata to index ${i} success`); }
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting itemSectionRenderer.contents[${i}].lockupViewModel.metadata.lockupMetadataViewModel.title but none was found`); }
+				}
+
+				// apply the video title and info in their respective containers
+				try {
+					// video title
+					document.querySelectorAll(".loaded-video-title-renderer.general-feed")[i].innerText = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
+
+					// video info
+					document.querySelectorAll(".loaded-video-author-skeleton-renderer.general-feed")[i].innerText = `${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[0].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[1].text.content}`;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: failed to apply video title and video info`); }
+				}
+
+				/* handle mix playlists */
+				if (ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentType == "LOCKUP_CONTENT_TYPE_PLAYLIST") {
+					if (faketube.config_.debug_logging == true) { console.info(`playlist type detected at index ${i}`); }
+					try {
+						document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentImage.collectionThumbnailViewModel.primaryThumbnail.thumbnailViewModel.image.sources[1].url;
+						document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].hidden = true;
+						document.querySelectorAll(".loaded-video-author-skeleton-renderer.general-feed")[i].innerText = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[0].metadataParts[0].text.content;
+					} catch {
+						if (faketube.config_.debug_logging == true) { console.error(`index ${i}: failed to apply metadata for playlist`); }
+					}
+				}
+			}
+			document.querySelectorAll(".recommendations-page")[0].hidden = false;
+		}, loadtime);
+	}
+}
+
 const exportSavedVideoIds = () => {
 	setTimeout(function() {
 		// if there's nothing inside the localStorage.videoids
@@ -594,110 +774,6 @@ function __loadcfgs() {
 				`
 			);
 		}, __faketube_aplyfavstebgclr);
-	}
-
-	//	load the related video infos and inject them in the related section
-	if (faketube.config_.EXPERIMENT_FLAGS.load_related_videos_in_feed == true) {
-		setTimeout(function() {
-			for (let i = 0; i < document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails").length; i++) {
-				/*
-					3 checks:
-						- video thumbnail (lockupViewModel.metadata)
-						- video thumbnail (lockupViewModel.contentImage.collectionThumbnailViewModel)
-						- video thumbnail (lockupViewModel.contentImage.thumbnailViewModel)
-						- video thumbnail (compactVideoRenderer.thumbnail)
-						- channel avatar pfp (decoratedAvatarViewModel)
-						- channel avatar pfp (avatarStackViewModel)
-						- channel avatar pfp (compactVideoRenderer.channelThumbnail)
-						- video title for title attribute (lockupViewModel.metadata)
-						- video title for title attribute (compactVideoRenderer.channelThumbnail)
-				*/
-				// video thumbnail
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
-					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.metadata success`); }
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.metadata but none was found`); }
-				}
-
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.collectionThumbnailViewModel.primaryThumbnail.thumbnailViewModel.image.sources[1].url;
-					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.contentImage.collectionThumbnailViewModel success`); }
-				} catch {
-					console.warn(`index ${i}: expecting lockupViewModel.contentImage.collectionThumbnailViewModel but none was found`);
-				}
-
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentImage.thumbnailViewModel.image.sources[1].url;
-					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: lockupViewModel.contentImage.thumbnailViewModel success`); }
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.contentImage.thumbnailViewModel but none was found`); }
-				}
-
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.thumbnail.thumbnails[1].url;
-					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: compactVideoRenderer.thumbnail success`); }
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting compactVideoRenderer.thumbnail but none was found`); }
-				}
-
-
-
-				// avatar
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.avatar.avatarViewModel.image.sources[0].url;
-					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: decoratedAvatarViewModel success`); }
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting decoratedAvatarViewModel but none was found`); }
-				}
-
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.image.avatarStackViewModel.avatars[1].avatarViewModel.image.sources[0].url;
-					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: avatarStackViewModel success`); }
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting avatarStackViewModel but none was found`); }
-				}
-
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .author-image-and-video-details-skeleton > .img-author-skeleton.general-skeleton")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].compactVideoRenderer.channelThumbnail.thumbnails[0].url;
-					if (faketube.config_.debug_logging == true) { console.log(`index ${i}: compactVideoRenderer.channelThumbnail success`); }
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting compactVideoRenderer.channelThumbnail but none was found`); }
-				}
-
-
-
-				// apply the video id in the blank href
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `/faketube/2021/mobile/watch_page/?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId}`;
-					console.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId} to index ${i} success`);
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: apply video id failed`); }
-				}
-
-
-
-				// apply the video title in the title attribute
-				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].title = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
-					if (faketube.config_.debug_logging == true) { console.log(`apply video title ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content} from lockupViewModel.metadata to index ${i} success`); }
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: expecting lockupViewModel.metadata but none was found`); }
-				}
-
-				// apply the video title and info in their respective containers
-				try {
-					// video title
-					document.querySelectorAll(".loaded-video-title-renderer.general-feed")[i].innerText = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.title.content;
-
-					// video info
-					document.querySelectorAll(".loaded-video-author-skeleton-renderer.general-feed")[i].innerText = `${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[0].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[0].text.content} • ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].lockupViewModel.metadata.lockupMetadataViewModel.metadata.contentMetadataViewModel.metadataRows[1].metadataParts[1].text.content}`;
-				} catch {
-					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: failed to apply video title and video info`); }
-				}
-			}
-			document.querySelectorAll(".recommendations-page")[0].hidden = false;
-		}, __faketube_stytchnlifo);
 	}
 
 	//	make the page editable
