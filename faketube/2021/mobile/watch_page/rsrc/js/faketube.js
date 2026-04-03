@@ -44,7 +44,6 @@ var faketube = {
 			force_premium_needed_to_download_button: false, // make the download button non-functional because it either requires premium or it's unavailable for downloading offline
 			forced_country_code_and_language: "", // input a country code and language (example: ja-JP for japanese - japan)
 			hide_public_dislike_counts_to_protect_creators: false, // don't display the dislike counts in the dislike button
-			load_related_videos_in_feed: false, // load the related video infos and inject them in the related section
 			match_older_15_xx_xx_version: false, // inject and style the action bar buttons from 15.xx.xx versions of youtube app
 			match_older_16_xx_xx_version: false, // match the look of older 16.xx.xx versions
 			return_youtube_dislike_api: {

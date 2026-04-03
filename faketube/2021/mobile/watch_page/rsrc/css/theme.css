@@ -142,10 +142,10 @@ html[data-theme-display='darkerdarkmode'] .comment-field {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-html[data-theme-display='blackhole'] #show-transcript-button,
-html[data-theme-display='darkmode'] #show-transcript-button,
-html[data-theme-display='darkerdarkmode'] #show-transcript-button {
-	border-color: var(--call-to-action-color-dark);
+html[data-theme-display='blackhole'] .call-to-action-button,
+html[data-theme-display='darkmode'] .call-to-action-button,
+html[data-theme-display='darkerdarkmode'] .call-to-action-button {
+	border-color: var(--call-to-action-color-dark) !important;
 	color: var(--call-to-action-color-dark);
 }
 

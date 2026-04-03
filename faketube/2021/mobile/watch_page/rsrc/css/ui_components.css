@@ -55,7 +55,7 @@
 	display: flex;
 	flex-direction: column;
 	width: -webkit-fill-available;
-	gap: 6px;
+	gap: 0.2rem;
 }
 
 .video-title-skeleton, .video-author-skeleton {
@@ -84,9 +84,13 @@
 	color: black;
 }
 
+.loaded-video-title-renderer {
+	font-size: 0.96em;
+}
+
 .loaded-video-author-skeleton-renderer {
 	color: var(--gray-text-color);
-	font-size: 0.9em;
+	font-size: 0.8em;
 }
 
 .comment-field, #comments-section-field {
@@ -192,7 +196,6 @@
 	font-weight: 600;
 	font-size: 16px;
 	width: -webkit-fill-available;
-	width: -moz-available; /* looks weird on firefox 143.0.4 mobile */
 }
 
 .grouped-text-renderer-title {
@@ -247,10 +250,11 @@ a.transparent-button-with-border > span {
 	margin: 0px 4px;
 }
 
-#show-transcript-button {
+.call-to-action-button {
 	border-color: var(--call-to-action-color-light);
 	color: var(--call-to-action-color-light);
 	margin: 14px;
+	cursor: pointer;
 }
 
 .hide-button-style {
@@ -271,6 +275,11 @@ a.transparent-button-with-border > span {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.related-video-button-options {
+	margin-right: -8px;
+	margin-left: 6px;
 }
 
 #comments-section-and-exit-button.caption-and-exit-button,
@@ -429,4 +438,10 @@ a.transparent-button-with-border > span {
 .loading-video-thumbnails.general-skeleton {
 	margin-left: 16px;
 	margin-right: 16px;
+}
+
+.centered-button-container {
+	display: flex;
+	margin: 20px;
+	justify-content: center;
 }

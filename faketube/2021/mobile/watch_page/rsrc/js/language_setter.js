@@ -8,7 +8,7 @@
 switch (navigator.language.slice(0, 2)) {
 	case "ja":
 		setTimeout(function() {
-			console.log(`${navigator.language} primary host language detected, setting up local texts...`);
+			if (faketube.config_.debug_logging == true) { console.log(`${navigator.language} primary host language detected, setting up local texts...`); }
 
 			global_data._watch_page_strings._stored_vars.downloaded_text_inject = global_data._watch_page_strings.ja.downloaded_text;
 			global_data._watch_page_strings._stored_vars.download_text_inject = global_data._watch_page_strings.ja.download_text;
@@ -17,7 +17,9 @@ switch (navigator.language.slice(0, 2)) {
 			global_data._watch_page_strings._stored_vars.back_online_text_inject = global_data._watch_page_strings.ja.back_online_text;
 			global_data._watch_page_strings._stored_vars.no_internet_connection_text_inject = global_data._watch_page_strings.ja.no_internet_connection_text;
 			global_data._watch_page_strings._stored_vars.check_your_internet_connection_text_inject = global_data._watch_page_strings.ja.check_your_internet_connection_text;
+			global_data._watch_page_strings._stored_vars.dislikes_text_inject = global_data._watch_page_strings.ja.dislikes_text;
 
+			document.querySelector("#show-related-videos-button").innerText = global_data._watch_page_strings.ja.load_related_videos_text;
 			document.querySelector("#video.title").innerText = global_data._watch_page_strings.ja.getting_video_title_text;
 			document.querySelector("#yt-channel-name-link").innerText = global_data._watch_page_strings.ja.getting_channel_name_text;
 			document.querySelector(".yt-channel-sub-count").innerText = global_data._watch_page_strings.ja.nan_subscribers_text;
@@ -47,9 +49,9 @@ switch (navigator.language.slice(0, 2)) {
 			document.querySelector("#transcripts-title").innerText = global_data._watch_page_strings.ja.transcripts_header_text; // can be confused, ごめん！
 			document.querySelector("#videos-text-renderer").innerText = global_data._watch_page_strings.ja.channel_videos_button_text;
 			document.querySelector("#about-text-renderer").innerText = global_data._watch_page_strings.ja.channel_about_button_text;
-		}, 100);
+		}, 500);
 		break;
 	// the fallback is english, which is already stored inside global_data._watch_page_strings._stored_vars
 	default:
-		console.log(`${navigator.language} primary host language detected, not doing anything...`);
+		if (faketube.config_.debug_logging == true) { console.log(`${navigator.language} primary host language detected, not doing anything...`); }
 }
