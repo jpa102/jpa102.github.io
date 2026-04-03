@@ -3,7 +3,7 @@
 
 //	INTERNAL VARIABLES
 //	numbers are in milliseconds, these are for waiting times
-var __faketube_asnvltleryddta = 101;
+var __faketube_asnvltleryddta = 601;
 var __faketube_aplydbgimdtly = 4500;
 var __faketube_aplyfavstebgclr = 301;
 var __faketube_sttrdptydwnldr = 4500;
@@ -39,6 +39,7 @@ var global_data = {
 			back_online_text: "オンラインに復帰しました",
 			no_internet_connection_text: "インターネットに接続されていません",
 			check_your_internet_connection_text: "現在オフラインです。接続を確認してください。",
+			load_related_videos_text: "関連動画を表示",
 			getting_channel_name_text: "チャンネル名を取得しています。。。",
 			getting_video_title_text: "動画のタイトルを取得しています。。。",
 			nan_subscribers_text: "チャンネル登録者数 NaN人",
