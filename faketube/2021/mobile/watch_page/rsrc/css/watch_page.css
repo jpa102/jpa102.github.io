@@ -21,7 +21,7 @@
 	--video-player-menu-buttons-text-size: 0.75rem;
 	--video-player-comment-caption-size: 0.92em;
 	--video-player-margin-left: 14px;
-	--video-player-yt-channel-name: 0.96em;
+	--video-player-yt-channel-name: 1rem;
 	--video-player-yt-channel-sub-count: 0.75em;
 	--thumbnail-loading-skeleton: rgba(0, 0, 0, 0.05);
 	--call-to-action-color-dark: #3ea6ff;
@@ -217,7 +217,10 @@ iframe#yt-video-player {
 	font-family: var(--arial-font-family);
 	font-size: var(--video-player-yt-channel-name);
 	text-decoration: none;
-	width: fit-content;
+    max-width: 12rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 #yt-channel-name-renderer {
@@ -256,17 +259,23 @@ iframe#yt-video-player {
 	font-size: var(--video-player-yt-channel-sub-count);
 	text-decoration: none;
 	color: var(--gray-text-color);
+	max-width: 12rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 #subscribe-text-container {
 	margin-right: var(--video-player-margin-left); /* despite being for left margin, it can be used for right margin as well */
+	max-width: 7rem;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 #subscribe-text-link {
 	text-decoration: none;
 	text-transform: uppercase;
 	color: var(--subscribe-text-color);
-	width: fit-content;
 	font-family: var(--arial-font-family);
 }
 
