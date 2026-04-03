@@ -22,6 +22,7 @@
 		<script src="rsrc/js/buttonslistener.js"></script>
 		<script src="rsrc/js/likedislikebuttons.js"></script>
 		<script src="rsrc/js/internet_detection.js"></script>
+		<script src="rsrc/js/main.js"></script>
 		<script id="set-language" type="text/javascript">document.querySelector("html").lang = navigator.language;</script>
 		<meta data-n-head="ssr" name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="theme-color" content="#36c8ff" media="(prefers-color-scheme:light)">
@@ -34,6 +35,7 @@
 				src: url("rsrc/player/google-sans_regular.ttf");
 			}
 		</style>
+		<script>window.scrollTo({ top: 0 });</script>
 	</head>
 	<body data-page-scrolling="false">
 		<header hidden="">
@@ -170,7 +172,7 @@
 										</div>
 										<span id="open-app-text-renderer" class="menu-buttons-text">Open app</span>
 									</a>
-									<div id="live-chat-button" class="menu-buttons-actions menu-buttons" onclick="liveChatButton()" title="Live chat replay">
+									<div id="live-chat-button" class="menu-buttons-actions menu-buttons" onclick="liveChatButton()" title="Live chat replay" style="display: none;">
 										<div id="livechatbutton-icon" class="inner-button-icons">
 											<div style="width: 100%; height: 100%; fill: currentcolor;">
 												<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
@@ -190,7 +192,7 @@
 										</div>
 										<span id="remix-text-renderer" class="menu-buttons-text">Create</span>
 									</div>
-									<div id="stop-ads-button" class="menu-buttons-actions menu-buttons" title="Stop the ads in this video with Premium">
+									<div id="stop-ads-button" class="menu-buttons-actions menu-buttons" title="Stop the ads in this video with Premium" style="display: none;">
 										<div id="stopadsbutton-icon" class="inner-button-icons">
 											<div style="width: 100%; height: 100%; fill: currentcolor;">
 												<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
@@ -200,7 +202,7 @@
 										</div>
 										<span id="stop-ads-text-renderer" class="menu-buttons-text">Stop ads</span>
 									</div>
-									<div id="thanks-button" class="menu-buttons-actions menu-buttons" onclick="shareButton()" title="Show support with Super Thanks">
+									<div id="thanks-button" class="menu-buttons-actions menu-buttons" onclick="shareButton()" title="Show support with Super Thanks" style="display: none;">
 										<div id="thanksbutton-icon" class="inner-button-icons">
 											<div style="width: 100%; height: 100%; fill: currentcolor;">
 												<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
@@ -317,7 +319,12 @@
 								</div>
 							</div>
 							<div id="border-bottom-metadata" class="themed-borders"></div>
-							<div id="thick-border" class="themed-borders"></div>
+							<div id="thick-border" class="themed-borders" hidden=""></div>
+							<div id="show-related-videos-button-container" class="centered-button-container" style="display: none;">
+								<button id="show-related-videos-button" class="transparent-button-with-border call-to-action-button" onclick="loadRelatedVideos(true)">
+									Show related videos
+								</button>
+							</div>
 							<div class="recommendations-page" hidden="">
 								<div class="recommendations-container">
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -328,6 +335,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<div class="shorts-skeleton-container-carousel" style="display: none !important">
@@ -352,6 +364,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -362,6 +379,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -372,6 +394,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -382,6 +409,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<div class="shorts-skeleton-container-carousel" style="display: none !important">
@@ -406,6 +438,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -416,6 +453,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -426,6 +468,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -436,6 +483,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -446,6 +498,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -456,6 +513,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -466,6 +528,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -476,6 +543,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -486,6 +558,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -496,6 +573,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -506,6 +588,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -516,6 +603,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -526,6 +618,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -536,6 +633,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<a href="javascript:void(0)" class="loaded-video-in-feed touch-by-touch">
@@ -546,6 +648,11 @@
 												<div class="loaded-video-title-renderer general-feed"></div>
 												<div class="loaded-video-author-skeleton-renderer general-feed"></div>
 											</div>
+											<button class="related-video-button-options hide-button-style touch-by-touch" onclick="onDestroy.secondaryDescription()">
+												<svg class="subpage-button-icon">
+													<path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+												</svg>
+											</button>
 										</div>
 									</a>
 									<div class="nullo"></div>
@@ -666,7 +773,7 @@
 										<div id="transcript-container">
 											<h1 id="transcript-text-header">Transcript</h1>
 											<p id="follow-transcript-text">Follow along the transcript.</p>
-											<button id="show-transcript-button" class="transparent-button-with-border" onclick="onCreate.transcriptPage()">Show Transcript</button>
+											<button id="show-transcript-button" class="transparent-button-with-border call-to-action-button" onclick="onCreate.transcriptPage()">Show Transcript</button>
 										</div>
 										<div id="thick-border" class="themed-borders"></div>
 										<div id="more-from-author-container">
