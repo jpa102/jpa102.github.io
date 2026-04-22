@@ -1,4 +1,4 @@
-﻿/*
+/*
 	operations.js
 	
 	contains code that makes the page interactive
@@ -25,7 +25,16 @@ function setIntentLinkOpenApp(video_id, app_type = "desktop", int_pkg_nme = "com
 	const safeOpenAppValue = encodeURIComponent(opn_app_value);
 	const safeRedirectAppStore = encodeURIComponent(String(redir_app_stre_int));
 	const safeScheme = encodeURIComponent(scheme);
-	return `intent://m.youtube.com/watch?v=${safeVideoId}&feature=${safeOpenAppValue}&itc_campaign=${safeOpenAppValue}&redirect_app_store_ios=${safeRedirectAppStore}&app=${safeAppType}#Intent;package=${safePackageName};scheme=${safeScheme};launchFlags=${safeLaunchFlags};end`
+
+	/*
+		perform a check if the package name is blank
+		if it's blank, correctly use the default value from the function
+	*/
+	if (document.querySelector(".section-body-content > input").value === '') {
+		return `intent://m.youtube.com/watch?v=${safeVideoId}&feature=${safeOpenAppValue}&itc_campaign=${safeOpenAppValue}&redirect_app_store_ios=${safeRedirectAppStore}&app=${safeAppType}#Intent;package=${int_pkg_nme};scheme=${safeScheme};launchFlags=${safeLaunchFlags};end`;
+	} else {
+		return `intent://m.youtube.com/watch?v=${safeVideoId}&feature=${safeOpenAppValue}&itc_campaign=${safeOpenAppValue}&redirect_app_store_ios=${safeRedirectAppStore}&app=${safeAppType}#Intent;package=${safePackageName};scheme=${safeScheme};launchFlags=${safeLaunchFlags};end`;
+	}
 }
 
 function redirectFromIntent() {
