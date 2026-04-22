@@ -1,0 +1,26 @@
+/*
+	internet_detection.js
+	
+	module that detects internet connection
+	i got this from google's ai search code box
+*/
+
+window.addEventListener('online', (event) => {
+	document.querySelector("html").setAttribute("data-online-status", "online");
+	console.log(global_data._watch_page_strings._stored_vars.back_online_text_inject);
+	document.querySelector("#status-text").innerText = global_data._watch_page_strings._stored_vars.back_online_text_inject;
+	setTimeout(() => {
+		document.querySelector("footer").style = "transform: translateY(25px);";
+		document.querySelector("#internet-status-bottom").style = "transform: translateY(34px);";
+	}, __faketube_intrnt_btm_notif_clpse_ms);
+});
+
+window.addEventListener('offline', (event) => {
+	document.querySelector("html").setAttribute("data-online-status", "offline");
+	console.log(global_data._watch_page_strings._stored_vars.no_internet_connection_text_inject);
+	document.querySelector("#status-text").innerText = global_data._watch_page_strings._stored_vars.no_internet_connection_text_inject;
+	setTimeout(() => {
+		document.querySelector("footer").style = "transform: translateY(0px);";
+		document.querySelector("#internet-status-bottom").style = "transform: translateY(0px);";
+	}, __faketube_intrnt_btm_notif_apr_ms);
+});

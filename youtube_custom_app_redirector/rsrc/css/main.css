@@ -1,0 +1,241 @@
+body {
+	margin: unset;
+}
+
+/* hide the scrollbar (webkit based browsers) */
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Remove blue highlight on click/tap for mobile/desktop */
+a, div, button, input, textarea, select {
+	-webkit-tap-highlight-color: transparent; /* Removes blue box on mobile */
+	outline: none; /* Removes outline in most browsers */
+}
+
+/* Remove border on focus */
+:focus {
+	outline: none !important;
+}
+
+/* if set to false, the page will not scroll */
+body[data-page-scrolling='false'] {
+	overflow: hidden;
+}
+
+/* ========================== HEADER ========================== */
+
+header {
+	background: var(--main-background-color);
+	padding: 12px 0px;
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	width: -webkit-fill-available;
+	width: -moz-available; /* looks weird on firefox 143.0.4 mobile */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+h1 {
+	margin: 0;
+	font-weight: 500;
+	font-size: 1.4rem;
+	font-family: "Arial";
+}
+
+#go-back-and-fallback-name-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#cast-button-topbar, #notifications-button-topbar, #login-button-topbar {
+	display: none;
+}
+
+#search-button-topbar {
+	margin-right: 12px !important;
+}
+
+/* ========================== ARTICLE AND ASIDE ========================== */
+#article-and-aside-container.two-content-renderer {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	margin: 0px 12px;
+	padding: 62px 0px 56px 0px;
+	font-family: Arial, Roboto;
+}
+
+.subpage-area {
+	padding: 62px 0px 56px;
+}
+
+/* only applies to the first box
+#home-page-content > .section-body.section-renderer:nth-of-type(1) {
+	display: none;
+}
+*/
+
+/* ========================== ARTICLE ========================== */
+article {
+	margin: 15px 0px 15px 0px;
+	padding-top: 15px;
+	width: fit-content;
+	max-width: 420px;
+}
+
+#article.article-main-body {
+	font-family: calibri;
+	font-size: 18px;
+	padding: 25px 20px 20px 20px;
+	background: lightgray;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 12px;
+	transition: .3s ease-in-out;
+	box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+	text-align: center;
+}
+
+#article.article-main-body:hover {
+	background: white;
+	transition: .3s ease-in-out;
+	box-shadow: 0px 5px 22px 1px rgb(52 48 55 / 42%);
+	#section-body.section-renderer {
+		background-color: lightgray;
+	}
+}
+
+h2.articles-title-text {
+	margin: 0px 0px 0px 0px;
+}
+
+.article-video-links {
+	text-decoration: none;
+	color: black;
+}
+
+.article-video-links:focus {
+	text-decoration: underline;
+	text-decoration-color: dodgerblue;
+	color: dodgerblue;
+}
+
+/* inside article: section */
+.section-renderer {
+	transition: .3s ease-in-out;
+	margin-bottom: 25px;
+	border-radius: 12px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+	padding: 0 16px;
+}
+
+.section-body-content {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 24px 0 12px;
+}
+
+.heading-two-section-body-text {
+	margin: 0px 0px 8px;
+}
+
+.heading-four-section-body-text {
+	margin: 4px 0px 0px;
+	font-size: 0.92rem;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+.heading-four-section-body-text,
+.items-text-container-flexed > native-profile-item-text-container-subtext-gray {
+	color: #606060;
+}
+
+/* ========================== ASIDE ========================== */
+aside {
+	margin: 15px 0px 15px 0px;
+	padding-top: 15px;
+	width: 30%;
+}
+
+#aside.aside-main-body {
+	font-family: calibri;
+	font-size: 18px;
+	padding: 25px 40px 20px 40px;
+	background: lightgray;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 12px;
+	transition: .3s ease-in-out;
+	box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+	text-align: center;
+}
+
+#aside.aside-main-body:hover {
+	background: white;
+	transition: .3s ease-in-out;
+	box-shadow: 0px 5px 22px 1px rgb(52 48 55 / 42%);
+	#aside-button.aside-link-button {
+		background-color: lightgray;
+	}
+}
+
+#aside-button.aside-link-button {
+	font-family: calibri;
+	font-size: 17px;
+	transition: .3s ease-in-out;
+	padding: 10px 0px 10px 0px;
+	margin: 0px 0px 16px 0px;
+	background-color: #e5e5e5;
+	border-radius: 12px;
+	border: unset;
+	width: 100%;
+	cursor: pointer;
+}
+
+#aside-button.aside-link-button:hover {
+	transition: .3s ease-in-out;
+	background-color: gray !important;
+	color: white;
+	text-decoration: underline;
+	text-decoration-color: black;
+}
+
+#aside-button.aside-link-button:focus {
+	transition: .3s ease-in-out;
+	background-color: blue !important;
+	color: white;
+}
+
+h2.title-header {
+	margin: 0px 0px 20px 0px;
+}
+
+/* ========================== ARTICLE AND ASIDE ========================== */
+
+/* ========================== FOOTER ========================== */
+footer {
+	background: var(--main-background-color);
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	position: fixed;
+	bottom: 0;
+	width: -webkit-fill-available;
+	width: -moz-available; /* looks weird on firefox 143.0.4 mobile */
+	display: none;
+}
+
+#footer.footer-main-body {
+	display: flex;
+	justify-content: space-around;
+}
