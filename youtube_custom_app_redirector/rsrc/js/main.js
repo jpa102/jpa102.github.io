@@ -183,12 +183,16 @@ setTimeout(function() {
 	let urlParams = new URLSearchParams(queryString);
 
 	// don't execute if the video id is less or greater than 11 characters
-	if (urlParams.get('video_id').length < 11 || urlParams.get('video_id').length > 11) {
-		return;
-	} else {
-		let art_link = document.createElement("a");
-		art_link.href = setIntentLinkOpenApp(urlParams.get('video_id'), undefined, urlParams.get('package_app'), undefined, undefined, undefined, undefined);
-		art_link.click(); // simulate a touch event
+	try {
+		if (urlParams.get('video_id').length < 11 || urlParams.get('video_id').length > 11) {
+			return;
+		} else {
+			let art_link = document.createElement("a");
+			art_link.href = setIntentLinkOpenApp(urlParams.get('video_id'), undefined, urlParams.get('package_app'), undefined, undefined, undefined, undefined);
+			art_link.click(); // simulate a touch event
+		}
+	} catch {
+		console.warn("no parameters were found in the URL");
 	}
 }, 25);
 
