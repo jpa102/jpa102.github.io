@@ -18,22 +18,35 @@ class dialog {
 }
 
 function setIntentLinkOpenApp(video_id, app_type = "desktop", int_pkg_nme = "com.google.android.youtube", lnch_flgs_int = 268435456, opn_app_value = "mweb_c3_open_app_11268432", redir_app_stre_int = 1, scheme = "vnd.youtube") {
-	return `intent://m.youtube.com/watch?v=${video_id}&feature=${opn_app_value}&itc_campaign=${opn_app_value}&redirect_app_store_ios=${redir_app_stre_int}&app=${app_type}#Intent;package=${int_pkg_nme};scheme=${scheme};launchFlags=${lnch_flgs_int};end`
+	const safeVideoId = encodeURIComponent(video_id);
+	const safeAppType = encodeURIComponent(app_type);
+	const safePackageName = encodeURIComponent(int_pkg_nme);
+	const safeLaunchFlags = encodeURIComponent(String(lnch_flgs_int));
+	const safeOpenAppValue = encodeURIComponent(opn_app_value);
+	const safeRedirectAppStore = encodeURIComponent(String(redir_app_stre_int));
+	const safeScheme = encodeURIComponent(scheme);
+	return `intent://m.youtube.com/watch?v=${safeVideoId}&feature=${safeOpenAppValue}&itc_campaign=${safeOpenAppValue}&redirect_app_store_ios=${safeRedirectAppStore}&app=${safeAppType}#Intent;package=${safePackageName};scheme=${safeScheme};launchFlags=${safeLaunchFlags};end`
 }
 
 function redirectFromIntent() {
-	if (document.querySelector("#video-id-form > input").value.length < 11) {
-		com.faketube.web.debug.displayAlertDialog("OK_TYPE", "less than 11 characters", `the current video id length you've entered is at ${document.querySelector("#video-id-form > input").value.length}\<br\>\<br\>the value: ${document.querySelector("#video-id-form > input").value}`);
+	const videoId = document.querySelector("#video-id-form > input").value;
+	if (videoId.length < 11) {
+		com.faketube.web.debug.displayAlertDialog("OK_TYPE", "less than 11 characters", `the current video id length you've entered is at ${videoId.length}\<br\>\<br\>the value: ${videoId}`);
 		return;
 	}
 
-	if (document.querySelector("#video-id-form > input").value.length > 11) {
-		com.faketube.web.debug.displayAlertDialog("OK_TYPE", "greater than 11 characters", `the current video id length you've entered is at ${document.querySelector("#video-id-form > input").value.length}\<br\>\<br\>the value: ${document.querySelector("#video-id-form > input").value}`);
+	if (videoId.length > 11) {
+		com.faketube.web.debug.displayAlertDialog("OK_TYPE", "greater than 11 characters", `the current video id length you've entered is at ${videoId.length}\<br\>\<br\>the value: ${videoId}`);
+		return;
+	}
+
+	if (!/^[A-Za-z0-9_-]{11}$/.test(videoId)) {
+		com.faketube.web.debug.displayAlertDialog("OK_TYPE", "invalid video id", `the current video id contains invalid characters\<br\>\<br\>the value: ${videoId}`);
 		return;
 	}
 
 	let art_link = document.createElement("a");
-	art_link.href = setIntentLinkOpenApp(document.querySelector("#video-id-form > input").value, undefined, document.querySelector(".section-body-content > input").value, undefined, undefined, undefined, undefined);
+	art_link.href = setIntentLinkOpenApp(videoId, undefined, document.querySelector(".section-body-content > input").value, undefined, undefined, undefined, undefined);
 	art_link.click(); // simulate a touch event
 }
 
