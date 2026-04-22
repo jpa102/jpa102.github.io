@@ -30,7 +30,7 @@ function setIntentLinkOpenApp(video_id, app_type = "desktop", int_pkg_nme = "com
 		perform a check if the package name is blank
 		if it's blank, correctly use the default value from the function
 	*/
-	if (document.querySelector(".section-body-content > input").value === '') {
+	if (document.querySelector(".section-body-content > input").value == '') {
 		return `intent://m.youtube.com/watch?v=${safeVideoId}&feature=${safeOpenAppValue}&itc_campaign=${safeOpenAppValue}&redirect_app_store_ios=${safeRedirectAppStore}&app=${safeAppType}#Intent;package=${int_pkg_nme};scheme=${safeScheme};launchFlags=${safeLaunchFlags};end`;
 	} else {
 		return `intent://m.youtube.com/watch?v=${safeVideoId}&feature=${safeOpenAppValue}&itc_campaign=${safeOpenAppValue}&redirect_app_store_ios=${safeRedirectAppStore}&app=${safeAppType}#Intent;package=${safePackageName};scheme=${safeScheme};launchFlags=${safeLaunchFlags};end`;
@@ -39,6 +39,8 @@ function setIntentLinkOpenApp(video_id, app_type = "desktop", int_pkg_nme = "com
 
 function redirectFromIntent() {
 	const videoId = document.querySelector("#video-id-form > input").value;
+	const pkg_name = document.querySelector(".section-body-content > input").value;
+
 	if (videoId.length < 11) {
 		com.faketube.web.debug.displayAlertDialog("OK_TYPE", "less than 11 characters", `the current video id length you've entered is at ${videoId.length}\<br\>\<br\>the value: ${videoId}`);
 		return;
@@ -55,7 +57,17 @@ function redirectFromIntent() {
 	}
 
 	let art_link = document.createElement("a");
-	art_link.href = setIntentLinkOpenApp(videoId, undefined, document.querySelector(".section-body-content > input").value, undefined, undefined, undefined, undefined);
+
+	/*
+		perform a check if the package name is blank
+		if it's blank, correctly use the default value from the function
+	*/
+	if (document.querySelector(".section-body-content > input").value == '') {
+		art_link.href = setIntentLinkOpenApp(videoId, undefined, undefined, undefined, undefined, undefined, undefined);
+	} else {
+		art_link.href = setIntentLinkOpenApp(videoId, undefined, pkg_name, undefined, undefined, undefined, undefined);
+	}
+
 	art_link.click(); // simulate a touch event
 }
 
