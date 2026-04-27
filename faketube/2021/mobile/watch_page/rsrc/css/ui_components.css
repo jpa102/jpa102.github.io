@@ -257,6 +257,17 @@ a.transparent-button-with-border > span {
 	cursor: pointer;
 }
 
+.call-to-action-button-red {
+	border-color: var(--call-to-action-red-color-light);
+	color: var(--call-to-action-red-color-light);
+}
+
+#show-related-videos-button-container > button {
+	width: -webkit-fill-available;
+	width: -moz-available;
+	margin: 12px 0px;
+}
+
 .hide-button-style {
 	padding: 6px;
 	background: transparent;
@@ -442,6 +453,7 @@ a.transparent-button-with-border > span {
 
 .centered-button-container {
 	display: flex;
+	flex-direction: column;
 	margin: 20px;
 	justify-content: center;
 }
