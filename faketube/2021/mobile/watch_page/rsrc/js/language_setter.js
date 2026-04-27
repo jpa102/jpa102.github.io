@@ -19,7 +19,15 @@ switch (navigator.language.slice(0, 2)) {
 			global_data._watch_page_strings._stored_vars.check_your_internet_connection_text_inject = global_data._watch_page_strings.ja.check_your_internet_connection_text;
 			global_data._watch_page_strings._stored_vars.dislikes_text_inject = global_data._watch_page_strings.ja.dislikes_text;
 
+			// if experiment flag watch_page_experimental_material_you_action_buttons is true, change the remix text
+			if (faketube.config_.EXPERIMENT_FLAGS.watch_page_experimental_material_you_action_buttons == true) {
+				document.querySelector("#remix-text-renderer").innerText = global_data._watch_page_strings.ja.remix_text;
+			} else {
+				document.querySelector("#remix-text-renderer").innerText = global_data._watch_page_strings.ja.create_text;
+			}
+
 			document.querySelector("#show-related-videos-button").innerText = global_data._watch_page_strings.ja.load_related_videos_text;
+			document.querySelector("#load-first-upcoming-video-button").innerText = global_data._watch_page_strings.ja.load_upcoming_next_video_text;
 			document.querySelector("#video.title").innerText = global_data._watch_page_strings.ja.getting_video_title_text;
 			document.querySelector("#yt-channel-name-link").innerText = global_data._watch_page_strings.ja.getting_channel_name_text;
 			document.querySelector(".yt-channel-sub-count").innerText = global_data._watch_page_strings.ja.nan_subscribers_text;
@@ -28,7 +36,6 @@ switch (navigator.language.slice(0, 2)) {
 			document.querySelector("#share-text-renderer").innerText = global_data._watch_page_strings.ja.share_text;
 			document.querySelector("#open-app-text-renderer").innerText = global_data._watch_page_strings.ja.open_app_text;
 			document.querySelector("#live-chat-text-renderer").innerText = global_data._watch_page_strings.ja.chat_text;
-			document.querySelector("#remix-text-renderer").innerText = global_data._watch_page_strings.ja.create_text;
 			document.querySelector("#stop-ads-text-renderer").innerText = global_data._watch_page_strings.ja.stop_ads_text;
 			document.querySelector("#download-text-renderer").innerText = global_data._watch_page_strings.ja.download_text;
 			document.querySelector("#clip-text-renderer").innerText = global_data._watch_page_strings.ja.clip_text;
