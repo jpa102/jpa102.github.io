@@ -166,7 +166,17 @@ var com = {
 				}
 			},
 			origAndroidClientVer: "17.03.38",
-			fakeAndroidClientVer: ""
+			fakeAndroidClientVer: "",
+			s_playbackInFeedsEx(index) {
+				switch (index) {
+					case 0: // always on
+						break;
+					case 1: // wi-fi only
+						break;
+					case 2: // off
+						break;
+				}
+			}
 		}
 	}
 }
