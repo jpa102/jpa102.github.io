@@ -26,12 +26,21 @@ function dislikeButton() {
 				Other buttons
 	==========================================================
 */
-function shareButton() {
+async function shareButton() {
 	if (document.querySelector("html").getAttribute("data-online-status") == "offline") {
 		return;
 	}
 
-	console.log("function not implemented yet. [ln:29 buttonlistener.js]");
+	try {
+		await navigator.share({
+			title: "FakeTube share",
+			text: global_data.yt.videoTitle,
+			url: window.location.href
+		});
+		console.info("Data was shared successfully");
+	} catch (err) {
+		console.error("error:", err.message);
+	}
 }
 
 function liveChatButton() {
