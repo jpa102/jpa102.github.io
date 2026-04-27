@@ -86,6 +86,7 @@ body[data-laidback-transition] {
 	font-family: var(--arial-font-family);
 	height: fit-content;
 	color: black;
+	line-break: anywhere;
 }
 
 .loaded-video-author-skeleton-renderer {
@@ -540,12 +541,12 @@ dialog {
 
 dialog::backdrop {
 	transition: .25s ease-in-out;
-	background-color: rgba(0, 0, 0, 0.42);
+	background-color: rgba(0, 0, 0, 0.69);
 }
 
 @media (orientation: portrait) {
 	dialog {
-		max-width: 350px;
+		max-width: 300px;
 	}
 }
 
