@@ -40,6 +40,7 @@ var global_data = {
 			no_internet_connection_text: "インターネットに接続されていません",
 			check_your_internet_connection_text: "現在オフラインです。接続を確認してください。",
 			load_related_videos_text: "関連動画を表示",
+			load_upcoming_next_video_text: "次の動画を読み込みする",
 			getting_channel_name_text: "チャンネル名を取得しています。。。",
 			getting_video_title_text: "動画のタイトルを取得しています。。。",
 			nan_subscribers_text: "チャンネル登録者数 NaN人",
@@ -122,7 +123,7 @@ var global_data = {
 			lengthSeconds: "",
 			thumbnails: []
 		},
-		channelName: "content_scraper.js failed to fetch name",
+		channelName: "failed to fetch channel name",
 		channelId: "",
 		channelLink: "",
 		channelSubConfirmLink: "",
@@ -136,7 +137,7 @@ var global_data = {
 		uploadedYearsAgo: "0 years ago",
 		uploadFormattedDate: "",
 		videoId: null,
-		videoTitle: "content_scraper.js failed to fetch title",
+		videoTitle: "failed to fetch title",
 		viewCount: 0,
 		viewCountFormatted: "0 views",
 		viewCountFormattedFull: ""
@@ -278,7 +279,7 @@ fetch(
 
 // if the http status code is 400 (bad request)
 if (http.status == 400) {
-	console.log(`[http ${http.status} error] return youtube dislike api - bad request\nsupplied video id: ${global_data.v}`);
+	if (faketube.config_.debug_logging == true) { console.log(`[http ${http.status} error] return youtube dislike api - bad request\nsupplied video id: ${global_data.v}`); }
 // if the http status code is 0 (no internet connection)
 } else if (http.status == 0) {
 	console.log(`[http ${http.status} error] return youtube dislike api - no internet?`);
@@ -309,7 +310,7 @@ if (http.status == 400) {
 // test the url for noembed
 // i got a reson to keep using noembed: to get non auto-translated video titles
 if (faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching == true) {
-	//console.log(`skipping noembed fetch code, reason: deprecate_noembed_fetching: ${faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching}`);
+	if (faketube.config_.debug_logging == true) { console.log(`skipping noembed fetch code, reason: deprecate_noembed_fetching: ${faketube.config_.EXPERIMENT_FLAGS.deprecate_noembed_fetching}`); }
 } else {
 	UrlExists(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${lobal_data.v}`);
 
