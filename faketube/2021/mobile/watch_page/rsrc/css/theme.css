@@ -149,6 +149,13 @@ html[data-theme-display='darkerdarkmode'] .call-to-action-button {
 	color: var(--call-to-action-color-dark);
 }
 
+html[data-theme-display='blackhole'] .call-to-action-button-red,
+html[data-theme-display='darkmode'] .call-to-action-button-red,
+html[data-theme-display='darkerdarkmode'] .call-to-action-button-red {
+	border-color: var(--call-to-action-red-color-dark) !important;
+	color: var(--call-to-action-red-color-dark) !important;
+}
+
 .menu-buttons-text, .inner-button-icons {
 	color: var(--white-color);
 }
