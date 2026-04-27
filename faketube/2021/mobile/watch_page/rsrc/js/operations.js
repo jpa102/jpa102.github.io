@@ -510,16 +510,16 @@ function loadRelatedVideos(shouldLoad, loadtime = 1500) {
 
 				// apply the video id in the blank href (1)
 				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `/faketube/2021/mobile/watch_page/?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId}`;
-					console.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId} to index ${i} success`);
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `${window.location.pathname}?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId}`;
+					if (faketube.config_.debug_logging == true) { cconsole.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[i].lockupViewModel.contentId} to index ${i} success`); }
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: apply video id failed`); }
 				}
 
 				// apply the video id in the blank href (2)
 				try {
-					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `/faketube/2021/mobile/watch_page/?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentId}`;
-					console.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentId} to index ${i} using itemSectionRenderer.contents[${i}].lockupViewModel.contentId success`);
+					document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed")[i].href = `${window.location.pathname}?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentId}`;
+					if (faketube.config_.debug_logging == true) { cconsole.log(`apply video id ${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentId} to index ${i} using itemSectionRenderer.contents[${i}].lockupViewModel.contentId success`); }
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: apply video id using itemSectionRenderer.contents[${i}].lockupViewModel.contentId failed`); }
 				}
@@ -566,8 +566,11 @@ function loadRelatedVideos(shouldLoad, loadtime = 1500) {
 					if (faketube.config_.debug_logging == true) { console.warn(`index ${i}: failed to apply video title and video info`); }
 				}
 
-				/* handle mix playlists */
-				if (ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentType == "LOCKUP_CONTENT_TYPE_PLAYLIST") {
+				/*
+					handle mix playlists and shorts (internally reels)
+				*/
+				// mix playlist only
+				if (ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].reelShelfRenderer == null && ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentType != null && ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentType == "LOCKUP_CONTENT_TYPE_PLAYLIST") {
 					if (faketube.config_.debug_logging == true) { console.info(`playlist type detected at index ${i}`); }
 					try {
 						document.querySelectorAll(".recommendations-container > a.loaded-video-in-feed > .loaded-video-thumbnails")[i].src = ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[i].lockupViewModel.contentImage.collectionThumbnailViewModel.primaryThumbnail.thumbnailViewModel.image.sources[1].url;
@@ -581,6 +584,12 @@ function loadRelatedVideos(shouldLoad, loadtime = 1500) {
 			document.querySelectorAll(".recommendations-page")[0].hidden = false;
 		}, loadtime);
 	}
+}
+
+function loadUpcomingVideo() {
+	let up_link = document.createElement("a");
+	up_link.href = `${window.location.pathname}?v=${ytInitialData.contents.twoColumnWatchNextResults.secondaryResults.secondaryResults.results[0].itemSectionRenderer.contents[0].lockupViewModel.contentId}`;
+	up_link.click(); // simulate a touch
 }
 
 const exportSavedVideoIds = () => {
@@ -651,6 +660,26 @@ class onDestroy {
 	static transcriptPage() {
 		document.querySelector("#description-section-container").hidden = false;
 		document.querySelector("#transcripts-section-container").hidden = true;
+	}
+}
+
+class onRender {
+	static menuActions() {
+		// todo
+	}
+
+	static relatedH(contentType, index) {
+		switch (contentType) {
+			case "REGULAR":
+				
+				break;
+			case "REEL":
+				
+				break;
+			case "PLAYLIST":
+				
+				break;
+		}
 	}
 }
 
@@ -846,15 +875,19 @@ function __loadcfgs() {
 	//	hide the dislike counts in the watch page and description
 	if (faketube.config_.EXPERIMENT_FLAGS.hide_public_dislike_counts_to_protect_creators == true) {
 		setTimeout(function() {
-			if (document.querySelector("#dislike-button > #dislike-count-renderer") != null) {
-				document.querySelector("#dislike-button > #dislike-count-renderer").style.display = "none";
-				document.querySelector("#dislike-button").insertAdjacentHTML("beforeend", `<span id="no-dislike-count-renderer" class="menu-buttons-text">${global_data._watch_page_strings._stored_vars.dislikes_text_inject}</span>`);
+			if (faketube.config_.EXPERIMENT_FLAGS.watch_page_experimental_material_you_action_buttons == false) {
+				if (document.querySelector("#dislike-button > #dislike-count-renderer") != null) {
+					document.querySelector("#dislike-button > #dislike-count-renderer").style.display = "none";
+					document.querySelector("#dislike-button").insertAdjacentHTML("beforeend", `<span id="no-dislike-count-renderer" class="menu-buttons-text">${global_data._watch_page_strings._stored_vars.dislikes_text_inject}</span>`);
+				}
 			}
 
-			if (document.querySelector("#dislike > #dislike-button > #dislike-count-renderer") != null) {
-				document.querySelector("#dislike > #dislike-button > #dislike-count-renderer").style.display = "none";
-				document.querySelector("#dislike > #dislike-button > #dislikebutton-icon").style.marginRight = "0px";
-				document.querySelector("#dislike > #dislike-button").insertAdjacentHTML("beforeend", `<span id="no-dislike-count-renderer" class="menu-buttons-text"></span>`);
+			if (faketube.config_.EXPERIMENT_FLAGS.watch_page_experimental_material_you_action_buttons == true) {
+				if (document.querySelector("#dislike > #dislike-button > #dislike-count-renderer") != null) {
+					document.querySelector("#dislike > #dislike-button > #dislike-count-renderer").style.display = "none";
+					document.querySelector("#dislike > #dislike-button > #dislikebutton-icon").style.marginRight = "0px";
+					document.querySelector("#dislike > #dislike-button").insertAdjacentHTML("beforeend", `<span id="no-dislike-count-renderer" class="menu-buttons-text"></span>`);
+				}
 			}
 
 			document.querySelector("#total-dislike-counts-container").style.display = "none";
@@ -1166,7 +1199,17 @@ function __loadcfgs() {
 							</div>
 							<span id="share-text-renderer" class="menu-buttons-text">Share</span>
 						</button>
-						<button id="live-chat-button" class="menu-buttons" onclick="liveChatButton()" title="Live chat replay">
+						<a id="open-app-button" class="menu-buttons" title="Open the video in app" style="display: none;">
+							<div id="openappbutton-icon" class="button-text-style">
+								<div style="width: 100%; height: 100%; fill: currentcolor;">
+									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
+										<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 1c4.96 0 9 4.04 9 9 0 1.42-.34 2.76-.93 3.96-1.53-1.72-3.98-2.89-7.38-3.03A3.996 3.996 0 0016 9c0-2.21-1.79-4-4-4S8 6.79 8 9c0 1.97 1.43 3.6 3.31 3.93-3.4.14-5.85 1.31-7.38 3.03C3.34 14.76 3 13.42 3 12c0-4.96 4.04-9 9-9zM9 9c0-1.65 1.35-3 3-3s3 1.35 3 3-1.35 3-3 3-3-1.35-3-3zm3 12c-3.16 0-5.94-1.64-7.55-4.12C6.01 14.93 8.61 13.9 12 13.9c3.39 0 5.99 1.03 7.55 2.98C17.94 19.36 15.16 21 12 21z"></path>
+									</svg>
+								</div>
+							</div>
+							<span id="open-app-text-renderer" class="menu-buttons-text">Open app</span>
+						</a>
+						<button id="live-chat-button" class="menu-buttons" onclick="liveChatButton()" title="Live chat replay" style="display: none;">
 							<div id="livechatbutton-icon" class="button-text-style">
 								<div style="width: 100%; height: 100%; fill: currentcolor;">
 									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
@@ -1176,7 +1219,7 @@ function __loadcfgs() {
 							</div>
 							<span id="live-chat-text-renderer" class="menu-buttons-text">Chat</span>
 						</button>
-						<button id="super-thanks-button" class="menu-buttons" onclick="thanksButton()" title="Show support with Super Thanks">
+						<button id="super-thanks-button" class="menu-buttons" onclick="thanksButton()" title="Show support with Super Thanks" style="display: none;">
 							<div id="superthanksbutton-icon" class="button-text-style">
 								<div style="width: 100%; height: 100%; fill: currentcolor;">
 									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">
@@ -1196,7 +1239,7 @@ function __loadcfgs() {
 							</div>
 							<span id="remix-text-renderer" class="menu-buttons-text">Remix</span>
 						</button>
-						<button id="stop-ads-button" class="menu-buttons"  title="Stop the ads in this video with Premium">
+						<button id="stop-ads-button" class="menu-buttons"  title="Stop the ads in this video with Premium" style="display: none;">
 							<div id="stopads-icon" class="button-text-style">
 								<div style="width: 100%; height: 100%; fill: currentcolor;">
 									<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;">

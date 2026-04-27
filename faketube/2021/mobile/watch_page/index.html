@@ -35,7 +35,6 @@
 				src: url("rsrc/player/google-sans_regular.ttf");
 			}
 		</style>
-		<script>window.scrollTo({ top: 0 });</script>
 	</head>
 	<body data-page-scrolling="false">
 		<header hidden="">
@@ -320,9 +319,12 @@
 							</div>
 							<div id="border-bottom-metadata" class="themed-borders"></div>
 							<div id="thick-border" class="themed-borders" hidden=""></div>
-							<div id="show-related-videos-button-container" class="centered-button-container" style="display: none;">
-								<button id="show-related-videos-button" class="transparent-button-with-border call-to-action-button" onclick="loadRelatedVideos(true)">
+							<div id="show-related-videos-button-container" class="centered-button-container">
+								<button id="show-related-videos-button" class="transparent-button-with-border call-to-action-button" onclick="loadRelatedVideos(true)" style="display: none;">
 									Show related videos
+								</button>
+								<button id="load-first-upcoming-video-button" class="transparent-button-with-border call-to-action-button call-to-action-button-red" onclick="loadUpcomingVideo()" style="display: none;">
+									Load next upcoming video
 								</button>
 							</div>
 							<div class="recommendations-page" hidden="">

@@ -186,7 +186,7 @@
 						<h4 class="heading-two-section-body-text">Do more with FakeTube</h4>
 						<h6 class="heading-four-section-body-text">Sign in now to upload, save, and comment on videos</h6>
 					</div>
-					<button id="sign-in-button" class="transparent-button-with-border" onclick="alert(`Sign in functionality not implemented yet`)">Sign in</button>
+					<button id="sign-in-button" class="transparent-button-with-border" onclick="com.faketube.web.debug.displayAlertDialog(`OK_TYPE`, `Sorry about that!`, `Sign-in functionality hasn't been implemented yet`)">Sign in</button>
 				</div>
 				<div class="border-top-metadata themed-borders"></div>
 				<div id="settings-and-help-feedback" class="signed-out-items-container">
@@ -319,6 +319,10 @@
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="native-profile-item-text-container">About</div>
 					</div>
+					<div id="faketube-configs-page-redirect" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item" onclick="oc_subpage.show(`s_faketubecfgs`)" style="display: none;">
+						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
+						<div class="native-profile-item-text-container">FakeTube config</div>
+					</div>
 				</div>
 				<div id="general-page-list" class="general-content-area" hidden="">
 					<div id="remind-me-to-take-a-break-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch always-offline-item">
@@ -361,7 +365,7 @@
 							<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">&nbsp;</div>
 						</div>
 					</div>
-					<div id="playback-in-feeds-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="playback-in-feeds-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch" onclick="onCreate.choosePlaybackInFeedsPopup()">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="items-text-container-flexed-columnstyle">
 							<div class="native-profile-item-text-container">Playback in feeds</div>
@@ -405,12 +409,12 @@
 							</label>
 						</div>
 					</div>
-					<div id="earn-badges-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch">
+					<div id="earn-badges-container" class="native-profile-item-renderer inner-subpage-item-renderer touch-by-touch" style="display: none;">
 						<div class="native-profile-item-icon-container inner-subpage-item-renderer-spacer"></div>
 						<div class="items-text-container-flexed-columnstyle">
 							<div class="native-profile-item-text-container">Earn badges</div>
 							<div class="items-text-container-flexed-rowstyle">
-								<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Receive badges across all YouTube apps</div>
+								<div class="native-profile-item-text-container native-profile-item-text-container-subtext-gray">Receive badges across all FakeTube apps</div>
 								<label class="switch" style="display: none !important;">
 									<input type="checkbox">
 									<span class="slider round"></span>

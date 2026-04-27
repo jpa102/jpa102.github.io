@@ -11,7 +11,15 @@ class dialog {
 	static themeSetter(themeIndex, waitTimeMs = 301) {
 		setTimeout(function() {
 			com.faketube.web.display_theme(themeIndex);
-			onDestroy.chooseThemeDialogPopup();
+			onDestroy.chooseThemeDialogPopup(10);
+			return;
+		}, waitTimeMs);
+	}
+
+	static playbackInFeedsSetter(p_index, waitTimeMs = 301) {
+		setTimeout(function() {
+			com.faketube.web.s_playbackInFeedsEx(p_index);
+			onDestroy.choosePlaybackInFeedsPopup(10);
 			return;
 		}, waitTimeMs);
 	}
@@ -80,37 +88,27 @@ class onCreate {
 	static chooseThemeDialogPopup() {
 		/*
 			todo: switch to manually creating elements instead of injecting html with innerHTML
+			i'm deciding if i still want to go this path because injecting html seems easier than manually creating them at the cost of security
 		*/
-		//let dialog_h1 = document.createElement("h1");
-		//let dialog_radio_container = document.createElement("div");
-		//let dialog_close_button = document.createElement("button");
-
-		//dialog_h1.innerText = global_data._watch_page_strings._stored_vars.global_data._watch_page_strings._stored_vars.appearance_text_inject;
-		//dialog_h1.id = "appearance-h1-text-dialog";
-		//dialog_h1.setAttribute("class", "faketube-dialog-text");
-		//dialog_radio_container.id = "radio-dialog-container";
-		//dialog_radio_container.setAttribute("class", "faketube-dialog-text");
-		//dialog_close_button.id = "theme-dialog-cancel-button";
-		//dialog_close_button.setAttribute("class", "cancel-button-dialog transparent-button-with-border transparent-button-without-border touch-by-touch faketube-dialog-text");
 
 		document.querySelector("#faketube-dialog").innerHTML = `
 			<h1 id="appearance-h1-text-dialog" class="faketube-dialog-text">${global_data._watch_page_strings._stored_vars.appearance_text_inject}</h1>
 			<div id="radio-dialog-container" class="faketube-dialog-text">
 				<form>
-					<div class="inout-radio-and-label-container menu-buttons input-radio-option-dialog">
-						<input type="radio" id="theme-light" name="theme_type" value="light" onclick="dialog.themeSetter(0)">
+					<div class="input-radio-and-label-container menu-buttons input-radio-option-dialog" onclick="dialog.themeSetter(0, 100)">
+						<input type="radio" id="theme-light" name="theme_type" value="light">
 						<label for="theme-light" class="faketube-dialog-text">${global_data._watch_page_strings._stored_vars.light_mode_text_inject}</label><br>
 					</div>
-					<div class="inout-radio-and-label-container menu-buttons input-radio-option-dialog">
-						<input type="radio" id="theme-dark" name="theme_type" value="darkmode" onclick="dialog.themeSetter(1)">
+					<div class="input-radio-and-label-container menu-buttons input-radio-option-dialog" onclick="dialog.themeSetter(1, 100)">
+						<input type="radio" id="theme-dark" name="theme_type" value="darkmode">
 						<label for="theme-dark">${global_data._watch_page_strings._stored_vars.dark_mode_text_inject}</label><br>
 					</div>
-					<div class="inout-radio-and-label-container menu-buttons input-radio-option-dialog">
-						<input type="radio" id="theme-darkerdarkmode" name="theme_type" value="darkerdarkmode" onclick="dialog.themeSetter(2)">
+					<div class="input-radio-and-label-container menu-buttons input-radio-option-dialog" onclick="dialog.themeSetter(2, 100)">
+						<input type="radio" id="theme-darkerdarkmode" name="theme_type" value="darkerdarkmode">
 						<label for="theme-darkerdarkmode">${global_data._watch_page_strings._stored_vars.darker_dark_mode_text_inject}</label><br>
 					</div>
-					<div class="inout-radio-and-label-container menu-buttons input-radio-option-dialog">
-						<input type="radio" id="theme-blackhole" name="theme_type" value="blackhole" onclick="dialog.themeSetter(3)">
+					<div class="input-radio-and-label-container menu-buttons input-radio-option-dialog" onclick="dialog.themeSetter(3, 100)">
+						<input type="radio" id="theme-blackhole" name="theme_type" value="blackhole">
 						<label for="theme-blackhole">${global_data._watch_page_strings._stored_vars.black_hole_theme_text_inject}</label>
 					</div>
 				</form>
@@ -129,6 +127,49 @@ class onCreate {
 			document.querySelector("#theme-darkerdarkmode[type='radio']").checked = true;
 		} else if (localStorage.theme_type == "blackhole") {
 			document.querySelector("#theme-blackhole[type='radio']").checked = true;
+		}
+
+		document.body.setAttribute("data-page-scrolling", "false");
+		document.querySelector("#faketube-dialog").showModal();
+		document.querySelector("#theme-dialog-cancel-button").addEventListener("click", onDestroy.chooseThemeDialogPopup);
+	}
+
+	static choosePlaybackInFeedsPopup() {
+		/*
+			todo: switch to manually creating elements instead of injecting html with innerHTML
+			i'm deciding if i still want to go this path because injecting html seems easier than manually creating them at the cost of security
+		*/
+
+		document.querySelector("#faketube-dialog").innerHTML = `
+			<h1 id="playback-in-feeds-h1-text-dialog" class="faketube-dialog-text">${global_data._watch_page_strings._stored_vars.playback_in_feeds_text_inject}</h1>
+			<div id="radio-dialog-container" class="faketube-dialog-text">
+				<form>
+					<div class="input-radio-and-label-container menu-buttons input-radio-option-dialog" onclick="dialog.playbackInFeedsSetter(0, 100)">
+						<input type="radio" id="theme-light" name="theme_type" value="light">
+						<label for="theme-light" class="faketube-dialog-text">${global_data._watch_page_strings._stored_vars.playback_in_feeds_alon_text_inject}</label><br>
+					</div>
+					<div class="input-radio-and-label-container menu-buttons input-radio-option-dialog" onclick="dialog.playbackInFeedsSetter(1, 100)">
+						<input type="radio" id="theme-dark" name="theme_type" value="darkmode">
+						<label for="theme-dark">${global_data._watch_page_strings._stored_vars.playback_in_feeds_wifi_text_inject}</label><br>
+					</div>
+					<div class="input-radio-and-label-container menu-buttons input-radio-option-dialog" onclick="dialog.playbackInFeedsSetter(2, 100)">
+						<input type="radio" id="theme-darkerdarkmode" name="theme_type" value="darkerdarkmode">
+						<label for="theme-darkerdarkmode">${global_data._watch_page_strings._stored_vars.playback_in_feeds_off_text_inject}</label><br>
+					</div>
+				</form>
+			</div>
+			<div class="dialog-flexed-buttons-container">
+				<div class="dialog-dummy-element"></div>
+				<button id="theme-dialog-cancel-button" class="button-dialog menu-buttons faketube-dialog-text">${global_data._watch_page_strings._stored_vars.cancel_text_inject}</button>
+			</div>
+		`;
+
+		if (localStorage.theme_type == "light") {
+			document.querySelector("#theme-light[type='radio']").checked = true;
+		} else if (localStorage.theme_type == "darkmode") {
+			document.querySelector("#theme-dark[type='radio']").checked = true;
+		} else if (localStorage.theme_type == "darkerdarkmode") {
+			document.querySelector("#theme-darkerdarkmode[type='radio']").checked = true;
 		}
 
 		document.body.setAttribute("data-page-scrolling", "false");
@@ -156,13 +197,22 @@ class onDestroy {
 		}, __faketube_delaypagems);
 	}
 
-	static chooseThemeDialogPopup() {
+	static chooseThemeDialogPopup(closeTimeMs = 200) {
 		setTimeout(function() {
 			document.querySelector("#faketube-dialog").close();
 			document.querySelector("#theme-dialog-cancel-button").removeEventListener("click", onDestroy.chooseThemeDialogPopup);
 			document.querySelector("#faketube-dialog").innerHTML = ``;
 			document.body.setAttribute("data-page-scrolling", "true");
-		}, 200);
+		}, closeTimeMs);
+	}
+
+	static choosePlaybackInFeedsPopup(closeTimeMs = 200) {
+		setTimeout(function() {
+			document.querySelector("#faketube-dialog").close();
+			document.querySelector("#theme-dialog-cancel-button").removeEventListener("click", onDestroy.choosePlaybackInFeedsPopup);
+			document.querySelector("#faketube-dialog").innerHTML = ``;
+			document.body.setAttribute("data-page-scrolling", "true");
+		}, closeTimeMs);
 	}
 }
 

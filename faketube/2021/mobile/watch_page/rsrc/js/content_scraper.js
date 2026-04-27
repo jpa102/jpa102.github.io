@@ -84,8 +84,9 @@ async function _content_scraper(videoId) {
 
 			//console.log(ythtml); // uncomment for quick inspecting
 
-			// error counter
+			// error counters
 			let error_instances = 0;
+			let datetime_errors = 0;
 
 			setTimeout(function() {
 				var _ytInitialPlayerResponse = ythtml.querySelectorAll("html > body > script")[anyaindex.html[0].tagPositionIndex].innerHTML;
@@ -149,36 +150,48 @@ async function _content_scraper(videoId) {
 					error_instances++;
 				}
 
-				// attempt to get upload month and day text from 5 types of videos (regular, music, shorts, music - 2nd variant? [topic, no comment section], undefined for now)
+				// attempt to get upload month and day text from 6 types of videos (regular, music, shorts, music - 2nd variant? [topic, no comment section], undefined for now)
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[5]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[4].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[4]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[3]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[2].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[2]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[1].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[1]`); }
 					error_instances++;
+					datetime_errors++;
+				}
+				try {
+					global_data.yt.uploadMonthDay = ytInitialData.engagementPanels[0].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.label.simpleText;
+				} catch {
+					if (faketube.config_.debug_logging == true) { console.error(`failed to get month and day text from ytInitialData.engagementPanels[0]`); }
+					error_instances++;
+					datetime_errors++;
 				}
 
 
@@ -189,30 +202,51 @@ async function _content_scraper(videoId) {
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get year text from ytInitialData.engagementPanels[5]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[4].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get year text from ytInitialData.engagementPanels[4]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[5].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get year text from ytInitialData.engagementPanels[3]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[2].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get year text from ytInitialData.engagementPanels[2]`); }
 					error_instances++;
+					datetime_errors++;
 				}
 				try {
 					global_data.yt.uploadYear = ytInitialData.engagementPanels[1].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.factoid[2].factoidRenderer.value.simpleText;
 				} catch {
 					if (faketube.config_.debug_logging == true) { console.error(`failed to get year text from ytInitialData.engagementPanels[1]`); }
 					error_instances++;
+					datetime_errors++;
+				}
+
+				// completely hide the upload date and time if datetime_errors is 11
+				if (datetime_errors == 11) {
+					document.querySelector("#date-uploaded-container").style.display = "none";
+					if (faketube.config_.debug_logging == true) { console.error(`date and time container hidden, reason: datetime_errors variable is ${datetime_errors}`); }
+
+					// try injecting the exact date if it's on premiere (experimental)
+					try {
+						setTimeout(() => {
+							let exactdate_premiere = ytInitialData.engagementPanels[4].engagementPanelSectionListRenderer.content.structuredDescriptionContentRenderer.items[0].videoDescriptionHeaderRenderer.publishDate.simpleText;
+							document.querySelector("#video-metadata.video-metadata-renderer").innerText = `${global_data.yt.viewCountFormatted} • ${exactdate_premiere}`;
+						}, 2133);
+					} catch {
+						if (faketube.config_.debug_logging == true) { console.error(`can't find and set the premiere date`); }
+					}
 				}
 
 				global_data.uploaddate = ytInitialPlayerResponse.microformat.playerMicroformatRenderer.uploadDate.slice(0, 10);
@@ -245,8 +279,9 @@ async function _content_scraper(videoId) {
 	.catch(error => {
 		if (faketube.config_.debug_logging == true) { console.error(`Failed to fetch html from https://www.youtube.com/watch?v=${global_data.v}&app=desktop\nReason:`, error); }
 
-		// fallback to using return youtube dislike's recorded like counts if it fails in fetching the html of youtube
+		// fallback to using return youtube dislike's recorded like and view counts if it fails in fetching the html of youtube
 		global_data.yt.likeCount = global_data.ryd_data.likeCount;
+		global_data.yt.viewCount = global_data.ryd_data.viewCount;
 	})
 }
 

@@ -18,7 +18,7 @@
 	--video-player-video-title-size: 1em;
 	--video-player-views-and-date-size: 0.77em;
 	--video-player-menu-buttons-gap-size: 0.5rem;
-	--video-player-menu-buttons-text-size: 0.75rem;
+	--video-player-menu-buttons-text-size: 0.73rem;
 	--video-player-comment-caption-size: 0.92em;
 	--video-player-margin-left: 14px;
 	--video-player-yt-channel-name: 1rem;
@@ -26,6 +26,8 @@
 	--thumbnail-loading-skeleton: rgba(0, 0, 0, 0.05);
 	--call-to-action-color-dark: #3ea6ff;
 	--call-to-action-color-light: #065fd4;
+	--call-to-action-red-color-light: red;
+	--call-to-action-red-color-dark: rgb(255, 84, 84);
 	--subscribe-text-color: red;
 	--inner-button-icons-size: 1.5rem;
 	--gray-text-color: #858585;
